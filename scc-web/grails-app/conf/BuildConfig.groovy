@@ -39,7 +39,7 @@ grails.project.dependency.resolution = {
 			System.setProperty("http.proxyHost", "bproxy");
 			System.setProperty("http.proxyPort", "8080");
 			System.setProperty("http.proxyUser", "c38051");
-			System.setProperty("http.proxyPassword", "P@ssw0rd");
+			System.setProperty("http.proxyPassword", "fasdfa");
 			
 			
         grailsPlugins()
