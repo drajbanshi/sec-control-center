@@ -1,0 +1,27 @@
+{
+  "request" : {
+    "url" : "/Holidays/US/Dates/USHolidayDates.asmx",
+    "method" : "POST",
+	"headers": {
+            "SOAPAction": {
+                "contains": "GetMothersDay"
+            }
+	}
+            
+
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "mothersday.xml",
+    "headers" : {
+      "Proxy-Authenticate" : [ "NTLM", "BASIC realm=\"FredDom\"" ],
+      "Cache-Control" : "no-cache",
+      "Pragma" : "no-cache",
+      "Content-Type" : "text/xml; charset=utf-8",
+      "Proxy-Connection" : "close",
+      "Set-Cookie" : "BCSI-CS-bef19f45ea5fbf1a=2; Path=/",
+      "Connection" : "close",
+      "Content-Length" : "1624"
+    }
+  }
+}
