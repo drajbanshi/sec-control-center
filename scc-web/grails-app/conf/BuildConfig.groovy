@@ -36,10 +36,10 @@ grails.project.dependency.resolution = {
 		
       //  inherits true // Whether to inherit repository definitions from plugins
 
-//			System.setProperty("http.proxyHost", "bproxy");
-//			System.setProperty("http.proxyPort", "8080");
-//			System.setProperty("http.proxyUser", "c38051");
-//			System.setProperty("http.proxyPassword", "fasdfa");
+			System.setProperty("http.proxyHost", "bproxy");
+		System.setProperty("http.proxyPort", "8080");
+			System.setProperty("http.proxyUser", "c36429");
+			System.setProperty("http.proxyPassword", "Atstrel2@1");
 //
 //
         grailsPlugins()

@@ -11,3 +11,246 @@
 *= require mobile
 *= require_self
 */
+body {
+    font-size: 13px;
+}
+
+.header {
+    background-color: #0576cc;
+}
+
+.menubar {
+    padding: 5px 0;
+
+
+}
+
+.menubar li  a{
+    background-color: #b9def0;
+    border: 1px solid #0576cc;
+}
+
+.menubar li.selected a {
+    background-color: #0576cc;
+    border: 1px solid #0576cc;
+}
+
+
+
+.product {
+    font-size: 2em;
+    text-align: left;
+    color: #ffffff;
+}
+
+.highlight {
+    background: #0576cc;
+    color: #ffffff;
+}
+
+.actiondiv {
+    padding: 5px;
+    margin: 5px 0 0;
+    border: 1px solid #0576cc;
+    border-radius: 5px 5px 0 0;
+}
+
+.searchdiv  {
+    border: 1px solid #0576cc;
+    border-radius: 5px;
+}
+
+.searchLabel {
+    color: #ffffff;
+    background-color: #0576cc;
+    padding: 5px;
+}
+
+.searchform {
+    padding: 5px;
+    overflow: auto;
+}
+
+.searchform .form-group {
+
+}
+
+.inlineform {
+    display: inline;
+}
+
+.CSPTransaction {
+    overflow: auto;
+}
+
+.CSPTransaction li {
+    width: 50%;
+    float: left;
+}
+
+.createcase-form {
+    overflow: auto;
+
+}
+.createcase-form .form-group {
+    width: 100%;
+
+}
+
+.CASEForm {
+   width: 50%;
+}
+
+.CASEForm .property-label, .case-inner-form .property-label {
+    width: 150px;
+}
+
+
+.case-inner-form {
+    width: 400px;
+    float: left;
+}
+.create-case-buttons {
+   width: 400px;
+   float: left;
+   margin-top: 20px;
+}
+
+.create-case-buttons button {
+    width: 100px;
+}
+
+.create-case-buttons button {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#editor {overflow:scroll; max-height:300px}
+
+#show-CSPTransaction {
+    min-height: 500px;
+}
+
+.user-panel {
+    text-align: right;
+    padding-bottom: 5px;
+}
+
+.formpanel {
+
+}
+
+.buttonpanel {
+   text-align: center;
+}
+
+.buttonpanel button {
+    width: 100px;
+}
+
+.paginate {
+    width: 250px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 5px 5px 5px;
+}
+
+.paginate .currentStep {
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-right: 5px;
+    background-color: #0576cc;
+    color: #ffffff !important;
+
+}
+
+.paginate .step {
+    padding: 2px 6px;
+
+}
+
+.paginate .nextLink {
+
+}
+
+.footer {
+    padding: 10px;
+    background-color: #0576cc;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.container .table thead th {
+    font-size: 13px;
+}
+
+.container table tr td {
+    border-bottom: 1px solid #0576cc !important;
+    font-size: 12px;
+}
+
+.container table tr td, .container table thead th {
+    padding: 2px;
+}
+
+.container .table {
+    margin-bottom: 0px;
+}
+
+.container table thead th {
+    border-bottom: 2px solid #0576cc !important;
+}
+
+.table-container {
+    border: 1px solid #0576cc;
+    border-top: 0;
+}
+
+.search-row {
+    margin: 0px !important;
+}
+
+.nav > li > a {
+    padding: 7px 12px;
+}
+
+.property-list {
+    margin: 0.6em 1.25em 0 1.25em;
+    padding: 0.3em 1.8em 1.25em;
+    position: relative;
+    zoom: 1;
+    border: none;
+}
+
+.property-list .fieldcontain {
+    list-style: none;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.fieldcontain {
+    margin-top: 5px;
+}
+
+.fieldcontain label,
+.fieldcontain .property-label {
+    color: #666666;
+    text-align: left;
+    width: 25%;
+}
+
+.fieldcontain .property-label {
+    float: left;
+    font-weight: bold;
+}
+
+.fieldcontain .property-value {
+    display: block;
+    margin-left: 27%;
+}
+
+#txtEditor {
+    width: 400px;
+    height: 200px;
+}
+
