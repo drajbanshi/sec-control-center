@@ -34,14 +34,14 @@ grails.project.dependency.resolution = {
 
     repositories {
 		
-        inherits true // Whether to inherit repository definitions from plugins
+      //  inherits true // Whether to inherit repository definitions from plugins
 
-			System.setProperty("http.proxyHost", "bproxy");
-			System.setProperty("http.proxyPort", "8080");
-			System.setProperty("http.proxyUser", "c38051");
-			System.setProperty("http.proxyPassword", "fasdfa");
-			
-			
+//			System.setProperty("http.proxyHost", "bproxy");
+//			System.setProperty("http.proxyPort", "8080");
+//			System.setProperty("http.proxyUser", "c38051");
+//			System.setProperty("http.proxyPassword", "fasdfa");
+//
+//
         grailsPlugins()
         grailsHome()
         mavenLocal()
@@ -51,7 +51,10 @@ grails.project.dependency.resolution = {
         mavenRepo "http://repository.codehaus.org"
         mavenRepo "http://download.java.net/maven/2/"
         mavenRepo "http://repository.jboss.com/maven2/"
+        mavenRepo "https://oss.sonatype.org/content/groups/public/"
     }
+
+
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
@@ -73,6 +76,8 @@ grails.project.dependency.resolution = {
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
+
+        compile ":wslite:0.7.2.0"
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
