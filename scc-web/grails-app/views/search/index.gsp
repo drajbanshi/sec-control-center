@@ -12,6 +12,9 @@
 </head>
 
 <body>
+<g:if test="${flash.message}">
+				<div class="message" role="status">${flash.message}</div>
+			</g:if> 
   <g:form controller="search" action="search">
       <g:textField name="cusip" ></g:textField>
       <g:submitButton name="submit" value="Submit">Submit</g:submitButton>
