@@ -1,22 +1,22 @@
 package com.freddiemac
 
 import grails.transaction.Transactional
+import wslite.soap.SOAPClient
 
-@Transactional
+
 class SearchService {
 
-    def searchPool(String cusip) {
+    def searchPool(String cus) {
 
-        withSoap(serviceURL: 'http://www.holidaywebservice.com/Holidays/US/Dates/USHolidayDates.asmx') {
-            def response = send(SOAPAction: 'http://www.27seconds.com/Holidays/US/Dates/GetMothersDay') {
-                body {
-                    GetMothersDay(xmlns: 'http://www.27seconds.com/Holidays/US/Dates/') {
-                        year(2011)
-                    }
+        SOAPClient client = new SOAPClient('http://192.168.1.147:9999/freddiemac/services/searchload.asmx')
+        def response = client.send(SOAPAction:'FindLoan') {
+            body {
+                FindLoan('xmlns':'http://www.freddiemac.com/search') {
+                    cusip('adfadf')
                 }
             }
-            return response.GetMothersDayResponse.GetMothersDayResult.text()
         }
 
+        return response.text
     }
 }

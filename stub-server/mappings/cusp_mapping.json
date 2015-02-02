@@ -1,8 +1,14 @@
 {
   "request" : {
-    "url" : "/webservices/search.asmx",
-    "method" : "POST"
-	
+    "url" : "/freddiemac/services/searchload.asmx",
+    "method" : "POST",
+  "headers": {
+            "SOAPAction": {
+                "contains": "FindLoan"
+            }
+  }
+            
+
   },
   "response" : {
     "status" : 200,

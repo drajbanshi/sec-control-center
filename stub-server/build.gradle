@@ -1,16 +1,16 @@
 apply plugin: 'eclipse'
-apply plugin: 'groovy'
+apply plugin: 'java'
 
 
 	
 repositories {
-		System.setProperty("http.proxyHost", "bproxy");
-		System.setProperty("http.proxyPort", "8080");
-		System.setProperty("http.proxyUser", "c38051");
-		System.setProperty("http.proxyPassword", "P@ssw0rd");
+	//	System.setProperty("http.proxyHost", "bproxy");
+	//	System.setProperty("http.proxyPort", "8080");
+	//	System.setProperty("http.proxyUser", "c38051");
+	//	System.setProperty("http.proxyPassword", "P@ssw0rd");
     mavenCentral()
 }
 
 dependencies {
-   compile 'com.github.tomakehurst:wiremock:1.53'
+    compile 'com.github.tomakehurst:wiremock:1.53'
 }
