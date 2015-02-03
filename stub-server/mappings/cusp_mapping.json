@@ -5,16 +5,14 @@
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "cusp_output.xml",
+    "bodyFileName" : "CUSP_1.xml",
     "headers" : {
-      "Proxy-Authenticate" : [ "NTLM", "BASIC realm=\"FredDom\"" ],
+      
       "Cache-Control" : "no-cache",
       "Pragma" : "no-cache",
       "Content-Type" : "text/xml; charset=utf-8",
-      "Proxy-Connection" : "close",
-      "Set-Cookie" : "BCSI-CS-bef19f45ea5fbf1a=2; Path=/",
-      "Connection" : "close",
-      "Content-Length" : "1624"
+      "Proxy-Connection" : "close"
+      
     }
   }
 }

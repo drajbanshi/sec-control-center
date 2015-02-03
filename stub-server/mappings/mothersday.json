@@ -5,7 +5,7 @@
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "cusp_output.xml",
+    "bodyFileName" : "mothersday.xml",
     "headers" : {
       "Proxy-Authenticate" : [ "NTLM", "BASIC realm=\"FredDom\"" ],
       "Cache-Control" : "no-cache",

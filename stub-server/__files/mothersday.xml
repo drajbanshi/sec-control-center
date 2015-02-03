@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-  <soap12:Body>
-    <GetMothersDayResponse xmlns="http://www.27seconds.com/Holidays/US/Dates/">
-      <GetMothersDayResult>Test MeS</GetMothersDayResult>
-    </GetMothersDayResponse>
-  </soap12:Body>
-</soap12:Envelope>
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetMothersDayResponse xmlns="http://www.27seconds.com/Holidays/US/Dates/"><GetMothersDayResult>2011-05-08T00:00:00</GetMothersDayResult></GetMothersDayResponse></soap:Body></soap:Envelope>
