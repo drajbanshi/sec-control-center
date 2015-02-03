@@ -17,7 +17,7 @@ public class StubHttpProxy {
 		WireMockServer server = new WireMockServer(new WireMockConfiguration().port(9999).fileSource(new SingleRootFileSource(f)).proxyVia("bproxy", 8080));
 		Authenticator.setDefault(new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("c38051","P@ssw0rd".toCharArray());
+				return new PasswordAuthentication("c38051","*****".toCharArray());
 			}
 		});
 		server.start();
