@@ -1,6 +1,7 @@
 package com.freddiemac
 
 import grails.converters.XML
+import groovy.xml.XmlUtil;
 
 class SearchController {
 	def searchService
@@ -16,6 +17,7 @@ class SearchController {
 			redirect action: 'index', method: "Get"
 		}
 		def m = searchService.searchPool(params.cusip)
+		print XmlUtil.serialize(m)
 		if (m.equals("Not available")) {
 			flash.message =  "CUSPID Unavailable"
 			redirect action: 'index', method: "Get"

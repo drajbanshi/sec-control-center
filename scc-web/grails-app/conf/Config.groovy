@@ -88,7 +88,7 @@ grails.hibernate.osiv.readonly = false
 
 //configure external 
 com.freediemac.mbs.server="localhost:9999"
-com.freddiemac.security.node.path="Events.EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer.CollateralGroupContainer.CollateralInstruments.CollateralInstrumentContainer.CollateralSecurityContainer.Security"
+com.freddiemac.security.node.path="EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer.CollateralGroupContainer.CollateralInstruments.CollateralInstrumentContainer.CollateralSecurityContainer.Security"
 
 //end
 

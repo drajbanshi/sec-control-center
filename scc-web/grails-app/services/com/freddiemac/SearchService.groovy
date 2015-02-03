@@ -7,8 +7,10 @@ import groovy.io.FileType
 
 class SearchService {
 	
+	def grailsApplication
+	
 	def searchPool(String cus) {
-        SOAPClient client = new SOAPClient('http://localhost:9999/freddiemac/services/searchload.asmx')
+        SOAPClient client = new SOAPClient("http://${grailsApplication.config.com.freediemac.mbs.server}/freddiemac/services/searchload.asmx")
         def response = client.send(SOAPAction:'SearchLoan') {
             body {
                 SearchLoan('xmlns':'http://www.freddiemac.com/search') {
@@ -16,6 +18,6 @@ class SearchService {
                 }
             }
         }
-		return response.SearchLoanResponse.SearchLoanResult
+		return response.SearchLoanResponse.SearchLoanResult.Events
 	 }
 }
