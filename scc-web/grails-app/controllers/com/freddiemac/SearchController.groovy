@@ -47,8 +47,6 @@ class SearchController {
 		EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED)
 		e.save()
 		
-		flash.message = "Dissolve event sent"
-		redirect action: 'index'
 
 	}
 }

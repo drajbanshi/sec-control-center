@@ -1,10 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+
+
+
 <head>
-    <meta name="layout" content="main">
-    <title>Dissolve - Securitization Control Center</title>
+<h1> Securitization Control Center Data from MBS</h1>
+<link rel="stylesheet" href="\${resource(dir: 'css', file: 'scaffold.css')}"/>
+
 </head>
-<body>
+<g:form action="index" method="post" >
 
   <div class="dialog">
     <table>
@@ -140,12 +142,10 @@
          
       </tbody>
     </table>
+    
+    <br>
   </div>
-  
-  <g:form controller="search" action="dissolve">
-	<g:hiddenField name="cusip" value="${params.cusip }"/> 
-	<g:submitButton name="submit" value="Dissolve"/> 
-  </g:form>
-</body>
-
-</html>
+  <div class="buttons">
+    <span class="button"><input class="submit" type="submit" value="Search" /></span>
+  </div>
+</g:form>

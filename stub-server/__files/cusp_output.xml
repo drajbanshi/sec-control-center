@@ -1,86 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-  <soap12:Body>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
     <SearchLoanResponse>
 	   <SearchLoanResult>
 	      <Events xmlns="http://www.freddiemac.com/enterpriseEventDataModel/v1.0">
-	<EventMetaData>
-		<MessageIdentifier>ed5ccac4-9ccd-45f0-a678-2bef8a0896f0</MessageIdentifier>
-		<EventType>BUSINESS</EventType>
-		<EventName>COLLAPSE_EVENT</EventName>
-		<EventClassification>NOTIFICATION</EventClassification>
-		<ProducerName>CashPoolingManager</ProducerName>
-		<MessageTimestamp>2015-01-26T15:01:00.358-05:00</MessageTimestamp>
-		<EventCount>1</EventCount>
-	</EventMetaData>
-	<EventPayload>
-		<EventContainer>
-			<EventIdentifier>ed5ccac4-9ccd-45f0-a678-2bef8a0896f0</EventIdentifier>
-			<BusinessContext>
-				<EntityType>SECURITY</EntityType>
-				<RequestActionType>NEW</RequestActionType>
-				<PayloadReferenceType>EMBEDDED_KEYS</PayloadReferenceType>
-				<BusinessEventTimestamp>2015-01-26T15:01:00.359-05:00</BusinessEventTimestamp>
-			</BusinessContext>
-			<BusinessData>
-				<CspSecIssuanceReqContentSet:CspSecIssuanceReqContentSet xmlns="http://www.freddiemac.com/cdm" xmlns:CspSecIssuanceReqContentSet="http://www.freddiemac.com/cdm">
-					<SecIssuanceReqContainer>
-						<CollateralGroupContainer>
-							<CollateralInstruments>
-								<CollateralInstrumentContainer>
-									<CollateralSecurityContainer>
-										<Security>
-											<ActualMaturityDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<AmortizationEndDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<AssetBackedSecurityType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<BusinessCalendarType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<ContractualMaturityDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<CurrencyType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<FederalReserveSecurityClassCode xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<FederalReserveSecurityDescription xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<InternationalSecurityIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<MaturityReasonType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<MinimumTradeDenominationAmount xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<MinimumTradeIncrementAmount xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<PaymentFrequencyType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<PrincipalAmortizationType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<RegistrationAgentIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecuritizationProgramIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityBusinessDayAdjustmentType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityCouponType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityCouponTypeConversionDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityCUSIPIdentifier>3132KEX59</SecurityCUSIPIdentifier>
-											<SecurityFirstInterestAccrualDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityFirstPaymentDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityGuarantyContractIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityIssuerIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityMaturityTermMonthCount xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityMaturityType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityNotionalIndicator xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityOwnershipMethodType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityPayingAgentIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityPaymentDayCount xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityPrincipalInterestType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityPrincipalRepaymentType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecurityPriorityType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SecuritySafeHarborRate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<SettlementAgentIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<TaxProvisionType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<TaxablePercent xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-											<UnderwriterIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-										</Security>
-									</CollateralSecurityContainer>
-								</CollateralInstrumentContainer>
-							</CollateralInstruments>
-						</CollateralGroupContainer>
-					</SecIssuanceReqContainer>
-				</CspSecIssuanceReqContentSet:CspSecIssuanceReqContentSet>
-			</BusinessData>
-		</EventContainer>
-	</EventPayload>
-</Events>
-
+			<EventMetaData>
+				<MessageIdentifier>ed5ccac4-9ccd-45f0-a678-2bef8a0896f0</MessageIdentifier>
+				<EventType>BUSINESS</EventType>
+				<EventName>COLLAPSE_EVENT</EventName>
+				<EventClassification>NOTIFICATION</EventClassification>
+				<ProducerName>CashPoolingManager</ProducerName>
+				<MessageTimestamp>2015-01-26T15:01:00.358-05:00</MessageTimestamp>
+				<EventCount>1</EventCount>
+			</EventMetaData>
+			</Events>
 	   </SearchLoanResult>
 	</SearchLoanResponse>
-  </soap12:Body>
-</soap12:Envelope>
+  </soap:Body>
+</soap:Envelope>
