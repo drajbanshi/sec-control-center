@@ -7,18 +7,18 @@ import groovy.io.FileType
 
 class SearchService {
 
+	String p = "SearchLoanResponse.SearchLoanResult.Events.EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer.CollateralGroupContainer.CollateralInstruments.CollateralInstrumentContainer.CollateralSecurityContainer.Security"
     def searchPool(String cus) {
         SOAPClient client = new SOAPClient('http://localhost:9999/freddiemac/services/searchload.asmx')
-        def response = client.send(SOAPAction:'FindLoan') {
+        def response = client.send(SOAPAction:'SearchLoan') {
             body {
-                FindLoan('xmlns':'http://www.freddiemac.com/search') {
-                    cusip('adfadf')
+                SearchLoan('xmlns':'http://www.freddiemac.com/search') {
+                    cusip(cus)
                 }
             }
         }
+
 		
-		println response.text
-		
-		return response
-	}
+		return response.SearchLoanResponse.SearchLoanResult.Events.EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer.CollateralGroupContainer.CollateralInstruments.CollateralInstrumentContainer.CollateralSecurityContainer.Security
+	 }
 }
