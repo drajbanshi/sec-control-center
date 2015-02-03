@@ -1,5 +1,8 @@
 package com.freddiemac
 
+import com.freddiemac.entities.EventProcessLog;
+import com.freddiemac.entities.Status;
+
 import grails.converters.XML
 import groovy.xml.XmlUtil;
 
@@ -17,7 +20,7 @@ class SearchController {
 			redirect action: 'index', method: "Get"
 		}
 		def m = searchService.searchPool(params.cusip)
-		print XmlUtil.serialize(m)
+		
 		if (m.equals("Not available")) {
 			flash.message =  "CUSPID Unavailable"
 			redirect action: 'index', method: "Get"
@@ -26,5 +29,26 @@ class SearchController {
 		
 			render view: 'search', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
 		}
+		
+		
+	}
+	
+	def dissolve() {
+		if (!params.cusip) {
+			flash.message =  "Invalid cusip"
+			redirect action: 'search', method: "Get"
+		}
+		
+		def m = searchService.searchPool(params.cusip)
+		m.EventMetaData.EventName = 'DISSOLVE_EVENT'
+		
+		print XmlUtil.serialize(m)
+		
+		EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED)
+		e.save()
+		
+		flash.message = "Dissolve event sent"
+		redirect action: 'index'
+
 	}
 }

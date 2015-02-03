@@ -14,12 +14,42 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
-		<g:layoutHead/>
+    <g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
-		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+    <div class="header">
+        <div class="container">
+             <div class="row">
+                 <div class="col-sm-2">
+                     <div class="logo">
+                       <a href="/"><asset:image src="logo.png"/></a>
+                     </div>
+                 </div>
+                 <div class="col-sm-7">
+                     <div class="product"><h3>Securitization Control Center</h3></div>
+                 </div>
+
+                 <div class="col-sm-3">
+                     
+                 </div>
+             </div>
+
+
+        </div>
+
+
+
+
+    </div>
+
+    <div class="container mainbody">
+        <g:layoutBody/>
+    </div>
+		<div class="footer" role="contentinfo">
+        <div class="container">
+        &copy; Freddie Mac 2015
+        </div>
+       </div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>
