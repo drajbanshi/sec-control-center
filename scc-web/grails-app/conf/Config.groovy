@@ -85,6 +85,13 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+
+//configure external 
+com.freediemac.mbs.server="localhost:9999"
+com.freddiemac.security.node.path="EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer.CollateralGroupContainer.CollateralInstruments.CollateralInstrumentContainer.CollateralSecurityContainer.Security"
+
+//end
+
 environments {
     development {
         grails.logging.jul.usebridge = true

@@ -1,28 +1,30 @@
 package com.freddiemac
 
 import grails.converters.XML
+import groovy.xml.XmlUtil;
 
 class SearchController {
-    def searchService
+	def searchService
 
-    def index() {
+	def grailsApplication
 
+	def index() {
+	}
 
-    }
-
-    def search() {
-	  if (!params.cusip) {
-	  	flash.message =  "Enter a valid CUSPID"
-		  redirect action: 'index', method: "Get"
-		  }
-      def m = searchService.searchPool(params.cusip)      
-	  if (m.equals("Not available")) {
-	  flash.message =  "CUSPID Unavailable"
-	  redirect action: 'index', method: "Get"
-	  } else {
-	  	render view: 'search', model: ['result': m]
-	  
-	  }
-	  
-    }
+	def search() {
+		if (!params.cusip) {
+			flash.message =  "Enter a valid CUSPID"
+			redirect action: 'index', method: "Get"
+		}
+		def m = searchService.searchPool(params.cusip)
+		print XmlUtil.serialize(m)
+		if (m.equals("Not available")) {
+			flash.message =  "CUSPID Unavailable"
+			redirect action: 'index', method: "Get"
+		} else {
+			
+		
+			render view: 'search', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
+		}
+	}
 }
