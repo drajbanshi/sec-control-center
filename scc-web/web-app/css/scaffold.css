@@ -1,0 +1,22 @@
+body {
+
+background: #00FFCC 
+
+}
+
+h1 {
+
+color: black;
+text-align: center;
+}
+
+label {
+	cursor: pointer;
+	display: inline-block;
+	margin: 0 0.25em 0 0;
+}
+
+td {
+    height: 20px;
+    vertical-align: bottom;
+}
