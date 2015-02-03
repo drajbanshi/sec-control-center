@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <title>Dissolve - Securitization Control Center</title>
 </head>
 
 <body>
@@ -16,8 +16,9 @@
 				<div class="message" role="status">${flash.message}</div>
 			</g:if> 
   <g:form controller="search" action="search">
-      <g:textField name="cusip" ></g:textField>
-      <g:submitButton name="submit" value="Submit">Submit</g:submitButton>
+  	<h1>Dissolve</h1>	
+      CUSIP identifier : <g:textField name="cusip" ></g:textField>
+      <g:submitButton name="submit" value="Submit" />
   </g:form>
 </body>
 </html>
