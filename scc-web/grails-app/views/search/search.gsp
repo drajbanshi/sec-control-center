@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="\${resource(dir: 'css', file: 'scaffold.css')}"/>
 
 </head>
-<g:form action="search" method="post" >
+<g:form action="index" method="post" >
 
   <div class="dialog">
     <table>
