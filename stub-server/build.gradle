@@ -4,13 +4,13 @@ apply plugin: 'java'
 
 	
 repositories {
-	//	System.setProperty("http.proxyHost", "bproxy");
-	//	System.setProperty("http.proxyPort", "8080");
-	//	System.setProperty("http.proxyUser", "c38051");
-	//	System.setProperty("http.proxyPassword", "P@ssw0rd");
+    maven {
+		url "http://he3lxvd526:11080/artifactory/fm-release-local"
+	}	
     mavenCentral()
 }
 
 dependencies {
+	compile 'com.freddiemac.service:event-notification-utility:1.1.0'
     compile 'com.github.tomakehurst:wiremock:1.53'
 }
