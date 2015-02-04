@@ -231,7 +231,7 @@ body {
     position: relative;
     zoom: 1;
     border: none;
-  
+   display: inline;
 }
 
 .property-list .fieldcontain {
@@ -240,7 +240,7 @@ body {
     list-style: none;
     overflow: hidden;
     zoom: 1;
-   
+    
 }
 
 .fieldcontain {

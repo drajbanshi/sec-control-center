@@ -21,27 +21,27 @@ grails.project.source.level = 1.6
 //    console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 //]
 
+
+
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
+	checksums false
     // inherit Grails' default dependencies
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
     }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
-    checksums true // Whether to verify checksums on resolve
+ 
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
     repositories {
 		
+		mavenRepo "http://he3lxvd526:11080/artifactory/fm-release-local"
+		
       //  inherits true // Whether to inherit repository definitions from plugins
 
-//			System.setProperty("http.proxyHost", "bproxy");
-//			System.setProperty("http.proxyPort", "8080");
-//			System.setProperty("http.proxyUser", "c38051");
-//			System.setProperty("http.proxyPassword", "fasdfa");
-//
-//
+
         grailsPlugins()
         grailsHome()
         mavenLocal()
@@ -52,6 +52,8 @@ grails.project.dependency.resolution = {
         mavenRepo "http://download.java.net/maven/2/"
         mavenRepo "http://repository.jboss.com/maven2/"
         mavenRepo "https://oss.sonatype.org/content/groups/public/"
+		
+		
     }
 
 
@@ -61,6 +63,7 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.29'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         compile 'com.github.groovy-wslite:groovy-wslite:2.0.0-SNAPSHOT'
+		compile 'com.freddiemac.service:event-notification-utility:1.1.0'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
     }
 
