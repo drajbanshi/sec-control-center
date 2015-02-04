@@ -144,7 +144,7 @@
   
   <g:form controller="search" action="dissolve">
 	<g:hiddenField name="cusip" value="${params.cusip }"/> 
-	<g:submitButton name="submit" val/> 
+	<g:submitButton name="submit" value="Submit"/> 
   </g:form>
 </body>
 
