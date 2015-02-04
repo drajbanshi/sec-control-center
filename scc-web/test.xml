@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Events xmlns="http://www.freddiemac.com/enterpriseeventdatamodel/v1.0">
+  <EventMetaData>
+    <MessageIdentifier>str123400000000000000000000000000000</MessageIdentifier>
+    <EventType>BUSINESS</EventType>
+    <EventName>DISSOLVE_EVENT</EventName>
+    <CorrelationIdentifier>str1234</CorrelationIdentifier>
+    <EventClassification>NOTIFICATION</EventClassification>
+    <ProducerName>str1234</ProducerName>
+    <MessageTimestamp>2012-12-13T12:12:12</MessageTimestamp>
+    <EventCount>1234</EventCount>
+  </EventMetaData>
+  <EventPayload>
+    <EventContainer>
+      <EventIdentifier>str123400000000000000000000000000000</EventIdentifier>
+      <BusinessContext>
+        <EntityIdentifier>str1234</EntityIdentifier>
+        <EntityType>str1234</EntityType>
+        <ProductType>str1234</ProductType>
+        <RequestActionType>NEW</RequestActionType>
+        <RelatedEventIdentifier>str123400000000000000000000000000000</RelatedEventIdentifier>
+        <PayloadByReference>true</PayloadByReference>
+        <PayloadReferenceType>FILE</PayloadReferenceType>
+        <RequestEffectiveDateTime>2012-12-13T12:12:12</RequestEffectiveDateTime>
+        <BusinessEventTimestamp>2012-12-13T12:12:12</BusinessEventTimestamp>
+      </BusinessContext>
+      <BusinessData />
+    </EventContainer>
+  </EventPayload>
+</Events>
