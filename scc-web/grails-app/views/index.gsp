@@ -36,7 +36,7 @@
 
 			#status h1 {
 				text-transform: uppercase;
-				font-size: 1.1em;
+				font-size: 1.00em;
 				margin: 0 0 0.3em;
 			}
 

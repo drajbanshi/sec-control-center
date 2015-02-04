@@ -19,6 +19,12 @@ body {
     background-color: #0576cc;
 }
 
+.h1 {
+	color: #48802c;
+	font-weight: normal;
+	font-size: 0.55em;
+	margin: 0.8em 0 0.3em 0;
+}
 .menubar {
      padding: 5px 0;
 
