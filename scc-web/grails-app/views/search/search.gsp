@@ -3,7 +3,7 @@
 
 <head>
 <h1> Securitization Control Center Data from MBS</h1>
-<link rel="stylesheet" href="\${resource(dir: 'css', file: 'scaffold.css')}"/>
+
 
 </head>
 <g:form action="index" method="post" >

@@ -220,21 +220,26 @@ body {
 }
 
 .property-list {
-    margin: 0.6em 1.25em 0 1.25em;
+   margin: 0.6em 1.25em 0 1.25em;
     padding: 0.3em 1.8em 1.25em;
     position: relative;
     zoom: 1;
     border: none;
+  
 }
 
 .property-list .fieldcontain {
+	 margin: 0;
+    padding: 0;
     list-style: none;
     overflow: hidden;
     zoom: 1;
+   
 }
 
 .fieldcontain {
     margin-top: 5px;
+  
 }
 
 .fieldcontain label,

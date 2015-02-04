@@ -16,18 +16,19 @@ class SearchController {
 
 	def search() {
 		if (!params.cusip) {
-			flash.error =  "Enter a valid CUSIP ID"
+			flash.message =  "Enter a valid CUSIP ID"
+			
 			redirect action: 'index', method: "Get"
 		}
 		def m = searchService.searchPool(params.cusip)
 		
 		if (m.equals("Not available")) {
-			flash.error =  "CUSPID Unavailable"
+			flash.message =  "CUSPID Unavailable"
 			redirect action: 'index', method: "Get"
 		} else {
 			
 		
-			render view: 'search', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
+			render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
 		}
 		
 		
