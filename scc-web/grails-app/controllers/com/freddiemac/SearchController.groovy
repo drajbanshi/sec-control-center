@@ -16,13 +16,13 @@ class SearchController {
 
 	def search() {
 		if (!params.cusip) {
-			flash.message =  "Enter a valid CUSPID"
+			flash.error =  "Enter a valid CUSIP ID"
 			redirect action: 'index', method: "Get"
 		}
 		def m = searchService.searchPool(params.cusip)
 		
 		if (m.equals("Not available")) {
-			flash.message =  "CUSPID Unavailable"
+			flash.error =  "CUSPID Unavailable"
 			redirect action: 'index', method: "Get"
 		} else {
 			

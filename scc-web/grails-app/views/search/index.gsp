@@ -16,6 +16,9 @@
 <g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if> 
+<g:if test="${flash.error}">
+				<div class="error" role="status">${flash.error}</div>
+			</g:if> 			
   <g:form controller="search" action="search">
   	<h1>Dissolve</h1>	
       CUSIP identifier : <g:textField name="cusip" ></g:textField>
