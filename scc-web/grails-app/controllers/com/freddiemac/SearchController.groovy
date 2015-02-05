@@ -52,17 +52,16 @@ class SearchController {
 		def m = searchService.searchPool(params.cusip)
 		m.EventMetaData.EventName = 'DISSOLVE_EVENT'
 		
-		//print XmlUtil.serialize(m)
+	//	print XmlUtil.serialize(m)
 		
 		EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED)
 		e.save()
 		
 		EventNotification en = new EventNotification()
-		//Events events = en.createEventFromXML(new File('c:/Users/c38051/event.xml'));
-
-		Events e1 = en.notifyEvent(new File("c:/Users/c38051/test.xml"))
+		Events events = en.createEventFromXML(XmlUtil.serialize(m))
+		en.notifyEvent(events)
 		
-		flash.message = "Dissolved event sent successfully"
+		flash.message = "Dissolve event sent successfully"
 		render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
 
 	}
