@@ -55,7 +55,7 @@
 													<SecurityBusinessDayAdjustmentType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">D1</SecurityBusinessDayAdjustmentType>
 													<SecurityCouponType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">C1</SecurityCouponType>
 													<SecurityCouponTypeConversionDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">CC1</SecurityCouponTypeConversionDate>
-													<SecurityCUSIPIdentifier>CUSP_1</SecurityCUSIPIdentifier>
+													<SecurityCUSIPIdentifier>CUSIP1234</SecurityCUSIPIdentifier>
 													<SecurityFirstInterestAccrualDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2015/01/01</SecurityFirstInterestAccrualDate>
 													<SecurityFirstPaymentDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2015/01/01</SecurityFirstPaymentDate>
 													<SecurityGuarantyContractIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">G1</SecurityGuarantyContractIdentifier>
