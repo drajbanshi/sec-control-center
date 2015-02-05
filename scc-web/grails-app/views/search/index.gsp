@@ -14,20 +14,21 @@
 
 <body>
 	
-  <g:form controller="search" action="search">
-  	<h1 >Dissolve</h1>
+  
+  	<h3 >Dissolve Pool</h3>
   		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if> 
-  	<div class="nav" role="navigation">	
-    Security  CUSIP Identifier : <g:textField name="cusip" ></g:textField>
+  	<div>
+  	<g:form controller="search" action="search">
+  	 	<label>Security  CUSIP Identifier :</label>  <g:textField name="cusip" ></g:textField>
       <g:submitButton name="submit" value="Submit" />
+  	</g:form>	
+  	
+  
       </div>
     <div id="show-MBSData" class="content scaffold-show" role="main">  
-   
-		<h1> MBS Data </h1>
-	
-		<ol class="property-list mbsdata">
+   	<ol class="property-list mbsdata">
 		
 			<g:if test="${result?.SecurityCUSIPIdentifier}">
 				<li class="fieldcontain">
@@ -188,12 +189,12 @@
 				
 		</ol>
      </div>
- </g:form>
+
   <g:form controller="search" action="dissolve">
-  
+  <g:hiddenField name="cusip" value="${params.cusip}"/>
   <g:if test="${result?.SecurityCUSIPIdentifier}">
 		<div id="dissolve">
-		  <g:submitButton name="Dissolve" value="Dissolve" />
+		  <g:submitButton name="dissolve" value="Dissolve" />
 		</div>
 	</g:if>	
 </g:form>
