@@ -63,9 +63,7 @@ class SearchController {
 		Events e1 = en.notifyEvent(new File("c:/Users/c38051/test.xml"))
 		
 		flash.message = "Dissolved event sent successfully"
-		redirect action: 'index'
-	
-	
+		render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
 
 	}
 }
