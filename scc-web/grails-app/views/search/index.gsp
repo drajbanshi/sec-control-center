@@ -38,7 +38,7 @@
 						class="property-label">Security CUSIPIdentifier :</span> <span
 						class="property-value" aria-labelledby="SecurityCUSIPIdentifier">
 							${
-								result.AssetBackedSecurityType
+								result.SecurityCUSIPIdentifier
 							}
 					</span></li>
 				</g:if>
