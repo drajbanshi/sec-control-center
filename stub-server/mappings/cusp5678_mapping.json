@@ -1,0 +1,21 @@
+{
+  "request" : {
+    "url" : "/freddiemac/services/searchload.asmx",
+    "method" : "POST",
+	"bodyPatterns": [
+            { "contains": "CUSIP5678" }
+        ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "CUSP_2.xml",
+    "headers" : {
+      
+      "Cache-Control" : "no-cache",
+      "Pragma" : "no-cache",
+      "Content-Type" : "text/xml; charset=utf-8",
+      "Proxy-Connection" : "close"
+      
+    }
+  }
+}
