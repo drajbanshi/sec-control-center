@@ -1,7 +1,10 @@
 {
   "request" : {
     "url" : "/freddiemac/services/searchload.asmx",
-    "method" : "POST"
+    "method" : "POST",
+	"bodyPatterns": [
+            { "contains": "CUSIP1234" }
+        ]
   },
   "response" : {
     "status" : 200,

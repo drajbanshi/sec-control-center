@@ -3,34 +3,40 @@
   <soap:Body>
     <SearchLoanResponse>
 	   <SearchLoanResult>
-	      <Events xmlns="http://www.freddiemac.com/enterpriseEventDataModel/v1.0">
-			<EventMetaData>
-				<MessageIdentifier>ed5ccac4-9ccd-45f0-a678-2bef8a0896f0</MessageIdentifier>
-				<EventType>BUSINESS</EventType>
-				<EventName>COLLAPSE_EVENT</EventName>
-				<EventClassification>NOTIFICATION</EventClassification>
-				<ProducerName>CashPoolingManager</ProducerName>
-				<MessageTimestamp>2015-01-26T15:01:00.358-05:00</MessageTimestamp>
-				<EventCount>1</EventCount>
-			</EventMetaData>
-			<EventPayload>
-				<EventContainer>
-					<EventIdentifier>ed5ccac4-9ccd-45f0-a678-2bef8a0896f0</EventIdentifier>
-					<BusinessContext>
-						<EntityType>SECURITY</EntityType>
-						<RequestActionType>NEW</RequestActionType>
-						<PayloadReferenceType>EMBEDDED_KEYS</PayloadReferenceType>
-						<BusinessEventTimestamp>2015-01-26T15:01:00.359-05:00</BusinessEventTimestamp>
-					</BusinessContext>
-					<BusinessData>
-						<CspSecIssuanceReqContentSet:CspSecIssuanceReqContentSet xmlns="http://www.freddiemac.com/cdm" xmlns:CspSecIssuanceReqContentSet="http://www.freddiemac.com/cdm">
-							<SecIssuanceReqContainer>
-								<CollateralGroupContainer>
-									<CollateralInstruments>
-										<CollateralInstrumentContainer>
-											<CollateralSecurityContainer>
-												<Security>
-													<ActualMaturityDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2015/01/01</ActualMaturityDate>
+		<Events xmlns="http://www.freddiemac.com/enterpriseeventdatamodel/v1.0">
+				  <EventMetaData>
+				    <MessageIdentifier>str123400000000000000000000000000000</MessageIdentifier>
+				    <EventType>BUSINESS</EventType>
+				    <EventName>DISSOLVE_EVENT</EventName>
+				    <CorrelationIdentifier>str1234</CorrelationIdentifier>
+				    <EventClassification>NOTIFICATION</EventClassification>
+				    <ProducerName>str1234</ProducerName>
+				    <MessageTimestamp>2012-12-13T12:12:12</MessageTimestamp>
+				    <EventCount>1234</EventCount>
+				  </EventMetaData>
+				  <EventPayload>
+				    <EventContainer>
+				      <EventIdentifier>str123400000000000000000000000000000</EventIdentifier>
+				      <BusinessContext>
+				        <EntityIdentifier>str1234</EntityIdentifier>
+				        <EntityType>str1234</EntityType>
+				        <ProductType>str1234</ProductType>
+				        <RequestActionType>NEW</RequestActionType>
+				        <RelatedEventIdentifier>str123400000000000000000000000000000</RelatedEventIdentifier>
+				        <PayloadByReference>true</PayloadByReference>
+				        <PayloadReferenceType>FILE</PayloadReferenceType>
+				        <RequestEffectiveDateTime>2012-12-13T12:12:12</RequestEffectiveDateTime>
+				        <BusinessEventTimestamp>2012-12-13T12:12:12</BusinessEventTimestamp>
+				      </BusinessContext>
+					    <BusinessData>
+								<CspSecIssuanceReqContentSet:CspSecIssuanceReqContentSet xmlns="http://www.freddiemac.com/cdm" xmlns:CspSecIssuanceReqContentSet="http://www.freddiemac.com/cdm">
+									<SecIssuanceReqContainer>
+										<CollateralGroupContainer>
+											<CollateralInstruments>
+												<CollateralInstrumentContainer>
+													<CollateralSecurityContainer>
+														<Security>
+																<ActualMaturityDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2015/01/01</ActualMaturityDate>
 													<AmortizationEndDate xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2015/01/01</AmortizationEndDate>
 													<AssetBackedSecurityType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A1</AssetBackedSecurityType>
 													<BusinessCalendarType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">B1</BusinessCalendarType>
@@ -68,18 +74,17 @@
 													<TaxProvisionType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">TAX</TaxProvisionType>
 													<TaxablePercent xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">10</TaxablePercent>
 													<UnderwriterIdentifier xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">U1</UnderwriterIdentifier>
-		
-												</Security>
-											</CollateralSecurityContainer>
-										</CollateralInstrumentContainer>
-									</CollateralInstruments>
-								</CollateralGroupContainer>
-							</SecIssuanceReqContainer>
-						</CspSecIssuanceReqContentSet:CspSecIssuanceReqContentSet>
-					</BusinessData>
-				</EventContainer>
-			</EventPayload>
-</Events>
+														</Security>
+													</CollateralSecurityContainer>
+												</CollateralInstrumentContainer>
+											</CollateralInstruments>
+										</CollateralGroupContainer>
+									</SecIssuanceReqContainer>
+								</CspSecIssuanceReqContentSet:CspSecIssuanceReqContentSet>
+							</BusinessData>
+				    </EventContainer>
+				  </EventPayload>
+				</Events>
 
 	   </SearchLoanResult>
 	</SearchLoanResponse>
