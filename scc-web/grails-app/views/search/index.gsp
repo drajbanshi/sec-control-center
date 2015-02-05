@@ -13,9 +13,16 @@
 </head>
 <body>
 	<h3>Dissolve Pool</h3>
+	
+	
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
 			${flash.message}
+		</div>
+	</g:if>
+	<g:if test="${flash.error}">
+		<div class="alert alert-danger" role="status">
+			${flash.error}
 		</div>
 	</g:if>
 	<g:form controller="search" action="search" class="form-inline">

@@ -32,11 +32,11 @@ class SearchController {
 		}
 		def m = searchService.searchPool(params.cusip)
 		
-		if (m.equals("Not available")) {
-			flash.error =  "Pool Unavailable"
-			redirect action: 'index', method: "Get"
+		if (!m.success) {
+			flash.error =  "Pool Unavailable for CUSIP ID=${params.cusip}"
+			render view: 'index'
 		} else {
-			render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
+			render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events)]
 		}
 		
 		
@@ -50,7 +50,7 @@ class SearchController {
 		}
 		
 		def m = searchService.searchPool(params.cusip)
-		m.EventMetaData.EventName = 'DISSOLVE_EVENT'
+		m.events.EventMetaData.EventName = 'DISSOLVE_EVENT'
 		
 	//	print XmlUtil.serialize(m)
 		
@@ -58,11 +58,11 @@ class SearchController {
 		e.save()
 		
 		EventNotification en = new EventNotification()
-		Events events = en.createEventFromXML(XmlUtil.serialize(m))
+		Events events = en.createEventFromXML(XmlUtil.serialize(m.events))
 		en.notifyEvent(events)
 		
 		flash.message = "Dissolve event sent successfully"
-		render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m)]
+		render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events)]
 
 	}
 }

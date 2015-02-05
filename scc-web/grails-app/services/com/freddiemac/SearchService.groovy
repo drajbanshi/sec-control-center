@@ -18,6 +18,13 @@ class SearchService {
                 }
             }
         }
-		return response.SearchLoanResponse.SearchLoanResult.Events
+		
+		def p = response.SearchLoanResponse.SearchLoanResult.Error
+		
+		if(!p.isEmpty()) {
+			return [success: false,
+				    message: response.SearchLoanResponse.SearchLoanResult.Error.Message]
+		}
+		return [success: true, events: response.SearchLoanResponse.SearchLoanResult.Events]
 	 }
 }
