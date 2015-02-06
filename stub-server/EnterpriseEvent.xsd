@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by FREDDIE MAC (FREDDIE MAC) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:evn="http://www.freddiemac.com/enterpriseeventdatamodel/v1.0"
+	xmlns:ns1="http://www.w3.org/2005/05/xmlmime"
+	targetNamespace="http://www.freddiemac.com/cdm" 
+	version="6.1" xmlns="http://www.freddiemac.com/cdm">
+	<xs:include schemaLocation="CDM.xsd"></xs:include>
+	<xs:element name="Events">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="EventMetaData"
+					type="evn:EventMetaData" />
+				<xs:choice>
+					<xs:element name="EventPayload"
+						type="evn:EventPayloadType" />
+					<xs:element name="EventCompressedPayload"
+						type="evn:EventCompressedPayloadType" />
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="EventMetaData">
+		<xs:annotation>
+			<xs:documentation>
+				This holds the metadata for a particular event. The
+				metadata should be restricted to hold data elements
+				which can be universally applied to all events and are
+				not business specific
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MessageIdentifier" type="evn:UUID" />
+			<xs:element name="EventType" type="evn:EventTypeEnumerated" />
+			<xs:element name="EventName" type="xs:string" />
+			<xs:element name="CorrelationIdentifier" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="EventClassification"
+				type="evn:EventClassificationEnumerated" />
+			<xs:element name="ProducerName" type="xs:string" />
+			<xs:element name="MessageTimestamp" type="xs:dateTime" />
+			<xs:element name="EventCount" type="xs:integer" />
+			<xs:any namespace="##any" processContents="skip"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventPayloadType">
+		<xs:annotation>
+			<xs:documentation>
+				This element is used to store the business data of the
+				event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EventContainer"
+				type="evn:EventContainerType" minOccurs="0" maxOccurs="100" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventCompressedPayloadType">
+		<xs:annotation>
+			<xs:documentation>
+				This element is used to store the business data of the
+				event in compressed format.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EventContainersAttachment"
+				type="xs:base64Binary" minOccurs="0"
+				ns1:expectedContentTypes="application/zip" />
+			<xs:element name="CompressionConfig">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CompressionFormat"
+							type="evn:CompressionFormatTypeEnumerated" minOccurs="0" />
+						<xs:element name="CompressionSource"
+							type="evn:CompressionSourceTypeEnumerated" minOccurs="0" />
+						<xs:element name="ChunkConfigList"
+							minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ChunkConfig"
+										maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element
+													name="ChunkIndex" type="xs:int" />
+												<xs:element
+													name="ChunkLength" type="xs:integer" />
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventContainerType">
+		<xs:annotation>
+			<xs:documentation>
+				This element is used to hold the Business context data
+				and the actual event payload information. This element
+				can be repeated as many times as needed allowing
+				multiple business events to be sent in a single message
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EventIdentifier" type="evn:UUID" />
+			<xs:element name="BusinessContext"
+				type="evn:BusinessContextType" minOccurs="0" />
+			<xs:element name="BusinessData" type="evn:BusinessDataType"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BusinessContextType">
+		<xs:annotation>
+			<xs:documentation>
+				This element will hold the business specific elements
+				that the producer intends to extract out of the payload
+				and store separately, which may be useful in performing
+				any decisions regarding the event such as routing,
+				filtering within the system, determining if the event
+				has the data within the payload or if the data is in a
+				file, capturing the business timestamp etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EntityIdentifier" type="xs:string" />
+			<xs:element name="EntityType" type="xs:string" />
+			<xs:element name="ProductType" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="RequestActionType"
+				type="evn:RequestActionTypeEnumerated" minOccurs="0" />
+			<xs:element name="RelatedEventIdentifier" type="evn:UUID"
+				minOccurs="0" />
+			<xs:element name="PayloadByReference" type="xs:boolean"
+				minOccurs="0" />
+			<xs:element name="PayloadReferenceType"
+				type="evn:PayloadReferenceTypeEnumerated" minOccurs="0" />
+			<xs:element name="RequestEffectiveDateTime"
+				type="xs:dateTime" minOccurs="0" />
+			<xs:element name="BusinessEventTimestamp"
+				type="xs:dateTime" />
+			<xs:any namespace="##any" processContents="skip"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BusinessDataType">
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="skip"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="UUID">
+		<xs:restriction base="xs:string">
+			<xs:length value="36" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EventTypeEnumerated">
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="BUSINESS" />
+			<xs:enumeration value="TECHNICAL" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EventClassificationEnumerated">
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="NOTIFICATION" />
+			<xs:enumeration value="EXCEPTION" />
+			<xs:enumeration value="REQUEST" />
+			<xs:enumeration value="RESPONSE" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RequestActionTypeEnumerated">
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="NEW" />
+			<xs:enumeration value="UPDATE" />
+			<xs:enumeration value="CANCEL" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PayloadReferenceTypeEnumerated">
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="FILE" />
+			<xs:enumeration value="EMBEDDED_KEYS" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CompressionFormatTypeEnumerated">
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="ZIP" />
+			<xs:enumeration value="GZIP" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CompressionSourceTypeEnumerated">
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="INMEMORY" />
+			<xs:enumeration value="CHUNKING" />
+			<xs:enumeration value="FILE" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="EventPayload" type="evn:EventPayloadType" />
+	<xs:element name="EventContainer" type="evn:EventContainerType" />
+	<xs:complexType name="BusinessDataType">
+		<xs:all>
+			<xs:element name="CspSecIssuanceReqContentSet" type="CspSecIssuanceReqContentSetType"></xs:element>
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:complexType name="CspSecIssuanceReqContentSetType">
+	   <xs:all>
+	   
+	   	<xs:element name="NewElement" type="xs:string"></xs:element>
+	   </xs:all>
+
+	</xs:complexType>
+	
+	
+	<xs:complexType name="SecIssuanceReqContainerType">
+	  <xs:sequence>
+	      <xs:element name="SecurityContainer" type="SecurityContainerType"/> 
+	  </xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SecurityContainerType">
+	  <xs:sequence>
+	     	<xs:element name="Security" type="Security" /> 
+	  </xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>
