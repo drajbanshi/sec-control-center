@@ -89,7 +89,7 @@ grails.hibernate.osiv.readonly = false
 //configure external 
 com.freediemac.mbs.server="localhost:9999"
 com.freddiemac.security.node.path="EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer.CollateralGroupContainer.CollateralInstruments.CollateralInstrumentContainer.CollateralSecurityContainer.Security"
-
+com.freddiemac.onedotfive.interf=['MBSContainer.MBSDisclosure.MBSUPBAmount','MBSContainer.CashWire.WireAmount','MBSContainer.SecurityWire.SecurityWireFaceValueAmount','MBSContainer.Security.SecurityCUSIPIdentifier','MBSContainer.PartyRole.PartyRoleType','MBSContainer.SecurityIssuer.SecurityIssuerIdentifier','MBSContainer.WireTransferTransaction.WireDate','MBSContainer.CashTransferInstruction.CashTransferInstructionIdentifier','MBSContainer.FinancialInstrument.FinancialInstrumentType']
 //end
 
 environments {
