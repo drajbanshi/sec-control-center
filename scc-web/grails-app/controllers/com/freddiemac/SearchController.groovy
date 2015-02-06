@@ -19,6 +19,8 @@ import groovy.xml.XmlUtil;
 
 class SearchController {
 	def searchService
+	
+	def dispatchService
 
 	def grailsApplication
 
@@ -57,11 +59,13 @@ class SearchController {
 		EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED)
 		e.save()
 		
-		EventNotification en = new EventNotification()
-		Events events = en.createEventFromXML(XmlUtil.serialize(m.events))
-		en.notifyEvent(events)
+		if(dispatchService.dissolvePool(params.cusip)) {
+			flash.message = "Dissolve event sent successfully"
+		} else {
+		   flash.message  = "Error sending dissolve event"
+		}
 		
-		flash.message = "Dissolve event sent successfully"
+		
 		render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events)]
 
 	}
