@@ -239,6 +239,7 @@
 
 			</ol>
 		</div>
+		<g:if test="${!isDissolve}">
 		<g:form controller="search" action="dissolve">
 			<g:hiddenField name="cusip" value="${params.cusip}" />
 			<button class="btn btn-danger" type="submit"
@@ -246,6 +247,7 @@
 				<i class="fa fa-close"> </i> Dissolve
 			</button>
 		</g:form>
+		</g:if>
 	</g:if>
 
 </body>

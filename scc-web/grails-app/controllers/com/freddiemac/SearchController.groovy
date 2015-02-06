@@ -1,21 +1,8 @@
 package com.freddiemac
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller
-
-import com.freddiemac.entities.EventProcessLog;
-import com.freddiemac.entities.Status;
-import com.freddiemac.service.event.api.EventNotification;
-import com.freddiemac.service.event.model.EventCompressedPayloadType
-import com.freddiemac.service.event.model.EventMetaData
-import com.freddiemac.service.event.model.EventPayloadType
-import com.freddiemac.service.event.model.EventTypeEnumerated;
-import com.freddiemac.service.event.model.Events;
-
-
-
-import grails.converters.XML
-import groovy.xml.XmlUtil;
+import com.freddiemac.entities.EventProcessLog
+import com.freddiemac.entities.EventType
+import com.freddiemac.entities.Status
 
 class SearchController {
 	def searchService
@@ -38,7 +25,8 @@ class SearchController {
 			flash.error =  "Pool Unavailable for CUSIP ID=${params.cusip}"
 			render view: 'index'
 		} else {
-			render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events)]
+			flash.message = EventProcessLog.findByCusip(params?.cusip)!=null? "CUSIP ID=${params.cusip} is already sent for Dissolve process": ''
+			render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events), isDissolve:flash.message!='']
 		}
 		
 		
@@ -56,17 +44,18 @@ class SearchController {
 		
 	//	print XmlUtil.serialize(m)
 		
-		EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED)
+		EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED, eventType: EventType.DISSOLVE)
 		e.save()
 		
-		if(dispatchService.dissolvePool(params.cusip)) {
+		if(dispatchService.dissolveSecurity(params.cusip)) {
 			flash.message = "Dissolve event sent successfully"
 		} else {
 		   flash.message  = "Error sending dissolve event"
 		}
 		
 		
-		render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events)]
+		
+		render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events),'isDissolve':true]
 
 	}
 }

@@ -10,7 +10,7 @@ import groovy.xml.XmlUtil;
 class DispatchService {
    def searchService
 	
-   boolean dissolvePool(String cusip) {
+   boolean dissolveSecurity(String cusip) {
 	   def ret = searchService.searchPool(cusip)
 	   if(!ret.success) {
 		   return false
