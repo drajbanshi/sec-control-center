@@ -18,7 +18,7 @@
 			${flash.error}
 		</div>
 	</g:if>
-	<g:form controller="search" action="search" class="form-inline">
+	<g:form controller="dissolve" action="search" class="form-inline">
 		<label>Security CUSIP Identifier :</label>
 		<input type="text" class="form-control" name="cusip"
 			aria-label="Enter CUSIP Identifier..." value="${params.cusip}">
@@ -45,7 +45,7 @@
 			</ol>
 		</div>
 		<g:if test="${!isDissolve}">
-			<g:form controller="search" action="dissolve">
+			<g:form controller="dissolve" action="dissolve">
 				<g:hiddenField name="cusip" value="${params.cusip}" />
 				<button class="btn btn-danger" type="submit"
 					onclick="return confirm('Are you sure you want to dissove this pool?');">

@@ -6,7 +6,7 @@ import com.freddiemac.scc.entities.Status;
 import com.freddiemac.scc.model.PropContainer;
 import com.freddiemac.scc.utils.PropertyRetriever;
 
-class SearchController {
+class DissolveController {
 	def searchService
 
 	def dispatchService
