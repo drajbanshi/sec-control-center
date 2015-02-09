@@ -1,4 +1,4 @@
-package com.freddiemac
+package com.freddiemac.scc
 
 import grails.transaction.Transactional
 import wslite.soap.SOAPClient

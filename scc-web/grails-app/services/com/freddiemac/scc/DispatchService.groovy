@@ -1,4 +1,4 @@
-package com.freddiemac
+package com.freddiemac.scc
 
 import com.freddiemac.service.event.api.EventNotification
 import com.freddiemac.service.event.model.Events

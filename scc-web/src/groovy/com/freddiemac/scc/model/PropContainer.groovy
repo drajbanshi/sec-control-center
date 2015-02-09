@@ -1,4 +1,4 @@
-package com.freddiemac.model
+package com.freddiemac.scc.model
 
 class PropContainer {
 	

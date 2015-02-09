@@ -1,4 +1,4 @@
-package com.freddiemac
+package com.freddiemac.scc.utils
 
 class PropertyRetriever {
 	
