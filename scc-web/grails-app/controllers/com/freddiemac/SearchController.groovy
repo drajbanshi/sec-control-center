@@ -26,7 +26,7 @@ class SearchController {
 			flash.error =  "Pool Unavailable for CUSIP ID=${params.cusip}"
 			render view: 'index'
 		} else {
-			flash.message = EventProcessLog.findByCusip(params?.cusip)!=null? "CUSIP ID=${params.cusip} is already sent for Dissolve process": ''
+			flash.error = EventProcessLog.findByCusip(params?.cusip)!=null? "CUSIP ID=${params.cusip} is already sent for Dissolve process": ''
 			render view: 'index', model: ['result': generateModel( PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.businessdata.path, m.events)), isDissolve:flash.message!='']
 		}
 	}

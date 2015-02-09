@@ -7,9 +7,7 @@
 </head>
 <body>
 	<h3>Dissolve Pool</h3>
-	<g:set var="itemList"
-		value="${grailsApplication.config.com.freddiemac.security.businessdata}" />
-
+	
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
 			${flash.message}
