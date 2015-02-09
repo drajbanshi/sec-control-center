@@ -19,21 +19,13 @@ class SearchService {
             }
         }
 		
-		def  rsp = new XmlSlurper().parseText(response.getText())
-		def rspObjectList = rsp.depthFirst().collect()
-		def searchDetails = [:]
-		//println "Prop : "+PropertyRetriever.getProp("EventPayload.EventContainer.BusinessData", response.SearchLoanResponse.SearchLoanResult.Events)
-		rsp.depthFirst().collect().each{node->
-					searchDetails.put(node.name(), node.text())
-			}
-		
+	
 		def p = response.SearchLoanResponse.SearchLoanResult.Error
 		
 		if(!p.isEmpty()) {
 			return [success: false,
 				    message: response.SearchLoanResponse.SearchLoanResult.Error.Message]
 		}
-		//return [success: true, events: response.SearchLoanResponse.SearchLoanResult.Events]
-		return [success: true, events: searchDetails]
+		return [success: true, events: response.SearchLoanResponse.SearchLoanResult.Events]
 	 }
 }

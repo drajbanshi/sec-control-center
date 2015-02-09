@@ -51,7 +51,7 @@
 							      <p:SecurityBusinessDayAdjustmentType>p:SecurityBusinessDayAdjustmentType</p:SecurityBusinessDayAdjustmentType>
 							      <p:SecurityCouponType>p:SecurityCouponType</p:SecurityCouponType>
 							      <p:SecurityCouponTypeConversionDate>2001-01-01</p:SecurityCouponTypeConversionDate>
-							      <p:SecurityCUSIPIdentifier>p:SecurityCUSIPIdentifier</p:SecurityCUSIPIdentifier>
+							      <p:SecurityCUSIPIdentifier>CUSIP1234</p:SecurityCUSIPIdentifier>
 							      <p:SecurityFirstInterestAccrualDate>2001-01-01</p:SecurityFirstInterestAccrualDate>
 							      <p:SecurityFirstPaymentDate>2001-01-01</p:SecurityFirstPaymentDate>
 							      <p:SecurityGuarantyContractIdentifier>p:SecurityGuarantyContractIdentifier</p:SecurityGuarantyContractIdentifier>
