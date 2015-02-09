@@ -26,10 +26,20 @@ class SearchController {
 			render view: 'index'
 		} else {
 			flash.message = EventProcessLog.findByCusip(params?.cusip)!=null? "CUSIP ID=${params.cusip} is already sent for Dissolve process": ''
-			render view: 'index', model: ['result': PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events), isDissolve:flash.message!='']
+			render view: 'index', model: ['result': generateModel(PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.security.node.path, m.events)), isDissolve:flash.message!='']
 		}
 		
 		
+	}
+	
+	
+	private def generateModel(def m) {
+		def keys = grailsApplication.config.com.freddiemac.onedotfive.interf
+		def mm = [:]
+		keys.each {
+		    mm.put(it, PropertyRetriever.getProp(it, m))
+		}
+		return mm
 	}
 	
 	def dissolve() {
