@@ -1,4 +1,4 @@
-package com.freddiemac.entities
+package com.freddiemac.scc.entities
 
 class EventProcessLog {
 	

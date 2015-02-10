@@ -1,4 +1,4 @@
-package com.freddiemac
+package com.freddiemac.scc
 
 import com.freddiemac.service.event.api.EventNotification
 import com.freddiemac.service.event.model.Events
@@ -10,13 +10,9 @@ import groovy.xml.XmlUtil;
 class DispatchService {
    def searchService
 	
-   boolean dissolveSecurity(String cusip) {
-	   def ret = searchService.searchPool(cusip)
-	   if(!ret.success) {
-		   return false
-	   }
+   boolean dissolveSecurity(def evnts) {
 	   EventNotification en = new EventNotification()
-	   Events events = en.createEventFromXML(XmlUtil.serialize(ret.events))
+	   Events events = en.createEventFromXML(XmlUtil.serialize(evnts))
 	   en.notifyEvent(events)
 	   return true
    }

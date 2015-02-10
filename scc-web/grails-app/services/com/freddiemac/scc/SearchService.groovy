@@ -1,4 +1,4 @@
-package com.freddiemac
+package com.freddiemac.scc
 
 import grails.transaction.Transactional
 import wslite.soap.SOAPClient
@@ -10,7 +10,7 @@ class SearchService {
 	def grailsApplication
 	
 	def searchPool(String cus) {
-        SOAPClient client = new SOAPClient("http://${grailsApplication.config.com.freediemac.mbs.server}/freddiemac/services/searchload.asmx")
+        SOAPClient client = new SOAPClient("http://${grailsApplication.config.com.freddiemac.mbs.server}/freddiemac/services/searchload.asmx")
         def response = client.send(SOAPAction:'SearchLoan') {
             body {
                 SearchLoan('xmlns':'http://www.freddiemac.com/search') {
@@ -19,6 +19,7 @@ class SearchService {
             }
         }
 		
+	
 		def p = response.SearchLoanResponse.SearchLoanResult.Error
 		
 		if(!p.isEmpty()) {

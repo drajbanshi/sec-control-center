@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.freddiemac.com/cdm" version="6.1"
+	xmlns="http://www.freddiemac.com/cdm">
+	<xs:include schemaLocation="CDM.xsd"></xs:include>
+
+
+
+	<xs:element name="SecIssuanceReqContainer"
+		type="SecIssuanceReqContainerType">
+	</xs:element>
+
+	<xs:complexType name="SecIssuanceReqContainerType">
+		<xs:sequence>
+
+			<xs:element name="SecurityContainer"
+				type="SecurityContainerType">
+			</xs:element>
+			<xs:element name="MBSContainer" type="MBSContainerType"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:complexType name="SecurityContainerType">
+    	<xs:sequence>
+    		<xs:element name="Security" type="Security"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MBSContainerType">
+    	<xs:sequence>
+    		<xs:element name="MBSDisclosure" type="MBSDisclosure"></xs:element>
+    		<xs:element name="CashWire" type="CashWire"></xs:element>
+    		<xs:element name="SecurityWire" type="SecurityWire"></xs:element>
+    		<xs:element name="CashTransferInstruction" type="CashTransferInstruction"></xs:element>
+    		<xs:element name="FinancialInstrument" type="FinancialInstrument"></xs:element>
+    		<xs:element name="PartyRole" type="PartyRole"></xs:element>
+    		<xs:element name="SecurityIssuer" type="SecurityIssuer"></xs:element>
+    		<xs:element name="WireTransferTransaction" type="WireTransferTransaction"></xs:element>
+    		<xs:element name="CashTransferInstruction" type="CashTransferInstruction"></xs:element>
+    		<xs:element name="FinancialInstrument" type="FinancialInstrument"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+</xs:schema>
