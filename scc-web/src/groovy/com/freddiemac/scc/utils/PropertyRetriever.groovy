@@ -8,11 +8,10 @@ class PropertyRetriever {
 		}
 		def r = o
 		for(def p : propx.split("\\.")) {
-			if(r.hasProperty("${p}")) {
-				r = r."${p}"
-			} else {
-			    return null
-			}
+			r = r."${p}"
+		   if(r == null) {
+			   return null
+		   }
 			
 		}
 		return r
