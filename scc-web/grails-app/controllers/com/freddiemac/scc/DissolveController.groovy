@@ -69,6 +69,6 @@ class DissolveController {
 		}
 
 
-		render view: 'index', model: ['result': generateModel( PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.businessdata.path, m.events)), isDissolve:flash.message!='' && flash.error != '']
+		render view: 'index', model: ['result': m.success ? generateModel( PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.businessdata.path, m.events)): null, isDissolve:flash.message!='' && flash.error != '']
 	}
 }
