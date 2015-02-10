@@ -19,7 +19,8 @@ class DissolveController {
 	def search() {
 		if (!params.cusip) {
 			flash.error =  "Enter a valid CUSIP ID"
-			redirect action: 'index', method: "Get"
+			render view: 'index'
+			return
 		}
 		def m = searchService.searchPool(params.cusip)
 
@@ -44,29 +45,30 @@ class DissolveController {
 
 	def dissolve() {
 		if (!params.cusip) {
-			flash.message =  "Invalid cusip"
+			flash.error =  "Invalid cusip"
 			redirect action: 'index'
 			return
 		}
 
 		def m = searchService.searchPool(params.cusip)
-		m.events.EventMetaData.EventName = 'DISSOLVE_EVENT'
-
-
-		EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED, eventType: EventType.DISSOLVE)
-		e.save()
-
+	
 		if(m.success) {
+			EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED, eventType: EventType.DISSOLVE)
+			e.save()
+			
+			m.events.EventMetaData.EventName = 'DISSOLVE_EVENT'
+			
+			
 			if(dispatchService.dissolveSecurity(m.events)) {
 				flash.message = "Dissolve event sent successfully"
 			} else {
-				flash.message  = "Error sending dissolve event"
+				flash.error  = "Error sending dissolve event"
 			}
 		} else {
 			flash.error =  "Pool Unavailable for CUSIP ID=${params.cusip}"
 		}
 
 
-		render view: 'index', model: ['result': generateModel( PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.businessdata.path, m.events)), isDissolve:flash.message!='']
+		render view: 'index', model: ['result': generateModel( PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.businessdata.path, m.events)), isDissolve:flash.message!='' && flash.error != '']
 	}
 }
