@@ -16,5 +16,10 @@ class PropertyRetriever {
 		}
 		return r
 	}
+	
+	
+	static void main() {
+	    def p = new XmlSlurper().parseText("<test><va></va><test>")
+	}
 
 }

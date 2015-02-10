@@ -50,6 +50,15 @@ class SearchServiceSpec extends Specification {
 		assert m.events != null
 	}
 	
+	def "test invlid response"() {
+		when:
+		def m = service.searchPool("CUSIP4343434")
+		
+		then:
+		def ex = thrown(Exception)
+
+	}
+	
     def setup() {
 		server = new WireMockServer(new WireMockConfiguration().port(7777).fileSource(new SingleRootFileSource("../stub-server")))
 		server.start()
