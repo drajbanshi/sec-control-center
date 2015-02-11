@@ -13,9 +13,7 @@ class DissolveController {
 
 	def grailsApplication
 
-	def index() {
-	}
-
+	
 	def search() {
 		if (!params.cusip) {
 			flash.error =  "Enter a valid CUSIP ID"

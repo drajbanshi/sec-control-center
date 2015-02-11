@@ -1,8 +1,6 @@
 package com.freddiemac.scc
 
-import grails.transaction.Transactional
 import wslite.soap.SOAPClient
-import groovy.io.FileType
 
 
 class SearchService {

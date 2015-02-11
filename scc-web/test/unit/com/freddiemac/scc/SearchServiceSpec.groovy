@@ -1,15 +1,11 @@
 package com.freddiemac.scc
 
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.common.SingleRootFileSource;
-import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import grails.test.mixin.TestFor;
-import grails.test.mixin.TestMixin
-import grails.test.mixin.support.GrailsUnitTestMixin
+import static com.github.tomakehurst.wiremock.client.WireMock.*
 import spock.lang.Specification
+
+import com.github.tomakehurst.wiremock.WireMockServer
+import com.github.tomakehurst.wiremock.common.SingleRootFileSource
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
@@ -50,12 +46,12 @@ class SearchServiceSpec extends Specification {
 		assert m.events != null
 	}
 	
-	def "test invlid response"() {
+	def "test invalid response"() {
 		when:
-		def m = service.searchPool("CUSIP4343434")
+		service.searchPool("CUSIP4343434")
 		
 		then:
-		def ex = thrown(Exception)
+		thrown(Exception)
 
 	}
 	
