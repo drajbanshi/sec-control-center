@@ -43,11 +43,16 @@ class CollapseController {
     
 	
 	def collapse() {
-		if (!params.cusip) {
+            println params.cusip
+		if (!params.cusip) {                        
 			flash.error =  "Invalid cusip"
 			redirect action: 'index'
 			return
-		}
+		} else {
+			flash.message =  "Pool ${params.cusip} collapsed successfully"
+			redirect action: 'index'
+			return
+                }
 	}
         
 	private def generateModel(def m) {

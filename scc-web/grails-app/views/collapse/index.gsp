@@ -49,9 +49,9 @@
 			</ol>
 		</div>
 		<g:form controller="collapse" action="collapse">
-				
+				<g:hiddenField name="cusip" value="${params.cusip}" />
 				<button class="btn btn-danger" type="submit"
-					onclick="return confirm('Are you sure you want to dissove this pool?');">
+					onclick="return confirm('Are you sure you want to collapse this pool?');">
 					<i class="fa fa-close"> </i> Collapse
 				</button>
 			</g:form>
