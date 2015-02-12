@@ -17,19 +17,27 @@ class CollapseController {
 	
 	
       	def search() {
-		if (!params.cusip) {
-			flash.error =  "Enter a valid CUSIP ID"
+            def searchInput
+		if (!params.cusip && !params.pool ) {
+			flash.error =  "Enter a valid CUSIP ID or a Pool number"
 			render view: 'index'
 			return
-		}
-		def m = searchService.searchPool(params.cusip)
+		} else {
+                    if (params.cusip) {
+                        searchInput = params.cusip
+                    } else {
+                        searchInput = params.pool
+                    }
+                }                
+                
+		def m = searchService.searchPool(searchInput)
 
 		if (!m.success) {
-			flash.error =  "Pool Unavailable for CUSIP ID=${params.cusip}"
+			flash.error =  "Pool Unavailable for the given CUSIP ID/Pool number ${searchInput}"
 			render view: 'index'
 		} else {
-			flash.error = EventProcessLog.findByCusip(params?.cusip)!=null? "A Collapse request has already been initiated for CUSIP ID ${params.cusip}": ''
-			render view: 'index', model: ['result': generateModel( PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.businessdata.path, m.events)), isDissolve:flash.error!='']
+			flash.error = EventProcessLog.findByCusip(params?.cusip)!=null? "A Collapse request has already been initiated for the given CUSIP ID/Pool number ${searchInput}": ''
+			render view: 'index', model: ['result': generateModel( PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.businessdata.path, m.events)), isCollapse:flash.error!='']
 		}
 	}    
     
