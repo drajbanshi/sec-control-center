@@ -23,21 +23,29 @@
 		<input type="text" class="form-control" name="cusip"
 			aria-label="Enter CUSIP Identifier..." value="${params.cusip}">
 			<label>Pool ID :</label>
-		<input type="text" class="form-control" name="cusip"
-			aria-label="Enter Pooll ID ..." value="${params.pool}">
+		<input type="text" class="form-control" name="pool"
+			aria-label="Enter Pool ID ..." value="${params.pool}">
 		<button class="btn btn-primary" type="submit">
 			<i class="fa fa-search"></i> Search
 		</button>
 	</g:form>
 	
 	
-
+        <g:if test="${result }">
 		<div id="show-MBSData" class="content scaffold-show" role="main">
 
 			<hr />
 			<h3>Pool Details..</h3>
 			<ol class="property-list mbsdata">
-				
+				<g:each in="${result}" var="item">
+					
+						<li class="fieldcontain"><span id="${item.key}"
+							class="property-label">
+								${message(code:item.key + '.label')} :
+						</span> <span class="property-value" aria-labelledby="${item.key}">
+								${item.value}
+						</span></li>
+				</g:each>				
 			</ol>
 		</div>
 		<g:form controller="collapse" action="collapse">
@@ -47,6 +55,10 @@
 					<i class="fa fa-close"> </i> Collapse
 				</button>
 			</g:form>
+	
+</g:if>
+                        
+                        
 
 </body>
 </html>
