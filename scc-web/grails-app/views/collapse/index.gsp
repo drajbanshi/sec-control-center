@@ -18,16 +18,31 @@
 			${flash.error}
 		</div>
 	</g:if>
+        <%--<g:hasErrors bean="${poolSearch}">
+          <ul>
+           <g:eachError var="err" bean="${poolSearch}">
+               <li>${message(code:err)}</li>
+           </g:eachError>
+          </ul>
+        </g:hasErrors>        --%>
+        <g:renderErrors bean="${poolSearch}"/> 
+        
 	<g:form controller="collapse" action="search" class="form-inline">
+            <div>
+            <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
 		<label>Security CUSIP Identifier :</label>
-		<input type="text" class="form-control" name="cusip"
-			aria-label="Enter CUSIP Identifier..." value="${params.cusip}">
+		<input type="text" class="form-control" name="cusipIdentifier"
+			aria-label="Enter CUSIP Identifier..." value="${params.cusipIdentifier}">
+            </span>
+            <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
 			<label>Pool ID :</label>
-		<input type="text" class="form-control" name="pool"
-			aria-label="Enter Pool ID ..." value="${params.pool}">
-		<button class="btn btn-primary" type="submit">
+		<input type="text" class="form-control" name="poolNumber"
+			aria-label="Enter Pool ID ..." value="${params.poolNumber}">
+                        <span>
+                            <span><button class="btn btn-primary" type="submit">
 			<i class="fa fa-search"></i> Search
-		</button>
+		</button></span>
+               <div> 
 	</g:form>
 	
 	
