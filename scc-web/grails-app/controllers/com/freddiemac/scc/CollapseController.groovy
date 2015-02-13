@@ -14,27 +14,15 @@ class CollapseController {
     def index() {
         
     }
-	
-	
+		
       	def search(PoolSearch poolSearch) {
             def searchInput
-		/*if (!params.cusip && !params.pool ) {
-			flash.error =  "Enter a valid CUSIP ID or a Pool number"
-			render view: 'index'
-			return
-		} else {
-                    if (params.cusip) {
-                        searchInput = params.cusip
-                    } else {
-                        searchInput = params.pool
-                    } 
-                } */
-                //println "cus: "+poolSearch.cusipIdentifier
-                if(!poolSearch.validate()) {
+
+                if(poolSearch.hasErrors()) {
                     render view: "index", model: [poolSearch: poolSearch]
                     return
-                    }
-  
+                }
+                
 		def m = searchService.searchPool(params.cusipIdentifier, params.poolNumber)
                 println "result:"+m.result
 		if (!m.success) {
@@ -64,7 +52,6 @@ class CollapseController {
 		def keys = grailsApplication.config.com.freddiemac.searchpool.result.elements
 		def mm = []
 		keys.each {
-                    println "key: "+it+" - value: "+m
 			mm.add(new PropContainer(key: it, value: PropertyRetriever.getProp(it, m)))
 		}
 		return mm
