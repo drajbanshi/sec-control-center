@@ -2,12 +2,12 @@
 	xmlns:cps="http://www.freddiemac.com/cps" xmlns:cdm="http://www.freddiemac.com/cdm">
 	<soapenv:Header />
 	<soapenv:Body>
-		<cps:SearcPoolResponse>
+		<cps:SearchPoolResponse>
 			<!--Optional: -->
 			<ResponseEnvelope>
 				<SearchResultContainer xmlns="http://www.freddiemac.com/cdm"
 					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-					xsi:schemaLocation="http://www.freddiemac.com/cdm searchresult.xsd ">
+					xsi:schemaLocation="http://www.freddiemac.com/cdm">
 					<Loan>
 						<AppraisalRulesBypassedIndicator>AppraisalRulesBypassedIndicator
 						</AppraisalRulesBypassedIndicator>
@@ -488,6 +488,6 @@
 			</ResponseEnvelope>
 			<!--Optional: -->
 			
-		</cps:SearcPoolResponse>
+		</cps:SearchPoolResponse>
 	</soapenv:Body>
 </soapenv:Envelope>

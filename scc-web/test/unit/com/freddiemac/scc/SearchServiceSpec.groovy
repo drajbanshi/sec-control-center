@@ -3,6 +3,7 @@ package com.freddiemac.scc
 import static com.github.tomakehurst.wiremock.client.WireMock.*
 import spock.lang.Specification
 
+import com.freddiemac.scc.utils.PropertyRetriever;
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.common.SingleRootFileSource
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration
@@ -52,6 +53,8 @@ class SearchServiceSpec extends Specification {
 		then:
 		assert m.success == true
 		assert m.result != null
+		String p = PropertyRetriever.getProp('Loan.LoanAmortizationType', m.result)
+		assert p != null && !p.isEmpty() 
 	}
 	
 	def "test invalid response"() {

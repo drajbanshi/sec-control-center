@@ -22,7 +22,7 @@ class SearchService {
 
 
 		def p = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.error.path, response.getBody())
-		if(!p.isEmpty()) {
+		if(p != null && !p.isEmpty()) {
 			return [success: false, errorMessage: p.ErrorMessage,errorCode: p.ErrorCode ]
 		}
 
