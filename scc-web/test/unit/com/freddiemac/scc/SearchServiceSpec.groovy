@@ -15,8 +15,14 @@ class SearchServiceSpec extends Specification {
 
 	WireMockServer server 
 	
+	def setup() {
+		server = new WireMockServer(new WireMockConfiguration().port(7777).fileSource(new SingleRootFileSource("../stub-server")))
+		server.start()
+	
+	}
+	
 	static doWithConfig(c) {
-		c.com.freddiemac.mbs.server = "localhost:7777"
+		c.com.freddiemac.searchpool.url = "http://localhost:7777/freddiemac/searchpool.asmx"
 		
 	}
 	
@@ -29,21 +35,23 @@ class SearchServiceSpec extends Specification {
 	
 	def "test invalid cusip"() {
 		when:
-			def m =	service.searchPool("CUS121212")
+			def m =	service.searchPool("CUS121212","")
 			
 		then:
 			assert m.success == false
+			assert m.errorCode == 404
+			assert m.errorMessage != null
 			
 	}
 	
 	
 	def "test valid cusip"() {
 		when:
-		def m = service.searchPool("CUSIP1234")
+		def m = service.searchPool("CUSIP1234","")
 		
 		then:
 		assert m.success == true
-		assert m.events != null
+		assert m.result != null
 	}
 	
 	def "test invalid response"() {
@@ -55,11 +63,7 @@ class SearchServiceSpec extends Specification {
 
 	}
 	
-    def setup() {
-		server = new WireMockServer(new WireMockConfiguration().port(7777).fileSource(new SingleRootFileSource("../stub-server")))
-		server.start()
-	
-    }
+  
 
     def cleanup() {
 	   server.stop()

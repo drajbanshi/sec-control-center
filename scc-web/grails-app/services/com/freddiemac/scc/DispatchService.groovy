@@ -1,6 +1,8 @@
 package com.freddiemac.scc
 
 import com.freddiemac.service.event.api.EventNotification
+import com.freddiemac.service.event.model.BusinessDataType
+import com.freddiemac.service.event.model.EventContainerType;
 import com.freddiemac.service.event.model.Events
 
 import grails.transaction.Transactional
@@ -13,7 +15,11 @@ class DispatchService {
    boolean dissolveSecurity(def evnts) {
 	   EventNotification en = new EventNotification()
 	   Events events = en.createEventFromXML(XmlUtil.serialize(evnts))
-	   en.notifyEvent(events)
+	   events.getEventPayload().getEventContainer()
+	   EventContainerType typ 
+	   typ.businessData = new BusinessDataType()
+	  
+	   
 	   return true
    }
 }

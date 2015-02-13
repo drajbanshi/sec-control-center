@@ -1,6 +1,6 @@
 {
   "request" : {
-    "url" : "/freddiemac/services/searchload.asmx",
+    "url" : "/freddiemac/searchpool.asmx",
     "method" : "POST",
 	"bodyPatterns": [
             { "doesNotMatch": ".*CUSIP.*" }

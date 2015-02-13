@@ -1,29 +1,31 @@
 package com.freddiemac.scc
 
+import com.freddiemac.scc.utils.PropertyRetriever;
+
 import wslite.soap.SOAPClient
 
 
 class SearchService {
-	
+
 	def grailsApplication
-	
-	def searchPool(String cus) {
-        SOAPClient client = new SOAPClient("http://${grailsApplication.config.com.freddiemac.mbs.server}/freddiemac/services/searchload.asmx")
-        def response = client.send(SOAPAction:'SearchLoan') {
-            body {
-                SearchLoan('xmlns':'http://www.freddiemac.com/search') {
-                    cusip(cus)
-                }
-            }
-        }
-		
-	
-		def p = response.SearchLoanResponse.SearchLoanResult.Error
-		
-		if(!p.isEmpty()) {
-			return [success: false,
-				    message: response.SearchLoanResponse.SearchLoanResult.Error.Message]
+
+	def searchPool(String cus, String poolId) {
+		SOAPClient client = new SOAPClient(grailsApplication.config.com.freddiemac.searchpool.url)
+		def response = client.send(SOAPAction:'SearchPool') {
+			body {
+				SearchPool('xmlns':'http://www.freddiemac.com/search') {
+					cusip(cus)
+					poolid(poolId)
+				}
+			}
 		}
-		return [success: true, events: response.SearchLoanResponse.SearchLoanResult.Events]
-	 }
+
+
+		def p = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.error.path, response.getBody())
+		if(!p.isEmpty()) {
+			return [success: false, errorMessage: p.ErrorMessage,errorCode: p.ErrorCode ]
+		}
+
+		return [success: true, result: PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.path, response.getBody())]
+	}
 }

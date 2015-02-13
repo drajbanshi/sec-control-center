@@ -20,7 +20,7 @@ class DissolveController {
 			render view: 'index'
 			return
 		}
-		def m = searchService.searchPool(params.cusip)
+		def m = searchService.searchPool(params.cusip,params.poolid)
 
 		if (!m.success) {
 			flash.error =  "Pool Unavailable for CUSIP ID=${params.cusip}"
@@ -48,7 +48,7 @@ class DissolveController {
 			return
 		}
 
-		def m = searchService.searchPool(params.cusip)
+		def m = searchService.searchPool(params.cusip,params.poolid)
 	
 		if(m.success) {
 			EventProcessLog e = new EventProcessLog(cusip: params.cusip, status: Status.INITIALIZED, eventType: EventType.DISSOLVE)

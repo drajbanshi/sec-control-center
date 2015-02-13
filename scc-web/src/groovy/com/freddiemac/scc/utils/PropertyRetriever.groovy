@@ -1,8 +1,10 @@
 package com.freddiemac.scc.utils
 
+import groovy.util.slurpersupport.GPathResult;
+
 class PropertyRetriever {
 
-	static def getProp(String propx, def o) {
+	static def getProp(String propx, GPathResult o) {
 		if(!o) {
 			return null
 		}

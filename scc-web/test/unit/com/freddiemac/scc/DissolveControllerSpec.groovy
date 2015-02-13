@@ -28,8 +28,8 @@ class DissolveControllerSpec extends Specification {
 
     def setup() {
 		def searchService = Mock(SearchService)
-		searchService.searchPool("CUSIP1234") >> ['success': false, 'events':  {}]
-		searchService.searchPool("CUSIP2222") >> ['success': true, 'events':   ['mytest': ["test1":"", "test2": "", "test3": ""],"EventMetaData": ["EventName": "Test"]]]
+		searchService.searchPool("CUSIP1234",_) >> ['success': false, 'events':  {}]
+		searchService.searchPool("CUSIP2222",_) >> ['success': true, 'events':   ['mytest': ["test1":"", "test2": "", "test3": ""],"EventMetaData": ["EventName": "Test"]]]
 		controller.searchService = searchService
 		
 		def dispatchService = Mock(DispatchService)

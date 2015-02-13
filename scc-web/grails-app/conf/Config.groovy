@@ -86,15 +86,12 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+//searchpool configurations
+com.freddiemac.searchpool.url="http://localhost:9999/freddiemac/searchpool.asmx"
+com.freddiemac.searchpool.result.path="SearchPoolResponse.ResponseEnvelope.SearchResultContainer"
+com.freddiemac.searchpool.error.path="SearcPoolResponse.ResponseEnvelope.ErrorEnvelope"
+com.freddiemac.searchpool.result.elements=["Loan.LoanAmortizationType","LoanPosition.LoanGrossUPBAmount","Pool.PoolIdentifier","MBS.MBSMortgageType","MBS.MBSPoolPrefixCode","FinancialInstitution.ABARoutingAndTransitIdentifier","FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName","Organization.OrganizationName","FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName","SecurityWire.SecurityWireFaceValueAmount","Security.SecurityCUSIPIdentifier","SecurityIssuance.SecurityIssueDate","Security.ContractualMaturityDate","SecurityActivity.SecurityCouponRate","FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier","SecurityActivity.SecurityBeneficiaryDate","SecurityActivity.SecurityStatusType"]
 
-//configure external
-com.freddiemac.mbs.server="localhost:9999"
-//com.freddiemac.security.node.path="EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer.CollateralGroupContainer.CollateralInstruments.CollateralInstrumentContainer.CollateralSecurityContainer.Security"
-com.freddiemac.security.node.path="EventPayload.EventContainer.BusinessData.CspSecIssuanceReqContentSet.SecIssuanceReqContainer"
-com.freddiemac.onedotfive.interf=['MBSContainer.MBSDisclosure.MBSUPBAmount','MBSContainer.CashWire.WireAmount','MBSContainer.SecurityWire.SecurityWireFaceValueAmount','SecurityContainer.Security.SecurityCUSIPIdentifier','MBSContainer.PartyRole.PartyRoleType','MBSContainer.SecurityIssuer.SecurityIssuerIdentifier','MBSContainer.WireTransferTransaction.WireDate','MBSContainer.CashTransferInstruction.CashTransferInstructionIdentifier','MBSContainer.FinancialInstrument.FinancialInstrumentType']
-//com.freddiemac.security.businessdata=['ActualMaturityDate', 'FederalReserveSecurityDescription', 'AssetBackedSecurityType', 'SecurityCUSIPIdentifier']
-com.freddiemac.businessdata.path="EventPayload.EventContainer.BusinessData.SecIssuanceReqContainer"
-//end
 
 environments {
 	development {
