@@ -18,31 +18,29 @@
 			${flash.error}
 		</div>
 	</g:if>
-        <%--<g:hasErrors bean="${poolSearch}">
-          <ul>
-           <g:eachError var="err" bean="${poolSearch}">
-               <li>${message(code:err)}</li>
-           </g:eachError>
-          </ul>
-        </g:hasErrors>        --%>
-        <g:renderErrors bean="${poolSearch}"/> 
+        <g:hasErrors bean="${poolSearch}">
+            <div class="error">
+          <g:renderErrors bean="${poolSearch}" as="list"/> 
+          </div>
+        </g:hasErrors>      
+        
         
 	<g:form controller="collapse" action="search" class="form-inline">
             <div>
             <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
 		<label>Security CUSIP Identifier :</label>
 		<input type="text" class="form-control" name="cusipIdentifier"
-			aria-label="Enter CUSIP Identifier..." value="${params.cusipIdentifier}">
+			aria-label="Enter CUSIP Identifier..." value="${fieldValue(bean:user,field:'cusipIdentifier')}">
             </span>
             <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
 			<label>Pool ID :</label>
 		<input type="text" class="form-control" name="poolNumber"
-			aria-label="Enter Pool ID ..." value="${params.poolNumber}">
+			aria-label="Enter Pool ID ..." value="${fieldValue(bean:user,field:'poolNumber')}">
                         <span>
                             <span><button class="btn btn-primary" type="submit">
 			<i class="fa fa-search"></i> Search
 		</button></span>
-               <div> 
+               </div> 
 	</g:form>
 	
 	

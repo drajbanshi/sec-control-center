@@ -274,3 +274,16 @@ body {
     padding: 5px 0 5px 5px;
 }
 
+
+.error {
+border: 1px solid;
+margin: 1px 0px;
+padding:5px 5px 5px 10px;
+background-repeat: no-repeat;
+background-position: 10px center;
+
+color: #D8000C;
+background-color: #FFBABA;
+//background-image: url('error.png');
+}
+
