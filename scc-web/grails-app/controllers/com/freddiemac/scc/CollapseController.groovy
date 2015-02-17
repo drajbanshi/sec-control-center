@@ -24,7 +24,6 @@ class CollapseController {
                 }
                 
 		def m = searchService.searchPool(params.cusipIdentifier, params.poolNumber)
-                println "result:"+m.result
 		if (!m.success) {
 			flash.error =  "Pool Unavailable for the given CUSIP ID/Pool number ${params.cusipIdentifier}"
 			render view: 'index'
@@ -36,7 +35,6 @@ class CollapseController {
     
 	
 	def collapse() {
-            println params.cusipIdentifier
 		if (!params.cusipIdentifier) {                        
 			flash.error =  "Invalid cusip"
 			redirect action: 'index'
