@@ -28,15 +28,16 @@ class CollapseController {
 			flash.error =  "Pool Unavailable for the given CUSIP ID/Pool number ${params.cusipIdentifier}"
 			render view: 'index'
 		} else {
-			String poolid = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
-			render view: 'index', model: ['result': generateModel(m.result), isCollapse:flash.error!='', poolid: poolid]
+			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
+			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
+			render view: 'index', model: ['result': generateModel(m.result), isCollapse:flash.error!='', poolid: poolid, cusip: cusip]
 		}
 	}
 
 
 	def collapse() {
 		if(params.poolid) {
-			dispatchService.collapsePool(params.poolid)
+			dispatchService.collapsePool(params.poolid, params.cusip)
 			flash.message = "Collapse event sent successfully"
 		} else {
 			flash.error = "No pool id to collapse"

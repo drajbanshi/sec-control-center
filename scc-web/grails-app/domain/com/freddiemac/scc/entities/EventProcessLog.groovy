@@ -9,6 +9,8 @@ class EventProcessLog {
 	Status status
 	EventType eventType
 	
+	String message
+	
 	Date dateCreated
 	Date lastUpdated
 	
@@ -16,6 +18,7 @@ class EventProcessLog {
 		cusip blank:false , nullable: false, unique:true
 		status nullable: false 
 		eventType nullable:false 
+		message blank:true, nullable: true
 	}
 	 
 	String toString() {

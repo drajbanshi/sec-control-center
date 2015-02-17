@@ -63,6 +63,7 @@
 		</div>
 		<g:form controller="collapse" action="collapse">
 			<g:hiddenField name="poolid" value="${poolid}" />
+			<g:hiddenField name="cusip" value="${cusip}" />
 			<button class="btn btn-danger" type="submit"
 				onclick="return confirm('Are you sure you want to collapse this pool?');">
 				<i class="fa fa-close"> </i> Collapse
