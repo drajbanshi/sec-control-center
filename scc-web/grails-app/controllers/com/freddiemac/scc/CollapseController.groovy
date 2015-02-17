@@ -7,45 +7,43 @@ import com.freddiemac.scc.model.PropContainer;
 import com.freddiemac.scc.model.PoolSearch
 
 class CollapseController {
-    
-    	def searchService
+
+	def searchService
+	def dispatchService
 	def grailsApplication
 
-    def index() {
-        
-    }
-		
-      	def search(PoolSearch poolSearch) {
-            def searchInput
+	def index() {
+	}
 
-                if(poolSearch.hasErrors()) {
-                    render view: "index", model: [poolSearch: poolSearch]
-                    return
-                }
-                
+	def search(PoolSearch poolSearch) {
+		def searchInput
+
+		if(poolSearch.hasErrors()) {
+			render view: "index", model: [poolSearch: poolSearch]
+			return
+		}
+
 		def m = searchService.searchPool(params.cusipIdentifier, params.poolNumber)
 		if (!m.success) {
 			flash.error =  "Pool Unavailable for the given CUSIP ID/Pool number ${params.cusipIdentifier}"
 			render view: 'index'
 		} else {
-			flash.error = EventProcessLog.findByCusip(params?.cusipIdentifier)!=null? "A Collapse request has already been initiated for the given CUSIP ID/Pool number ${params.cusipIdentifier}": ''
-			render view: 'index', model: ['result': generateModel(m.result), isCollapse:flash.error!='']
+			String poolid = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
+			render view: 'index', model: ['result': generateModel(m.result), isCollapse:flash.error!='', poolid: poolid]
 		}
-	}    
-    
-	
-	def collapse() {
-		if (!params.cusipIdentifier) {                        
-			flash.error =  "Invalid cusip"
-			redirect action: 'index'
-			return
-		} else {
-			flash.message =  "Pool ${params.cusipIdentifier} collapsed successfully"
-			redirect action: 'index'
-			return
-                }
 	}
-        
+
+
+	def collapse() {
+		if(params.poolid) {
+			dispatchService.collapsePool(params.poolid)
+			flash.message = "Collapse event sent successfully"
+		} else {
+			flash.error = "No pool id to collapse"
+		}
+		redirect action: "search", params:params
+	}
+
 	private def generateModel(def m) {
 		def keys = grailsApplication.config.com.freddiemac.searchpool.result.elements
 		def mm = []
@@ -53,5 +51,5 @@ class CollapseController {
 			mm.add(new PropContainer(key: it, value: PropertyRetriever.getProp(it, m)))
 		}
 		return mm
-	}    
+	}
 }

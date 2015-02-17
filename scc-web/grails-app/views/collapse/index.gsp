@@ -62,12 +62,12 @@
 			</ol>
 		</div>
 		<g:form controller="collapse" action="collapse">
-				<g:hiddenField name="cusipIdentifier" value="${params.cusipIdentifier}" />
-				<button class="btn btn-danger" type="submit"
-					onclick="return confirm('Are you sure you want to collapse this pool?');">
-					<i class="fa fa-close"> </i> Collapse
-				</button>
-			</g:form>
+			<g:hiddenField name="poolid" value="${poolid}" />
+			<button class="btn btn-danger" type="submit"
+				onclick="return confirm('Are you sure you want to collapse this pool?');">
+				<i class="fa fa-close"> </i> Collapse
+			</button>
+		</g:form>
 	
 </g:if>
                         
