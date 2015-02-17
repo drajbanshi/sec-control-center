@@ -30,12 +30,12 @@
             <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
 		<label>Security CUSIP Identifier :</label>
 		<input type="text" class="form-control" name="cusipIdentifier"
-			aria-label="Enter CUSIP Identifier..." value="${fieldValue(bean:user,field:'cusipIdentifier')}">
+			aria-label="Enter CUSIP Identifier..." value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
             </span>
             <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
 			<label>Pool ID :</label>
 		<input type="text" class="form-control" name="poolNumber"
-			aria-label="Enter Pool ID ..." value="${fieldValue(bean:user,field:'poolNumber')}">
+			aria-label="Enter Pool ID ..." value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
                         <span>
                             <span><button class="btn btn-primary" type="submit">
 			<i class="fa fa-search"></i> Search
@@ -62,7 +62,7 @@
 			</ol>
 		</div>
 		<g:form controller="collapse" action="collapse">
-				<g:hiddenField name="cusip" value="${params.cusip}" />
+				<g:hiddenField name="cusipIdentifier" value="${params.cusipIdentifier}" />
 				<button class="btn btn-danger" type="submit"
 					onclick="return confirm('Are you sure you want to collapse this pool?');">
 					<i class="fa fa-close"> </i> Collapse
