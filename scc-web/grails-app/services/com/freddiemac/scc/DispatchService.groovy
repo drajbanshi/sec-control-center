@@ -10,16 +10,21 @@ import groovy.xml.XmlUtil;
 
 @Transactional
 class DispatchService {
-   def searchService
+   def xmlTemplatingService
 	
    boolean dissolveSecurity(def evnts) {
 	   EventNotification en = new EventNotification()
 	   Events events = en.createEventFromXML(XmlUtil.serialize(evnts))
-	   events.getEventPayload().getEventContainer()
-	   EventContainerType typ 
-	   typ.businessData = new BusinessDataType()
-	  
-	   
+	   en.notifyEvent(events)
 	   return true
+   }
+   
+   
+   def collapsePool(String poolId) {
+	  String eventXml = xmlTemplatingService.genearteCollapseEvent(poolId)
+	  EventNotification en = new EventNotification()
+	  Events events = en.createEventFromXML(eventXml)
+	  en.notifyEvent(events)
+	  
    }
 }

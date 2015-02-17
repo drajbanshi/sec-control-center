@@ -91,7 +91,7 @@ com.freddiemac.searchpool.url="http://localhost:9999/freddiemac/searchpool.asmx"
 com.freddiemac.searchpool.result.path="SearchPoolResponse.ResponseEnvelope.SearchResultContainer"
 com.freddiemac.searchpool.error.path="SearcPoolResponse.ResponseEnvelope.ErrorEnvelope"
 com.freddiemac.searchpool.result.elements=["Loan.LoanAmortizationType","LoanPosition.LoanGrossUPBAmount","Pool.PoolIdentifier","MBS.MBSMortgageType","MBS.MBSPoolPrefixCode","FinancialInstitution.ABARoutingAndTransitIdentifier","FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName","Organization.OrganizationName","FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName","SecurityWire.SecurityWireFaceValueAmount","Security.SecurityCUSIPIdentifier","SecurityIssuance.SecurityIssueDate","Security.ContractualMaturityDate","SecurityActivity.SecurityCouponRate","FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier","SecurityActivity.SecurityBeneficiaryDate","SecurityActivity.SecurityStatusType"]
-
+com.freddiemac.searchpool.result.poolid = "Pool.PoolIdentifier"
 
 environments {
 	development {
