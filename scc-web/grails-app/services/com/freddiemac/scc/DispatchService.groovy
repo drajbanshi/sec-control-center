@@ -29,7 +29,7 @@ class DispatchService {
 	  Events events = en.createEventFromXML(eventXml)
 	  
 	  EventProcessLog eventLog = new EventProcessLog(cusip: cusip, eventType: EventType.COLLAPSE, status: Status.INITIALIZED).save()
-	  
+	  log.info("dipatching collapse event")
 	  try {
 		  en.notifyEvent(events)
 	  } catch (Exception ex) {

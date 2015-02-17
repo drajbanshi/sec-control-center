@@ -1,3 +1,5 @@
+import org.apache.log4j.DailyRollingFileAppender
+
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -104,25 +106,66 @@ environments {
 	}
 }
 
-// log4j configuration
-log4j.main = {
-	// Example of changing the log pattern for the default console appender:
-	//
-	//appenders {
-	//    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-	//}
+log4j = {
+    appenders {
+        environments {
+            development {
+                console name: 'stdout', layout: pattern(conversionPattern: '%-5p %d{HH:mm:ss,SSS} %c{2} %m%n')
+            }
 
-	error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-		   'org.codehaus.groovy.grails.web.pages',          // GSP
-		   'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-		   'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-		   'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-		   'org.codehaus.groovy.grails.commons',            // core / classloading
-		   'org.codehaus.groovy.grails.plugins',            // plugins
-		   'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-		   'org.springframework',
-		   'org.hibernate',
-		   'net.sf.ehcache.hibernate'
+            production {
+                appender new DailyRollingFileAppender(
+                        name: 'file',
+                        datePattern: "'.'yyyy-MM-dd",
+                        file: System.properties['catalina.base'] + "/logs/scc.log",
+                        layout: pattern(conversionPattern: '%d [%t] %-5p %c{2} %x - %m%n')
+                )
+                rollingFile name: "stacktrace", maxFileSize: 1024 * 10,
+                        file: System.properties['catalina.base'] + "/logs/scc.log"
+            }
+        }
+    }
+
+    info 'grails.app.conf'
+    info 'grails.app.jobs'
+    info 'grails.app.services'
+    info 'grails.app.controllers'
+    info 'com.freddiemac.scc'
+
+    error 'org.codehaus.groovy.grails.web.servlet',        // controllers
+            'org.codehaus.groovy.grails.web.pages',          // GSP
+            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+            'org.codehaus.groovy.grails.commons',            // core / classloading
+            'org.codehaus.groovy.grails.plugins',            // plugins
+            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+            'org.springframework',
+            'org.hibernate',
+            'net.sf.ehcache.hibernate'
+            'org.hibernate'
+
+
+    environments {
+        development {
+            info 'grails.app.conf'
+            info 'grails.app.services'
+            info 'grails.app.controllers'
+            debug 'com.freddiema.scc'
+            info stdout: "StackTrace"
+        }
+        production {
+            info 'grails.app.jobs'
+            info 'grails.app.services'
+            info 'grails.app.controllers'
+            debug 'com.freddiemac.scc'
+
+
+            root {
+                error 'file'
+            }
+        }
+    }
 }
 
 
