@@ -1,14 +1,15 @@
 {
   "request" : {
-    "url" : "/freddiemac/services/searchload.asmx",
-    "method" : "POST",
-	"bodyPatterns": [
-            { "contains": "CUSIP1111" }
+    "url" : "/freddiemac/searchpool.asmx",
+    "method": "POST",
+    "bodyPatterns": [
+            { "contains": "CUSIP2323" }
         ]
-  },
+    
+    },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "CUSP_3.xml",
+    "bodyFileName" : "POOL_2.xml",
     "headers" : {
       
       "Cache-Control" : "no-cache",
