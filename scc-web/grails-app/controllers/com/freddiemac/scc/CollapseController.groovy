@@ -16,7 +16,6 @@ class CollapseController {
 	}
 
 	def search(PoolSearch poolSearch) {
-		def searchInput
 
 		if(poolSearch.hasErrors()) {
 			render view: "index", model: [poolSearch: poolSearch]
@@ -25,7 +24,7 @@ class CollapseController {
 
 		def m = searchService.searchPool(params.cusipIdentifier, params.poolNumber)
 		if (!m.success) {
-			flash.error =  "Pool Unavailable for the given CUSIP ID/Pool number ${params.cusipIdentifier}"
+			flash.error =  message(code: 'Collapse.controller.search.error1', args: [params.cusipIdentifier])
 			render view: 'index'
 		} else {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
@@ -38,11 +37,11 @@ class CollapseController {
 	def collapse() {
 		if(params.poolid) {
 			dispatchService.collapsePool(params.poolid, params.cusip)
-			flash.message = "Collapse event sent successfully"
+			flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusip])
 		} else {
-			flash.error = "No pool id to collapse"
+			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusip])
 		}
-		redirect action: "search", params:params
+		redirect action: "index", params:params
 	}
 
 	private def generateModel(def m) {
