@@ -11,7 +11,9 @@ class SearchService {
 
 	def searchPool(String cus, String poolId) {
 		SOAPClient client = new SOAPClient(grailsApplication.config.com.freddiemac.searchpool.url)
-		def response = client.send(SOAPAction:'SearchPool') {
+                def response
+                try {
+		response = client.send(SOAPAction:'SearchPool') {
 			body {
 				SearchPool('xmlns':'http://www.freddiemac.com/search') {
 					cusip(cus)
@@ -25,7 +27,9 @@ class SearchService {
 		if(p != null && !p.isEmpty()) {
 			return [success: false, errorMessage: p.ErrorMessage,errorCode: p.ErrorCode ]
 		}
-
-		return [success: true, result: PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.path, response.getBody())]
+                return [success: true, result: PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.path, response.getBody())]
+                } catch (Exception e) {
+                    return [success: false, errorMessage: "Service down/Unavailable",errorCode: "" ]
+                }		
 	}
 }

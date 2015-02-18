@@ -10,7 +10,7 @@ static constraints = {
     cusipIdentifier blank:true, nullable: true
     poolNumber blank:true, nullable: true
     cusipIdentifier validator: { val, obj ->
-            if (!val && !obj.poolNumber) return 'atleastOneRequired'
+            if (!val && !obj.poolNumber) return 'PoolSearch.searchCriteria.atleastOneRequired'
             /*else {
                 if (val)
             }*/
