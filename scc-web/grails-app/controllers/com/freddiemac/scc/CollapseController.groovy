@@ -38,7 +38,7 @@ class CollapseController {
                                 ne("status", Status.CANCELLED)
                         }
                         def isCollapsed = false
-                        if((flash.error!='') || (eventLogs && eventLogs.size() > 0) || (secIssueDt)) {
+                        if((eventLogs && eventLogs.size() > 0) || (secIssueDt!="")) {
                             isCollapsed  = true
                         }
 			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip]
