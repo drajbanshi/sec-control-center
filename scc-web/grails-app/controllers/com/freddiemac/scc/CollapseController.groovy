@@ -56,27 +56,6 @@ class CollapseController {
 		redirect action: "index", params:params
 	}
         
-    
-/*        def collapseEligible() {
-            String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
-            
-            def criteria = EventProcessLog.createCriteria()
-            def eventLogs =  criteria.list { 
-                    eq("eventType" , EventType.COLLAPSE)
-                    eq("cusip", cusip)
-                    ne("status", Status.CANCELLED)
-            }
-
-            if(eventLogs && eventLogs.size() > 0) {
-                    return false
-            }
-        
-            if (secIssueDt) 
-              return false  
-             else 
-                return true            
-        } */
-        
 
 	private def generateModel(def m) {
 		def keys = grailsApplication.config.com.freddiemac.searchpool.result.elements
