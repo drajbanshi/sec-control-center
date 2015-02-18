@@ -95,6 +95,7 @@ com.freddiemac.searchpool.error.path="SearcPoolResponse.ResponseEnvelope.ErrorEn
 com.freddiemac.searchpool.result.elements=["Loan.LoanAmortizationType","LoanPosition.LoanGrossUPBAmount","Pool.PoolIdentifier","MBS.MBSMortgageType","MBS.MBSPoolPrefixCode","FinancialInstitution.ABARoutingAndTransitIdentifier","FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName","Organization.OrganizationName","FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName","SecurityWire.SecurityWireFaceValueAmount","Security.SecurityCUSIPIdentifier","SecurityIssuance.SecurityIssueDate","Security.ContractualMaturityDate","SecurityActivity.SecurityCouponRate","FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier","SecurityActivity.SecurityBeneficiaryDate","SecurityActivity.SecurityStatusType"]
 com.freddiemac.searchpool.result.poolid = "Pool.PoolIdentifier"
 com.freddiemac.searchpool.result.cusip = "Security.SecurityCUSIPIdentifier"
+com.freddiemac.searchpool.result.securityissuedate = "SecurityIssuance.SecurityIssueDate"
 
 environments {
 	development {
