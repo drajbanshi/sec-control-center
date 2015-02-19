@@ -64,7 +64,7 @@
                 <g:if test="${!isCollapsed}">
                     <g:form controller="collapse" action="collapse">
                             <g:hiddenField name="poolNumber" value="${params.poolNumber}" />
-                            <g:hiddenField name="cusipIdentifier" value="${params.cusipIdentifer}" />
+                            <g:hiddenField name="cusipIdentifier" value="${params.cusipIdentifier}" />
                             <g:hiddenField name="reqPoolNum" value="${poolid}" />
                             <g:hiddenField name="reqCUSIP" value="${cusip}" />
                             <button class="btn btn-danger" type="submit"

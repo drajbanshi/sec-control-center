@@ -11,25 +11,25 @@ class SearchService {
 
 	def searchPool(String cus, String poolId) {
 		SOAPClient client = new SOAPClient(grailsApplication.config.com.freddiemac.searchpool.url)
-                def response
-                try {
-		response = client.send(SOAPAction:'SearchPool') {
-			body {
-				SearchPool('xmlns':'http://www.freddiemac.com/search') {
-					cusip(cus)
-					poolid(poolId)
+		def response
+		try {
+			response = client.send(SOAPAction:'SearchPool') {
+				body {
+					SearchPool('xmlns':'http://www.freddiemac.com/search') {
+						cusip(cus)
+						poolid(poolId)
+					}
 				}
 			}
-		}
 
 
-		def p = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.error.path, response.getBody())
-		if(p != null && !p.isEmpty()) {
-			return [success: false, errorMessage: p.ErrorMessage,errorCode: p.ErrorCode ]
+			def p = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.error.path, response.getBody())
+			if(p != null && !p.isEmpty()) {
+				return [success: false, errorMessage: p.ErrorMessage,errorCode: p.ErrorCode ]
+			}
+			return [success: true, result: PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.path, response.getBody())]
+		} catch (Exception e) {
+			return [success: false, errorMessage: "Service down/Unavailable",errorCode: "" ]
 		}
-                return [success: true, result: PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.path, response.getBody())]
-                } catch (Exception e) {
-                    return [success: false, errorMessage: "Service down/Unavailable",errorCode: "" ]
-                }		
 	}
 }
