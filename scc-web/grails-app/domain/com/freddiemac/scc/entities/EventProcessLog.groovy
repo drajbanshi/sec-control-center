@@ -15,7 +15,7 @@ class EventProcessLog {
 	Date lastUpdated
 	
 	 static constraints = {
-		cusip blank:false , nullable: false, unique:true
+		cusip blank:false , nullable: false
 		status nullable: false 
 		eventType nullable:false 
 		message blank:true, nullable: true
