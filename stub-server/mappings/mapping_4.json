@@ -1,0 +1,23 @@
+{
+ "priority": 1,
+
+  "request" : {
+    "url" : "/freddiemac/searchpool.asmx",
+    "method": "POST",
+    "bodyPatterns": [
+            { "contains": "<poolid>POOL11111</poolid>" }
+        ]
+	},
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "POOL_2.xml",
+    "headers" : {
+      
+      "Cache-Control" : "no-cache",
+      "Pragma" : "no-cache",
+      "Content-Type" : "text/xml; charset=utf-8",
+      "Proxy-Connection" : "close"
+      
+    }
+  }
+}

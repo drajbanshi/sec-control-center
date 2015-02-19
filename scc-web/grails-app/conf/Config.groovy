@@ -96,6 +96,7 @@ com.freddiemac.searchpool.result.elements=["Loan.LoanAmortizationType","LoanPosi
 com.freddiemac.searchpool.result.poolid = "Pool.PoolIdentifier"
 com.freddiemac.searchpool.result.cusip = "Security.SecurityCUSIPIdentifier"
 com.freddiemac.searchpool.result.securityissuedate = "SecurityIssuance.SecurityIssueDate"
+com.freddiemac.searchpool.result.securitysettledate = "SecurityIssuance.SecurityIssueSettlementDate"
 
 environments {
 	development {
