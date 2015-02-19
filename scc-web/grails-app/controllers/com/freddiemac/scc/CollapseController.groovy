@@ -34,6 +34,7 @@ class CollapseController {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
 			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
                         String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+                        String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
                         def criteria = EventProcessLog.createCriteria()
                         def eventLogs =  criteria.list { 
                                 eq("eventType" , EventType.COLLAPSE)
@@ -41,7 +42,7 @@ class CollapseController {
                                 ne("status", Status.CANCELLED)
                         }
                         def isCollapsed = false
-                        if((eventLogs && eventLogs.size() > 0) || (secIssueDt!="")) {
+                        if((eventLogs && eventLogs.size() > 0) || (secIssueDt!="") || (secSettleDt!="")) {
                             isCollapsed  = true
                         }
 			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: params.poolNumber, cusip: params.cusipIdentifier, reqPoolNum: poolid, reqCUSIP: cusip]
