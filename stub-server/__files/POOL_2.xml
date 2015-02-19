@@ -259,7 +259,7 @@
 						</PoolDispositionIntentType>
 						<PoolGuaranteedPercent>0.0</PoolGuaranteedPercent>
 						<PoolGuarantyFeeRate>0.0</PoolGuarantyFeeRate>
-						<PoolIdentifier>POOL23232</PoolIdentifier>
+						<PoolIdentifier>POOL11111</PoolIdentifier>
 						<PoolName>PoolName</PoolName>
 						<PoolProductVariationIdentifier>0</PoolProductVariationIdentifier>
 						<PoolPurposeType>PoolPurposeType</PoolPurposeType>
@@ -415,7 +415,7 @@
 						<SecurityCouponType>SecurityCouponType</SecurityCouponType>
 						<SecurityCouponTypeConversionDate>2001-01-01
 						</SecurityCouponTypeConversionDate>
-						<SecurityCUSIPIdentifier>CUSIP2323
+						<SecurityCUSIPIdentifier>CUSIP1111
 						</SecurityCUSIPIdentifier>
 						<SecurityFirstInterestAccrualDate>2001-01-01
 						</SecurityFirstInterestAccrualDate>
