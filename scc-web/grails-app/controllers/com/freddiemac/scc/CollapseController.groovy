@@ -19,13 +19,16 @@ class CollapseController {
 	def search(PoolSearch poolSearch) {
 
 		if(poolSearch.hasErrors()) {
-			render view: "index", model: [poolSearch: poolSearch]
+			render view: "index", model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier]
 			return
 		}
 
 		def m = searchService.searchPool(params.cusipIdentifier, params.poolNumber)
 		if (!m.success) {
-			flash.error =  message(code: 'Collapse.controller.search.error1', args: [params.cusipIdentifier])
+                        if (params.cusipIdentifier)
+                            flash.error =  message(code: 'Collapse.controller.search.error1', args: [params.cusipIdentifier])
+                        else     
+                            flash.error =  message(code: 'Collapse.controller.search.error2', args: [params.poolNumber])
 			render view: 'index'
 		} else {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
@@ -41,19 +44,19 @@ class CollapseController {
                         if((eventLogs && eventLogs.size() > 0) || (secIssueDt!="")) {
                             isCollapsed  = true
                         }
-			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip]
+			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: params.poolNumber, cusip: params.cusipIdentifier, reqPoolNum: poolid, reqCUSIP: cusip]
 		}
 	}
 
 
 	def collapse() {
-		if(params.poolid) {
-			dispatchService.collapsePool(params.poolid, params.cusip)
-			flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusip])
+		if(params.reqPoolNum) {
+			dispatchService.collapsePool(params.reqPoolNum, params.reqCUSIP)
+			flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusipIdentifier])
 		} else {
-			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusip])
+			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusipIdentifier])
 		}
-		redirect action: "index", params:params
+		redirect action: "search", params:params
 	}
         
 

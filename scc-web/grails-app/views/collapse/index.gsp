@@ -3,10 +3,10 @@
 <html>
 <head>
 <meta name="layout" content="main">
-<title>Collapse - Securitization Control Center</title>
+<title>Pool Search - Securitization Control Center</title>
 </head>
 <body>
-	<h3>Collapse Pool</h3>
+	<h3>Pool Search</h3>
 	
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
@@ -63,8 +63,10 @@
 		</div>
                 <g:if test="${!isCollapsed}">
                     <g:form controller="collapse" action="collapse">
-                            <g:hiddenField name="poolid" value="${poolid}" />
-                            <g:hiddenField name="cusip" value="${cusip}" />
+                            <g:hiddenField name="poolNumber" value="${poolid}" />
+                            <g:hiddenField name="cusipIdentifier" value="${cusip}" />
+                            <g:hiddenField name="reqPoolNum" value="${reqPoolNum}" />
+                            <g:hiddenField name="reqCUSIP" value="${reqCUSIP}" />
                             <button class="btn btn-danger" type="submit"
                                     onclick="return confirm('Are you sure you want to collapse this pool?');">
                                     <i class="fa fa-close"> </i> Collapse
