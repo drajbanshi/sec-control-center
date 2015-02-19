@@ -19,11 +19,12 @@ class EventLogService {
 
 	def isEventProcessedForCusip(String cusip) {
 		def criteria = EventProcessLog.createCriteria()
-		EventProcessLog eventLog = criteria.get {
-			eq("cusip", cusip)
+		EventProcessLog eventLog = criteria.get  {
+			eq("cusip", cusip.trim())
 			maxResults(1)
 			order("dateCreated", "desc")
 		}
+		
 		return eventLog && !eventLog.status.equals(Status.CANCELLED)
 	}
 

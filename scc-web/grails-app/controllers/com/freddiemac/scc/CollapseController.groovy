@@ -12,6 +12,7 @@ class CollapseController {
 	def searchService
 	def dispatchService
 	def grailsApplication
+	def eventLogService
 
 	def index() {
 	}
@@ -25,40 +26,37 @@ class CollapseController {
 
 		def m = searchService.searchPool(params.cusipIdentifier, params.poolNumber)
 		if (!m.success) {
-                        if (params.cusipIdentifier)
-                            flash.error =  message(code: 'Collapse.controller.search.error1', args: [params.cusipIdentifier])
-                        else     
-                            flash.error =  message(code: 'Collapse.controller.search.error2', args: [params.poolNumber])
+			if (params.cusipIdentifier)
+				flash.error =  message(code: 'Collapse.controller.search.error1', args: [params.cusipIdentifier])
+			else
+				flash.error =  message(code: 'Collapse.controller.search.error2', args: [params.poolNumber])
 			render view: 'index'
 		} else {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
 			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
-                        String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
-                        def criteria = EventProcessLog.createCriteria()
-                        def eventLogs =  criteria.list { 
-                                eq("eventType" , EventType.COLLAPSE)
-                                eq("cusip", cusip)
-                                ne("status", Status.CANCELLED)
-                        }
-                        def isCollapsed = false
-                        if((eventLogs && eventLogs.size() > 0) || (secIssueDt!="")) {
-                            isCollapsed  = true
-                        }
-			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: params.poolNumber, cusip: params.cusipIdentifier, reqPoolNum: poolid, reqCUSIP: cusip]
+			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+			
+			def isCollapsed = eventLogService.isEventProcessedForCusip(cusip)
+		   
+			
+			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip]
 		}
 	}
 
 
 	def collapse() {
-		if(params.reqPoolNum) {
-			dispatchService.collapsePool(params.reqPoolNum, params.reqCUSIP)
-			flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusipIdentifier])
+		if(params.reqPoolNum && params.reqCUSIP) {
+			if(dispatchService.collapsePool(params.reqPoolNum, params.reqCUSIP)) {
+				flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusipIdentifier])
+			} else {
+			    flash.error = "Unable to collapse"
+			}
 		} else {
 			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusipIdentifier])
 		}
 		redirect action: "search", params:params
 	}
-        
+
 
 	private def generateModel(def m) {
 		def keys = grailsApplication.config.com.freddiemac.searchpool.result.elements

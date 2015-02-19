@@ -14,6 +14,7 @@ import groovy.xml.XmlUtil;
 
 class DispatchService {
 	def xmlTemplatingService
+	def eventLogService
 
 	boolean dissolveSecurity(def evnts) {
 		EventNotification en = new EventNotification()
@@ -22,33 +23,22 @@ class DispatchService {
 		return true
 	}
 
-	@Transactional
 	boolean collapsePool(String poolId, String cusip) {
+		def b= eventLogService.logEvent(cusip, EventType.COLLAPSE)
+		if(!b) {
+			return false
+		}
+		
 		String eventXml = xmlTemplatingService.genearteCollapseEvent(poolId)
 		EventNotification en = new EventNotification()
 		Events events = en.createEventFromXML(eventXml)
 
-		def criteria = EventProcessLog.createCriteria()
-		def eventLogs =  criteria.list { 
-			eq("eventType" , EventType.COLLAPSE)
-			eq("cusip", cusip)
-			ne("status", Status.CANCELLED)
-		}
-
-		if(eventLogs && eventLogs.size() > 0) {
-			return false
-		}
-
-		def eventLog = new EventProcessLog(cusip: cusip, eventType: EventType.COLLAPSE, status: Status.INITIALIZED).save()
 		log.info("dipatching collapse event")
 		try {
 			en.notifyEvent(events)
 		} catch (Exception ex) {
 			log.error(ex)
-			eventLog.status = Status.CANCELLED
-			eventLog.message = ex.getMessage()
-			eventLog.save()
-
+			eventLogService.cancelEvent(cusip, EventType.COLLAPSE)
 			return false
 		}
 

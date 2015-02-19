@@ -30,12 +30,12 @@
             <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
 		<label>Security CUSIP Identifier :</label>
 		<input type="text" class="form-control" name="cusipIdentifier"
-			aria-label="Enter CUSIP Identifier..." value="${cusip}">
+			aria-label="Enter CUSIP Identifier..." value="${params.cusipIdentifier}">
             </span>
             <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
 			<label>Pool ID :</label>
 		<input type="text" class="form-control" name="poolNumber"
-			aria-label="Enter Pool ID ..." value="${poolid}">
+			aria-label="Enter Pool ID ..." value="${params.poolNumber}">
                         <span>
                             <span><button class="btn btn-primary" type="submit">
 			<i class="fa fa-search"></i> Search
@@ -63,10 +63,10 @@
 		</div>
                 <g:if test="${!isCollapsed}">
                     <g:form controller="collapse" action="collapse">
-                            <g:hiddenField name="poolNumber" value="${poolid}" />
-                            <g:hiddenField name="cusipIdentifier" value="${cusip}" />
-                            <g:hiddenField name="reqPoolNum" value="${reqPoolNum}" />
-                            <g:hiddenField name="reqCUSIP" value="${reqCUSIP}" />
+                            <g:hiddenField name="poolNumber" value="${params.poolNumber}" />
+                            <g:hiddenField name="cusipIdentifier" value="${params.cusipIdentifer}" />
+                            <g:hiddenField name="reqPoolNum" value="${poolid}" />
+                            <g:hiddenField name="reqCUSIP" value="${cusip}" />
                             <button class="btn btn-danger" type="submit"
                                     onclick="return confirm('Are you sure you want to collapse this pool?');">
                                     <i class="fa fa-close"> </i> Collapse

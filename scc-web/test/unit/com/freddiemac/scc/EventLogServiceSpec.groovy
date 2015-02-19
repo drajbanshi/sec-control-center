@@ -19,11 +19,11 @@ import com.freddiemac.scc.entities.Status
 class EventLogServiceSpec extends Specification {
 
     def setup() {
-		new EventProcessLog(cusip: "123456789", eventType: EventType.COLLAPSE, status: Status.INITIALIZED).save() 
-		new EventProcessLog(cusip: "123456789", eventType: EventType.COLLAPSE, status: Status.CANCELLED).save() 
-
-		new EventProcessLog(cusip: "123456789".reverse(), eventType: EventType.COLLAPSE, status: Status.INITIALIZED).save() 
-		new EventProcessLog(cusip: "123456789".reverse(), eventType: EventType.COLLAPSE, status: Status.DONE).save() 
+		service.logEvent("123456789", EventType.COLLAPSE)
+		service.cancelEvent("123456789", EventType.COLLAPSE)
+		
+		service.logEvent("987654321", EventType.COLLAPSE)
+		new EventProcessLog(cusip: "987654321", eventType: EventType.COLLAPSE, status: Status.DONE).save() 
     }
 
    
@@ -31,14 +31,14 @@ class EventLogServiceSpec extends Specification {
     void "event is already sent and is in processing state"() {
 		expect:
 		service.isEventProcessedForCusip("123456789") == false
-		service.isEventProcessedForCusip("123456789".reverse()) == true
+		service.isEventProcessedForCusip("987654321") == true
 		service.isEventProcessedForCusip("dfadfafafafasd") == false
 		
     }
 	
 	void "relog event for cancelled event"() {
 		when:
-		def eventLog = service.logEvent("123456789", EventType.COLLAPSE)
+		def eventLog = service.logEvent("2222222222", EventType.COLLAPSE)
 		then:
 		assert eventLog != null
 	}
@@ -46,7 +46,7 @@ class EventLogServiceSpec extends Specification {
 	
 	void "don't allow logging for completed event"() {
 		when:
-		def eventLog = service.logEvent("123456789".reverse(), EventType.COLLAPSE)
+		def eventLog = service.logEvent("987654321", EventType.COLLAPSE)
 		then:
 		assert eventLog == null
 	}
