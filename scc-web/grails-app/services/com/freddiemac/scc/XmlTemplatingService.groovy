@@ -17,7 +17,7 @@ class XmlTemplatingService {
 
 	PageRenderer groovyPageRenderer
 
-	String genearteCollapseEvent(String poolIdentifer) {
+	String generateCollapseEvent(String poolIdentifer) {
 		Calendar c = Calendar.getInstance()
 		c.setTimeZone(TimeZone.getTimeZone("UTC"))
 		String dtime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(c.getTime())

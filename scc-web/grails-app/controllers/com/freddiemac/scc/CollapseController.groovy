@@ -35,8 +35,8 @@ class CollapseController {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
 			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
 			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
-			
-			def isCollapsed = (secIssueDt && !secIssueDt.isEmpty()) || eventLogService.isEventProcessedForCusip(cusip) 
+                        String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)			
+			def isCollapsed = (secIssueDt && !secIssueDt.isEmpty()) || (secSettleDt && !secSettleDt.isEmpty()) || eventLogService.isEventProcessedForCusip(cusip) 
 			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip]
 		}
 
@@ -48,7 +48,7 @@ class CollapseController {
 			if(dispatchService.collapsePool(params.reqPoolNum, params.reqCUSIP)) {
 				flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusipIdentifier])
 			} else {
-			    flash.error = "Unable to collapse"
+			    flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusipIdentifier])
 			}
 		} else {
 			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusipIdentifier])

@@ -29,11 +29,11 @@ class DispatchService {
 			return false
 		}
 		
-		String eventXml = xmlTemplatingService.genearteCollapseEvent(poolId)
+		String eventXml = xmlTemplatingService.generateCollapseEvent(poolId)
 		EventNotification en = new EventNotification()
 		Events events = en.createEventFromXML(eventXml)
 
-		log.info("dipatching collapse event")
+		log.info("dispatching collapse event")
 		try {
 			en.notifyEvent(events)
 		} catch (Exception ex) {
