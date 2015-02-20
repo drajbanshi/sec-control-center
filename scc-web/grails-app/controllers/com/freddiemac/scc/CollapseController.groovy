@@ -1,11 +1,13 @@
 package com.freddiemac.scc
 
-import com.freddiemac.scc.utils.PropertyRetriever;
-import com.freddiemac.scc.entities.EventProcessLog;
-import com.freddiemac.scc.entities.EventType;
-import com.freddiemac.scc.model.PropContainer;
+import com.freddiemac.scc.utils.PropertyRetriever
+import com.freddiemac.scc.entities.EventProcessLog
+import com.freddiemac.scc.entities.EventType
+import com.freddiemac.scc.model.PropContainer
 import com.freddiemac.scc.model.PoolSearch
-import com.freddiemac.scc.entities.Status;
+import com.freddiemac.scc.entities.Status
+
+ 
 
 class CollapseController {
 
@@ -24,7 +26,7 @@ class CollapseController {
 			return
 		}
 
-		def m = searchService.searchPool(params.cusipIdentifier, params.poolNumber)
+		def m = searchService.searchPool(poolSearch.cusipIdentifier, poolSearch.poolNumber)
 		if (!m.success) {
 			if (params.cusipIdentifier)
 				flash.error =  message(code: 'Collapse.controller.search.error1', args: [params.cusipIdentifier])
