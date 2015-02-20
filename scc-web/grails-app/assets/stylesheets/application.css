@@ -12,7 +12,7 @@
 */
 
 body {
-    font-size: 13px;
+    font-size: 13px;  
 }
 
 .header {
@@ -287,3 +287,66 @@ background-color: #FFBABA;
 //background-image: url('error.png');
 }
 
+
+/* jeff's startup work */
+/*
+Freddie Mac Colors
+#0462aa blue
+#4fa500 green
+#0093dd ltblue
+*/
+
+body {margin:5px; padding:0}
+header {margin-bottom:2px}
+
+header #user {
+	background-color:black; 
+	color:white; 
+	padding:2px 8px; 
+	margin-bottom:5px;
+}
+header #brand {
+	font-size:1.5em;
+	font-weight:bold;
+	background: #00368E url(../images/generic_app_hdr_bg.gif) no-repeat 145px top;
+	color:white;
+	margin:0;
+	padding:0;
+	height:82px;
+}
+header #logo  {
+	background:  url(../images/freddie_mac_logo.gif) no-repeat  ;
+	height:82px;
+	width:145px;
+ 	border-right:5px solid white;
+	float:left;  
+	margin:0; padding:0
+}
+header h1 {
+	margin:0; padding:25px 0 0 175px; font-size:1.3em; vertical-align:middle
+}
+
+header a {
+	color:white; text-decoration:none
+}
+header hr {
+	color:black; margin:5px 0; height:5px; color:black; background-color:black
+} 
+
+
+h2 {color:#D97600}
+footer {
+	color:gray; 
+	padding:2px 8px;
+	margin-top:10px;
+	margin-bottom:4px;
+}
+footer a {color:gray; text-decoration:none}
+
+#pagination, #poolJump {text-align:right; margin:10px}
+
+.oversized {overflow:auto; margin:0 10px}
+
+.number{text-align:right}
+
+.container-fluid { overflow-x: hidden;}

@@ -17,39 +17,30 @@
     <g:layoutHead/>
 	</head>
 	<body>
-    <div class="header">
-        <div class="container">
-             <div class="row">
-                 <div class="col-sm-2">
-                     <div class="logo">
-                       <a href="/"><asset:image src="logo.png"/></a>
-                     </div>
-                 </div>
-                 <div class="col-sm-7">
-                     <div class="product"><h3>Securitization Control Center</h3></div>
-                 </div>
+     
+ 	<header>
+		<div id="user" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6"><a href="#">Home</a></div>
+				<div class="col-xs-6 text-right">Logged as X1234</div>
+			</div>
+		</div>
 
-                 <div class="col-sm-3">
-                     
-                 </div>
-             </div>
-
-
-        </div>
-
-
-
-
-    </div>
+		<div id="brand">
+			<a href="http://freddiemac.com"><span id="logo"> </span></a><h1>Securitization Control Center</h1>
+		</div>
+		<hr />
+	</header>
 
     <div class="container mainbody">
         <g:layoutBody/>
     </div>
-		<div class="footer" role="contentinfo">
-        <div class="container">
-        &copy; Freddie Mac 2015
-        </div>
-       </div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+
+
+	<footer role="contentinfo">
+        &copy; Freddie Mac 2015    
+	</footer>
+
+	<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>
