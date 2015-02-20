@@ -28,10 +28,10 @@ class CollapseController {
 
 		def m = searchService.searchPool(poolSearch.cusipIdentifier, poolSearch.poolNumber)
 		if (!m.success) {
-			if (params.cusipIdentifier)
-				flash.error =  message(code: 'Collapse.controller.search.error1', args: [params.cusipIdentifier])
+			if (poolSearch.cusipIdentifier)
+				flash.error =  message(code: 'Collapse.controller.search.error1', args: [poolSearch.cusipIdentifier])
 			else
-				flash.error =  message(code: 'Collapse.controller.search.error2', args: [params.poolNumber])
+				flash.error =  message(code: 'Collapse.controller.search.error2', args: [poolSearch.poolNumber])
 			render view: 'index'
 		} else {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
