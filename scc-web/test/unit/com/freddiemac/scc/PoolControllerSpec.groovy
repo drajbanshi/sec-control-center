@@ -66,6 +66,7 @@ class PoolControllerSpec extends Specification {
 		view == "/pool/index"
 	}
 
+	@Unroll
 	def "search validation works with #cusip, #poolid"(String cusip, String poolid) {
 		given:
 		PoolSearch poolSearch = new PoolSearch(cusipIdentifier: cusip, poolNumber: poolid)
@@ -87,6 +88,7 @@ class PoolControllerSpec extends Specification {
 		"SSSSSSSSSS"| "SSSSSSSSSS"
 	}
 
+	@Unroll
 	def "search with valid params and pool available works"(String cusip, String poolid, boolean collapsed) {
 		given:
 		PoolSearch poolSearch = new PoolSearch(cusipIdentifier: cusip, poolNumber: poolid)
@@ -109,6 +111,7 @@ class PoolControllerSpec extends Specification {
 		"CUSIP1234" | "" || true
 	}
 
+	@Unroll
 	void "valid cusip set but Pool Unavailable"(String cusip, String poolid, String err) {
 		when:
 		controller.search(new PoolSearch(cusipIdentifier: cusip, poolNumber: poolid))
