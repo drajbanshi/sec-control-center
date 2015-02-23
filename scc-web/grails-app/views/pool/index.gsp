@@ -25,7 +25,7 @@
         </g:hasErrors>      
         
         
-	<g:form controller="collapse" action="search" class="form-inline">
+	<g:form controller="pool" action="search" class="form-inline">
             <div>
             <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
 		<label>Security CUSIP Identifier :</label>
@@ -61,9 +61,11 @@
 				</g:each>				
 			</ol>
 		</div>
-		<g:form controller="collapse" action="collapse">
+		<g:form controller="pool" action="collapse">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
+			<g:hiddenField name="cusipIdentifier" value="${poolSearch.cusipIdentifier}" />
+			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
 			<button class="" type="submit"
 				onclick="return confirm('Are you sure you want to collapse this pool?');">
 				<i class="fa fa-close"> </i> Collapse

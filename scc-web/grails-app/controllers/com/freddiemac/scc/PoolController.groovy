@@ -29,27 +29,27 @@ class PoolController {
 				flash.error =  message(code: 'Collapse.controller.search.error1', args: [poolSearch.cusipIdentifier])
 			else
 				flash.error =  message(code: 'Collapse.controller.search.error2', args: [poolSearch.poolNumber])
-			render view: 'index'
+			render view: 'index', model: [poolSearch:poolSearch]
 		} else {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
 			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
 			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
 
 			def isCollapsed = (secIssueDt && !secIssueDt.isEmpty()) || eventLogService.isEventProcessedForCusip(cusip)
-			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip]
+			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch]
 		}
 	}
 
 
 	def collapse() {
-		if(params.reqPoolNum && params.reqCUSIP) {
-			if(dispatchService.collapsePool(params.reqPoolNum, params.reqCUSIP)) {
-				flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusipIdentifier])
+		if(params.poolid && params.cusip) {
+			if(dispatchService.collapsePool(params.poolid, params.cusip)) {
+				flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusip])
 			} else {
-				flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.cusipIdentifier])
+				flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.cusip])
 			}
 		} else {
-			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusipIdentifier])
+			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusip])
 		}
 		redirect action: "search", params:params
 	}
