@@ -17,10 +17,10 @@ class XmlTemplatingService {
 
 	PageRenderer groovyPageRenderer
 
-	String generateCollapseEvent(String poolIdentifer) {
+	String generateCollapseEvent(String poolIdentifer, String poolType) {
 		Calendar c = Calendar.getInstance()
 		c.setTimeZone(TimeZone.getTimeZone("UTC"))
 		String dtime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(c.getTime())
-		return groovyPageRenderer.render([template: "/xmltemplates/collapse",model : [poolIdentifer: poolIdentifer,eventTimeStamp:dtime , messageTimeStamp: dtime, messageIdentifier: UUID.randomUUID().toString(), eventIdentifier: UUID.randomUUID().toString()]])
+		return groovyPageRenderer.render([template: "/xmltemplates/collapse",model : [poolIdentifer: poolIdentifer, poolType: poolType, eventTimeStamp:dtime , messageTimeStamp: dtime, messageIdentifier: UUID.randomUUID().toString(), eventIdentifier: UUID.randomUUID().toString()]])
 	}
 }

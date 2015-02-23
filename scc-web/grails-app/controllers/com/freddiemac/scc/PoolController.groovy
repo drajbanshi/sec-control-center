@@ -44,7 +44,8 @@ class PoolController {
 
 	def collapse() {
 		if(params.poolid && params.cusip) {
-			if(dispatchService.collapsePool(params.poolid, params.cusip)) {
+                    println "pooltype: "+params.poolType
+			if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
 				flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusip])
 			} else {
 				flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.cusip])

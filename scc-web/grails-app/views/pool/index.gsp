@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta name="layout" content="main">
+<script type="text/javascript" src="/scc-web/assets/poolsearch.js"></script>
 <title>
 	${message(code: 'PoolDetails.page')}
 </title>
@@ -34,14 +35,14 @@
 			<span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
 				<label>
 					${message(code: 'PoolDetails.page.input.poolnumber')} :
-			</label> <input type="text" class="form-control" name="poolNumber"
+			</label> <input type="text" id="poolNumber" maxlength="10" size="10" class="form-control" name="poolNumber"
 				aria-label="Enter Pool ID ..."
 				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
 			</span> 
                                 <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
 				<label>
 					${message(code: 'PoolDetails.page.input.securitycusipidentifier')} :
-			</label> <input type="text" class="form-control" name="cusipIdentifier"
+			</label> <input type="text" id="cusipIdentifier" maxlength="10" size="10" class="form-control" name="cusipIdentifier"
 				aria-label="Enter CUSIP Identifier..."
 				value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
 			</span> <span><button class="btn btn-primary" type="submit">
@@ -76,6 +77,7 @@
 			<g:hiddenField name="cusipIdentifier"
 				value="${poolSearch.cusipIdentifier}" />
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
+                        <g:hiddenField name="poolType" value="${poolType}" />
 			<button class="" type="submit"
 				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm')}');">
 				<i class="fa fa-close"> </i>
