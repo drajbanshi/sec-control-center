@@ -1,15 +1,10 @@
 package com.freddiemac.scc
 
-import com.freddiemac.scc.entities.EventProcessLog;
-import com.freddiemac.scc.entities.EventType;
-import com.freddiemac.scc.entities.Status;
-import com.freddiemac.service.event.api.EventNotification
-import com.freddiemac.service.event.model.BusinessDataType
-import com.freddiemac.service.event.model.EventContainerType;
-import com.freddiemac.service.event.model.Events
+import groovy.xml.XmlUtil
 
-import grails.transaction.Transactional
-import groovy.xml.XmlUtil;
+import com.freddiemac.scc.entities.EventType
+import com.freddiemac.service.event.api.EventNotification
+import com.freddiemac.service.event.model.Events
 
 
 class DispatchService {
@@ -24,8 +19,7 @@ class DispatchService {
 	}
 
 	boolean collapsePool(String poolId, String cusip) {
-		def b= eventLogService.logEvent(cusip, EventType.COLLAPSE)
-		if(!b) {
+		if(!eventLogService.logEvent(cusip, EventType.COLLAPSE)) {
 			log.error("Collapse event already initiated for " + cusip)
 			return false
 		}

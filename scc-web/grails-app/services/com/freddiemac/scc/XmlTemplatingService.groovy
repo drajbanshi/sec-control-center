@@ -1,17 +1,8 @@
 package com.freddiemac.scc
 
-import java.text.DateFormat;
+import grails.gsp.PageRenderer
+
 import java.text.SimpleDateFormat
-
-import javax.xml.datatype.DatatypeFactory;
-
-import org.codehaus.groovy.grails.web.pages.GroovyPagesTemplateEngine;
-
-import com.sun.xml.internal.ws.api.pipe.Engine;
-
-import grails.gsp.PageRenderer;
-import grails.transaction.Transactional
-import groovy.text.XmlTemplateEngine;
 
 class XmlTemplatingService {
 

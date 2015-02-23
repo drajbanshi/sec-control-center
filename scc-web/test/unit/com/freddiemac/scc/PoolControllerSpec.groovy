@@ -2,11 +2,8 @@
 
 package com.freddiemac.scc
 
-import org.apache.commons.validator.routines.checkdigit.CUSIPCheckDigit;
-
-import grails.test.mixin.TestFor
 import spock.lang.Specification
-import spock.lang.Unroll;
+import spock.lang.Unroll
 
 import com.freddiemac.scc.entities.EventProcessLog
 import com.freddiemac.scc.entities.EventType

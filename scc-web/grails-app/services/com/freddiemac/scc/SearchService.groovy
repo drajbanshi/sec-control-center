@@ -3,6 +3,7 @@ package com.freddiemac.scc
 import com.freddiemac.scc.utils.PropertyRetriever;
 
 import wslite.soap.SOAPClient
+import wslite.soap.SOAPClientException;
 
 
 class SearchService {
@@ -28,7 +29,8 @@ class SearchService {
 				return [success: false, errorMessage: p.ErrorMessage,errorCode: p.ErrorCode ]
 			}
 			return [success: true, result: PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.path, response.getBody())]
-		} catch (Exception e) {
+		} catch (SOAPClientException e) {
+			log.error(e)
 			return [success: false, errorMessage: "Service down/Unavailable",errorCode: "" ]
 		}
 	}
