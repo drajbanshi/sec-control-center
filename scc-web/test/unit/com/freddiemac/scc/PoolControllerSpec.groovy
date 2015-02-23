@@ -41,8 +41,8 @@ class PoolControllerSpec extends Specification {
 		controller.searchService = searchService
 
 		def dispatchService = Mock(DispatchService)
-		dispatchService.collapsePool("PPPPPPP","CUSIP2222") >> false
-		dispatchService.collapsePool("POOL2222","CCCCCC") >> true
+		dispatchService.collapsePool("PPPPPPP","CUSIP2222",_) >> false
+		dispatchService.collapsePool("POOL2222","CCCCCC",_) >> true
 		
 		controller.dispatchService = dispatchService
 

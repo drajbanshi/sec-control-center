@@ -19,15 +19,15 @@ class DispatchService {
 	}
 
 	boolean collapsePool(String poolId, String cusip, String poolType) {
-                if(!eventLogService.logEvent(cusip, EventType.COLLAPSE)) {
+		if(!eventLogService.logEvent(cusip, EventType.COLLAPSE)) {
 			log.error("Collapse event already initiated for " + cusip)
 			return false
 		}
-		
+
 		String eventXml = xmlTemplatingService.generateCollapseEvent(poolId, poolType)
 		EventNotification en = new EventNotification()
 		Events events = en.createEventFromXML(eventXml)
-                println "events: "+events.toString()
+		println "events: "+events.toString()
 		log.info("dispatching collapse event")
 		try {
 			en.notifyEvent(events)
