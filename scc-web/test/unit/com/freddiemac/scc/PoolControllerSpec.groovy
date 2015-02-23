@@ -44,8 +44,9 @@ class PoolControllerSpec extends Specification {
 		controller.searchService = searchService
 
 		def dispatchService = Mock(DispatchService)
-		dispatchService.collapsePool("CUSIP2222","PPPPPPP") >> true
-		dispatchService.collapsePool(_,"POOL2222") >> false
+		dispatchService.collapsePool("PPPPPPP","CUSIP2222") >> false
+		dispatchService.collapsePool("POOL2222","CCCCCC") >> true
+		
 		controller.dispatchService = dispatchService
 
 		def eventLogService = Mock(EventLogService)
@@ -53,7 +54,6 @@ class PoolControllerSpec extends Specification {
 		eventLogService.isEventProcessedForCusip("CUSIP2222") >> false
 		eventLogService.logEvent("CUSIP1234", _) >> new EventProcessLog(cusip: "CUSIP1234", eventType: EventType.COLLAPSE,status: Status.INITIALIZED)
 		eventLogService.isEventProcessedForCusip("CUSIP1234") >> true
-		controller.eventLogService = eventLogService
 		controller.eventLogService = eventLogService
 	}
 
@@ -138,7 +138,7 @@ class PoolControllerSpec extends Specification {
 		where:
 		cusip | poolid || err
 		""    | "" ||  'Collapse.controller.collapse.fail'
-		"CUSIP2222" | "PPPPPPP" ||  null
-		"CCCCCC" | "POOL2222" ||  'Collapse.controller.collapse.error'
+		"CCCCCC" | "POOL2222" ||  null
+		"CUSIP2222" | "PPPPPPP" ||  'Collapse.controller.collapse.error'
 	}
 }
