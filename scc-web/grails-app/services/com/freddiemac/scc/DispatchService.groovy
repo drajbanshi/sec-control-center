@@ -27,7 +27,6 @@ class DispatchService {
 		String eventXml = xmlTemplatingService.generateCollapseEvent(poolId, poolType)
 		EventNotification en = new EventNotification()
 		Events events = en.createEventFromXML(eventXml)
-                println "events: "+events.toString()
 		log.info("dispatching collapse event")
 		try {
 			en.notifyEvent(events)
