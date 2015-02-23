@@ -26,6 +26,7 @@ class DispatchService {
 	boolean collapsePool(String poolId, String cusip) {
 		def b= eventLogService.logEvent(cusip, EventType.COLLAPSE)
 		if(!b) {
+			log.error("Collapse event already initiated for " + cusip)
 			return false
 		}
 		
