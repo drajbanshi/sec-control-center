@@ -72,7 +72,8 @@
 				</g:each>
 			</ol>
 		</div>
-		<g:form controller="pool" action="collapse">
+		<g:if test="${!isCollapsed}">
+			<g:form controller="pool" action="collapse">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
 			<g:hiddenField name="cusipIdentifier"
@@ -84,7 +85,9 @@
 				${message(code: 'PoolDetails.page.collapse.submit')}
 			</button>
 		</g:form>
-
+			
+		</g:if>
+		
 	</g:if>
 
 
