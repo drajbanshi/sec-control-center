@@ -129,8 +129,8 @@ class PoolControllerSpec extends Specification {
 	@Unroll
 	void "collapse pool works with validation"(String cusip, String poolid, String err) {
 		given:
-		params.reqCUSIP = cusip
-		params.reqPoolNum = poolid
+		params.cusip = cusip
+		params.poolid = poolid
 		
 		when:
 		controller.collapse()
