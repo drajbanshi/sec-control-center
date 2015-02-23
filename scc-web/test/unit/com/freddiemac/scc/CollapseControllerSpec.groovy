@@ -23,7 +23,7 @@ class CollapseControllerSpec extends Specification {
 	}
 	
 	
-
+    def poolSearchCmd
     def setup() {
 		def searchService = Mock(SearchService)
                 def eventLogService = Mock(EventLogService)
@@ -40,6 +40,8 @@ class CollapseControllerSpec extends Specification {
 		dispatchService.collapsePool("POOL12345","CUSIP1111") >> true
                 dispatchService.collapsePool("POOL7899","CUSIP7899") >> false
 		controller.dispatchService = dispatchService
+                
+                poolSearchCmd = mockCommandObject(PoolSearch)
     }
 	
 	
@@ -115,6 +117,117 @@ class CollapseControllerSpec extends Specification {
 		
                 then:
                 flash.error == 'Collapse.controller.collapse.fail'
-	}                
+	}
+        
+        void "testing the command validation for valid cusip"() {
+            when:
+            def poolSearchCmd = mockCommandObject(PoolSearch)
+            poolSearchCmd.cusipIdentifier = 'CUSIP1111'
+            poolSearchCmd.poolNumber = ''
+            poolSearchCmd.validate()
+            controller.search(poolSearchCmd)    
+            
+            then:
+            ''
+        }    
+        
+        void "testing the command validation for cusip with more than 10 characters in length"() {
+            when:
+            def poolSearchCmd = mockCommandObject(PoolSearch)
+            poolSearchCmd.cusipIdentifier = 'CUSIP1111222222'
+            poolSearchCmd.poolNumber = ''
+            def response = poolSearchCmd.validate()
+            //controller.search(poolSearchCmd)    
+            
+            then:
+            response == false
+            poolSearchCmd.errors != null
+            //'PoolSearch.searchCriteria.cusipIdentifier.size'
+        }        
+        
+        void "testing the command validation for cusip with special characters"() {
+            when:
+            def poolSearchCmd = mockCommandObject(PoolSearch)
+            poolSearchCmd.cusipIdentifier = 'CUS&^%&^%22222'
+            poolSearchCmd.poolNumber = ''
+            def response = poolSearchCmd.validate()
+            //controller.search(poolSearchCmd)    
+            
+            then:
+            response == false
+            poolSearchCmd.errors != null
+            //'PoolSearch.searchCriteria.cusipIdentifier.specialchar'
+        }
+        
+        void "testing the command validation for valid pool number"() {
+            when:
+            def poolSearchCmd = mockCommandObject(PoolSearch)
+            poolSearchCmd.cusipIdentifier = ''
+            poolSearchCmd.poolNumber = 'POOL12345'
+            poolSearchCmd.validate()
+            controller.search(poolSearchCmd)    
+            
+            then:
+            ''
+        }    
+        
+        void "testing the command validation for pool number with more than 10 characters in length"() {
+            when:
+            def poolSearchCmd = mockCommandObject(PoolSearch)
+            poolSearchCmd.cusipIdentifier = ''
+            poolSearchCmd.poolNumber = 'POOL123454545353'
+            def response = poolSearchCmd.validate()
+            //controller.search(poolSearchCmd)    
+            
+            then:
+            response == false
+            poolSearchCmd.errors != null
+            //'PoolSearch.searchCriteria.poolNumber.size'
+        }        
+        
+        void "testing the command validation for pool number with special characters"() {
+            when:
+            def poolSearchCmd = mockCommandObject(PoolSearch)
+            poolSearchCmd.cusipIdentifier = ''
+            poolSearchCmd.poolNumber = 'POO#$*(#*545353'
+            def response = poolSearchCmd.validate()
+            //controller.search(poolSearchCmd)    
+            
+            then:
+            response == false
+            poolSearchCmd.errors != null
+            //'PoolSearch.searchCriteria.poolNumber.specialchar'
+        }    
+        
+        void "testing the command validation for both cusip & pool number empty"() {
+            when:
+            
+            poolSearchCmd.cusipIdentifier = ''
+            poolSearchCmd.poolNumber = ''
+            def response = poolSearchCmd.validate()
+            //controller.search(poolSearchCmd)    
+            
+            then:
+            response == false
+            poolSearchCmd.errors != null
+            //model.poolSearch.errors.get(1) == 'PoolSearch.searchCriteria.atleastonerequired'
+            //response == 'PoolSearch.searchCriteria.atleastonerequired'
+        }        
+        
+        void "testing the command validation for both cusip & pool number entered"() {
+            when:
+            //def poolSearchCmd = mockCommandObject(PoolSearch)
+            poolSearchCmd.cusipIdentifier = 'CUSIP1111'
+            poolSearchCmd.poolNumber = 'POOL12345'
+            def response = poolSearchCmd.validate()
+            //controller.search(poolSearchCmd)    
+            
+            then:
+            response == false
+            poolSearchCmd.errors != null
+            //model.poolSearch.errors == ['PoolSearch.searchCriteria.bothentered']
+            //poolSearchCmd.errors == ['PoolSearch.searchCriteria.bothentered']
+            //response.text == 'PoolSearch.searchCriteria.bothentered'
+        }        
     
 }
