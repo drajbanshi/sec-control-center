@@ -23,6 +23,7 @@
 				        <PayloadReferenceType>FILE</PayloadReferenceType>
 				        <RequestEffectiveDateTime>${eventTimeStamp}</RequestEffectiveDateTime>
 				        <BusinessEventTimestamp>${eventTimeStamp}</BusinessEventTimestamp>
+				        <PoolType>${poolType}</PoolType>
 				      </BusinessContext>
 					    <BusinessData>
 							   <CspSecIssuanceReqContentSet:CspSecIssuanceReqContentSet xmlns:CspSecIssuanceReqContentSet="http://www.freddiemac.com/cdm">

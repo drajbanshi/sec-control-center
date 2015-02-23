@@ -9,7 +9,7 @@ class TemplatingServiceIntegrationSpec extends IntegrationSpec {
     void "test collapse event xml"() {
 		when:
 		String poolId = "abcdef"
-		String xml = xmlTemplatingService.genearteCollapseEvent(poolId)
+		String xml = xmlTemplatingService.generateCollapseEvent(poolId)
 		print xml
 		then:
 		assert xml != null && !xml.isEmpty()

@@ -46,7 +46,7 @@ class PoolController {
 			if(dispatchService.collapsePool(params.reqPoolNum, params.reqCUSIP)) {
 				flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusipIdentifier])
 			} else {
-				flash.error = "Unable to collapse"
+				flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.cusipIdentifier])
 			}
 		} else {
 			flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusipIdentifier])

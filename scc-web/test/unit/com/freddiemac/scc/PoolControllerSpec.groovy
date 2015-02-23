@@ -44,7 +44,8 @@ class PoolControllerSpec extends Specification {
 		controller.searchService = searchService
 
 		def dispatchService = Mock(DispatchService)
-		dispatchService.collapsePool(_,_) >> true
+		dispatchService.collapsePool("CUSIP2222","PPPPPPP") >> true
+		dispatchService.collapsePool(_,"POOL2222") >> false
 		controller.dispatchService = dispatchService
 
 		def eventLogService = Mock(EventLogService)
@@ -120,5 +121,24 @@ class PoolControllerSpec extends Specification {
 		cusip | poolid || err
 		"ssss"    | "" ||  'Collapse.controller.search.error1'
 		"" | "tttt" ||  'Collapse.controller.search.error2'
+	}
+	
+	@Unroll
+	void "collapse pool works with validation"(String cusip, String poolid, String err) {
+		given:
+		params.reqCUSIP = cusip
+		params.reqPoolNum = poolid
+		
+		when:
+		controller.collapse()
+		
+		then:
+		flash.error == err
+		
+		where:
+		cusip | poolid || err
+		""    | "" ||  'Collapse.controller.collapse.fail'
+		"CUSIP2222" | "PPPPPPP" ||  null
+		"CCCCCC" | "POOL2222" ||  'Collapse.controller.collapse.error'
 	}
 }
