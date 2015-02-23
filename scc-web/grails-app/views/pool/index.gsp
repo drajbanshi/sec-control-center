@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>
-		${message(code: 'PoolDetails.page.header.title')}
+		${message(code: 'PoolDetails.page.header.title')} <g:if test="${poolType}"> - ${poolType} </g:if>
 	</h2>
 	<br />
 	<g:if test="${flash.message}">
@@ -31,15 +31,14 @@
 
 	<g:form controller="pool" action="search" class="form-inline">
 		<div>
-			<span
-				class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
+			<span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
 				<label>
 					${message(code: 'PoolDetails.page.input.poolnumber')} :
 			</label> <input type="text" class="form-control" name="poolNumber"
 				aria-label="Enter Pool ID ..."
 				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
-			</span> <span
-				class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
+			</span> 
+                                <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
 				<label>
 					${message(code: 'PoolDetails.page.input.securitycusipidentifier')} :
 			</label> <input type="text" class="form-control" name="cusipIdentifier"
@@ -57,9 +56,7 @@
 		<div id="show-MBSData" class="content scaffold-show" role="main">
 
 			<hr />
-			<h3>
-				${message(code: 'PoolDetails.section.pooldetails.title')}
-			</h3>
+
 			<ol class="property-list mbsdata">
 				<g:each in="${result}" var="item">
 
