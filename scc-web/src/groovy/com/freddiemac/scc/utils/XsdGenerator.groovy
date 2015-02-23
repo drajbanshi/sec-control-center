@@ -32,7 +32,6 @@ class XsdGenerator {
 		def parents = []
 		def notfounds = []
 		def keys = [:]
-		def notMatching
 		elements.each { element, val ->
 
 			def ent = gpath.complexType.find { it['@name'] == val }
