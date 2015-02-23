@@ -11,10 +11,8 @@ class XsdGenerator {
 			"PoolIdentifier":"Pool",
 			"MBSMortgageType": "MBS",
 			"MBSPoolPrefixCode": "MBS",
-			"ABARoutingAndTransitIdentifier": "FinancialInstitution",
 			"FinancialInstitutionAccountSubaccountName": "FinancialInstitutionAccount",
 			"OrganizationName":"Organization",
-			"FinancialInstitutionTelegraphicAbbreviationName":"PartyFinancialInstitution",
 			"ABARoutingAndTransitIdentifier":"FinancialInstitution",
 			"FinancialInstitutionTelegraphicAbbreviationName":"FinancialInstitution",
 			"SecurityWireFaceValueAmount":"SecurityWire",
@@ -34,7 +32,6 @@ class XsdGenerator {
 		def parents = []
 		def notfounds = []
 		def keys = [:]
-		def notMatching
 		elements.each { element, val ->
 
 			def ent = gpath.complexType.find { it['@name'] == val }

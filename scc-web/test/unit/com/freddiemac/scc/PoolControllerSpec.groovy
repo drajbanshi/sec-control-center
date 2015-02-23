@@ -2,11 +2,8 @@
 
 package com.freddiemac.scc
 
-import org.apache.commons.validator.routines.checkdigit.CUSIPCheckDigit;
-
-import grails.test.mixin.TestFor
 import spock.lang.Specification
-import spock.lang.Unroll;
+import spock.lang.Unroll
 
 import com.freddiemac.scc.entities.EventProcessLog
 import com.freddiemac.scc.entities.EventType
@@ -67,7 +64,7 @@ class PoolControllerSpec extends Specification {
 	}
 
 	@Unroll
-	def "search validation works with #cusip, #poolid"(String cusip, String poolid) {
+	def "search validation works with cusip=#cusip, poolid=#poolid"(String cusip, String poolid) {
 		given:
 		PoolSearch poolSearch = new PoolSearch(cusipIdentifier: cusip, poolNumber: poolid)
 		poolSearch.validate()
@@ -89,7 +86,7 @@ class PoolControllerSpec extends Specification {
 	}
 
 	@Unroll
-	def "search with valid params and pool available works"(String cusip, String poolid, boolean collapsed) {
+	def "search with valid params and pool available works (cusip=#cusip, poolid=#poolid)"(String cusip, String poolid, boolean collapsed) {
 		given:
 		PoolSearch poolSearch = new PoolSearch(cusipIdentifier: cusip, poolNumber: poolid)
 		poolSearch.validate()
@@ -112,7 +109,7 @@ class PoolControllerSpec extends Specification {
 	}
 
 	@Unroll
-	void "valid cusip set but Pool Unavailable"(String cusip, String poolid, String err) {
+	void "valid cusip set but Pool Unavailable(cusip=#cusip, poolid=#poolid, err = #err)"(String cusip, String poolid, String err) {
 		when:
 		controller.search(new PoolSearch(cusipIdentifier: cusip, poolNumber: poolid))
 
@@ -127,7 +124,7 @@ class PoolControllerSpec extends Specification {
 	}
 	
 	@Unroll
-	void "collapse pool works with validation"(String cusip, String poolid, String err) {
+	void "collapse pool works with validation (cusip=#cusip, poolid=#poolid, err = #err)"(String cusip, String poolid, String err) {
 		given:
 		params.cusip = cusip
 		params.poolid = poolid
