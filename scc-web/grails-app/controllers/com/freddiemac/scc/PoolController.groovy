@@ -25,11 +25,20 @@ class PoolController {
 
         def m = searchService.searchPool(poolSearch.cusipIdentifier, poolSearch.poolNumber)
         if (!m.success) {
-            if (poolSearch.cusipIdentifier)
-            flash.error =  message(code: 'Collapse.controller.search.error1', args: [poolSearch.cusipIdentifier])
-            else
-            flash.error =  message(code: 'Collapse.controller.search.error2', args: [poolSearch.poolNumber])
-            render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier]
+            if (m.errorMessage.equals(message(code: 'Collapse.controller.search.error3'))) {
+                flash.error =  message(code: 'Collapse.controller.search.error3')
+                render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier]
+                return
+            }
+            def poolErrorField = ""
+            if (poolSearch.cusipIdentifier) {
+                poolSearch.errors.rejectValue('cusipIdentifier', 'Collapse.controller.search.error1') 
+                poolErrorField = "cusipIdentifier" 
+            } else {
+                poolSearch.errors.rejectValue('poolNumber', 'Collapse.controller.search.error2') 
+                poolErrorField = "poolNumber"
+            }
+            render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
         } else {
             String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
             String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)

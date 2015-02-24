@@ -36,7 +36,7 @@
 				<label>
 					${message(code: 'PoolDetails.page.input.poolnumber')} :
 			</label> 
-                        <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','error')}'>
+                        <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
                                         <input type="text" id="poolNumber" maxlength="10" size="10" class="form-control" name="poolNumber"
 				aria-label="Enter Pool ID ..."
 				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
@@ -44,14 +44,15 @@
 				<label>
 					${message(code: 'PoolDetails.page.input.securitycusipidentifier')} :
 			</label> 
-                        <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','error')}'>
+                        <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
                                         <input type="text" id="cusipIdentifier" maxlength="10" size="10" class="form-control" name="cusipIdentifier"
 				aria-label="Enter CUSIP Identifier..."
 				value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
-			</span> <span><button class="btn btn-primary" type="submit">
+                        </span> <span><button class="btn btn-primary" id="searchBtn" type="submit" onclick="showError()">
 					<i class="fa fa-search"></i>
 					${message(code: 'PoolDetails.page.search.submit')}
 				</button> </span>
+                        <g:hiddenField name="poolError" value="${poolErrorField}" />
 		</div>
 	</g:form>
 
