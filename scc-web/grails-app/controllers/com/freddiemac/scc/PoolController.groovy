@@ -17,7 +17,7 @@ class PoolController {
     }
 
     def search(PoolSearch poolSearch) {
-            def poolErrorField = ""
+        def poolErrorField = ""
         if(poolSearch.hasErrors()) {
             poolSearch.errors.each {
                 if (it.toString().indexOf('cusipIdentifier') > -1) {
@@ -32,19 +32,22 @@ class PoolController {
         }
 
         def m = searchService.searchPool(poolSearch.cusipIdentifier, poolSearch.poolNumber)
+        if (poolSearch.cusipIdentifier) {
+            poolErrorField = "cusipIdentifier" 
+        } else if (poolSearch.poolNumber) {
+            poolErrorField = "poolNumber" 
+        }        
         if (!m.success) {
             if (m.errorMessage.equals(message(code: 'Collapse.controller.search.error3'))) {
                 flash.error =  message(code: 'Collapse.controller.search.error3')
-                render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier]
+                render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField: poolErrorField]
                 return
             }
 
             if (poolSearch.cusipIdentifier) {
                 flash.error =  message(code: 'Collapse.controller.search.error1', args: [poolSearch.cusipIdentifier])
-                poolErrorField = "cusipIdentifier" 
             } else {
                 flash.error =  message(code: 'Collapse.controller.search.error2', args: [poolSearch.poolNumber])
-                poolErrorField = "poolNumber"
             }
             render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
         } else {
