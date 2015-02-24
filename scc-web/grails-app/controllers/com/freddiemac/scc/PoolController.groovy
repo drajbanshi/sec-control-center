@@ -32,10 +32,12 @@ class PoolController {
             }
             def poolErrorField = ""
             if (poolSearch.cusipIdentifier) {
-                poolSearch.errors.rejectValue('cusipIdentifier', 'Collapse.controller.search.error1') 
+                //poolSearch.errors.rejectValue('cusipIdentifier', 'Collapse.controller.search.error1') 
+                flash.error =  message(code: 'Collapse.controller.search.error1', args: [poolSearch.cusipIdentifier])
                 poolErrorField = "cusipIdentifier" 
             } else {
-                poolSearch.errors.rejectValue('poolNumber', 'Collapse.controller.search.error2') 
+                //poolSearch.errors.rejectValue('poolNumber', 'Collapse.controller.search.error2') 
+                flash.error =  message(code: 'Collapse.controller.search.error2', args: [poolSearch.poolNumber])
                 poolErrorField = "poolNumber"
             }
             render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
@@ -52,11 +54,13 @@ class PoolController {
 
 
     def collapse() {
+        def poolErrorField = ""
         if(params.poolid && params.cusip) {
             if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
-                flash.message = message(code: 'Collapse.controller.collapse.success')
+                flash.message = message(code: 'Collapse.controller.collapse.success', args: params.cusipIdentifier)
             } else {
-                flash.error = message(code: 'Collapse.controller.collapse.error')
+                flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.poolid])
+                //poolErrorField = "cusipIdentifier"
             }
         } else {
             flash.error = message(code: 'Collapse.controller.collapse.fail')

@@ -52,7 +52,6 @@
 					<i class="fa fa-search"></i>
 					${message(code: 'PoolDetails.page.search.submit')}
 				</button> </span>
-                        <g:hiddenField name="poolError" value="${poolErrorField}" />
 		</div>
 	</g:form>
 
