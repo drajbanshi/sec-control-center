@@ -54,12 +54,12 @@ class PoolController {
     def collapse() {
         if(params.poolid && params.cusip) {
             if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
-                flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusip])
+                flash.message = message(code: 'Collapse.controller.collapse.success')
             } else {
-                flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.cusip])
+                flash.error = message(code: 'Collapse.controller.collapse.error')
             }
         } else {
-            flash.error = message(code: 'Collapse.controller.collapse.fail', args: [params.cusip])
+            flash.error = message(code: 'Collapse.controller.collapse.fail')
         }
         redirect action: "search", params:params
     }
