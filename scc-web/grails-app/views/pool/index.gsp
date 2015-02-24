@@ -48,7 +48,7 @@
                                         <input type="text" id="cusipIdentifier" maxlength="10" size="10" class="form-control" name="cusipIdentifier"
 				aria-label="Enter CUSIP Identifier..."
 				value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
-                        </span> <span><button class="btn btn-primary" id="searchBtn" type="submit" onclick="showError()">
+                        </span> <span><button class="btn btn-primary" id="searchBtn" type="submit" >
 					<i class="fa fa-search"></i>
 					${message(code: 'PoolDetails.page.search.submit')}
 				</button> </span>
