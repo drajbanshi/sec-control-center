@@ -17,9 +17,17 @@ class PoolController {
     }
 
     def search(PoolSearch poolSearch) {
-
+            def poolErrorField = ""
         if(poolSearch.hasErrors()) {
-            render view: "/pool/index", model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier]
+            poolSearch.errors.each {
+                if (it.toString().indexOf('cusipIdentifier') > -1) {
+                    poolErrorField="cusipIdentifier"
+                }
+                if (it.toString().indexOf('poolNumber') > -1) {
+                    poolErrorField="poolNumber"
+                }
+            }
+            render view: "/pool/index", model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
             return
         }
 
@@ -30,13 +38,11 @@ class PoolController {
                 render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier]
                 return
             }
-            def poolErrorField = ""
+
             if (poolSearch.cusipIdentifier) {
-                //poolSearch.errors.rejectValue('cusipIdentifier', 'Collapse.controller.search.error1') 
                 flash.error =  message(code: 'Collapse.controller.search.error1', args: [poolSearch.cusipIdentifier])
                 poolErrorField = "cusipIdentifier" 
             } else {
-                //poolSearch.errors.rejectValue('poolNumber', 'Collapse.controller.search.error2') 
                 flash.error =  message(code: 'Collapse.controller.search.error2', args: [poolSearch.poolNumber])
                 poolErrorField = "poolNumber"
             }
@@ -57,10 +63,10 @@ class PoolController {
         def poolErrorField = ""
         if(params.poolid && params.cusip) {
             if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
-                flash.message = message(code: 'Collapse.controller.collapse.success', args: params.cusipIdentifier)
+                flash.message = message(code: 'Collapse.controller.collapse.success', args: [params.cusipIdentifier])
             } else {
                 flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.poolid])
-                //poolErrorField = "cusipIdentifier"
+                poolErrorField = "cusipIdentifier"
             }
         } else {
             flash.error = message(code: 'Collapse.controller.collapse.fail')
