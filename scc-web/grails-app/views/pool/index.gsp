@@ -32,17 +32,20 @@
 
 	<g:form controller="pool" action="search" class="form-inline">
 		<div>
-			<span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
+			
 				<label>
 					${message(code: 'PoolDetails.page.input.poolnumber')} :
-			</label> <input type="text" id="poolNumber" maxlength="10" size="10" class="form-control" name="poolNumber"
+			</label> 
+                        <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','error')}'>
+                                        <input type="text" id="poolNumber" maxlength="10" size="10" class="form-control" name="poolNumber"
 				aria-label="Enter Pool ID ..."
 				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
-			</span> 
-                                <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
+			</span>                                 
 				<label>
 					${message(code: 'PoolDetails.page.input.securitycusipidentifier')} :
-			</label> <input type="text" id="cusipIdentifier" maxlength="10" size="10" class="form-control" name="cusipIdentifier"
+			</label> 
+                        <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','error')}'>
+                                        <input type="text" id="cusipIdentifier" maxlength="10" size="10" class="form-control" name="cusipIdentifier"
 				aria-label="Enter CUSIP Identifier..."
 				value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
 			</span> <span><button class="btn btn-primary" type="submit">
