@@ -259,11 +259,11 @@
 						</PoolDispositionIntentType>
 						<PoolGuaranteedPercent>0.0</PoolGuaranteedPercent>
 						<PoolGuarantyFeeRate>0.0</PoolGuarantyFeeRate>
-						<PoolIdentifier>POOL11111</PoolIdentifier>
+						<PoolIdentifier>POOL33333</PoolIdentifier>
 						<PoolName>PoolName</PoolName>
 						<PoolProductVariationIdentifier>0</PoolProductVariationIdentifier>
 						<PoolPurposeType>PoolPurposeType</PoolPurposeType>
-						<PoolType>CASH</PoolType>
+						<PoolType>GIANT</PoolType>
 						<ProductIdentifier>0</ProductIdentifier>
 						<TemporaryPoolIndicator>TemporaryPoolIndicator
 						</TemporaryPoolIndicator>
@@ -415,7 +415,7 @@
 						<SecurityCouponType>SecurityCouponType</SecurityCouponType>
 						<SecurityCouponTypeConversionDate>2001-01-01
 						</SecurityCouponTypeConversionDate>
-						<SecurityCUSIPIdentifier>CUSIP1111
+						<SecurityCUSIPIdentifier>CUSIP3333
 						</SecurityCUSIPIdentifier>
 						<SecurityFirstInterestAccrualDate>2001-01-01
 						</SecurityFirstInterestAccrualDate>
