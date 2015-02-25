@@ -24,7 +24,7 @@
 		</div>
 	</g:if>
 	<g:hasErrors bean="${poolSearch}">
-		<div class="error">
+		<div class="alert alert-danger" role="status">
 			<g:renderErrors bean="${poolSearch}"  />
 		</div>
 	</g:hasErrors>

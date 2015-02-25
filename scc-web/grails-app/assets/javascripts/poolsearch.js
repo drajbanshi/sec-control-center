@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-$( "#searchBtn" ).click(function() 
+/*$( "#searchBtn" ).click(function() 
     {  
         var cusip = $( "#cusipIdentifier" ).val()
         var poolnumber = $( "#poolNumber" ).val()
@@ -15,7 +15,7 @@ $( "#searchBtn" ).click(function()
         } else {
             
             }
-    });
+    });*/
     
     
     if ($('#poolError').val()=='cusipIdentifier') {
