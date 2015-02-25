@@ -22,6 +22,14 @@ class PoolController {
 		
 	}
 
+	
+	def addExtraFields() {
+		
+	}
+	
+	def showExtraFields() {
+		render template: 'extrafields', model : [xfields: grailsApplication.config.com.freddiemac.searchpool.result.extrafields]
+	}
 
 	def search(PoolSearch poolSearch) {
 		def poolErrorField = ""
