@@ -73,7 +73,7 @@ class PoolController {
             if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
                 flash.message = message(code: 'Collapse.controller.collapse.success', args: [poolErrorField])
             } else {
-                flash.error = message(code: 'Collapse.controller.collapse.error', args: [poolErrorField])                
+                flash.error = message(code: 'Collapse.controller.collapse.fail', args: [poolErrorField])                
             }
         } else {
             flash.error = message(code: 'Collapse.controller.collapse.fail')
