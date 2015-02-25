@@ -64,6 +64,7 @@ grails.project.dependency.resolution = {
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         compile 'com.github.groovy-wslite:groovy-wslite:2.0.0-SNAPSHOT'
 		compile 'com.freddiemac.service:event-notification-utility:1.1.0'
+		compile 'com.microsoft.sqlserver.jdbc:sqljdbc:4.0'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
 		test 'com.github.tomakehurst:wiremock:1.53'
 
