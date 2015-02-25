@@ -64,7 +64,7 @@ class PoolController {
 
     def collapse() {
         def poolErrorField = ""
-        if(params.poolid && params.cusip) {
+        if(params.poolid && params.cusip && params.poolType) {
                 if (params.cusipIdentifier) {
                     poolErrorField = params.cusipIdentifier
                 } else {
