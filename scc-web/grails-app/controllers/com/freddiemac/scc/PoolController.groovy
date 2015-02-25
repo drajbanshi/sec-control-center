@@ -65,15 +65,15 @@ class PoolController {
     def collapse() {
         def poolErrorField = ""
         if(params.poolid && params.cusip) {
-            if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
                 if (params.cusipIdentifier) {
                     poolErrorField = params.cusipIdentifier
                 } else {
                     poolErrorField = params.poolNumber
-                }
+                }            
+            if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
                 flash.message = message(code: 'Collapse.controller.collapse.success', args: [poolErrorField])
             } else {
-                flash.error = message(code: 'Collapse.controller.collapse.error', args: [params.poolid])                
+                flash.error = message(code: 'Collapse.controller.collapse.error', args: [poolErrorField])                
             }
         } else {
             flash.error = message(code: 'Collapse.controller.collapse.fail')
