@@ -25,7 +25,7 @@
 	</g:if>
 	<g:hasErrors bean="${poolSearch}">
 		<div class="error">
-			<g:renderErrors bean="${poolSearch}" as="list" />
+			<g:renderErrors bean="${poolSearch}"  />
 		</div>
 	</g:hasErrors>
 	<br />
