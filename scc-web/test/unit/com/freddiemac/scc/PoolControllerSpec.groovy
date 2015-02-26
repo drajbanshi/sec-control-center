@@ -124,7 +124,7 @@ class PoolControllerSpec extends Specification {
 	}
 	
 	@Unroll
-	void "collapse pool works with validation (cusip=#cusip, poolid=#poolid, err = #err)"(String cusip, String poolid, String err) {
+	void "collapse pool works with validation (cusip=#cusip, poolid=#poolid, err = #err)"(String cusip, String poolid, String pooltype, String err) {
 		given:
 		params.cusip = cusip
 		params.poolid = poolid
@@ -136,9 +136,9 @@ class PoolControllerSpec extends Specification {
 		flash.error == err
 		
 		where:
-		cusip | poolid || err
-		""    | "" ||  'Collapse.controller.collapse.fail'
-		"CCCCCC" | "POOL2222" ||  null
-		"CUSIP2222" | "PPPPPPP" ||  'Collapse.controller.collapse.error'
+		cusip | poolid | pooltype || err
+		""    | "" | "" || 'Collapse.controller.collapse.fail'
+		"CCCCCC" | "POOL2222" | "CASH" ||  'Collapse.controller.collapse.fail'
+		"CUSIP2222" | "PPPPPPP" | "CASH" ||  'Collapse.controller.collapse.fail'
 	}
 }
