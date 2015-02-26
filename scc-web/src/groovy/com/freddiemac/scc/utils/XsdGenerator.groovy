@@ -5,6 +5,47 @@ class XsdGenerator {
 
 	public static void main(String[] args) {
 		XsdGenerator g= new XsdGenerator()
+
+		def extras = ['LoanAmortizationType':'LoanRepaymentRule',
+			'LoanRoleType':'LoanRelationship',
+			'ContractGuarantyFeeRate':'LoanRepaymentRule',
+			'LoanGrossUPBAmount':'LoanPosition',
+			'MBSAmortizationType':'MBS',
+			'MBSBalloonTermCount':'MBSDisclosure',
+			'PoolIdentifier':'Pool',
+			'InterestOnlyTermCount':'MBS',
+			'MBSPoolPrefixCode':'MBS',
+			'MBSExecutionMethodType':'MBS',
+			'ContractExecutionMethodType':'CollateralGroup',
+			'SecurityCUSIPIdentifier':'Security',
+			'FederalReserveSecurityClassCode':'DebtSecurity',
+			'FederalReserveSecurityDescription':'DebtSecurity',
+			'SecurityIssueDate':'SecurityIssuance',
+			'SecurityIssueFaceAmount':'SecurityIssuance',
+			'SecurityFirstPaymentDate':'Security',
+			'ContractualMaturityDate':'Security',
+			'DebtSecurityCouponRate':'SecurityActivity',
+			'MinimumTradeDenominationAmount':'Security',
+			'FinancialInstitutionAccountIdentifier':'FinancialInstitutionAccount',
+			'SecurityFirstEligibleTradeDate':'SecurityIssuance',
+			'AssetBackedSecurityType':'Security',
+			'ProgramIdentifier':'SecuritizationProgram',
+			'LoanInvestorPassThroughRate':'LoanPaymentRate',
+			'SecurityRecordDate':'SecurityActivity',
+			'MBSInterestPaymentFactorRate':'MBSDisclosure',
+			'SecuritizationTrustIdentifier':'SecuritizationTrust',
+			'SecurityPayingAgentIdentifier':'Security',
+			'SecurityBeneficiaryDate':'SecurityActivity',
+			'SecurityTaxRecordDate':'SecurityActivity',
+			'DebtSecurityStatusType':'SecurityActivity',
+			'SecurityIssuerIdentifier':'SecurityIssuer',
+			'PartyRoleType':'PartyRole',
+			'LoanIdentifier':'Loan',
+			'CashTransferInstructionIdentifier':'CashTransferInstruction',
+			'FinancialInstrumentType':'FinancialInstrument',
+			'LoanInvestorRemittanceType':'LoanServicingTerms']
+
+
 		g.generateFromXsd("../stub-server/CDM.xsd", [
 			"LoanAmortizationType" : "Loan",
 			"LoanGrossUPBAmount" : "LoanPosition",
@@ -23,27 +64,42 @@ class XsdGenerator {
 			"FinancialInstitutionAccountIdentifier":"FinancialInstitutionAccount",
 			"SecurityBeneficiaryDate":"SecurityActivity",
 			"SecurityStatusType":"SecurityActivity"
-		])
+		],extras)
 	}
 
 
-	def generateFromXsd(String file,def elements) {
+	def generateFromXsd(String file,Map<String, String> elements, Map<String,String> extras) {
 		def gpath = new XmlSlurper().parse(new File(file))
 		def parents = []
 		def notfounds = []
 		def keys = [:]
-		elements.each { element, val ->
 
-			def ent = gpath.complexType.find { it['@name'] == val }
+		def map = [:]
+		map.putAll(elements)
+		map.putAll(extras)
 
-			if(ent) {
-				def e = ent.all.element.find { it['@name'] == element }
+		def notinjims = [:]
+
+		map.each { element, val ->
+
+
+			
+				def e = gpath.complexType.all.element.find { it['@name'] == element }
 
 				if(e) {
 					def p = e.parent().parent()
 					def ptype = p['@name']
+					if(!ptype.equals(val)) {
+						
+					}
+					if(!elements.containsKey(element)) {
+						notinjims.put("${ptype}.${element}", element)
+						
+					} else {
+						keys.put("${ptype}.${element}", element)
+					
+					}
 
-					keys.put("${ptype}.${element}", element)
 					if(!parents.contains(ptype)) {
 						println "<xs:element name=\"${ptype}\" type=\"${ptype}\"></xs:element>"
 						parents.add(ptype)
@@ -51,17 +107,24 @@ class XsdGenerator {
 				} else {
 					notfounds.add(element)
 				}
-			} else {
-				notfounds.add(element)
-			}
+			
 		}
+
+
+
 		println  "-----NOt founds -----------"
 		notfounds.each { println "key not fouund for ${it}." }
 
 		println "===keys===="
-		StringBuffer sb = new StringBuffer()
+		println generateConfig(keys)
 
-
+	
+		println "----not in jms-----"
+		println generateConfig(notinjims)
+	}
+	
+	private def generateConfig(Map<String,String> keys) {
+		StringBuilder sb = new StringBuilder()
 		keys.each { key,val ->
 			if(sb.length() == 0) {
 				sb.append("[")
@@ -70,12 +133,16 @@ class XsdGenerator {
 			}
 			sb.append("\"${key}\"")
 
-			println "${key}=${val}"
+			println "${key}.label=${convertCamelCase(val)}"
 		}
-
-		sb.append("]")
 		
-		println "----config-----"
-		println sb.toString()
+		return sb.toString()
+
+	}
+	
+	private def convertCamelCase(String inp) {
+		String regex = "([a-z])([A-Z])"
+		String replacement = '$1 $2'
+		return inp.replaceAll(regex, replacement)
 	}
 }

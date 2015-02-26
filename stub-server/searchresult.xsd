@@ -9,15 +9,27 @@
 		<xs:all>
 			<xs:element name="Loan" type="Loan"></xs:element>
 			<xs:element name="LoanPosition" type="LoanPosition"></xs:element>
-			<xs:element name="Pool" type="Pool"></xs:element>
 			<xs:element name="MBS" type="MBS"></xs:element>
-			<xs:element name="FinancialInstitution" type="FinancialInstitution"></xs:element>
 			<xs:element name="FinancialInstitutionAccount" type="FinancialInstitutionAccount"></xs:element>
 			<xs:element name="Organization" type="Organization"></xs:element>
+			<xs:element name="FinancialInstitution" type="FinancialInstitution"></xs:element>
 			<xs:element name="SecurityWire" type="SecurityWire"></xs:element>
 			<xs:element name="Security" type="Security"></xs:element>
 			<xs:element name="SecurityIssuance" type="SecurityIssuance"></xs:element>
 			<xs:element name="SecurityActivity" type="SecurityActivity"></xs:element>
+			<xs:element name="Cash" type="Cash"></xs:element>
+			<xs:element name="LoanRelationship" type="LoanRelationship"></xs:element>
+			<xs:element name="LoanPurchaseContract" type="LoanPurchaseContract"></xs:element>
+			<xs:element name="MBSDisclosure" type="MBSDisclosure"></xs:element>
+			<xs:element name="GuarantyFeeGrid" type="GuarantyFeeGrid"></xs:element>
+			<xs:element name="LoanPaymentRate" type="LoanPaymentRate"></xs:element>
+			<xs:element name="CollateralGroup" type="CollateralGroup"></xs:element>
+			<xs:element name="BulkLoanPurchaseDeal" type="BulkLoanPurchaseDeal"></xs:element>
+			<xs:element name="ContractCounterparty" type="ContractCounterparty"></xs:element>
+			<xs:element name="AbilityToRepayExemption" type="AbilityToRepayExemption"></xs:element>
+			<xs:element name="CashTransferInstruction" type="CashTransferInstruction"></xs:element>
+			<xs:element name="FinancialInstrument" type="FinancialInstrument"></xs:element>
+			<xs:element name="LoanServicingTerms" type="LoanServicingTerms"></xs:element>
 		</xs:all>
 	</xs:complexType>
 
