@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <!--
  * XSD Version:         6.2
- * XSD Version Date:    02/03/2015
+ * XSD Version Date:    02/25/2015
  * Note for V6.2: The following changes were made by Jay Cheng on top of V6.1 that was generated from CDM 6.1:
  * 1. Added an attribute Security Issue Coupon Rate to entity Security Issuance
  * 2. Added an attribute Pool Identifierto entity MBS
  * 3. Added two attributes: Security Original Face Amount and Security Original Coupon Rate to entity Security
  * 4. Added new entity Pool Instrument Position to CDM per MBS’ request.
  * 5. Added new CDM attribute Wire Expected Settlement Date to entity Wire Transfer Transaction for CSP 2550.
- * These changes will be incorporated into the next CDM model release.
+ * 6. Change domain for MBSInterestPaymentFactorRate from FMRate to FMRateExtended.
+ * 7. Changed domain from FM Rate to FM Rate Extended for all Factor Rate attributes mapped in the 4.1.3 interface:
+        MBS Disclosure.MBS Principal Payment Factor Rate
+        MBS Disclosure.MBS Principal Reduction Factor Rate
+        Security Activity.Security Factor Rate
+        MBS Disclosure.MBS Prepayment Penalty Factor Rate
+        MBS Disclosure.MBS Prepayment Penalty Paid Factor Rate (for the consistency with MBS Prepayment Penalty Factor Rate)
+        MBS Disclosure.MBS Interest Payment Factor Rate
+        MBS Disclosure.MBS Negative Amortization Factor Rate
+ * 8. Changed Cash Transfer Instruction.Cash Transfer Instruction Identifier domain to FM Identifier Char  
+ * Those changes above will be incorporated into the next CDM model release.
  * ****************************************************************************
  * ER/Studio Data Architect 9.5 %s XML Schema Generation
  * Company:		Freddie Mac
@@ -6774,7 +6784,7 @@
       <xs:element maxOccurs="1" minOccurs="0" name="CashTransferAfterDueDateDayCount" nillable="true" type="FMCount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="CashTransferFrequencyType" nillable="true" type="TransferFrequencyType"/>
       <xs:element maxOccurs="1" minOccurs="0" name="CashTransferInstructionEffectiveDate" nillable="true" type="FMDate"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="CashTransferInstructionIdentifier" type="FMIdentifierInt"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="CashTransferInstructionIdentifier" type="FMIdentifierChar"/>
       <xs:element maxOccurs="1" minOccurs="0" name="CashTransferInstructionStatusType" nillable="true" type="CashTransferInstructionStatusType"/>
       <xs:element maxOccurs="1" minOccurs="0" name="CashTransferPurposeType" nillable="true" type="CashTransferPurposeType"/>
     </xs:all>
@@ -13044,7 +13054,7 @@
       <xs:element maxOccurs="1" minOccurs="0" name="MBSFactorRate" nillable="true" type="FMRate"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSForeclosureAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSInactiveLoanUPBAmount" nillable="true" type="FMAmount"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="MBSInterestPaymentFactorRate" nillable="true" type="FMRate"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="MBSInterestPaymentFactorRate" nillable="true" type="FMRateExtended"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSLatestMaturityDate" nillable="true" type="FMDate"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSLoanCount" nillable="true" type="FMCount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSLossAmount" nillable="true" type="FMAmount"/>
@@ -13054,22 +13064,22 @@
       <xs:element maxOccurs="1" minOccurs="0" name="MBSMinimumRemainingMaturityMonthCount" nillable="true" type="FMCount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSNegativeAmortizationDecreaseAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSNegativeAmortizationDecreasePaidAmount" nillable="true" type="FMAmount"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="MBSNegativeAmortizationFactorRate" nillable="true" type="FMRate"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="MBSNegativeAmortizationFactorRate" nillable="true" type="FMRateExtended"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSNegativeAmortizationIncreaseAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSNegativeAmortizationIncreasePaidAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPassThroughCalculationType" nillable="true" type="PassThroughCalculationType"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentFactorRate" nillable="true" type="FMRate"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentForeclosureAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentLoanInAccelerationAmount" nillable="true" type="FMAmount"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentPenaltyFactorRate" nillable="true" type="FMRate"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentPenaltyPaidFactorRate" nillable="true" type="FMRate"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentPenaltyFactorRate" nillable="true" type="FMRateExtended"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentPenaltyPaidFactorRate" nillable="true" type="FMRateExtended"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentPremiumAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentPremiumEndDate" nillable="true" type="FMDate"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentREOAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentSpeedCPRPercent" nillable="true" type="FMPercent"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrepaymentSpeedPSAPercent" nillable="true" type="FMPercent"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrincipalPaymentFactorRate" nillable="true" type="FMRate"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrincipalReductionFactorRate" nillable="true" type="FMRate"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrincipalPaymentFactorRate" nillable="true" type="FMRateExtended"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="MBSPrincipalReductionFactorRate" nillable="true" type="FMRateExtended"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrincipalReserveBalanceAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrincipalReserveDepositAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="MBSPrincipalReserveDisbursementAmount" nillable="true" type="FMAmount"/>
@@ -16741,7 +16751,7 @@
       <xs:element maxOccurs="1" minOccurs="0" name="SecurityCouponRate" nillable="true" type="FMRate"/>
       <xs:element maxOccurs="1" minOccurs="0" name="SecurityCurrentFaceAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="SecurityFactorDate" type="FMDate"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="SecurityFactorRate" nillable="true" type="FMRate"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="SecurityFactorRate" nillable="true" type="FMRateExtended"/>
       <xs:element maxOccurs="1" minOccurs="0" name="SecurityIdentifier" type="FinancialInstrumentIdentifier"/>
       <xs:element maxOccurs="1" minOccurs="0" name="SecurityInterestPaymentAmount" nillable="true" type="FMAmount"/>
       <xs:element maxOccurs="1" minOccurs="0" name="SecurityPaymentDate" nillable="true" type="FMDate"/>

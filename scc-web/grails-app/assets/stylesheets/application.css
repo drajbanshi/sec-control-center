@@ -274,6 +274,19 @@ body {
     padding: 5px 0 5px 5px;
 }
 
+.check-field {
+	width: 260px;
+	float: left;
+}
+
+.modal-body {
+	overflow: auto;
+}
+
+.modal-dialog {
+  margin-top: 150px;
+}
+
 
 .error {
 border: 1px solid;

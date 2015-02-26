@@ -22,9 +22,12 @@
 
 					<g:each in="${xfields}" var="f">
 						<div class="check-field">
-							<g:checkBox value="${f}" name="xfield"
+						 
+							<g:checkBox id="${f}" value="${f}" name="xfield"
 								checked="${poolSearch.xfield?.contains(f)}" />
+							 <label for="${f}">
 							<g:message code="${f}.label" />
+						  </label>
 						</div>
 					</g:each>
 				</div>
