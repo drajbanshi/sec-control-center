@@ -6,9 +6,11 @@ class PoolSearch {
 	
 String cusipIdentifier
 String poolNumber
+String[] xfield
 
 static constraints = {
     cusipIdentifier blank:true, nullable: true
+	xfield  nullable: true
     poolNumber blank:true, nullable: true
     def expression = '^[A-Za-z0-9\\d]*$' 
     cusipIdentifier validator: { val ->
