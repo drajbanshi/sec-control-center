@@ -49,7 +49,7 @@
 				<g:hiddenField name="poolError" value="${poolErrorField}" />
 	
 				<g:if test="${result}">
-					<br><button type="button" class="btn btn-xs btn-success" style="margin-top:4px" "data-toggle="modal" data-target="#extraFieldsModal">
+					<br><button type="button" class="btn btn-xs btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
 						<i class="fa fa-plus"> </i> Show More Fields
 					</button>
 				</g:if>
@@ -97,7 +97,7 @@
 					value="${poolSearch.cusipIdentifier}" />
 				<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
 				<g:hiddenField name="poolType" value="${poolType}" />
-				<button class="" type="submit"
+				<button class="btn btn-danger" type="submit"
 					onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm')}');">
 					<i class="fa fa-close"> </i>
 					${message(code: 'PoolDetails.page.collapse.submit')}
