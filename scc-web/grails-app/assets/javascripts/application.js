@@ -7,6 +7,7 @@
 //
 //= require jquery
 //= require bootstrap.min
+//= require bootstrap-toggle.min
 //= require_self
 
 if (typeof jQuery !== 'undefined') {
