@@ -8,7 +8,7 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *= require_tree  bootstrap
 *= require_tree  font-awesome
-*= require_tree  bootstrap-toggle.min
+*= require_tree  bootstrap-toggle
 *= require_self
 */
 
@@ -377,4 +377,4 @@ footer a {color:gray; text-decoration:none}
 div.alert-danger ul {list-style: none; padding: 0}
 
 .property-label {font-weight:normal !important; width:30% !important; text-align:right !important}
-.property-value {font-weight:bold} 
+.property-value {font-weight:bold;} 
