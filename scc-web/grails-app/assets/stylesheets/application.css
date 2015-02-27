@@ -333,8 +333,8 @@ header hr {
 	color:black; margin:5px 0; height:5px; color:black; background-color:black
 } 
 
-
 h2 {color:#D97600}
+
 footer {
 	color:gray; 
 	padding:2px 8px;
@@ -343,12 +343,21 @@ footer {
 }
 footer a {color:gray; text-decoration:none}
 
+.table-compressed > thead > tr > th,
+.table-compressed > tbody > tr > th,
+.table-compressed > tfoot > tr > th,
+.table-compressed > thead > tr > td,
+.table-compressed > tbody > tr > td,
+.table-compressed > tfoot > tr > td {
+  padding: 2px 4px;
+}
+
 #pagination, #poolJump {text-align:right; margin:10px}
 
 .oversized {overflow:auto; margin:0 10px}
 
 .number{text-align:right}
 
-.container-fluid { overflow-x: hidden;}
+.container-fluid { overflow-x: hidden;} /* fix for vertical scrollbar bug */
 
 div.alert-danger ul {list-style: none; padding: 0}
