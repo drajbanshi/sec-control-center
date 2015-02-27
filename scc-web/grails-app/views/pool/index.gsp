@@ -14,12 +14,52 @@
 	    <g:render template="select_fields_dialog" />
     </g:if>
 
-	<h2>
-		${message(code: 'PoolDetails.page.header.title')}
-		<g:if test="${poolType}"> - ${poolType}
-		</g:if>
-	</h2>
-	<br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-4">
+			<h2>
+				${message(code: 'PoolDetails.page.header.title')}
+				<g:if test="${poolType}"> - ${poolType}
+				</g:if>
+			</h2>
+		</div>
+		<div class="col-xs-8 text-right">
+	 
+		   <g:form controller="pool" action="search" class="form-inline">
+			<div>
+				<label> ${message(code: 'PoolDetails.page.input.poolnumber')}:
+				</label> <span
+					class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
+					<input type="text" id="poolNumber" maxlength="10" size="10"
+					class="form-control" name="poolNumber"
+					aria-label="Enter Pool ID ..."
+					value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
+				</span> 
+				<label> ${message(code: 'PoolDetails.page.input.securitycusipidentifier')}:</label> 
+				<span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
+					<input type="text" id="cusipIdentifier" maxlength="10" size="10"
+					class="form-control" name="cusipIdentifier"
+					aria-label="Enter CUSIP Identifier..."
+					value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
+				</span> <span><button class="btn btn-primary" id="searchBtn"
+						type="submit">
+						<i class="fa fa-search"></i>
+						${message(code: 'PoolDetails.page.search.submit')}
+					</button> </span>
+				<g:hiddenField name="poolError" value="${poolErrorField}" />
+	
+				<g:if test="${result}">
+					<br><button type="button" class="btn btn-xs btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
+						<i class="fa fa-plus"> </i> Show More Fields
+					</button>
+				</g:if>
+			</div>
+		</g:form>
+	</div>
+</div>
+
+<div class="container"> 
+	 
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
 			${flash.message}
@@ -37,53 +77,17 @@
 	</g:hasErrors>
 	<br />
 
-	<g:form controller="pool" action="search" class="form-inline">
-		<div>
-
-			<label> ${message(code: 'PoolDetails.page.input.poolnumber')} :
-			</label> <span
-				class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
-				<input type="text" id="poolNumber" maxlength="10" size="10"
-				class="form-control" name="poolNumber"
-				aria-label="Enter Pool ID ..."
-				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
-			</span> <label> ${message(code: 'PoolDetails.page.input.securitycusipidentifier')}
-				:
-			</label> <span
-				class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
-				<input type="text" id="cusipIdentifier" maxlength="10" size="10"
-				class="form-control" name="cusipIdentifier"
-				aria-label="Enter CUSIP Identifier..."
-				value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
-			</span> <span><button class="btn btn-primary" id="searchBtn"
-					type="submit">
-					<i class="fa fa-search"></i>
-					${message(code: 'PoolDetails.page.search.submit')}
-				</button> </span>
-			<g:hiddenField name="poolError" value="${poolErrorField}" />
-
-			<g:if test="${result}">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#extraFieldsModal">
-					<i class="fa fa-plus"> </i> Show More Fields
-				</button>
-			</g:if>
-			
-		</div>
-	</g:form>
+	
 
 
 	<g:if test="${result }">
 
 		<div id="show-MBSData" class="content scaffold-show" role="main">
-
-			<hr />
 			<g:render template="resultfields" model="[items: result]" />
 			<div id="xfieldsContainer">
 			  <g:render template="resultfields" model="[items: extras]" />
 			</div>
-
 		</div>
-
 
 		<g:if test="${!isCollapsed}">
 			<g:form controller="pool" action="collapse">
