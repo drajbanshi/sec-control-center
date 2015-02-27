@@ -361,3 +361,5 @@ footer a {color:gray; text-decoration:none}
 .container-fluid { overflow-x: hidden;} /* fix for vertical scrollbar bug */
 
 div.alert-danger ul {list-style: none; padding: 0}
+
+.property-label {width:30% !important; text-align:right !important}
