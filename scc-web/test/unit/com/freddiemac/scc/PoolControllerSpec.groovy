@@ -141,5 +141,6 @@ class PoolControllerSpec extends Specification {
 		"CCCCCC" | "POOL2222" | "CASH" ||  'Collapse.controller.collapse.fail'
 		"CUSIP2222" | "PPPPPPP" | "CASH" ||  'Collapse.controller.collapse.fail'
                 "CUSIP2222" | "" | "GUARANTOR" ||  'Collapse.controller.collapse.fail'
+                "CUSIP2222" | "" | "GIANT" ||  'Collapse.controller.collapse.fail'
 	}
 }
