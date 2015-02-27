@@ -49,7 +49,7 @@
 				<g:hiddenField name="poolError" value="${poolErrorField}" />
 	
 				<g:if test="${result}">
-					<br><button type="button" class="btn btn-xs btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
+					<br><button type="button" class="btn btn-xs btn-success" style="margin-top:4px" "data-toggle="modal" data-target="#extraFieldsModal">
 						<i class="fa fa-plus"> </i> Show More Fields
 					</button>
 				</g:if>
