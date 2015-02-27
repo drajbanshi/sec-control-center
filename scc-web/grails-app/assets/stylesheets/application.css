@@ -350,3 +350,5 @@ footer a {color:gray; text-decoration:none}
 .number{text-align:right}
 
 .container-fluid { overflow-x: hidden;}
+
+div.alert-danger ul {list-style: none; padding: 0}
