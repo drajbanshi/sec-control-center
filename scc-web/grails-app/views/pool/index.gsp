@@ -13,7 +13,7 @@
 <div class="container-fluid">
   <div class="row">
 	<div class="col-xs-4">
-		<h2>${message(code: 'PoolDetails.page.header.title')} <g:if test="${poolType}"> - ${poolType} </g:if></h2>
+		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
     </div>
     <div class="col-xs-8 text-right">
       <g:form controller="pool" action="search" class="form-inline">
