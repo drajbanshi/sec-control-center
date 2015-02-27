@@ -43,9 +43,20 @@ class SearchServiceSpec extends Specification {
 			assert m.errorMessage != null
 			
 	}
+        
+	def "test invalid pool number"() {
+		when:
+			def m =	service.searchPool("","POOL1214533")
+			
+		then:
+			assert m.success == false
+			assert m.errorCode == 404
+			assert m.errorMessage != null
+			
+	}    
 	
 	
-	def "test valid cusip"() {
+	def "test valid cusip for cash"() {
 		when:
 		def m = service.searchPool("CUSIP1234","")
 		
@@ -54,7 +65,66 @@ class SearchServiceSpec extends Specification {
 		assert m.result != null
 		String p = PropertyRetriever.getProp('Loan.LoanAmortizationType', m.result)
 		assert p != null && !p.isEmpty() 
+                String poolType = PropertyRetriever.getProp('Pool.PoolType', m.result)
+                assert poolType != null && !poolType.isEmpty() && poolType.equalsIgnoreCase("Cash")
 	}
+        
+	def "test valid cusip for guarantor"() {
+		when:
+		def m = service.searchPool("CUSIP2222","")
+		
+		then:
+		assert m.success == true
+		assert m.result != null
+		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
+		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Guarantor")
+	}    
+        
+	def "test valid cusip for giant"() {
+		when:
+		def m = service.searchPool("CUSIP3333","")
+		
+		then:
+		assert m.success == true
+		assert m.result != null
+		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
+		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Giant")
+	}        
+        
+	def "test valid pool number for cash"() {
+		when:
+		def m = service.searchPool("","POOL12345")
+		
+		then:
+		assert m.success == true
+		assert m.result != null
+		String p = PropertyRetriever.getProp('Loan.LoanAmortizationType', m.result)
+		assert p != null && !p.isEmpty() 
+                String poolType = PropertyRetriever.getProp('Pool.PoolType', m.result)
+                assert poolType != null && !poolType.isEmpty() && poolType.equalsIgnoreCase("Cash")
+	}
+        
+	def "test valid pool number for guarantor"() {
+		when:
+		def m = service.searchPool("","POOL22222")
+		
+		then:
+		assert m.success == true
+		assert m.result != null
+		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
+		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Guarantor")
+	}    
+        
+	def "test valid pool number for giant"() {
+		when:
+		def m = service.searchPool("","POOL33333")
+		
+		then:
+		assert m.success == true
+		assert m.result != null
+		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
+		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Giant")
+	}            
 	
 	def "test invalid response"() {
 		when:
