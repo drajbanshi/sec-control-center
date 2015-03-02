@@ -71,17 +71,20 @@
 	<g:if test="${result }">
 		<div id="show-MBSData" class="content scaffold-show" role="main">
 
-			<ol class="property-list mbsdata">
+			<!-- ol class="property-list mbsdata" -->
+			<table class="table table-striped table-compressed" style="width:auto">
 				<g:each in="${result}" var="item">
-
-					<li class="fieldcontain"><span id="${item.key}"
-						class="property-label"> ${message(code:item.key + '.label')}:
-							 
-					</span> <span class="property-value" aria-labelledby="${item.key}"> 
-							&nbsp;${item.value}
-					</span></li>
+					<tr>
+						<td class="fieldcontain"  id="${item.key}"
+							class="property-label"> ${message(code:item.key + '.label')}:		 
+						</td>
+						<td class="property-value" aria-labelledby="${item.key}"> 
+							${item.value}
+						</td>
+					</tr>
 				</g:each>
-			</ol>
+			<!-- /ol-->
+			</table>
 		</div>
 		<g:if test="${!isCollapsed}">
 			<g:form controller="pool" action="collapse">

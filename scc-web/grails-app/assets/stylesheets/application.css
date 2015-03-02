@@ -333,7 +333,7 @@ header hr {
 	color:black; margin:5px 0; height:5px; color:black; background-color:black
 } 
 
-h2 {color:#D97600}
+h2 {color:#D97600; font-size:1.3em}
 
 footer {
 	color:gray; 
@@ -366,7 +366,7 @@ footer a {color:gray; text-decoration:none}
 
 div.alert-danger ul {list-style: none; padding: 0}
 
-.property-label {font-weight: normal !important; width:30% !important; text-align:right !important}
+.property-label {font-weight: normal !important}
 .property-value {font-weight: bold}
 
 .tabBody {margin-top:10px}
@@ -379,5 +379,6 @@ div.alert-danger ul {list-style: none; padding: 0}
     background-color:#0093dd !important; color:white !important ;
 }
 .nav-tabs  a {
-    background-color:#0462aa !important; color:#90b0ff;
+    background-color:#0462aa !important; color:#90b0ff; padding:6px 8px !important
 }
+
