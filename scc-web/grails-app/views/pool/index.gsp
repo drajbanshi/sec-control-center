@@ -43,8 +43,8 @@
                         </span> <span><button class="btn btn-primary" id="searchBtn" type="submit" >
 					<i class="fa fa-search"></i>
 					${message(code: 'PoolDetails.page.search.submit')}
-				</button> </span>
-                        <g:hiddenField name="poolError" value="${poolErrorField}" />
+				</button></span>
+                <g:hiddenField name="poolError" value="${poolErrorField}" />
 		</div>
 	</g:form>
     </div>
@@ -75,7 +75,7 @@
 			<table class="table table-striped table-compressed" style="width:auto">
 				<g:each in="${result}" var="item">
 					<tr>
-						<td class="fieldcontain"  id="${item.key}"
+						<td class="fieldcontain" id="${item.key}"
 							class="property-label"> ${message(code:item.key + '.label')}:		 
 						</td>
 						<td class="property-value" aria-labelledby="${item.key}"> 
@@ -90,10 +90,9 @@
 			<g:form controller="pool" action="collapse">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
-			<g:hiddenField name="cusipIdentifier"
-				value="${poolSearch.cusipIdentifier}" />
+			<g:hiddenField name="cusipIdentifier" value="${poolSearch.cusipIdentifier}" />
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
-                        <g:hiddenField name="poolType" value="${poolType}" />
+            <g:hiddenField name="poolType" value="${poolType}" />
             <div class="text-center">
 			<button class="btn btn-danger" type="submit"
 				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm')}');">
