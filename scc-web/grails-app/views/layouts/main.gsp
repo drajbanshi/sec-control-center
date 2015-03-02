@@ -31,19 +31,14 @@
 		</div>
 		<hr />
 	</header>
- 
+
     <div class="container mainbody">
         <g:layoutBody/>
     </div>
 
 
 	<footer role="contentinfo">
-	  <div class="container-fluid">
-		<div class="row">
-		  <div class="col-md-6">Copyright &copy;2015 Freddie Mac</div>
-		  <div class="col-md-6 text-right"><a href="#top">Scroll to Top</a></div>
-		</div>
-	  </div>
+        &copy; Freddie Mac 2015    
 	</footer>
 
 	<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

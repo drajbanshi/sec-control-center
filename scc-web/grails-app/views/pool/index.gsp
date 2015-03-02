@@ -13,7 +13,7 @@
 <div class="container-fluid">
   <div class="row">
 	<div class="col-xs-4">
-		<h2>${message(code: 'PoolDetails.page.header.title')} <g:if test="${poolType}"> - ${poolType} </g:if></h2>
+		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
     </div>
     <div class="col-xs-8 text-right">
       <g:form controller="pool" action="search" class="form-inline">
@@ -23,7 +23,7 @@
 					${message(code: 'PoolDetails.page.input.poolnumber')}:
 				</label> 
                         <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
-                        <input type="text" id="poolNumber" maxlength="10" size="10" class="form-control" name="poolNumber"
+                        <input type="text" id="poolNumber" maxlength="8" size="8" class="form-control" name="poolNumber"
 				aria-label="Enter Pool ID"
 				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
 						</span>  &nbsp;                                
@@ -31,7 +31,7 @@
 					${message(code: 'PoolDetails.page.input.securitycusipidentifier')}:
 				</label> 
                         <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
-                        <input type="text" id="cusipIdentifier" maxlength="10" size="10" class="form-control" name="cusipIdentifier"
+                        <input type="text" id="cusipIdentifier" maxlength="9" size="9" class="form-control" name="cusipIdentifier"
 				aria-label="Enter CUSIP Identifier"
 				value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
                         </span> <span><button class="btn btn-primary" id="searchBtn" type="submit" >

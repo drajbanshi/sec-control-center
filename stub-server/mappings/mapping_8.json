@@ -5,7 +5,7 @@
     "url" : "/freddiemac/searchpool.asmx",
     "method": "POST",
     "bodyPatterns": [
-            { "contains": "<poolid>POOL33333</poolid>" }
+            { "contains": "<poolid>POOL333</poolid>" }
         ]
 	},
   "response" : {
