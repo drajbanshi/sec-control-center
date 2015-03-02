@@ -59,6 +59,15 @@ class SearchServiceSpec extends Specification {
 	def "test valid cusip for cash"() {
 		when:
 		def m = service.searchPool("CUSIP1234","")
+                String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+		String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
+		def cashEligible = false
+		if(secIssueDt?.isEmpty()){
+			cashEligible = true
+		}
+		if(secSettleDt?.isEmpty()){
+			cashEligible = true
+		}                
 		
 		then:
 		assert m.success == true
@@ -67,63 +76,114 @@ class SearchServiceSpec extends Specification {
 		assert p != null && !p.isEmpty() 
                 String poolType = PropertyRetriever.getProp('Pool.PoolType', m.result)
                 assert poolType != null && !poolType.isEmpty() && poolType.equalsIgnoreCase("Cash")
+                cashEligible == false
 	}
         
 	def "test valid cusip for guarantor"() {
 		when:
 		def m = service.searchPool("CUSIP2222","")
+                String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+		String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
+		def guarantorEligible = false
+		if(secIssueDt?.isEmpty()){
+			guarantorEligible = true
+		}                
+		if(secSettleDt?.isEmpty()){
+			guarantorEligible = true
+		}                
 		
 		then:
 		assert m.success == true
 		assert m.result != null
 		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
 		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Guarantor")
+                guarantorEligible == true
 	}    
         
 	def "test valid cusip for giant"() {
 		when:
 		def m = service.searchPool("CUSIP3333","")
+                String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+		String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
+		def giantEligible = false
+		if(secIssueDt?.isEmpty()){
+			giantEligible = true
+		}                
+		if(secSettleDt?.isEmpty()){
+			giantEligible = true
+		}                
 		
 		then:
 		assert m.success == true
 		assert m.result != null
 		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
 		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Giant")
+                giantEligible == true
 	}        
         
 	def "test valid pool number for cash"() {
 		when:
-		def m = service.searchPool("","POOL12345")
+		def m = service.searchPool("","POOL1234")
+                String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+		String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
+		String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
+		def cashEligible = false
+		if(secIssueDt?.isEmpty()){
+			cashEligible = true
+		}                                
+		if(secSettleDt?.isEmpty()){
+			cashEligible = true
+		}                
 		
 		then:
 		assert m.success == true
 		assert m.result != null
 		String p = PropertyRetriever.getProp('Loan.LoanAmortizationType', m.result)
 		assert p != null && !p.isEmpty() 
-                String poolType = PropertyRetriever.getProp('Pool.PoolType', m.result)
                 assert poolType != null && !poolType.isEmpty() && poolType.equalsIgnoreCase("Cash")
+                cashEligible == false
 	}
         
 	def "test valid pool number for guarantor"() {
 		when:
-		def m = service.searchPool("","POOL22222")
+		def m = service.searchPool("","POOL22")
+                String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+		String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
+		def guarantorEligible = false
+		if(secIssueDt?.isEmpty()){
+			guarantorEligible = true
+		}                
+		if(secSettleDt?.isEmpty()){
+			guarantorEligible = true
+		}                
 		
 		then:
 		assert m.success == true
 		assert m.result != null
 		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
 		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Guarantor")
+                guarantorEligible == true
 	}    
         
 	def "test valid pool number for giant"() {
 		when:
-		def m = service.searchPool("","POOL33333")
+		def m = service.searchPool("","POOL333")
+                String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
+		String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
+		def giantEligible = false
+		if(secIssueDt?.isEmpty()){
+			giantEligible = true
+		}                                
+		if(secSettleDt?.isEmpty()){
+			giantEligible = true
+		}                
 		
 		then:
 		assert m.success == true
 		assert m.result != null
 		String p = PropertyRetriever.getProp('Pool.PoolType', m.result)
 		assert p != null && !p.isEmpty() && p.equalsIgnoreCase("Giant")
+                giantEligible == true
 	}            
 	
 	def "test invalid response"() {
