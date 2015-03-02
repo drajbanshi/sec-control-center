@@ -10,7 +10,6 @@
 </head>
 <body>
 
-
 <div class="container-fluid">
   <ul class="nav nav-tabs">
 	 <li role="presentation"><a href="#">Dashboard</a></li>
@@ -68,9 +67,6 @@
 		</div>
 	</g:hasErrors>
 	<br />
-
-	
-
 
 	<g:if test="${result }">
 		<div id="show-MBSData" class="content scaffold-show" role="main">
