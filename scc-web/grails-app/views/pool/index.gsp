@@ -17,13 +17,10 @@
 	 <!--li role="presentation"><a href="#">Dissolve</a></li-->
   </ul>
   <div class="tabBody">
-   <div class="row">
-	<div class="col-xs-4">
-		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
-    </div>
-    <div class="col-xs-8 text-right">
+    
+    
       <g:form controller="pool" action="search" class="form-inline">
-		<div>
+		 
 			
 				<label>
 					${message(code: 'PoolDetails.page.input.poolnumber')}:
@@ -45,10 +42,12 @@
 					${message(code: 'PoolDetails.page.search.submit')}
 				</button></span>
                 <g:hiddenField name="poolError" value="${poolErrorField}" />
-		</div>
+		 
 	</g:form>
-    </div>
-  </div>
+     
+     		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
+     
+     
 </div> <!-- end container-fluid -->
 	 
 	<g:if test="${flash.message}">
