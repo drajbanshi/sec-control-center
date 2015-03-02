@@ -10,8 +10,15 @@
 </head>
 <body>
 
+
 <div class="container-fluid">
-  <div class="row">
+  <ul class="nav nav-tabs">
+	 <li role="presentation"><a href="#">Dashboard</a></li>
+	 <li role="presentation" class="active"><a href="#">Pool Detail</a></li>
+	 <!--li role="presentation"><a href="#">Dissolve</a></li-->
+  </ul>
+  <div class="tabBody">
+   <div class="row">
 	<div class="col-xs-4">
 		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
     </div>
@@ -99,7 +106,7 @@
 		
 	</g:if>
 
-
+</div><!--  close tabBody -->
 
 </body>
 </html>
