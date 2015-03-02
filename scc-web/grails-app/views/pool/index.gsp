@@ -88,7 +88,7 @@
 				value="${poolSearch.cusipIdentifier}" />
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
                         <g:hiddenField name="poolType" value="${poolType}" />
-			<button class="" type="submit"
+			<button class="btn btn-danger" type="submit"
 				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm')}');">
 				<i class="fa fa-close"> </i>
 				${message(code: 'PoolDetails.page.collapse.submit')}
