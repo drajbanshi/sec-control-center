@@ -59,12 +59,12 @@
 	</g:if>
 	<g:if test="${flash.error}">
 		<div class="alert alert-danger" role="status">
-			${flash.error}
+			<h4>${flash.error}</h4>
 		</div>
 	</g:if>
 	<g:hasErrors bean="${poolSearch}">
 		<div class="alert alert-danger" role="status">
-			<g:renderErrors bean="${poolSearch}"  />
+			<h4><g:renderErrors bean="${poolSearch}"  /></h4>
 		</div>
 	</g:hasErrors>
 	<br />
