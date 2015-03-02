@@ -32,7 +32,7 @@
 		<hr />
 	</header>
 
-    <div class="container mainbody">
+    <div class="container-fluid mainbody">
         <g:layoutBody/>
     </div>
 

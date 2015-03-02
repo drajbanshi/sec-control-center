@@ -32,7 +32,7 @@ body {
  }
 
 .mainbody {
-    min-height: 650px;
+    min-height: 600px;
 }
 
 .menubar li  a{
@@ -351,6 +351,10 @@ footer a {color:gray; text-decoration:none}
 .table-compressed > tfoot > tr > td {
   padding: 2px 4px;
 }
+.table-compressed > thead, 
+.table-compressed > tfoot {
+	background-color:#0462aa; color:white
+}
 
 #pagination, #poolJump {text-align:right; margin:10px}
 
@@ -367,3 +371,13 @@ div.alert-danger ul {list-style: none; padding: 0}
 
 .tabBody {margin-top:10px}
 .alert h4 {text-align:center}
+
+.nav-tabs {
+	font-weight:bold
+}
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+    background-color:#0093dd !important; color:white !important ;
+}
+.nav-tabs  a {
+    background-color:#0462aa !important; color:#90b0ff;
+}
