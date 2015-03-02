@@ -72,7 +72,7 @@
 		<div id="show-MBSData" class="content scaffold-show" role="main">
 
 			<!-- ol class="property-list mbsdata" -->
-			<table class="table table-striped table-compressed" style="width:auto">
+			<table class="table table-striped table-hover table-compressed" style="width:auto">
 				<g:each in="${result}" var="item">
 					<tr>
 						<td class="fieldcontain" id="${item.key}"
@@ -111,4 +111,3 @@
 
 </body>
 </html>
-
