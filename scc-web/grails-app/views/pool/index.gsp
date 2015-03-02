@@ -107,6 +107,7 @@
 	</g:if>
 
 </div><!--  close tabBody -->
+</div><!--  close containerFluid -->
 
 </body>
 </html>
