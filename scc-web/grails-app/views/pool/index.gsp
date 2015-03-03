@@ -45,7 +45,7 @@
 		 
 	</g:form>
      
-     		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
+     		
      
      
 </div> <!-- end container-fluid -->
@@ -68,6 +68,7 @@
 	<br />
 
 	<g:if test="${result }">
+		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
 		<div id="show-MBSData" class="content scaffold-show" role="main">
 
 			<!-- ol class="property-list mbsdata" -->
