@@ -21,11 +21,7 @@ class PoolController {
 		render template: 'resultfields', model: [items: m.success?  generateModel(m.result, poolSearch.xfield) : []]
 	}
 
-
-	def showExtraFields() {
-		render template: 'extrafields', model : [xfields: grailsApplication.config.com.freddiemac.searchpool.result.extrafields]
-	}
-
+	
 
 	def search(PoolSearch poolSearch) {
 		def poolErrorField = ""
@@ -68,7 +64,7 @@ class PoolController {
 			String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
 			String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
 			def isCollapsed = (secIssueDt && !secIssueDt.isEmpty()) || (secSettleDt && !secSettleDt.isEmpty()) || eventLogService.isEventProcessedForCusip(cusip)
-			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.extrafields]
+			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
 		}
 	}
 
