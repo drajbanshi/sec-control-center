@@ -5,9 +5,27 @@
 		<cps:SearchPoolResponse>
 			<!--Optional: -->
 			<ResponseEnvelope>
+				<!--Optional: -->
 				<SearchResultContainer xmlns="http://www.freddiemac.com/cdm"
 					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-					xsi:schemaLocation="http://www.freddiemac.com/cdm">
+					xsi:schemaLocation="http://www.freddiemac.com/cdm searchresult.xsd ">
+					<Pool>
+						<LegacyPoolIdentifier>LegacyPoolIdentifier</LegacyPoolIdentifier>
+						<LegacyPoolIdentifierType>LegacyPoolIdentifierType</LegacyPoolIdentifierType>
+						<LegacyPreliminaryPoolIdentifier>0</LegacyPreliminaryPoolIdentifier>
+						<PoolCreationDate>2001-01-01</PoolCreationDate>
+						<PoolDescription>PoolDescription</PoolDescription>
+						<PoolDispositionIntentType>PoolDispositionIntentType</PoolDispositionIntentType>
+						<PoolGuaranteedPercent>0.0</PoolGuaranteedPercent>
+						<PoolGuarantyFeeRate>0.0</PoolGuarantyFeeRate>
+						<PoolIdentifier>G14561</PoolIdentifier>
+						<PoolName>PoolName</PoolName>
+						<PoolProductVariationIdentifier>0</PoolProductVariationIdentifier>
+						<PoolPurposeType>PoolPurposeType</PoolPurposeType>
+						<PoolType>GIANT</PoolType>
+						<ProductIdentifier>0</ProductIdentifier>
+						<TemporaryPoolIndicator>TemporaryPoolIndicator</TemporaryPoolIndicator>
+					</Pool>
 					<Loan>
 						<AppraisalRulesBypassedIndicator>AppraisalRulesBypassedIndicator
 						</AppraisalRulesBypassedIndicator>
@@ -45,7 +63,7 @@
 						</LoanAffordableCategoryType>
 						<LoanAmortizationStructureType>LoanAmortizationStructureType
 						</LoanAmortizationStructureType>
-						<LoanAmortizationType>LoanAmortizationType</LoanAmortizationType>
+						<LoanAmortizationType>Fixed</LoanAmortizationType>
 						<LoanBalloonIndicator>LoanBalloonIndicator</LoanBalloonIndicator>
 						<LoanBalloonResetIndicator>LoanBalloonResetIndicator
 						</LoanBalloonResetIndicator>
@@ -247,27 +265,6 @@
 						<TotalRecoverableAdvancesAmount>0.0
 						</TotalRecoverableAdvancesAmount>
 					</LoanPosition>
-					<Pool>
-						<LegacyPoolIdentifier>LegacyPoolIdentifier</LegacyPoolIdentifier>
-						<LegacyPoolIdentifierType>LegacyPoolIdentifierType
-						</LegacyPoolIdentifierType>
-						<LegacyPreliminaryPoolIdentifier>0
-						</LegacyPreliminaryPoolIdentifier>
-						<PoolCreationDate>2001-01-01</PoolCreationDate>
-						<PoolDescription>PoolDescription</PoolDescription>
-						<PoolDispositionIntentType>PoolDispositionIntentType
-						</PoolDispositionIntentType>
-						<PoolGuaranteedPercent>0.0</PoolGuaranteedPercent>
-						<PoolGuarantyFeeRate>0.0</PoolGuarantyFeeRate>
-						<PoolIdentifier>POOL333</PoolIdentifier>
-						<PoolName>PoolName</PoolName>
-						<PoolProductVariationIdentifier>0</PoolProductVariationIdentifier>
-						<PoolPurposeType>PoolPurposeType</PoolPurposeType>
-						<PoolType>GIANT</PoolType>
-						<ProductIdentifier>0</ProductIdentifier>
-						<TemporaryPoolIndicator>TemporaryPoolIndicator
-						</TemporaryPoolIndicator>
-					</Pool>
 					<MBS>
 						<ARMDisclosureLevelType>ARMDisclosureLevelType
 						</ARMDisclosureLevelType>
@@ -284,14 +281,14 @@
 						<LoanLevelCreditRiskIndicator>LoanLevelCreditRiskIndicator
 						</LoanLevelCreditRiskIndicator>
 						<MBSAmortizationTermMonthCount>0</MBSAmortizationTermMonthCount>
-						<MBSAmortizationType>MBSAmortizationType</MBSAmortizationType>
+						<MBSAmortizationType>Fixed</MBSAmortizationType>
 						<MBSAssumableIndicator>MBSAssumableIndicator
 						</MBSAssumableIndicator>
 						<MBSExecutionMethodType>MBSExecutionMethodType
 						</MBSExecutionMethodType>
-						<MBSMortgageType>MBSMortgageType</MBSMortgageType>
+						<MBSMortgageType>Fixed</MBSMortgageType>
 						<MBSPaymentDelayDayCount>0</MBSPaymentDelayDayCount>
-						<MBSPoolPrefixCode>MBSPoolPrefixCode</MBSPoolPrefixCode>
+						<MBSPoolPrefixCode>V8</MBSPoolPrefixCode>
 						<MBSPrincipalReserveHolderType>MBSPrincipalReserveHolderType
 						</MBSPrincipalReserveHolderType>
 						<MBSPrincipalReserveStartDate>2001-01-01
@@ -302,6 +299,7 @@
 						</NonDisclosureIndicator>
 						<PayingAgentScheduleType>PayingAgentScheduleType
 						</PayingAgentScheduleType>
+						<PoolIdentifier>V81495</PoolIdentifier>
 						<PreFirstPaymentLoanCount>0</PreFirstPaymentLoanCount>
 						<PreFirstPaymentUPBPercent>0.0</PreFirstPaymentUPBPercent>
 						<PrepaymentRestrictionType>PrepaymentRestrictionType
@@ -322,18 +320,6 @@
 						<Tax1984Indicator>Tax1984Indicator</Tax1984Indicator>
 						<Tax1985Indicator>Tax1985Indicator</Tax1985Indicator>
 					</MBS>
-					<FinancialInstitution>
-						<ABARoutingAndTransitIdentifier>0</ABARoutingAndTransitIdentifier>
-						<CharterType>CharterType</CharterType>
-						<CommunityOrientedIndicator>CommunityOrientedIndicator
-						</CommunityOrientedIndicator>
-						<FinancialInstitutionIdentifier>FinancialInstitutionIdentifier
-						</FinancialInstitutionIdentifier>
-						<FinancialInstitutionSWIFTIdentifier>FinancialInstitutionSWIFTIdentifier
-						</FinancialInstitutionSWIFTIdentifier>
-						<FinancialInstitutionTelegraphicAbbreviationName>FinancialInstitutionTelegraphicAbbreviationName
-						</FinancialInstitutionTelegraphicAbbreviationName>
-					</FinancialInstitution>
 					<FinancialInstitutionAccount>
 						<FinancialInstitutionAccountCloseDate>2001-01-01
 						</FinancialInstitutionAccountCloseDate>
@@ -375,12 +361,25 @@
 						</SpecialPurposeEntityIndicator>
 						<WomenOwnedIndicator>WomenOwnedIndicator</WomenOwnedIndicator>
 					</Organization>
+					<FinancialInstitution>
+						<ABARoutingAndTransitIdentifier>0</ABARoutingAndTransitIdentifier>
+						<CharterType>CharterType</CharterType>
+						<CommunityOrientedIndicator>CommunityOrientedIndicator
+						</CommunityOrientedIndicator>
+						<FinancialInstitutionIdentifier>FinancialInstitutionIdentifier
+						</FinancialInstitutionIdentifier>
+						<FinancialInstitutionSWIFTIdentifier>FinancialInstitutionSWIFTIdentifier
+						</FinancialInstitutionSWIFTIdentifier>
+						<FinancialInstitutionTelegraphicAbbreviationName>FinancialInstitutionTelegraphicAbbreviationName
+						</FinancialInstitutionTelegraphicAbbreviationName>
+					</FinancialInstitution>
 					<SecurityWire>
 						<InventoryIdentifier>0</InventoryIdentifier>
 						<SecurityWireCashAmount>0.0</SecurityWireCashAmount>
-						<SecurityWireCUSIPIdentifier>SecurityWireCUSIPIdentifier
+						<SecurityWireCUSIPIdentifier>3135M4-4C-7
 						</SecurityWireCUSIPIdentifier>
-						<SecurityWireFaceValueAmount>0.0</SecurityWireFaceValueAmount>
+						<SecurityWireFaceValueAmount>5000000.00
+						</SecurityWireFaceValueAmount>
 						<SecurityWireIdentifier>0</SecurityWireIdentifier>
 						<ThirdPartyFRBSubaccountIdentifier>ThirdPartyFRBSubaccountIdentifier
 						</ThirdPartyFRBSubaccountIdentifier>
@@ -391,7 +390,7 @@
 						<AssetBackedSecurityType>AssetBackedSecurityType
 						</AssetBackedSecurityType>
 						<BusinessCalendarType>BusinessCalendarType</BusinessCalendarType>
-						<ContractualMaturityDate>2001-01-01</ContractualMaturityDate>
+						<ContractualMaturityDate>2045-03-01</ContractualMaturityDate>
 						<CurrencyType>CurrencyType</CurrencyType>
 						<FederalReserveSecurityClassCode>FederalReserveSecurityClassCode
 						</FederalReserveSecurityClassCode>
@@ -415,7 +414,7 @@
 						<SecurityCouponType>SecurityCouponType</SecurityCouponType>
 						<SecurityCouponTypeConversionDate>2001-01-01
 						</SecurityCouponTypeConversionDate>
-						<SecurityCUSIPIdentifier>CUSIP3333
+						<SecurityCUSIPIdentifier>3132M2-4C-7 
 						</SecurityCUSIPIdentifier>
 						<SecurityFirstInterestAccrualDate>2001-01-01
 						</SecurityFirstInterestAccrualDate>
@@ -429,6 +428,8 @@
 						<SecurityMaturityType>SecurityMaturityType</SecurityMaturityType>
 						<SecurityNotionalIndicator>SecurityNotionalIndicator
 						</SecurityNotionalIndicator>
+						<SecurityOriginalCouponRate>0.0</SecurityOriginalCouponRate>
+						<SecurityOriginalFaceAmount>0.0</SecurityOriginalFaceAmount>
 						<SecurityOwnershipMethodType>SecurityOwnershipMethodType
 						</SecurityOwnershipMethodType>
 						<SecurityPayingAgentIdentifier>SecurityPayingAgentIdentifier
@@ -450,6 +451,7 @@
 					<SecurityIssuance>
 						<SecurityIdentifier>SecurityIdentifier</SecurityIdentifier>
 						<SecurityIssueDate></SecurityIssueDate>
+						<SecurityIssueCouponRate>0.0</SecurityIssueCouponRate>
 						<SecurityIssueDiscountRate>0.0</SecurityIssueDiscountRate>
 						<SecurityIssueFaceAmount>0.0</SecurityIssueFaceAmount>
 						<SecurityIssueFirstEligibleTradeDate>2001-01-01
@@ -469,8 +471,8 @@
 						</SecurityActivityCalculationDate>
 						<SecurityActivityPeriodEndDate>2001-01-01
 						</SecurityActivityPeriodEndDate>
-						<SecurityBeneficiaryDate>2001-01-01</SecurityBeneficiaryDate>
-						<SecurityCouponRate>0.0</SecurityCouponRate>
+						<SecurityBeneficiaryDate>2015-04-01</SecurityBeneficiaryDate>
+						<SecurityCouponRate>0.03</SecurityCouponRate>
 						<SecurityCurrentFaceAmount>0.0</SecurityCurrentFaceAmount>
 						<SecurityFactorDate>2001-01-01</SecurityFactorDate>
 						<SecurityFactorRate>0.0</SecurityFactorRate>
@@ -480,14 +482,530 @@
 						<SecurityPrincipalPaymentAmount>0.0
 						</SecurityPrincipalPaymentAmount>
 						<SecurityRecordDate>2001-01-01</SecurityRecordDate>
-						<SecurityStatusType>SecurityStatusType</SecurityStatusType>
+						<SecurityStatusType>true</SecurityStatusType>
 						<SecurityTaxRecordDate>2001-01-01</SecurityTaxRecordDate>
 					</SecurityActivity>
+					<Cash>
+						<CashAmount>0.0</CashAmount>
+						<CashEquivalentType>CashEquivalentType</CashEquivalentType>
+						<CashIdentifier>CashIdentifier</CashIdentifier>
+						<CurrencyType>CurrencyType</CurrencyType>
+						<FinancialInstitutionAccountIdentifier>0
+						</FinancialInstitutionAccountIdentifier>
+						<FinancialInstitutionIdentifier>FinancialInstitutionIdentifier
+						</FinancialInstitutionIdentifier>
+					</Cash>
+					<LoanRelationship>
+						<CapitalizedPrepaymentCompensationAmount>0.0
+						</CapitalizedPrepaymentCompensationAmount>
+						<LoanRelationshipType>LoanRelationshipType</LoanRelationshipType>
+						<LoanRoleType>LoanRoleType</LoanRoleType>
+						<LoanSelectionType>LoanSelectionType</LoanSelectionType>
+						<RelatedLoanIdentifier>RelatedLoanIdentifier
+						</RelatedLoanIdentifier>
+						<SubjectLoanIdentifier>SubjectLoanIdentifier
+						</SubjectLoanIdentifier>
+					</LoanRelationship>
+					<LoanPurchaseContract>
+						<AdjustorFeeLevelType>AdjustorFeeLevelType</AdjustorFeeLevelType>
+						<AdjustorFeePaymentMethodType>AdjustorFeePaymentMethodType
+						</AdjustorFeePaymentMethodType>
+						<ContractAmount>0.0</ContractAmount>
+						<ContractBusinessLineType>ContractBusinessLineType
+						</ContractBusinessLineType>
+						<ContractConstructionFundingType>ContractConstructionFundingType
+						</ContractConstructionFundingType>
+						<ContractDispositionIntentType>ContractDispositionIntentType
+						</ContractDispositionIntentType>
+						<ContractDurationDayCount>0</ContractDurationDayCount>
+						<ContractExecutionMethodType>ContractExecutionMethodType
+						</ContractExecutionMethodType>
+						<ContractFreddieMacOwnershipPercent>0.0
+						</ContractFreddieMacOwnershipPercent>
+						<ContractGuarantyFeeRate>0.0</ContractGuarantyFeeRate>
+						<ContractHedgeCostTierIdentifier>0
+						</ContractHedgeCostTierIdentifier>
+						<ContractLevelType>ContractLevelType</ContractLevelType>
+						<ContractLoanInterestRate>0.0</ContractLoanInterestRate>
+						<ContractMaturityPeriodType>ContractMaturityPeriodType
+						</ContractMaturityPeriodType>
+						<ContractMaximumLoanInterestRate>0.0
+						</ContractMaximumLoanInterestRate>
+						<ContractMaximumMaturityPeriodCount>0
+						</ContractMaximumMaturityPeriodCount>
+						<ContractMaximumRemainingMaturityMonthCount>0
+						</ContractMaximumRemainingMaturityMonthCount>
+						<ContractMaximumWeightedAverageLoanInterestRate>0.0
+						</ContractMaximumWeightedAverageLoanInterestRate>
+						<ContractMinimumLoanInterestRate>0.0
+						</ContractMinimumLoanInterestRate>
+						<ContractMinimumMaturityPeriodCount>0
+						</ContractMinimumMaturityPeriodCount>
+						<ContractMinimumRemainingMaturityMonthCount>0
+						</ContractMinimumRemainingMaturityMonthCount>
+						<ContractMinimumWeightedAverageLoanInterestRate>0.0
+						</ContractMinimumWeightedAverageLoanInterestRate>
+						<ContractOptionalityType>ContractOptionalityType
+						</ContractOptionalityType>
+						<ContractTraderAdjustmentRate>0.0</ContractTraderAdjustmentRate>
+						<ContractTraderPriceAdjustmentReasonDescription>ContractTraderPriceAdjustmentReasonDescription
+						</ContractTraderPriceAdjustmentReasonDescription>
+						<ContractUnfulfilledFeeIndicator>ContractUnfulfilledFeeIndicator
+						</ContractUnfulfilledFeeIndicator>
+						<EquityOwnerIdentificationRequiredIndicator>EquityOwnerIdentificationRequiredIndicator
+						</EquityOwnerIdentificationRequiredIndicator>
+						<ExpeditedFundingIndicator>ExpeditedFundingIndicator
+						</ExpeditedFundingIndicator>
+						<FreddieMacWarehouseLenderGuarantyIndicator>FreddieMacWarehouseLenderGuarantyIndicator
+						</FreddieMacWarehouseLenderGuarantyIndicator>
+						<GuarantyFeeBuyupBuydownLoanLevelIndicator>GuarantyFeeBuyupBuydownLoanLevelIndicator
+						</GuarantyFeeBuyupBuydownLoanLevelIndicator>
+						<GuarantyFeeMarketingAdjustmentRate>0.0
+						</GuarantyFeeMarketingAdjustmentRate>
+						<GuarantyFeeSellerAdjustmentRate>0.0
+						</GuarantyFeeSellerAdjustmentRate>
+						<LoanLevelGuarantyFeeEligibilityIndicator>LoanLevelGuarantyFeeEligibilityIndicator
+						</LoanLevelGuarantyFeeEligibilityIndicator>
+						<LoanPurchaseContractIdentifier>LoanPurchaseContractIdentifier
+						</LoanPurchaseContractIdentifier>
+						<LoanPurchaseContractIssueDate>2001-01-01
+						</LoanPurchaseContractIssueDate>
+						<LoanPurchaseContractPropertyAliasName>LoanPurchaseContractPropertyAliasName
+						</LoanPurchaseContractPropertyAliasName>
+						<LoanPurchaseSpotPricingRequiredIndicator>LoanPurchaseSpotPricingRequiredIndicator
+						</LoanPurchaseSpotPricingRequiredIndicator>
+						<LoanSeasoningType>LoanSeasoningType</LoanSeasoningType>
+						<ManualFeeIndicator>ManualFeeIndicator</ManualFeeIndicator>
+						<MortgageRevenueBondEligibleType>MortgageRevenueBondEligibleType
+						</MortgageRevenueBondEligibleType>
+						<MultifamilyContractUnderwritingRegionType>MultifamilyContractUnderwritingRegionType
+						</MultifamilyContractUnderwritingRegionType>
+						<MultifamilyRateLockType>MultifamilyRateLockType
+						</MultifamilyRateLockType>
+						<OriginalContractAmount>0.0</OriginalContractAmount>
+						<RepresentationsAndWarrantsLenderIdentifier>RepresentationsAndWarrantsLenderIdentifier
+						</RepresentationsAndWarrantsLenderIdentifier>
+						<SupplementalLoanCoterminousMaturityIndicator>SupplementalLoanCoterminousMaturityIndicator
+						</SupplementalLoanCoterminousMaturityIndicator>
+					</LoanPurchaseContract>
+					<MBSDisclosure>
+						<MBSAccrualRate>0.0</MBSAccrualRate>
+						<MBSArrearsInterestAccruedAmount>0.0
+						</MBSArrearsInterestAccruedAmount>
+						<MBSAverageOriginalLoanSizeAmount>0.0
+						</MBSAverageOriginalLoanSizeAmount>
+						<MBSBalloonTermCount>0</MBSBalloonTermCount>
+						<MBSCumulativePrepaymentRate>0.0</MBSCumulativePrepaymentRate>
+						<MBSCurtailmentAmount>0.0</MBSCurtailmentAmount>
+						<MBSDisclosureBannerText>MBSDisclosureBannerText
+						</MBSDisclosureBannerText>
+						<MBSDisclosureDate>2001-01-01</MBSDisclosureDate>
+						<MBSDisclosureLegend1Text>MBSDisclosureLegend1Text
+						</MBSDisclosureLegend1Text>
+						<MBSDisclosureLegend2Text>MBSDisclosureLegend2Text
+						</MBSDisclosureLegend2Text>
+						<MBSFactorRate>0.0</MBSFactorRate>
+						<MBSForeclosureAmount>0.0</MBSForeclosureAmount>
+						<MBSInactiveLoanUPBAmount>0.0</MBSInactiveLoanUPBAmount>
+						<MBSInterestPaymentFactorRate>0.0</MBSInterestPaymentFactorRate>
+						<MBSLatestMaturityDate>2001-01-01</MBSLatestMaturityDate>
+						<MBSLoanCount>0</MBSLoanCount>
+						<MBSLossAmount>0.0</MBSLossAmount>
+						<MBSMaximumCouponRate>0.0</MBSMaximumCouponRate>
+						<MBSMaximumRemainingMaturityMonthCount>0
+						</MBSMaximumRemainingMaturityMonthCount>
+						<MBSMinimumCouponRate>0.0</MBSMinimumCouponRate>
+						<MBSMinimumRemainingMaturityMonthCount>0
+						</MBSMinimumRemainingMaturityMonthCount>
+						<MBSNegativeAmortizationDecreaseAmount>0.0
+						</MBSNegativeAmortizationDecreaseAmount>
+						<MBSNegativeAmortizationDecreasePaidAmount>0.0
+						</MBSNegativeAmortizationDecreasePaidAmount>
+						<MBSNegativeAmortizationFactorRate>0.0
+						</MBSNegativeAmortizationFactorRate>
+						<MBSNegativeAmortizationIncreaseAmount>0.0
+						</MBSNegativeAmortizationIncreaseAmount>
+						<MBSNegativeAmortizationIncreasePaidAmount>0.0
+						</MBSNegativeAmortizationIncreasePaidAmount>
+						<MBSPassThroughCalculationType>MBSPassThroughCalculationType
+						</MBSPassThroughCalculationType>
+						<MBSPrepaymentFactorRate>0.0</MBSPrepaymentFactorRate>
+						<MBSPrepaymentForeclosureAmount>0.0
+						</MBSPrepaymentForeclosureAmount>
+						<MBSPrepaymentLoanInAccelerationAmount>0.0
+						</MBSPrepaymentLoanInAccelerationAmount>
+						<MBSPrepaymentPenaltyFactorRate>0.0
+						</MBSPrepaymentPenaltyFactorRate>
+						<MBSPrepaymentPenaltyPaidFactorRate>0.0
+						</MBSPrepaymentPenaltyPaidFactorRate>
+						<MBSPrepaymentPremiumAmount>0.0</MBSPrepaymentPremiumAmount>
+						<MBSPrepaymentPremiumEndDate>2001-01-01
+						</MBSPrepaymentPremiumEndDate>
+						<MBSPrepaymentREOAmount>0.0</MBSPrepaymentREOAmount>
+						<MBSPrepaymentSpeedCPRPercent>0.0</MBSPrepaymentSpeedCPRPercent>
+						<MBSPrepaymentSpeedPSAPercent>0.0</MBSPrepaymentSpeedPSAPercent>
+						<MBSPrincipalPaymentFactorRate>0.0</MBSPrincipalPaymentFactorRate>
+						<MBSPrincipalReductionFactorRate>0.0
+						</MBSPrincipalReductionFactorRate>
+						<MBSPrincipalReserveBalanceAmount>0.0
+						</MBSPrincipalReserveBalanceAmount>
+						<MBSPrincipalReserveDepositAmount>0.0
+						</MBSPrincipalReserveDepositAmount>
+						<MBSPrincipalReserveDisbursementAmount>0.0
+						</MBSPrincipalReserveDisbursementAmount>
+						<MBSPrincipalSinkingFundBalanceAmount>0.0
+						</MBSPrincipalSinkingFundBalanceAmount>
+						<MBSReinstatementRecoveryAmount>0.0
+						</MBSReinstatementRecoveryAmount>
+						<MBSRelocationLoanIndicator>MBSRelocationLoanIndicator
+						</MBSRelocationLoanIndicator>
+						<MBSRemainingMaturityMonthsCount>0
+						</MBSRemainingMaturityMonthsCount>
+						<MBSReplacementReserveBalanceAmount>0.0
+						</MBSReplacementReserveBalanceAmount>
+						<MBSScheduledAmortizationAmount>0.0
+						</MBSScheduledAmortizationAmount>
+						<MBSScheduledPrincipalPaymentAmount>0.0
+						</MBSScheduledPrincipalPaymentAmount>
+						<MBSScheduledUPBLifeAmount>0.0</MBSScheduledUPBLifeAmount>
+						<MBSServicingFeeRate>0.0</MBSServicingFeeRate>
+						<MBSSinkingFundAppliedAmount>0.0</MBSSinkingFundAppliedAmount>
+						<MBSSinkingFundReceivedAmount>0.0</MBSSinkingFundReceivedAmount>
+						<MBSSuspenseBalanceAmount>0.0</MBSSuspenseBalanceAmount>
+						<MBSTotalCollateralPaymentAmount>0.0
+						</MBSTotalCollateralPaymentAmount>
+						<MBSUnscheduledPrincipalPaymentAmount>0.0
+						</MBSUnscheduledPrincipalPaymentAmount>
+						<MBSUPBAmount>0.0</MBSUPBAmount>
+						<MBSUPBTax1984Percent>0.0</MBSUPBTax1984Percent>
+						<MBSUPBTax1985Percent>0.0</MBSUPBTax1985Percent>
+						<MBSWeightedAverageAccountingNetYieldRate>0.0
+						</MBSWeightedAverageAccountingNetYieldRate>
+						<MBSWeightedAverageBalloonTermMonthCount>0
+						</MBSWeightedAverageBalloonTermMonthCount>
+						<MBSWeightedAverageCouponRate>0.0</MBSWeightedAverageCouponRate>
+						<MBSWeightedAverageDebtCoverageRatioRate>0.0
+						</MBSWeightedAverageDebtCoverageRatioRate>
+						<MBSWeightedAverageLoanAgeMonthCount>0
+						</MBSWeightedAverageLoanAgeMonthCount>
+						<MBSWeightedAverageLockoutMonthCount>0
+						</MBSWeightedAverageLockoutMonthCount>
+						<MBSWeightedAverageMaturityDate>2001-01-01
+						</MBSWeightedAverageMaturityDate>
+						<MBSWeightedAverageMonthsToAmortizationCount>0
+						</MBSWeightedAverageMonthsToAmortizationCount>
+						<MBSWeightedAverageMortgageOriginationDate>2001-01-01
+						</MBSWeightedAverageMortgageOriginationDate>
+						<MBSWeightedAverageNetMarginRate>0.0
+						</MBSWeightedAverageNetMarginRate>
+						<MBSWeightedAverageNetYieldRate>0.0
+						</MBSWeightedAverageNetYieldRate>
+						<MBSWeightedAverageOriginalCombinedLTVRate>0.0
+						</MBSWeightedAverageOriginalCombinedLTVRate>
+						<MBSWeightedAverageOriginalCreditScoreNumber>0.0
+						</MBSWeightedAverageOriginalCreditScoreNumber>
+						<MBSWeightedAverageOriginalLoanSizeAmount>0.0
+						</MBSWeightedAverageOriginalLoanSizeAmount>
+						<MBSWeightedAverageOriginalLoanTermMonthsCount>0
+						</MBSWeightedAverageOriginalLoanTermMonthsCount>
+						<MBSWeightedAverageOriginalLTVRate>0.0
+						</MBSWeightedAverageOriginalLTVRate>
+						<MBSWeightedAveragePrepaymentPenaltyMonthCount>0
+						</MBSWeightedAveragePrepaymentPenaltyMonthCount>
+						<MBSWeightedAverageRemainingMaturityMonthCount>0
+						</MBSWeightedAverageRemainingMaturityMonthCount>
+						<SecurityIdentifier>SecurityIdentifier</SecurityIdentifier>
+						<UnknownCombinedLTVLoanCount>0</UnknownCombinedLTVLoanCount>
+						<UnknownCombinedLTVPercent>0.0</UnknownCombinedLTVPercent>
+						<UnknownCreditScoreLoanCount>0</UnknownCreditScoreLoanCount>
+						<UnknownCreditScorePercent>0.0</UnknownCreditScorePercent>
+						<UnknownDebttoIncomeLoanCount>0</UnknownDebttoIncomeLoanCount>
+						<UnknownDebttoIncomePercent>0.0</UnknownDebttoIncomePercent>
+						<UnknownLoanSizeLoanCount>0</UnknownLoanSizeLoanCount>
+						<UnknownLoanSizeUPBPercent>0.0</UnknownLoanSizeUPBPercent>
+						<UnknownLTVLoanCount>0</UnknownLTVLoanCount>
+						<UnknownLTVPercent>0.0</UnknownLTVPercent>
+					</MBSDisclosure>
+					<GuarantyFeeGrid>
+						<ContractRemittanceOptionType>ContractRemittanceOptionType
+						</ContractRemittanceOptionType>
+						<ConversionAcceptanceEndDate>2001-01-01
+						</ConversionAcceptanceEndDate>
+						<ConversionAcceptanceStartDate>2001-01-01
+						</ConversionAcceptanceStartDate>
+						<GuarantyFeeGridEffectiveDate>2001-01-01
+						</GuarantyFeeGridEffectiveDate>
+						<GuarantyFeeGridExpirationDate>2001-01-01
+						</GuarantyFeeGridExpirationDate>
+						<GuarantyFeeGridIdentifier>0</GuarantyFeeGridIdentifier>
+						<GuarantyFeeRate>0.0</GuarantyFeeRate>
+						<HedgeCostTierIdentifier>0</HedgeCostTierIdentifier>
+						<LoanPurchaseContractIdentifier>LoanPurchaseContractIdentifier
+						</LoanPurchaseContractIdentifier>
+						<MaximumGuarantyFeeBuydownRate>0.0</MaximumGuarantyFeeBuydownRate>
+						<MaximumGuarantyFeeBuyupRate>0.0</MaximumGuarantyFeeBuyupRate>
+						<MaximumPassThroughRate>0.0</MaximumPassThroughRate>
+						<MaximumSettlementDate>2001-01-01</MaximumSettlementDate>
+						<MinimumPassThroughRate>0.0</MinimumPassThroughRate>
+						<MinimumSettlementDate>2001-01-01</MinimumSettlementDate>
+						<PoolingProductIdentifier>0</PoolingProductIdentifier>
+						<PrepaymentDaysCount>0</PrepaymentDaysCount>
+						<ProgramIdentifier>ProgramIdentifier</ProgramIdentifier>
+						<RemittanceLockDate>2001-01-01</RemittanceLockDate>
+						<RemittanceScheduleType>RemittanceScheduleType
+						</RemittanceScheduleType>
+						<SuperARCDayCount>0</SuperARCDayCount>
+					</GuarantyFeeGrid>
+					<LoanPaymentRate>
+						<AdjustmentChangeOccurrenceType>AdjustmentChangeOccurrenceType
+						</AdjustmentChangeOccurrenceType>
+						<BusinessEventIdentifier>0</BusinessEventIdentifier>
+						<HUD235SubsidyPaymentAmount>0.0</HUD235SubsidyPaymentAmount>
+						<HUD235SubsidyPaymentEffectiveDate>2001-01-01
+						</HUD235SubsidyPaymentEffectiveDate>
+						<LoanBiweeklyNominalPrincipalAndInterestAmount>0.0
+						</LoanBiweeklyNominalPrincipalAndInterestAmount>
+						<LoanBuydownSubsidyPaymentAmount>0.0
+						</LoanBuydownSubsidyPaymentAmount>
+						<LoanBuydownSubsidyPaymentEffectiveDate>2001-01-01
+						</LoanBuydownSubsidyPaymentEffectiveDate>
+						<LoanCarryoverRate>0.0</LoanCarryoverRate>
+						<LoanEffectiveIndexRate>0.0</LoanEffectiveIndexRate>
+						<LoanExcessServicingFeeRate>0.0</LoanExcessServicingFeeRate>
+						<LoanExtendedTermCount>0</LoanExtendedTermCount>
+						<LoanIdentifier>LoanIdentifier</LoanIdentifier>
+						<LoanInterestRate>0.0</LoanInterestRate>
+						<LoanInvestorPassThroughRate>0.0</LoanInvestorPassThroughRate>
+						<LoanPassThroughRate>0.0</LoanPassThroughRate>
+						<LoanPaymentRateSourceType>LoanPaymentRateSourceType
+						</LoanPaymentRateSourceType>
+						<LoanPITIAmount>0.0</LoanPITIAmount>
+						<LoanPrincipalAndInterestPaymentAmount>0.0
+						</LoanPrincipalAndInterestPaymentAmount>
+						<LoanProjectedPrincipalBalanceAmount>0.0
+						</LoanProjectedPrincipalBalanceAmount>
+						<LoanRateFirstAccrualPeriodStartDate>2001-01-01
+						</LoanRateFirstAccrualPeriodStartDate>
+						<LoanRepaymentRuleStartingMonthCount>0
+						</LoanRepaymentRuleStartingMonthCount>
+						<LoanTermExtensionMonthsCount>0</LoanTermExtensionMonthsCount>
+						<NextPrincipalAndInterestPaymentChangeEffectiveDate>2001-01-01
+						</NextPrincipalAndInterestPaymentChangeEffectiveDate>
+						<NextRateAdjustmentEffectiveDate>2001-01-01
+						</NextRateAdjustmentEffectiveDate>
+						<NonStandardServicingFeeRetainedByServicerAmount>0.0
+						</NonStandardServicingFeeRetainedByServicerAmount>
+						<PaymentRateChangeEffectiveDueDate>2001-01-01
+						</PaymentRateChangeEffectiveDueDate>
+						<PaymentRateChangeStartingMonthCount>0
+						</PaymentRateChangeStartingMonthCount>
+						<PaymentRateExpirationDate>2001-01-01</PaymentRateExpirationDate>
+					</LoanPaymentRate>
+					<CollateralGroup>
+						<ClosingPricingPrepaymentSpeedPercent>0.0
+						</ClosingPricingPrepaymentSpeedPercent>
+						<CollateralCouponRate>0.0</CollateralCouponRate>
+						<CollateralCouponType>CollateralCouponType</CollateralCouponType>
+						<CollateralDeliverySequenceNumber>0
+						</CollateralDeliverySequenceNumber>
+						<CollateralDeliveryType>CollateralDeliveryType
+						</CollateralDeliveryType>
+						<CollateralDwellingType>CollateralDwellingType
+						</CollateralDwellingType>
+						<CollateralFirstPaymentDate>2001-01-01
+						</CollateralFirstPaymentDate>
+						<CollateralGrossMarginRate>0.0</CollateralGrossMarginRate>
+						<CollateralGroupAvailabilityType>CollateralGroupAvailabilityType
+						</CollateralGroupAvailabilityType>
+						<CollateralGroupFormationDate>2001-01-01
+						</CollateralGroupFormationDate>
+						<CollateralGroupIdentifier>CollateralGroupIdentifier
+						</CollateralGroupIdentifier>
+						<CollateralGroupInactiveDate>2001-01-01
+						</CollateralGroupInactiveDate>
+						<CollateralGroupName>CollateralGroupName</CollateralGroupName>
+						<CollateralInstrumentCount>0</CollateralInstrumentCount>
+						<CollateralMortgageTermYearsCount>0
+						</CollateralMortgageTermYearsCount>
+						<CollateralMortgageType>CollateralMortgageType
+						</CollateralMortgageType>
+						<CollateralPaymentDelayDayCount>0</CollateralPaymentDelayDayCount>
+						<CollateralRecoveredTotalAmount>0.0
+						</CollateralRecoveredTotalAmount>
+						<CollateralUnsoldUPBAmount>0.0</CollateralUnsoldUPBAmount>
+						<CollateralWeightedAverageCouponRate>0.0
+						</CollateralWeightedAverageCouponRate>
+						<CollateralWeightedAverageLoanAgeMonthCount>0
+						</CollateralWeightedAverageLoanAgeMonthCount>
+						<CollateralWeightedAverageRemainingMaturityMonthsCount>0
+						</CollateralWeightedAverageRemainingMaturityMonthsCount>
+						<DealerCleanUpPercent>0.0</DealerCleanUpPercent>
+						<FreddieMacCleanUpPercent>0.0</FreddieMacCleanUpPercent>
+						<GNMATwoPercent>0.0</GNMATwoPercent>
+						<MarketPoolIndicator>N</MarketPoolIndicator>
+						<ModifiableAndCombinableIndicator>N
+						</ModifiableAndCombinableIndicator>
+						<OriginalUPBInvalidPercent>0.0</OriginalUPBInvalidPercent>
+						<PrepaymentModelType>PrepaymentModelType</PrepaymentModelType>
+						<PricingDate>2001-01-01</PricingDate>
+						<ResidualCallOwnedPercent>0.0</ResidualCallOwnedPercent>
+						<SecuritizationTrustIdentifier>SecuritizationTrustIdentifier
+						</SecuritizationTrustIdentifier>
+						<SellerIdentifier>SellerIdentifier</SellerIdentifier>
+						<ServicerIdentifier>ServicerIdentifier</ServicerIdentifier>
+						<StructureFinalDate>2001-01-01</StructureFinalDate>
+						<TierIdentifier>0</TierIdentifier>
+						<TotalMortgageUPBAmount>0.0</TotalMortgageUPBAmount>
+					</CollateralGroup>
+					<BulkLoanPurchaseDeal>
+						<BulkLoanPurchaseDealIdentifier>BulkLoanPurchaseDealIdentifier
+						</BulkLoanPurchaseDealIdentifier>
+						<BusinessLineType>BusinessLineType</BusinessLineType>
+						<CompetitionType>CompetitionType</CompetitionType>
+						<DealCreditEnhancementType>DealCreditEnhancementType
+						</DealCreditEnhancementType>
+						<DealDataQualityType>DealDataQualityType</DealDataQualityType>
+						<DealExecutionType>DealExecutionType</DealExecutionType>
+						<DealPaymentDelayDayCount>0</DealPaymentDelayDayCount>
+						<DealPriorityType>DealPriorityType</DealPriorityType>
+						<EstimatedBidDate>2001-01-01</EstimatedBidDate>
+						<EstimatedGeneralAndAdministrativeCostAmount>0.0
+						</EstimatedGeneralAndAdministrativeCostAmount>
+						<EstimatedSettlementDate>2001-01-01</EstimatedSettlementDate>
+						<FundingMethodType>FundingMethodType</FundingMethodType>
+						<GeneralAndAdministrativeCostMethodType>GeneralAndAdministrativeCostMethodType
+						</GeneralAndAdministrativeCostMethodType>
+						<InterestRateType>InterestRateType</InterestRateType>
+						<LoanPurchaseContractIdentifier>LoanPurchaseContractIdentifier
+						</LoanPurchaseContractIdentifier>
+						<OriginalDealAmount>0.0</OriginalDealAmount>
+						<SecurityIssuerIdentifier>SecurityIssuerIdentifier
+						</SecurityIssuerIdentifier>
+						<SellerIdentifier>SellerIdentifier</SellerIdentifier>
+						<SeriesPrefixIdentifier>SeriesPrefixIdentifier
+						</SeriesPrefixIdentifier>
+						<SourcingChannelType>SourcingChannelType</SourcingChannelType>
+						<StandardGeneralAndAdministrativeCostRate>0.0
+						</StandardGeneralAndAdministrativeCostRate>
+						<UnderwritingEvaluationType>UnderwritingEvaluationType
+						</UnderwritingEvaluationType>
+						<WholeLoanEvaluationIdentifier>0</WholeLoanEvaluationIdentifier>
+					</BulkLoanPurchaseDeal>
+					<ContractCounterparty>
+						<ContractIdentifier>ContractIdentifier</ContractIdentifier>
+						<ContractSignedDate>2001-01-01</ContractSignedDate>
+						<CounterpartyResponsibilityPriorityRankNumber>0
+						</CounterpartyResponsibilityPriorityRankNumber>
+						<OrganizationBranchIdentifier>OrganizationBranchIdentifier
+						</OrganizationBranchIdentifier>
+						<OrganizationIdentifier>OrganizationIdentifier
+						</OrganizationIdentifier>
+						<OrganizationUnitType>OrganizationUnitType</OrganizationUnitType>
+						<PartyIdentifier>PartyIdentifier</PartyIdentifier>
+						<PartyRoleType>PartyRoleType</PartyRoleType>
+					</ContractCounterparty>
+					<AbilityToRepayExemption>
+						<AbilityToRepayExemptionCreditExtendedPurposeIndicator>AbilityToRepayExemptionCreditExtendedPurposeIndicator
+						</AbilityToRepayExemptionCreditExtendedPurposeIndicator>
+						<AbilityToRepayExemptionCreditorOrganizationType>AbilityToRepayExemptionCreditorOrganizationType
+						</AbilityToRepayExemptionCreditorOrganizationType>
+						<AbilityToRepayExemptionLoanProgramType>AbilityToRepayExemptionLoanProgramType
+						</AbilityToRepayExemptionLoanProgramType>
+						<AbilityToRepayExemptionReasonType>AbilityToRepayExemptionReasonType
+						</AbilityToRepayExemptionReasonType>
+						<ExemptionSequenceNumber>0</ExemptionSequenceNumber>
+						<LoanIdentifier>LoanIdentifier</LoanIdentifier>
+						<LoanSettlementDate>2001-01-01</LoanSettlementDate>
+					</AbilityToRepayExemption>
+					<CashTransferInstruction>
+						<CashTransferAfterDueDateDayCount>0
+						</CashTransferAfterDueDateDayCount>
+						<CashTransferFrequencyType>CashTransferFrequencyType
+						</CashTransferFrequencyType>
+						<CashTransferInstructionEffectiveDate>2001-01-01
+						</CashTransferInstructionEffectiveDate>
+						<CashTransferInstructionIdentifier>CashTransferInstructionIdentifier
+						</CashTransferInstructionIdentifier>
+						<CashTransferInstructionStatusType>CashTransferInstructionStatusType
+						</CashTransferInstructionStatusType>
+						<CashTransferPurposeType>CashTransferPurposeType
+						</CashTransferPurposeType>
+					</CashTransferInstruction>
+					<FinancialInstrument>
+						<AccrualPeriodBasisType>AccrualPeriodBasisType
+						</AccrualPeriodBasisType>
+						<FinancialInstrumentDescription>FinancialInstrumentDescription
+						</FinancialInstrumentDescription>
+						<FinancialInstrumentIdentifier>FinancialInstrumentIdentifier
+						</FinancialInstrumentIdentifier>
+						<FinancialInstrumentMaturityDate>2001-01-01
+						</FinancialInstrumentMaturityDate>
+						<FinancialInstrumentType>FinancialInstrumentType
+						</FinancialInstrumentType>
+						<GapBondIndicator>GapBondIndicator</GapBondIndicator>
+					</FinancialInstrument>
+					<LoanServicingTerms>
+						<CompensationPaymentMethodType>CompensationPaymentMethodType
+						</CompensationPaymentMethodType>
+						<CurtailmentApplicationSequenceType>CurtailmentApplicationSequenceType
+						</CurtailmentApplicationSequenceType>
+						<DefaultRemittanceStopDaysCount>0</DefaultRemittanceStopDaysCount>
+						<DefaultReportingFrequencyType>DefaultReportingFrequencyType
+						</DefaultReportingFrequencyType>
+						<ExceptionInterestDayMethodType>ExceptionInterestDayMethodType
+						</ExceptionInterestDayMethodType>
+						<FinalizationAdjustmentType>FinalizationAdjustmentType
+						</FinalizationAdjustmentType>
+						<FinalizationDayCount>0</FinalizationDayCount>
+						<FinalizationRuleType>FinalizationRuleType</FinalizationRuleType>
+						<FlexOptionIndicator>FlexOptionIndicator</FlexOptionIndicator>
+						<InterestAccountingMethodType>InterestAccountingMethodType
+						</InterestAccountingMethodType>
+						<InterestAccrualFrequencyType>InterestAccrualFrequencyType
+						</InterestAccrualFrequencyType>
+						<InterestVarianceExceptionToleranceMaximumAmount>0.0
+						</InterestVarianceExceptionToleranceMaximumAmount>
+						<InterestVarianceToleranceMaximumAmount>0.0
+						</InterestVarianceToleranceMaximumAmount>
+						<LoanInvestorRemittanceScheduleType>LoanInvestorRemittanceScheduleType
+						</LoanInvestorRemittanceScheduleType>
+						<LoanInvestorRemittanceType>LoanInvestorRemittanceType
+						</LoanInvestorRemittanceType>
+						<LoanPayoffEffectiveDateType>LoanPayoffEffectiveDateType
+						</LoanPayoffEffectiveDateType>
+						<LoanPayoffRemittanceType>LoanPayoffRemittanceType
+						</LoanPayoffRemittanceType>
+						<LoanServicingTermsIdentifier>0</LoanServicingTermsIdentifier>
+						<NonPayoffInterestAccrualPeriodBasisType>NonPayoffInterestAccrualPeriodBasisType
+						</NonPayoffInterestAccrualPeriodBasisType>
+						<PayoffInterestAccrualPeriodBasisType>PayoffInterestAccrualPeriodBasisType
+						</PayoffInterestAccrualPeriodBasisType>
+						<PayoffMethodType>PayoffMethodType</PayoffMethodType>
+						<PrepaymentNoticeRequiredIndicator>PrepaymentNoticeRequiredIndicator
+						</PrepaymentNoticeRequiredIndicator>
+						<PrincipalAccountingMethodType>PrincipalAccountingMethodType
+						</PrincipalAccountingMethodType>
+						<PrincipalReductionFrequencyType>PrincipalReductionFrequencyType
+						</PrincipalReductionFrequencyType>
+						<PrincipalVarianceExceptionToleranceMaximumAmount>0.0
+						</PrincipalVarianceExceptionToleranceMaximumAmount>
+						<PrincipalVarianceToleranceMaximumAmount>0.0
+						</PrincipalVarianceToleranceMaximumAmount>
+						<ReportingMethodType>ReportingMethodType</ReportingMethodType>
+						<ServicerAdvanceInterestAccrualMethodType>ServicerAdvanceInterestAccrualMethodType
+						</ServicerAdvanceInterestAccrualMethodType>
+						<ServicingCompensationCalculationLevelType>ServicingCompensationCalculationLevelType
+						</ServicingCompensationCalculationLevelType>
+						<ServicingOptionType>ServicingOptionType</ServicingOptionType>
+						<ServicingReleaseStatusType>ServicingReleaseStatusType
+						</ServicingReleaseStatusType>
+						<UPBVarianceToleranceAmount>0.0</UPBVarianceToleranceAmount>
+					</LoanServicingTerms>
 				</SearchResultContainer>
-			<!--Optional: -->
+
 			</ResponseEnvelope>
 			<!--Optional: -->
-			
+
 		</cps:SearchPoolResponse>
 	</soapenv:Body>
 </soapenv:Envelope>

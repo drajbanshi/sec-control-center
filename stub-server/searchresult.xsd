@@ -7,6 +7,7 @@
 
 	<xs:complexType name="SearchResultContainerType">
 		<xs:all>
+			<xs:element name="Pool" type="Pool"></xs:element>
 			<xs:element name="Loan" type="Loan"></xs:element>
 			<xs:element name="LoanPosition" type="LoanPosition"></xs:element>
 			<xs:element name="MBS" type="MBS"></xs:element>
