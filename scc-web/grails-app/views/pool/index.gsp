@@ -95,7 +95,7 @@
             <g:hiddenField name="poolType" value="${poolType}" />
             <div class="text-center">
 			<button class="btn btn-danger" type="submit"
-				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm')}');">
+				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm', args: [poolid])}');">
 				<i class="fa fa-close"> </i>
 				${message(code: 'PoolDetails.page.collapse.submit')}
 			</button>
