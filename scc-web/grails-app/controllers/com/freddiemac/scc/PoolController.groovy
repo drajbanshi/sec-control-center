@@ -93,8 +93,7 @@ class PoolController {
 	}
 
 
-	private def generateModel(def m) {
-		def keys = grailsApplication.config.com.freddiemac.searchpool.result.elements
+	private def generateModel(def m, def keys = grailsApplication.config.com.freddiemac.searchpool.result.elements) {
 		def mm = []
 		keys.each {
 			mm.add(new PropContainer(key: it, value: PropertyRetriever.getProp(it, m)))
