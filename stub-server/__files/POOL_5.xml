@@ -18,11 +18,11 @@
 						<PoolDispositionIntentType>PoolDispositionIntentType</PoolDispositionIntentType>
 						<PoolGuaranteedPercent>0.0</PoolGuaranteedPercent>
 						<PoolGuarantyFeeRate>0.0</PoolGuarantyFeeRate>
-						<PoolIdentifier>C09067</PoolIdentifier>
+						<PoolIdentifier>T14561</PoolIdentifier>
 						<PoolName>PoolName</PoolName>
 						<PoolProductVariationIdentifier>0</PoolProductVariationIdentifier>
 						<PoolPurposeType>PoolPurposeType</PoolPurposeType>
-						<PoolType>GUARANTOR</PoolType>
+						<PoolType>MULTILENDER GIANT</PoolType>
 						<ProductIdentifier>0</ProductIdentifier>
 						<TemporaryPoolIndicator>TemporaryPoolIndicator</TemporaryPoolIndicator>
 					</Pool>
@@ -376,7 +376,7 @@
 					<SecurityWire>
 						<InventoryIdentifier>0</InventoryIdentifier>
 						<SecurityWireCashAmount>0.0</SecurityWireCashAmount>
-						<SecurityWireCUSIPIdentifier>3134M4-4C-8
+						<SecurityWireCUSIPIdentifier>3135M4-4C-7
 						</SecurityWireCUSIPIdentifier>
 						<SecurityWireFaceValueAmount>5000000.00
 						</SecurityWireFaceValueAmount>

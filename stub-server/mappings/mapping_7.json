@@ -5,7 +5,7 @@
     "url" : "/freddiemac/searchpool.asmx",
     "method": "POST",
     "bodyPatterns": [
-            { "contains": "<cusip>CUSIP3333</cusip>" }
+            { "contains": "<cusip>3135M44C7</cusip>" }
         ]
 	},
   "response" : {

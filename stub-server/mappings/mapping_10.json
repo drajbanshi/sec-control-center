@@ -5,12 +5,12 @@
     "url" : "/freddiemac/searchpool.asmx",
     "method": "POST",
     "bodyPatterns": [
-            { "contains": "<poolid>POOLTEST</poolid>" }
+            { "contains": "<poolid>T14561</poolid>" }
         ]
 	},
   "response" : {
     "status" : 200,
-    "bodyFileName" : "POOL_10.xml",
+    "bodyFileName" : "POOL_5.xml",
     "headers" : {
       
       "Cache-Control" : "no-cache",
