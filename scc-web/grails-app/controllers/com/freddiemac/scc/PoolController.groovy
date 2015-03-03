@@ -70,10 +70,14 @@ class PoolController {
                 } else {
                     poolErrorField = params.poolNumber
                 }            
-            if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
-                flash.message = message(code: 'Collapse.controller.collapse.success', args: [poolErrorField])
+            if (!eventLogService.isEventProcessedForCusip(params.cusip)) {
+                if(dispatchService.collapsePool(params.poolid, params.cusip, params.poolType)) {
+                    flash.message = message(code: 'Collapse.controller.collapse.success', args: [poolErrorField])
+                } else {
+                    flash.error = message(code: 'Collapse.controller.collapse.fail', args: [poolErrorField])                
+                } 
             } else {
-                flash.error = message(code: 'Collapse.controller.collapse.fail', args: [poolErrorField])                
+                flash.error = message(code: 'Collapse.controller.collapse.duplicate', args: [params.poolid])
             }
         } else {
             flash.error = message(code: 'Collapse.controller.collapse.fail')
