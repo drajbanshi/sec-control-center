@@ -44,9 +44,8 @@ class XsdGenerator {
 			'CashTransferInstructionIdentifier':'CashTransferInstruction',
 			'FinancialInstrumentType':'FinancialInstrument',
 			'LoanInvestorRemittanceType':'LoanServicingTerms']
-
-
-		g.generateFromXsd("../stub-server/CDM.xsd", [
+		
+		def p = [
 			"LoanAmortizationType" : "Loan",
 			"LoanGrossUPBAmount" : "LoanPosition",
 			"PoolIdentifier":"Pool",
@@ -64,7 +63,22 @@ class XsdGenerator {
 		//	"FinancialInstitutionAccountIdentifier":"FinancialInstitutionAccount",
 			"SecurityBeneficiaryDate":"SecurityActivity",
 			"SecurityStatusType":"SecurityActivity"
-		],extras)
+		]
+		
+		
+		p.each {
+			 println "${it.key}:${it.value} = "
+		}
+		
+		println "--------"
+		
+		p.putAll(extras)
+		p.each { 
+		    println "${it.key}:${it.value} = "
+		}
+
+
+		g.generateFromXsd("../stub-server/CDM.xsd", p,extras)
 	}
 
 
