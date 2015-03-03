@@ -50,7 +50,7 @@
 	</g:form>
      
 </div> <!-- end container-fluid -->
-	 <br/>
+	 
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
 			${flash.message}
@@ -66,7 +66,7 @@
 			<g:renderErrors bean="${poolSearch}"  />
 		</div>
 	</g:hasErrors>
-	<br />
+	 
 
 	<g:if test="${result }">
 		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
@@ -82,7 +82,7 @@
 			  <g:render template="resultfields" model="[items: extras]" />
 			</div>
 			
-			<br/>
+			 
 			<button type="button" class="btn btn-xs btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
 						<i class="fa fa-plus"> </i> Select Additional Elements
 			</button>
