@@ -33,7 +33,7 @@
                         <input type="text" id="poolNumber" maxlength="8" size="8" class="form-control" name="poolNumber"
 				aria-label="Enter Pool Number"
 				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
-						</span> &nbsp; &nbsp;                                
+						</span> &nbsp; &nbsp;                  
 				<label>
 					${message(code: 'PoolDetails.page.input.securitycusipidentifier')}:
 				</label> 
@@ -45,13 +45,9 @@
 					<i class="fa fa-search"></i>
 					${message(code: 'PoolDetails.page.search.submit')}
 				</button></span>
-                <g:hiddenField name="poolError" value="${poolErrorField}" />
-                	
+                <g:hiddenField name="poolError" value="${poolErrorField}" />           	
 		 
 	</g:form>
-     
-     		
-     
      
 </div> <!-- end container-fluid -->
 	 <br/>
