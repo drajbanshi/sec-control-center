@@ -8,6 +8,7 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *= require_tree  bootstrap
 *= require_tree  font-awesome
+*= require_tree  bootstrap-toggle
 *= require_self
 */
 
@@ -272,6 +273,19 @@ body {
 
 .logo {
     padding: 5px 0 5px 5px;
+}
+
+.check-field {
+	width: 260px;
+	float: left;
+}
+
+.modal-body {
+	overflow: auto;
+}
+
+.modal-dialog {
+  margin-top: 150px;
 }
 
 
