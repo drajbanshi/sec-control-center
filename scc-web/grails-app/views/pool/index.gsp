@@ -49,7 +49,7 @@
      
      
 </div> <!-- end container-fluid -->
-	 
+	 <br/>
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
 			${flash.message}
@@ -57,12 +57,12 @@
 	</g:if>
 	<g:if test="${flash.error}">
 		<div class="alert alert-danger" role="status">
-			<h4>${flash.error}</h4>
+			${flash.error}
 		</div>
 	</g:if>
 	<g:hasErrors bean="${poolSearch}">
 		<div class="alert alert-danger" role="status">
-			<h4><g:renderErrors bean="${poolSearch}"  /></h4>
+			<g:renderErrors bean="${poolSearch}"  />
 		</div>
 	</g:hasErrors>
 	<br />
