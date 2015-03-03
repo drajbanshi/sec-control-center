@@ -10,6 +10,10 @@
 </head>
 <body>
 
+    <g:if test="${result}">
+	    <g:render template="select_fields_dialog" />
+    </g:if>
+
 <div class="container-fluid">
   <ul class="nav nav-tabs">
 	 <li role="presentation"><a href="#">Dashboard</a></li>
@@ -42,14 +46,19 @@
 					${message(code: 'PoolDetails.page.search.submit')}
 				</button></span>
                 <g:hiddenField name="poolError" value="${poolErrorField}" />
+                	<g:if test="${result}">
+					<br><button type="button" class="btn btn-xs btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
+						<i class="fa fa-plus"> </i> Show More Fields
+					</button>
+				</g:if>
 		 
 	</g:form>
      
-     		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
+     		
      
      
 </div> <!-- end container-fluid -->
-	 
+	 <br/>
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
 			${flash.message}
@@ -57,33 +66,23 @@
 	</g:if>
 	<g:if test="${flash.error}">
 		<div class="alert alert-danger" role="status">
-			<h4>${flash.error}</h4>
+			${flash.error}
 		</div>
 	</g:if>
 	<g:hasErrors bean="${poolSearch}">
 		<div class="alert alert-danger" role="status">
-			<h4><g:renderErrors bean="${poolSearch}"  /></h4>
+			<g:renderErrors bean="${poolSearch}"  />
 		</div>
 	</g:hasErrors>
 	<br />
 
 	<g:if test="${result }">
+		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
 		<div id="show-MBSData" class="content scaffold-show" role="main">
-
-			<!-- ol class="property-list mbsdata" -->
-			<table class="table table-striped table-hover table-compressed" style="width:auto">
-				<g:each in="${result}" var="item">
-					<tr>
-						<td class="fieldcontain" id="${item.key}"
-							class="property-label"> ${message(code:item.key + '.label')}:		 
-						</td>
-						<td class="property-value" aria-labelledby="${item.key}"> 
-							${item.value}
-						</td>
-					</tr>
-				</g:each>
-			<!-- /ol-->
-			</table>
+			<g:render template="resultfields" model="[items: result]" />
+			<div id="xfieldsContainer">
+			  <g:render template="resultfields" model="[items: extras]" />
+			</div>
 		</div>
 		<g:if test="${!isCollapsed}">
 			<g:form controller="pool" action="collapse">
@@ -94,7 +93,7 @@
             <g:hiddenField name="poolType" value="${poolType}" />
             <div class="text-center">
 			<button class="btn btn-danger" type="submit"
-				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm')}');">
+				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm', args: [poolid])}');">
 				<i class="fa fa-close"> </i>
 				${message(code: 'PoolDetails.page.collapse.submit')}
 			</button>
@@ -107,6 +106,11 @@
 
 </div><!--  close tabBody -->
 </div><!--  close containerFluid -->
+<g:javascript>
+  function extraFieldsAdded() {
+      $("#extraFieldsModal").modal("hide");
+  }
+</g:javascript>
 
 </body>
 </html>
