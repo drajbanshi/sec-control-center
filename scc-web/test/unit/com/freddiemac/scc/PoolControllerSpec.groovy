@@ -1,5 +1,6 @@
 
 
+
 package com.freddiemac.scc
 
 import spock.lang.Specification
@@ -9,6 +10,7 @@ import com.freddiemac.scc.entities.EventProcessLog
 import com.freddiemac.scc.entities.EventType
 import com.freddiemac.scc.entities.Status
 import com.freddiemac.scc.model.PoolSearch
+import com.ibm.icu.text.SimpleDateFormat;
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
@@ -34,8 +36,12 @@ class PoolControllerSpec extends Specification {
 	def setup() {
 		def searchService = Mock(SearchService)
 		XmlSlurper xmlSlurper = new XmlSlurper()
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd")
+		Calendar c = Calendar.getInstance()
+		c.set(Calendar.DAY_OF_MONTH, 5)
+		String dt = formatter.format(c.getTime())
 		searchService.searchPool("CUSIP2222",_) >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1/><test2/>test3/></mytest>")]
-		searchService.searchPool("","POOL2222") >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1>test1</test1><test2/>test3/></mytest>")]
+		searchService.searchPool("","POOL2222") >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1>${dt}</test1><test2/>test3/></mytest>")]
 		searchService.searchPool("CUSIP1234","") >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1></test1><test2/>test3/></mytest>")]
 		searchService.searchPool(_,_) >> ['success': false, 'result':  xmlSlurper.parseText("<ErrorEvnelope><ErrorNo/><ErrorMessage/></ErrorEvnelope>")]
 		controller.searchService = searchService
@@ -104,7 +110,7 @@ class PoolControllerSpec extends Specification {
 		where:
 		cusip | poolid || collapsed
 		"CUSIP2222"    | "" || false
-		"" | "POOL2222" || true
+		"" | "POOL2222" || false
 		"CUSIP1234" | "" || true
 	}
 
