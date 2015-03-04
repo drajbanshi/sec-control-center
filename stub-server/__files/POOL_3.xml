@@ -376,7 +376,7 @@
 					<SecurityWire>
 						<InventoryIdentifier>0</InventoryIdentifier>
 						<SecurityWireCashAmount>0.0</SecurityWireCashAmount>
-						<SecurityWireCUSIPIdentifier>3134M4-4C-8
+						<SecurityWireCUSIPIdentifier>3134M44C8
 						</SecurityWireCUSIPIdentifier>
 						<SecurityWireFaceValueAmount>5000000.00
 						</SecurityWireFaceValueAmount>
@@ -414,7 +414,7 @@
 						<SecurityCouponType>SecurityCouponType</SecurityCouponType>
 						<SecurityCouponTypeConversionDate>2001-01-01
 						</SecurityCouponTypeConversionDate>
-						<SecurityCUSIPIdentifier>3132M2-4C-7 
+						<SecurityCUSIPIdentifier>3134M44C8
 						</SecurityCUSIPIdentifier>
 						<SecurityFirstInterestAccrualDate>2001-01-01
 						</SecurityFirstInterestAccrualDate>
@@ -450,7 +450,7 @@
 					</Security>
 					<SecurityIssuance>
 						<SecurityIdentifier>SecurityIdentifier</SecurityIdentifier>
-						<SecurityIssueDate></SecurityIssueDate>
+						<SecurityIssueDate>2015-05-09</SecurityIssueDate>
 						<SecurityIssueCouponRate>0.0</SecurityIssueCouponRate>
 						<SecurityIssueDiscountRate>0.0</SecurityIssueDiscountRate>
 						<SecurityIssueFaceAmount>0.0</SecurityIssueFaceAmount>
