@@ -31,7 +31,7 @@ class SearchService {
 			return [success: true, result: PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.path, response.getBody())]
 		} catch (SOAPClientException e) {
 			log.error(e)
-			return [success: false, errorMessage: "Search System unavailable",errorCode: "" ]
+			return [success: false, errorMessage: "Unable to connect to MBS.",errorCode: "" ]
 		}
 	}
 }
