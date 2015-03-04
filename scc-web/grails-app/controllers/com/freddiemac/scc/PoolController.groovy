@@ -2,6 +2,7 @@ package com.freddiemac.scc
 
 import com.freddiemac.scc.model.PoolSearch
 import com.freddiemac.scc.model.PropContainer
+import com.freddiemac.scc.utils.DateUtils;
 import com.freddiemac.scc.utils.PropertyRetriever
 
 class PoolController {
@@ -61,9 +62,8 @@ class PoolController {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
 			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
 			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
-			String secSettleDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securitysettledate, m.result)
 			String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
-			def isCollapsed = (secIssueDt && !secIssueDt.isEmpty()) || (secSettleDt && !secSettleDt.isEmpty()) || eventLogService.isEventProcessedForCusip(cusip)
+			def isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
 			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
 		}
 	}
