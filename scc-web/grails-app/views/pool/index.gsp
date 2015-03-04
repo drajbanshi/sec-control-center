@@ -50,16 +50,19 @@
      
 	 
 	<g:if test="${flash.message}">
+		<br>
 		<div class="alert alert-success" role="status">
 			${flash.message}
 		</div>
 	</g:if>
 	<g:if test="${flash.error}">
+		<br>
 		<div class="alert alert-danger" role="status">
 			${flash.error}
 		</div>
 	</g:if>
 	<g:hasErrors bean="${poolSearch}">
+		<br>
 		<div class="alert alert-danger" role="status">
 			<g:renderErrors bean="${poolSearch}"  />
 		</div>
