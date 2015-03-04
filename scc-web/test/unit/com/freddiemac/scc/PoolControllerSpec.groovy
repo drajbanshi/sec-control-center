@@ -40,7 +40,7 @@ class PoolControllerSpec extends Specification {
 		Calendar c = Calendar.getInstance()
 		c.set(Calendar.DAY_OF_MONTH, 5)
 		String dt = formatter.format(c.getTime())
-		searchService.searchPool("CUSIP2222",_) >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1/><test2/>test3/></mytest>")]
+		searchService.searchPool("CUSIP2222",_) >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1>2015-01-02</test1><test2/>test3/></mytest>")]
 		searchService.searchPool("","POOL2222") >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1>${dt}</test1><test2/>test3/></mytest>")]
 		searchService.searchPool("CUSIP1234","") >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1></test1><test2/>test3/></mytest>")]
 		searchService.searchPool(_,_) >> ['success': false, 'result':  xmlSlurper.parseText("<ErrorEvnelope><ErrorNo/><ErrorMessage/></ErrorEvnelope>")]
@@ -109,7 +109,7 @@ class PoolControllerSpec extends Specification {
 
 		where:
 		cusip | poolid || collapsed
-		"CUSIP2222"    | "" || false
+		"CUSIP2222"    | "" || true
 		"" | "POOL2222" || false
 		"CUSIP1234" | "" || true
 	}

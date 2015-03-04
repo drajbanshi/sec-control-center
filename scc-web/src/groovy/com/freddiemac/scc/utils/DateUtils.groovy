@@ -13,12 +13,7 @@ class DateUtils {
 		}
 		
 		Date dt = formatter.parse(date)
-		
-		Calendar c = Calendar.getInstance()
-		c.setTime(dt)
-		c.set(Calendar.HOUR, 23)
-		c.set(Calendar.MINUTE, 59)
-		return c.before(new Date())
+		return dt.before(new Date())
 	}
 
 }
