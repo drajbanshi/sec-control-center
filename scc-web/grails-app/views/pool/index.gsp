@@ -74,14 +74,18 @@
 			<div class="row">
 				<div class="col-xs-6">
 					<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
+					
+		 			<button type="button" class="btn btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
+						<i class="fa fa-plus"> </i> Select Additional Elements
+					</button>	
+					
+					
 					<div id="show-MBSData" class="content scaffold-show" role="main">
 						<g:render template="resultfields" model="[items: result]" />
 					</div>
 				</div>
 				<div class="col-xs-6">
-					<button type="button" class="btn btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
-						<i class="fa fa-plus"> </i> Select Additional Elements
-					</button>	
+				
 					 
 					<div id="xfieldsContainer">
 					  <g:render template="resultfields" model="[items: extras]" />
@@ -97,7 +101,7 @@
 			<g:hiddenField name="cusipIdentifier" value="${poolSearch.cusipIdentifier}" />
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
             <g:hiddenField name="poolType" value="${poolType}" />
-            <div class="text-center">
+            <div class="button-cont">
 			<button class="btn btn-danger" type="submit"
 				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm', args: [poolid])}');">
 				<i class="fa fa-close"> </i>
