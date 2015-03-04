@@ -69,15 +69,15 @@
 	</g:hasErrors>
 	 
 	<g:if test="${result }">
-		 
-		 
-			<div class="row">
-				<div class="col-xs-6">
-					<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
+		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
 					
 		 			<button type="button" class="btn btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
 						<i class="fa fa-plus"> </i> Select Additional Elements
 					</button>	
+					 
+		 
+			<div class="row">
+				<div class="col-xs-6">
 					
 					
 					<div id="show-MBSData" class="content scaffold-show" role="main">
