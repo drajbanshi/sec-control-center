@@ -20,9 +20,8 @@
 	 <li role="presentation" class="active"><a href="#">Pool Detail</a></li>
 	 <!--li role="presentation"><a href="#">Dissolve</a></li-->
   </ul>
-  <div class="tabBody">
-    
-    
+     
+    <div class="tabBody">
       <g:form controller="pool" action="search" class="form-inline">
 		 
 			
@@ -49,7 +48,6 @@
 		 
 	</g:form>
      
-</div> <!-- end container-fluid -->
 	 
 	<g:if test="${flash.message}">
 		<div class="alert alert-success" role="status">
@@ -67,26 +65,28 @@
 		</div>
 	</g:hasErrors>
 	 
-
 	<g:if test="${result }">
-		<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
-		
-		
-		
-		<div id="show-MBSData" class="content scaffold-show" role="main">
-			<g:render template="resultfields" model="[items: result]" />
-			
-			
-		
-			<div id="xfieldsContainer">
-			  <g:render template="resultfields" model="[items: extras]" />
-			</div>
-			
-			 
-			<button type="button" class="btn btn-xs btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
+		 
+		 
+			<div class="row">
+				<div class="col-xs-6">
+					<h2>${message(code: 'PoolDetails.page.header.title')}</h2>
+					<div id="show-MBSData" class="content scaffold-show" role="main">
+						<g:render template="resultfields" model="[items: result]" />
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-success" style="margin-top:4px" data-toggle="modal" data-target="#extraFieldsModal">
 						<i class="fa fa-plus"> </i> Select Additional Elements
-			</button>
-		</div>
+					</button>	
+					 
+					<div id="xfieldsContainer">
+					  <g:render template="resultfields" model="[items: extras]" />
+					</div>	 
+				</div>
+ 			</div>
+		 
+		
 		<g:if test="${!isCollapsed}">
 			<g:form controller="pool" action="collapse">
 			<g:hiddenField name="poolid" value="${poolid}" />
@@ -106,9 +106,8 @@
 		</g:if>
 		
 	</g:if>
-
 </div><!--  close tabBody -->
-</div><!--  close containerFluid -->
+ </div><!--  close containerFluid -->
 <g:javascript>
   function extraFieldsAdded() {
       $("#extraFieldsModal").modal("hide");
