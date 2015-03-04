@@ -392,9 +392,9 @@
 						<BusinessCalendarType>BusinessCalendarType</BusinessCalendarType>
 						<ContractualMaturityDate>2045-03-01</ContractualMaturityDate>
 						<CurrencyType>CurrencyType</CurrencyType>
-						<FederalReserveSecurityClassCode>FederalReserveSecurityClassCode
+						<FederalReserveSecurityClassCode>FGPC
 						</FederalReserveSecurityClassCode>
-						<FederalReserveSecurityDescription>FederalReserveSecurityDescription
+						<FederalReserveSecurityDescription> 03.000 FGPC V81495 G
 						</FederalReserveSecurityDescription>
 						<InternationalSecurityIdentifier>InternationalSecurityIdentifier
 						</InternationalSecurityIdentifier>
