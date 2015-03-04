@@ -33,7 +33,7 @@ body {
  }
 
 .mainbody {
-    min-height: 600px;
+    min-height: 450px;
 }
 
 .menubar li  a{
@@ -363,7 +363,7 @@ footer a {color:gray; text-decoration:none}
 .table-compressed > thead > tr > td,
 .table-compressed > tbody > tr > td,
 .table-compressed > tfoot > tr > td {
-  padding: 2px 4px;
+  padding: 1px 4px;
 }
 .table-compressed > thead, 
 .table-compressed > tfoot {
