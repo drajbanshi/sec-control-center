@@ -47,7 +47,8 @@
 <g:javascript>
 $(document).ready(function() {
   $("#selectAll").change(function(){
-    $(".chk").attr("checked",$(this).prop("checked"));
+ //  alert($(this).prop("checked"));
+    $(".chk").prop("checked",$(this).prop("checked"));
 });
 });
 
