@@ -19,11 +19,15 @@
 					value="${poolSearch.cusipIdentifier}" />
 				<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
 				<div class="modal-body">
+					<div>
+					   <g:checkBox id="selectAll" name="selectAll" checked="false" />
+					   <label for="selectAll">Select All</label>
+					</div>
 
 					<g:each in="${xfields}" var="f">
 						<div class="check-field">
 						 
-							<g:checkBox id="${f}" value="${f}" name="xfield"
+							<g:checkBox class="chk" id="${f}" value="${f}" name="xfield"
 								checked="${poolSearch.xfield?.contains(f)}" />
 							 <label for="${f}">
 							<g:message code="${f}.label" />
@@ -39,3 +43,12 @@
 		</div>
 	</div>
 </div>
+
+<g:javascript>
+$(document).ready(function() {
+  $("#selectAll").change(function(){
+    $(".chk").attr("checked",$(this).prop("checked"));
+});
+});
+
+</g:javascript>

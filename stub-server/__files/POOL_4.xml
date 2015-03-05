@@ -18,11 +18,11 @@
 						<PoolDispositionIntentType>PoolDispositionIntentType</PoolDispositionIntentType>
 						<PoolGuaranteedPercent>0.0</PoolGuaranteedPercent>
 						<PoolGuarantyFeeRate>0.0</PoolGuarantyFeeRate>
-						<PoolIdentifier>G14561</PoolIdentifier>
+						<PoolIdentifier>C09067</PoolIdentifier>
 						<PoolName>PoolName</PoolName>
 						<PoolProductVariationIdentifier>0</PoolProductVariationIdentifier>
 						<PoolPurposeType>PoolPurposeType</PoolPurposeType>
-						<PoolType>GIANT</PoolType>
+						<PoolType>CASH</PoolType>
 						<ProductIdentifier>0</ProductIdentifier>
 						<TemporaryPoolIndicator>TemporaryPoolIndicator</TemporaryPoolIndicator>
 					</Pool>
@@ -206,7 +206,7 @@
 						</LoanDelinquentPaymentsOverPastTwelveMonthsCount>
 						<LoanForgivenUPBAmount>0.0</LoanForgivenUPBAmount>
 						<LoanFreddieMacOwnedUPBAmount>0.0</LoanFreddieMacOwnedUPBAmount>
-						<LoanGrossUPBAmount>0.0</LoanGrossUPBAmount>
+						<LoanGrossUPBAmount> 500000000.00</LoanGrossUPBAmount>
 						<LoanIdentifier>LoanIdentifier</LoanIdentifier>
 						<LoanInterestBearingUPBAmount>0.0</LoanInterestBearingUPBAmount>
 						<LoanInterestPaidThroughDate>2001-01-01
@@ -276,7 +276,7 @@
 						</DisclosureAgentScheduleType>
 						<GiantResecuritizationLevelCount>0
 						</GiantResecuritizationLevelCount>
-						<InterestOnlyTermCount>0</InterestOnlyTermCount>
+						<InterestOnlyTermCount>False</InterestOnlyTermCount>
 						<InterestPaymentFrequencyCount>0</InterestPaymentFrequencyCount>
 						<LoanLevelCreditRiskIndicator>LoanLevelCreditRiskIndicator
 						</LoanLevelCreditRiskIndicator>
@@ -284,9 +284,9 @@
 						<MBSAmortizationType>Fixed</MBSAmortizationType>
 						<MBSAssumableIndicator>MBSAssumableIndicator
 						</MBSAssumableIndicator>
-						<MBSExecutionMethodType>MBSExecutionMethodType
+						<MBSExecutionMethodType>Swap MBS
 						</MBSExecutionMethodType>
-						<MBSMortgageType>Fixed</MBSMortgageType>
+						<MBSMortgageType>Conventional</MBSMortgageType>
 						<MBSPaymentDelayDayCount>0</MBSPaymentDelayDayCount>
 						<MBSPoolPrefixCode>V8</MBSPoolPrefixCode>
 						<MBSPrincipalReserveHolderType>MBSPrincipalReserveHolderType
@@ -299,7 +299,7 @@
 						</NonDisclosureIndicator>
 						<PayingAgentScheduleType>PayingAgentScheduleType
 						</PayingAgentScheduleType>
-						<PoolIdentifier>V81495</PoolIdentifier>
+						<PoolIdentifier>G14561</PoolIdentifier>
 						<PreFirstPaymentLoanCount>0</PreFirstPaymentLoanCount>
 						<PreFirstPaymentUPBPercent>0.0</PreFirstPaymentUPBPercent>
 						<PrepaymentRestrictionType>PrepaymentRestrictionType
@@ -387,19 +387,19 @@
 					<Security>
 						<ActualMaturityDate>2001-01-01</ActualMaturityDate>
 						<AmortizationEndDate>2001-01-01</AmortizationEndDate>
-						<AssetBackedSecurityType>AssetBackedSecurityType
+						<AssetBackedSecurityType>RG
 						</AssetBackedSecurityType>
 						<BusinessCalendarType>BusinessCalendarType</BusinessCalendarType>
 						<ContractualMaturityDate>2045-03-01</ContractualMaturityDate>
 						<CurrencyType>CurrencyType</CurrencyType>
-						<FederalReserveSecurityClassCode>FederalReserveSecurityClassCode
+						<FederalReserveSecurityClassCode>FGPC
 						</FederalReserveSecurityClassCode>
-						<FederalReserveSecurityDescription>FederalReserveSecurityDescription
+						<FederalReserveSecurityDescription>03.000 FGPC V81495 G
 						</FederalReserveSecurityDescription>
 						<InternationalSecurityIdentifier>InternationalSecurityIdentifier
 						</InternationalSecurityIdentifier>
 						<MaturityReasonType>MaturityReasonType</MaturityReasonType>
-						<MinimumTradeDenominationAmount>0.0
+						<MinimumTradeDenominationAmount>1000000.00 
 						</MinimumTradeDenominationAmount>
 						<MinimumTradeIncrementAmount>0.0</MinimumTradeIncrementAmount>
 						<PaymentFrequencyType>PaymentFrequencyType</PaymentFrequencyType>
@@ -414,11 +414,11 @@
 						<SecurityCouponType>SecurityCouponType</SecurityCouponType>
 						<SecurityCouponTypeConversionDate>2001-01-01
 						</SecurityCouponTypeConversionDate>
-						<SecurityCUSIPIdentifier>3135M44C7
+						<SecurityCUSIPIdentifier>3135M44C7 
 						</SecurityCUSIPIdentifier>
 						<SecurityFirstInterestAccrualDate>2001-01-01
 						</SecurityFirstInterestAccrualDate>
-						<SecurityFirstPaymentDate>2001-01-01</SecurityFirstPaymentDate>
+						<SecurityFirstPaymentDate>2015-05-15</SecurityFirstPaymentDate>
 						<SecurityGuarantyContractIdentifier>SecurityGuarantyContractIdentifier
 						</SecurityGuarantyContractIdentifier>
 						<SecurityIdentifier>SecurityIdentifier</SecurityIdentifier>
@@ -432,7 +432,7 @@
 						<SecurityOriginalFaceAmount>0.0</SecurityOriginalFaceAmount>
 						<SecurityOwnershipMethodType>SecurityOwnershipMethodType
 						</SecurityOwnershipMethodType>
-						<SecurityPayingAgentIdentifier>SecurityPayingAgentIdentifier
+						<SecurityPayingAgentIdentifier>1
 						</SecurityPayingAgentIdentifier>
 						<SecurityPaymentDayCount>0</SecurityPaymentDayCount>
 						<SecurityPrincipalInterestType>SecurityPrincipalInterestType
@@ -450,16 +450,16 @@
 					</Security>
 					<SecurityIssuance>
 						<SecurityIdentifier>SecurityIdentifier</SecurityIdentifier>
-						<SecurityIssueDate>2015-09-08</SecurityIssueDate>
+						<SecurityIssueDate>2015-03-30</SecurityIssueDate>
 						<SecurityIssueCouponRate>0.0</SecurityIssueCouponRate>
 						<SecurityIssueDiscountRate>0.0</SecurityIssueDiscountRate>
-						<SecurityIssueFaceAmount>0.0</SecurityIssueFaceAmount>
+						<SecurityIssueFaceAmount>500000000.00</SecurityIssueFaceAmount>
 						<SecurityIssueFirstEligibleTradeDate>2001-01-01
 						</SecurityIssueFirstEligibleTradeDate>
 						<SecurityIssuePricePerShareAmount>0.0
 						</SecurityIssuePricePerShareAmount>
 						<SecurityIssuePricePercent>0.0</SecurityIssuePricePercent>
-						<SecurityIssueSettlementDate>
+						<SecurityIssueSettlementDate>2001-01-01
 						</SecurityIssueSettlementDate>
 						<SecurityIssueShareCount>0</SecurityIssueShareCount>
 						<SecurityIssueUPBAmount>0.0</SecurityIssueUPBAmount>
@@ -472,7 +472,7 @@
 						<SecurityActivityPeriodEndDate>2001-01-01
 						</SecurityActivityPeriodEndDate>
 						<SecurityBeneficiaryDate>2015-04-01</SecurityBeneficiaryDate>
-						<SecurityCouponRate>0.03</SecurityCouponRate>
+						<SecurityCouponRate>3.00</SecurityCouponRate>
 						<SecurityCurrentFaceAmount>0.0</SecurityCurrentFaceAmount>
 						<SecurityFactorDate>2001-01-01</SecurityFactorDate>
 						<SecurityFactorRate>0.0</SecurityFactorRate>
@@ -481,9 +481,9 @@
 						<SecurityPaymentDate>2001-01-01</SecurityPaymentDate>
 						<SecurityPrincipalPaymentAmount>0.0
 						</SecurityPrincipalPaymentAmount>
-						<SecurityRecordDate>2001-01-01</SecurityRecordDate>
+						<SecurityRecordDate> 2015-04-01 </SecurityRecordDate>
 						<SecurityStatusType>true</SecurityStatusType>
-						<SecurityTaxRecordDate>2001-01-01</SecurityTaxRecordDate>
+						<SecurityTaxRecordDate>0</SecurityTaxRecordDate>
 					</SecurityActivity>
 					<Cash>
 						<CashAmount>0.0</CashAmount>
@@ -499,7 +499,7 @@
 						<CapitalizedPrepaymentCompensationAmount>0.0
 						</CapitalizedPrepaymentCompensationAmount>
 						<LoanRelationshipType>LoanRelationshipType</LoanRelationshipType>
-						<LoanRoleType>LoanRoleType</LoanRoleType>
+						<LoanRoleType>Subject Loan</LoanRoleType>
 						<LoanSelectionType>LoanSelectionType</LoanSelectionType>
 						<RelatedLoanIdentifier>RelatedLoanIdentifier
 						</RelatedLoanIdentifier>
@@ -594,7 +594,7 @@
 						</MBSArrearsInterestAccruedAmount>
 						<MBSAverageOriginalLoanSizeAmount>0.0
 						</MBSAverageOriginalLoanSizeAmount>
-						<MBSBalloonTermCount>0</MBSBalloonTermCount>
+						<MBSBalloonTermCount>False</MBSBalloonTermCount>
 						<MBSCumulativePrepaymentRate>0.0</MBSCumulativePrepaymentRate>
 						<MBSCurtailmentAmount>0.0</MBSCurtailmentAmount>
 						<MBSDisclosureBannerText>MBSDisclosureBannerText
@@ -607,7 +607,7 @@
 						<MBSFactorRate>0.0</MBSFactorRate>
 						<MBSForeclosureAmount>0.0</MBSForeclosureAmount>
 						<MBSInactiveLoanUPBAmount>0.0</MBSInactiveLoanUPBAmount>
-						<MBSInterestPaymentFactorRate>0.0</MBSInterestPaymentFactorRate>
+						<MBSInterestPaymentFactorRate> 0.025 </MBSInterestPaymentFactorRate>
 						<MBSLatestMaturityDate>2001-01-01</MBSLatestMaturityDate>
 						<MBSLoanCount>0</MBSLoanCount>
 						<MBSLossAmount>0.0</MBSLossAmount>
@@ -750,7 +750,7 @@
 						<MinimumSettlementDate>2001-01-01</MinimumSettlementDate>
 						<PoolingProductIdentifier>0</PoolingProductIdentifier>
 						<PrepaymentDaysCount>0</PrepaymentDaysCount>
-						<ProgramIdentifier>ProgramIdentifier</ProgramIdentifier>
+						<ProgramIdentifier>1</ProgramIdentifier>
 						<RemittanceLockDate>2001-01-01</RemittanceLockDate>
 						<RemittanceScheduleType>RemittanceScheduleType
 						</RemittanceScheduleType>
@@ -775,7 +775,7 @@
 						<LoanExtendedTermCount>0</LoanExtendedTermCount>
 						<LoanIdentifier>LoanIdentifier</LoanIdentifier>
 						<LoanInterestRate>0.0</LoanInterestRate>
-						<LoanInvestorPassThroughRate>0.0</LoanInvestorPassThroughRate>
+						<LoanInvestorPassThroughRate> 04.00</LoanInvestorPassThroughRate>
 						<LoanPassThroughRate>0.0</LoanPassThroughRate>
 						<LoanPaymentRateSourceType>LoanPaymentRateSourceType
 						</LoanPaymentRateSourceType>
@@ -849,7 +849,7 @@
 						<PrepaymentModelType>PrepaymentModelType</PrepaymentModelType>
 						<PricingDate>2001-01-01</PricingDate>
 						<ResidualCallOwnedPercent>0.0</ResidualCallOwnedPercent>
-						<SecuritizationTrustIdentifier>SecuritizationTrustIdentifier
+						<SecuritizationTrustIdentifier>21033205
 						</SecuritizationTrustIdentifier>
 						<SellerIdentifier>SellerIdentifier</SellerIdentifier>
 						<ServicerIdentifier>ServicerIdentifier</ServicerIdentifier>
@@ -879,7 +879,7 @@
 						<LoanPurchaseContractIdentifier>LoanPurchaseContractIdentifier
 						</LoanPurchaseContractIdentifier>
 						<OriginalDealAmount>0.0</OriginalDealAmount>
-						<SecurityIssuerIdentifier>SecurityIssuerIdentifier
+						<SecurityIssuerIdentifier>564654
 						</SecurityIssuerIdentifier>
 						<SellerIdentifier>SellerIdentifier</SellerIdentifier>
 						<SeriesPrefixIdentifier>SeriesPrefixIdentifier
@@ -902,7 +902,7 @@
 						</OrganizationIdentifier>
 						<OrganizationUnitType>OrganizationUnitType</OrganizationUnitType>
 						<PartyIdentifier>PartyIdentifier</PartyIdentifier>
-						<PartyRoleType>PartyRoleType</PartyRoleType>
+						<PartyRoleType>Trust</PartyRoleType>
 					</ContractCounterparty>
 					<AbilityToRepayExemption>
 						<AbilityToRepayExemptionCreditExtendedPurposeIndicator>AbilityToRepayExemptionCreditExtendedPurposeIndicator
@@ -940,7 +940,7 @@
 						</FinancialInstrumentIdentifier>
 						<FinancialInstrumentMaturityDate>2001-01-01
 						</FinancialInstrumentMaturityDate>
-						<FinancialInstrumentType>FinancialInstrumentType
+						<FinancialInstrumentType>Loan On Platform
 						</FinancialInstrumentType>
 						<GapBondIndicator>GapBondIndicator</GapBondIndicator>
 					</FinancialInstrument>

@@ -18,8 +18,8 @@ class XsdGenerator {
 			'MBSExecutionMethodType':'MBS',
 			'ContractExecutionMethodType':'CollateralGroup',
 			'SecurityCUSIPIdentifier':'Security',
-			'FederalReserveSecurityClassCode':'DebtSecurity',
-			'FederalReserveSecurityDescription':'DebtSecurity',
+			'FederalReserveSecurityClassCode':'Security', //was DebtSecurity
+			'FederalReserveSecurityDescription':'Security',
 			'SecurityIssueDate':'SecurityIssuance',
 			'SecurityIssueFaceAmount':'SecurityIssuance',
 			'SecurityFirstPaymentDate':'Security',
@@ -66,16 +66,28 @@ class XsdGenerator {
 		]
 		
 		
+		
 		p.each {
 			 println "${it.key}:${it.value} = "
+			
 		}
+		
+	
+	
 		
 		println "--------"
 		
 		p.putAll(extras)
+		def sb = new StringBuilder()
+		sb.append("[")
 		p.each { 
 		    println "${it.key}:${it.value} = "
+			if(sb.length() > 2) sb.append(",")
+			sb.append("'${it.key}:${it.value}'")
 		}
+		sb.append("]")
+		
+		println sb.toString()
 
 
 		g.generateFromXsd("../stub-server/CDM.xsd", p,extras)
