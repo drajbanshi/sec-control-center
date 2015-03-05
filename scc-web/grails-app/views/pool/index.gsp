@@ -26,7 +26,7 @@
 		 
 			
 				<label>
-					${message(code: 'PoolDetails.page.input.poolnumber')}:
+					${message(code: 'PoolDetails.page.input.poolnumber')} 
 				</label> 
                         <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
                         <input type="text" id="poolNumber" maxlength="8" size="8" class="form-control" name="poolNumber"
@@ -34,7 +34,7 @@
 				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
 						</span> &nbsp; &nbsp;                  
 				<label>
-					${message(code: 'PoolDetails.page.input.securitycusipidentifier')}:
+					${message(code: 'PoolDetails.page.input.securitycusipidentifier')} 
 				</label> 
                         <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
                         <input type="text" id="cusipIdentifier" maxlength="9" size="9" class="form-control" name="cusipIdentifier"
