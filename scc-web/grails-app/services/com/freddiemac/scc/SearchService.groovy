@@ -11,8 +11,10 @@ class SearchService {
 	def grailsApplication
 
 	def searchPool(String cus, String poolId) {
+                long start = System.currentTimeMillis();            
 		SOAPClient client = new SOAPClient(grailsApplication.config.com.freddiemac.searchpool.url)
 		def response
+                long responseStart = System.currentTimeMillis();
 		try {
 			response = client.send(SOAPAction:'SearchPool') {
 				body {
@@ -22,7 +24,7 @@ class SearchService {
 					}
 				}
 			}
-
+                        log.info("Time taken for searchPool() response: " + (System.currentTimeMillis() - responseStart)+ " ms")
 
 			def p = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.error.path, response.getBody())
 			if(p != null && !p.isEmpty()) {
@@ -32,6 +34,9 @@ class SearchService {
 		} catch (SOAPClientException e) {
 			log.error(e)
 			return [success: false, errorMessage: "Unable to connect to MBS.",errorCode: "" ]
-		}
+		}finally {
+                        log.info("Time taken for searchPool() : " + (System.currentTimeMillis() - start)+ " ms")
+                }
+
 	}
 }

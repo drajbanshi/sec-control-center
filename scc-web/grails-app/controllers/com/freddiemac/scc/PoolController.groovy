@@ -25,6 +25,7 @@ class PoolController {
 	
 
 	def search(PoolSearch poolSearch) {
+                long start = System.currentTimeMillis();
 		def poolErrorField = ""
 		if(poolSearch.hasErrors()) {
 			poolSearch.errors.each {
@@ -66,10 +67,12 @@ class PoolController {
 			def isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
 			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
 		}
+            log.info("Time taken for search() : " + (System.currentTimeMillis() - start)+ " ms")
 	}
 
 
 	def collapse() {
+                long start = System.currentTimeMillis();            
 		def poolErrorField = ""
 		if(params.poolid && params.cusip && params.poolType) {
 			if (params.cusipIdentifier) {
@@ -89,15 +92,18 @@ class PoolController {
 		} else {
 			flash.error = message(code: 'Collapse.controller.collapse.fail')
 		}
+                log.info("Time taken for collapse() : " + (System.currentTimeMillis() - start)+ " ms") 
 		redirect action: "search", params:params
 	}
 
 
 	private def generateModel(def m, def keys = grailsApplication.config.com.freddiemac.searchpool.result.elements) {
+                long start = System.currentTimeMillis();                    
 		def mm = []
 		keys.each {
 			mm.add(new PropContainer(key: it, value: PropertyRetriever.getProp(it, m)))
 		}
+                log.info("Time taken for generateModel() : " + (System.currentTimeMillis() - start)+ " ms")
 		return mm
 	}
 
