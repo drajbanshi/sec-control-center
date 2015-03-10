@@ -48,36 +48,21 @@
 	</g:hasErrors>
 	 
 	<g:if test="${result }">
+	
 		<h2>${message(code: 'PoolDetails.dissolve.pooldetails.title')} <g:if test="${poolid}"> ${poolid}</g:if></h2>
-					
-					 
+		<div id="show-MBSData" class="content scaffold-show" role="main">
+			<g:render template="resultfields" model="[items: result]" />
+		</div>
 		 
-			<div class="row">
-				<div class="col-xs-6">
-					
-					
-					<div id="show-MBSData" class="content scaffold-show" role="main">
-						<g:render template="resultfields" model="[items: result]" />
-					</div>
-				</div>
-                        </div>
-                <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>                                
-                <div class="row">
-				<div class="col-xs-6">
-					<div id="show-wireSenderData" class="content scaffold-show" role="main">
-						<g:render template="wiresender" model="[items: wireSender]"/>
-					</div>
-				</div>
-                </div>
-                <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
-                <div class="row">
-				<div class="col-xs-6">
-					<div id="show-wireReceiverData" class="content scaffold-show" role="main">
-						<g:render template="wirereceiver" model="[items: wireReceiver]"/>
-					</div>
-				</div>
-                </div>
+        <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>                                
+		<div id="show-wireSenderData" class="content scaffold-show" role="main">
+			<g:render template="wiresender" model="[items: wireSender]"/>
+		</div>
 		 
+        <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
+		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
+			<g:render template="wirereceiver" model="[items: wireReceiver]"/>
+		</div>
 		
 		<g:if test="${!isCollapsed}">
 			<g:form controller="pool" action="dissolve">

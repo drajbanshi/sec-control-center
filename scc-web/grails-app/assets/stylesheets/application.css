@@ -369,6 +369,9 @@ footer a {color:gray; text-decoration:none}
 .table-compressed > tfoot {
 	background-color:#0462aa; color:white
 }
+.table-label { 
+  width:26em
+}
 
 #pagination, #poolJump {text-align:right; margin:10px}
 
