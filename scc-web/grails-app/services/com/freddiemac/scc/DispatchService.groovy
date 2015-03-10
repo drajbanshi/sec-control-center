@@ -14,7 +14,7 @@ class DispatchService {
 	boolean dissolveSecurity(String poolId, String cusip, Map modelData) {
 		long start = System.currentTimeMillis();
 		if(!eventLogService.logEvent(cusip, EventType.DISSOLVE)) {
-			log.error("Collapse event already initiated for " + cusip)
+			log.error("Dissolve event already initiated for " + cusip)
 			return false
 		}
 
