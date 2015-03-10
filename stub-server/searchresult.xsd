@@ -9,6 +9,7 @@
 		<xs:all>
 			<xs:element name="Pool" type="Pool"></xs:element>
 			<xs:element name="Loan" type="Loan"></xs:element>
+			<xs:element name="LoanRepaymentRule" type="LoanRepaymentRule"></xs:element>
 			<xs:element name="LoanPosition" type="LoanPosition"></xs:element>
 			<xs:element name="MBS" type="MBS"></xs:element>
 			<xs:element name="FinancialInstitutionAccount" type="FinancialInstitutionAccount"></xs:element>
@@ -31,6 +32,7 @@
 			<xs:element name="CashTransferInstruction" type="CashTransferInstruction"></xs:element>
 			<xs:element name="FinancialInstrument" type="FinancialInstrument"></xs:element>
 			<xs:element name="LoanServicingTerms" type="LoanServicingTerms"></xs:element>
+			<xs:element name="DebtSecurity" type="DebtSecurityDefaultType"></xs:element>
 		</xs:all>
 	</xs:complexType>
 

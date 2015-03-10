@@ -16,6 +16,14 @@ class PoolController {
 	def index() {
 		render view: "/pool/index"
 	}
+        
+	def collapsesearch() {
+		render view: "/pool/collapsesearch"
+	}    
+        
+	def dissolvesearch() {
+		render view: "/pool/dissolvesearch"
+	}        
 
 	def addExtraFields(PoolSearch poolSearch) {
 		def m = searchService.searchPool(poolSearch.cusipIdentifier, poolSearch.poolNumber)
@@ -36,7 +44,10 @@ class PoolController {
 					poolErrorField="poolNumber"
 				}
 			}
-			render view: "/pool/index", model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
+                        if (params.pageFunction.equalsIgnoreCase("Collapse")) 
+                            render view: "/pool/collapsesearch", model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
+                        else if (params.pageFunction.equalsIgnoreCase("Dissolve")) 
+                            render view: "/pool/dissolvesearch", model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
 			return
 		}
 
@@ -49,7 +60,10 @@ class PoolController {
 		if (!m.success) {
 			if (m.errorMessage.equals(message(code: 'Collapse.controller.search.error3'))) {
 				flash.error =  message(code: 'Collapse.controller.search.error3')
-				render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField: poolErrorField]
+                                if (params.pageFunction.equalsIgnoreCase("Collapse")) 
+                                    render view: 'collapsesearch', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField: poolErrorField]
+                                else if (params.pageFunction.equalsIgnoreCase("Dissolve")) 
+                                    render view: 'dissolvesearch', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField: poolErrorField]
 				return
 			}
 
@@ -58,14 +72,23 @@ class PoolController {
 			} else {
 				flash.error =  message(code: 'Collapse.controller.search.error2', args: [poolSearch.poolNumber])
 			}
-			render view: 'index', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
+                        if (params.pageFunction.equalsIgnoreCase("Collapse")) 
+                            render view: 'collapsesearch', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
+                        else if (params.pageFunction.equalsIgnoreCase("Dissolve")) 
+                            render view: 'dissolvesearch', model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
 		} else {
 			String poolid = poolSearch.poolNumber ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.poolid, m.result)
 			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
 			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
 			String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
 			def isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
-			render view: 'index', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
+                        // Stubbed for now, needs to be replaced with the an actual DB call or properties file
+                        def wireSender = ["FinancialInstitution.ABARoutingAndTransitIdentifier":"000101010","FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName":"Good N Plenty", "Organization.OrganizationName":"Freddie Mac", "FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName":"FMAC", "FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier":"DLFJKD" ]
+                        def wireReceiver= ["FinancialInstitution.ABARoutingAndTransitIdentifier":"000101010","FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName":"Good N Plenty", "Organization.OrganizationName":"Last National Bank and Trust", "FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName":"LNBAT", "FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier":"LLSDSD" ]
+                        if (params.pageFunction.equalsIgnoreCase("Collapse")) 
+                            render view: 'collapsesearch', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
+                        else if (params.pageFunction.equalsIgnoreCase("Dissolve"))     
+                            render view: 'dissolvesearch', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: wireSender, wireReceiver: wireReceiver]
 		}
             log.info("Time taken for search() : " + (System.currentTimeMillis() - start)+ " ms")
 	}
