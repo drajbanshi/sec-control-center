@@ -1,0 +1,134 @@
+<!-- edited with XMLSpy v2015 sp2 (http://www.altova.com) by Jay Cheng (SysArch Consulting) -->
+<xsd:schema xmlns="http://www.freddiemac.com/cdm" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.freddiemac.com/cdm" elementFormDefault="qualified" version="6.0">
+	<xsd:include schemaLocation="CDM.xsd"/>
+	<!-- Place holder for extension for local entities <xsd:include schemaLocation="csp_security_issuance.local data.xsd"/>-->
+	<xsd:element name="CspSecIssuanceReqContentSet" type="CspSecIssuanceReqContentSet"/>
+	<xsd:complexType name="CspSecIssuanceReqContentSet">
+		<xsd:sequence>
+			<xsd:element name="SecIssuanceReqContainer" type="SecIssuanceReqContainer" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SecIssuanceReqContainer">
+		<xsd:sequence>
+			<xsd:element name="SecurityContainer" type="SecurityContainer" minOccurs="1"/>
+			<xsd:element name="MBSContainer" type="MBSContainer" minOccurs="0"/>
+			<xsd:element name="SecuritizationTrustContainer" type="SecuritizationTrustContainer" minOccurs="1"/>
+			<xsd:element name="SecurityIssuerContainer" type="SecurityIssuerContainer" minOccurs="0"/>
+			<xsd:element name="SecurityIssuance" type="SecurityIssuance" minOccurs="0"/>
+			<xsd:element name="SecurityActivity" type="SecurityActivity" minOccurs="0"/>
+			<!-- The collateral pool that supports the issuance of this security -->
+			<xsd:element name="CollateralGroupContainer" type="CollateralGroupContainer" minOccurs="0"/>
+			<xsd:element name="SecuritizationProgram" type="SecuritizationProgram" minOccurs="0"/>
+			<xsd:element name="SecurityProduct" type="SecurityProduct" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SecurityContainer">
+		<xsd:sequence>
+			<xsd:element name="Security" type="Security" minOccurs="1"/>
+			<xsd:element name="PayingAgentPartyRole" type="PartyRole" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SecuritizationTrustContainer">
+		<xsd:sequence>
+			<xsd:element name="SecuritizationTrust" type="SecuritizationTrust" minOccurs="1"/>
+			<xsd:element name="SecuritizationTrustPartyRole" type="PartyRole" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SecurityIssuerContainer">
+		<xsd:sequence>
+			<xsd:element name="SecurityIssuer" type="SecurityIssuer" minOccurs="1"/>
+			<xsd:element name="SecurityIssuerPartyRole" type="PartyRole" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CollateralGroupContainer">
+		<xsd:sequence>
+			<xsd:element name="CollateralGroup" type="CollateralGroup" minOccurs="1"/>
+                        <xsd:element name="PoolStatus" type="PoolStatus" minOccurs="0"/>
+			<xsd:element name="CollateralGroupActivity" type="CollateralGroupActivity" minOccurs="0"/>
+			<xsd:element name="CollateralInstruments" type="PoolInstruments" minOccurs="0"/>
+			<!-- The wire transfer transactions for the collateral pool -->
+                 	<xsd:element name="WireTransferTransactions" type="WireTransferTransactions" minOccurs="0"/>
+       		</xsd:sequence>
+	</xsd:complexType>
+        
+	<xsd:complexType name="WireTransferTransactions">
+		<xsd:sequence>
+			<xsd:element name="WireTransferTransactionContainer" type="WireTransferTransactionContainer" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>        
+        
+	<xsd:complexType name="WireTransferTransactionContainer">
+		<xsd:sequence>
+			<xsd:element name="WireTransferTransaction" type="WireTransferTransaction" minOccurs="1"/>
+ 			<xsd:element name="WireTransferStatuses" type="WireTransferStatuses" minOccurs="0"/>                     
+			<xsd:element name="SecurityWire" type="SecurityWire" minOccurs="0"/>
+			<xsd:element name="TransferFee" type="TransferFee" minOccurs="0"/>
+			<xsd:element name="WireParties" type="WireParties" minOccurs="1"/>
+			<xsd:element name="CashTransferInstruction" type="CashTransferInstruction" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+        
+	<xsd:complexType name="WireTransferStatuses">
+		<xsd:sequence>
+			<xsd:element name="WireTransferStatus" type="WireTransferStatus" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>        
+        
+        
+	<xsd:complexType name="PoolInstruments">
+		<xsd:sequence>
+			<xsd:element name="CollateralInstrumentContainer" type="PoolInstrumentContainer" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<!-- The plural means many instances of PoolInstrumentContainer -->
+	</xsd:complexType>
+	<xsd:complexType name="PoolInstrumentContainer">
+		<xsd:sequence>
+			<xsd:element name="PoolInstrument" type="PoolInstrument"/>
+			<xsd:element name="CollateralLoanContainer" type="CollateralLoanContainer" minOccurs="0"/>
+			<xsd:element name="CollateralSecurityContainer" type="CollateralSecurityContainer" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MBSContainer">
+		<xsd:sequence>
+			<xsd:element name="MBS" type="MBS" minOccurs="1"/>
+			<xsd:element name="MBSDisclosure" type="MBSDisclosure" minOccurs="0"/>
+			<xsd:element name="MBSARMDisclosure" type="MBSARMDisclosure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WireParties">
+		<xsd:sequence>
+			<xsd:element name="WirePartyContainer" type="WirePartyContainer" maxOccurs="2"/>
+		</xsd:sequence>
+		<!-- The plural means many instances of PoolInstrumentContainer -->
+	</xsd:complexType>
+	<xsd:complexType name="WirePartyContainer">
+		<xsd:sequence>
+			<xsd:element name="WireParty" type="WireParty" minOccurs="1"/>
+			<xsd:element name="FinancialInstitution" type="FinancialInstitution" minOccurs="1"/>
+			<xsd:element name="Organization" type="Organization" minOccurs="1"/>
+			<xsd:element name="FinancialInstitutionAccount" type="FinancialInstitutionAccount" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CollateralSecurityContainer">
+		<xsd:sequence>
+			<xsd:element name="Security" type="Security" minOccurs="1"/>
+			<xsd:element name="SecurityIssuance" type="SecurityIssuance" minOccurs="0"/>
+			<xsd:element name="PoolInstrument" type="PoolInstrument" minOccurs="0"/>
+			<!-- Need to verify if those two elements are enough for a collateral security -->
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CollateralLoanContainer">
+		<xsd:sequence>
+			<xsd:element name="Loan" type="Loan"/>
+			<xsd:element name="LoanPosition" type="LoanPosition" minOccurs="0"/>
+			<xsd:element name="LoanRepaymentRule" type="LoanRepaymentRule" minOccurs="0"/>
+			<xsd:element name="LoanActivity" type="LoanActivity" minOccurs="0"/>
+			<xsd:element name="LoanPaymentRate" type="LoanPaymentRate" minOccurs="0"/>
+			<xsd:element name="LoanPaymentRateAdjustmentRule" type="LoanPaymentRateAdjustmentRule" minOccurs="0"/>
+			<xsd:element name="LoanRateAdjustmentParameters" type="LoanRateAdjustmentParameters" minOccurs="0"/>
+			<xsd:element name="LoanPurchaseContract" type="LoanPurchaseContract" minOccurs="0"/>
+			<xsd:element name="LoanPrice" type="LoanPrice" minOccurs="0"/>
+			<xsd:element name="LoanServicingTerms" type="LoanServicingTerms" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

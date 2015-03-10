@@ -96,6 +96,34 @@ com.freddiemac.searchpool.result.path="SearchPoolResponse.ResponseEnvelope.Searc
 com.freddiemac.searchpool.error.path="SearcPoolResponse.ResponseEnvelope.ErrorEnvelope"
 com.freddiemac.searchpool.result.elements=["Pool.PoolIdentifier","Security.SecurityCUSIPIdentifier","Pool.PoolType","Loan.LoanAmortizationType","LoanPosition.LoanGrossUPBAmount","MBS.MBSMortgageType","MBS.MBSPoolPrefixCode","SecurityWire.SecurityWireFaceValueAmount","SecurityIssuance.SecurityIssueDate","Security.ContractualMaturityDate","SecurityActivity.SecurityCouponRate","SecurityActivity.SecurityBeneficiaryDate","SecurityActivity.SecurityStatusType"]
 com.freddiemac.searchpool.result.xfields=["LoanRelationship.LoanRoleType","MBS.MBSAmortizationType","MBSDisclosure.MBSBalloonTermCount","MBS.InterestOnlyTermCount","MBS.MBSExecutionMethodType","Security.FederalReserveSecurityClassCode","Security.FederalReserveSecurityDescription","SecurityIssuance.SecurityIssueFaceAmount","Security.SecurityFirstPaymentDate","Security.MinimumTradeDenominationAmount","Security.AssetBackedSecurityType","GuarantyFeeGrid.ProgramIdentifier","LoanPaymentRate.LoanInvestorPassThroughRate","SecurityActivity.SecurityRecordDate","MBSDisclosure.MBSInterestPaymentFactorRate","CollateralGroup.SecuritizationTrustIdentifier","Security.SecurityPayingAgentIdentifier","SecurityActivity.SecurityTaxRecordDate","BulkLoanPurchaseDeal.SecurityIssuerIdentifier","ContractCounterparty.PartyRoleType","FinancialInstrument.FinancialInstrumentType"]
+com.freddiemac.onedotfive.fields = [
+	"PoolInstrument.PoolIdentifier",
+	"Pool.PoolType",
+	'FinancialInstitution.ABARoutingAndTransitIdentifier',
+	'FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName',
+	'Organization.OrganizationName',
+	//'PartyFinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName',
+	'FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName',
+	'FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName',
+	'SecurityWire.SecurityWireFaceValueAmount',
+	'CashWire.WireAmount',
+	'Security.SecurityCUSIPIdentifier',
+	'PartyRole.PartyRoleType', 
+	'SecurityIssuer.SecurityIssuerIdentifier',
+	'WireParty.AdviceInformationText',
+	'WireParty.WirePartyInformationText',
+	'MBSDisclosure.MBSUPBAmount',
+	'SecurityWire.SecurityWireFaceValueAmount',
+	'CashWire.WireAmount',
+	'SecurityWire.SecurityWireCUSIPIdentifier',
+	'WireParty.AdviceInformationText',
+	'WireParty.WirePartyInformationText',
+	'WireTransferTransaction.WireInstructionExecutionDate',
+	'CashTransferInstruction.CashTransferInstructionIdentifier',
+	'FinancialInstrument.FinancialInstrumentType',
+	'Loan.LoanIdentifier'
+]
+
 com.freddiemac.searchpool.result.wireinstructions=["FinancialInstitution.ABARoutingAndTransitIdentifier","FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName","Organization.OrganizationName","FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName","FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier"]
 com.freddiemac.searchpool.result.poolid = "Pool.PoolIdentifier"
 com.freddiemac.searchpool.result.cusip = "Security.SecurityCUSIPIdentifier"
