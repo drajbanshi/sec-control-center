@@ -1,5 +1,6 @@
 package com.freddiemac.scc.utils
 
+
 import wslite.soap.SOAPResponse;
 import groovy.util.slurpersupport.GPathResult;
 
@@ -17,6 +18,15 @@ class PropertyRetriever {
 			}
 		}
 		return r
+	}
+	
+	static def generateModel(def keys, GPathResult o) {
+		def model = [:]
+		keys.each { String key ->
+			String modifiedKey = key.replace(".", "_")
+			model.put(modifiedKey, getProp(key, o))
+		}
+		return model
 	}
 	
 	

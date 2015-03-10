@@ -6,6 +6,8 @@
 	targetNamespace="http://www.freddiemac.com/cdm" 
 	version="6.1" xmlns="http://www.freddiemac.com/cdm">
 	<xs:include schemaLocation="CDM.xsd"></xs:include>
+	<xs:include schemaLocation="csp_security_issuance.structure_v1.xsd"></xs:include>
+	
 	<xs:element name="Events">
 		<xs:complexType>
 			<xs:sequence>
@@ -149,6 +151,7 @@
 	</xs:complexType>
 	<xs:complexType name="BusinessDataType">
 		<xs:sequence>
+			<xs:element name="CspSecIssuanceReqContentSet" type="CspSecIssuanceReqContentSetType"></xs:element>
 			<xs:any namespace="##any" processContents="skip"
 				minOccurs="0" />
 		</xs:sequence>
