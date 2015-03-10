@@ -17,37 +17,15 @@
 <div class="container-fluid">
   <ul class="nav nav-tabs">
 	 <li role="presentation"><a href="#">Dashboard</a></li>
-	 <li role="presentation" class="active"><a href="#">Pool Detail</a></li>
-	 <!--li role="presentation"><a href="#">Dissolve</a></li-->
+	 <li role="presentation" class="active"><a href="/scc/pool/collapsesearch">Pool Detail</a></li>
+	 <li role="presentation"><a href="/scc/pool/dissolvesearch">Pool Dissolve</a></li>
   </ul>
      
     <div class="tabBody">
-      <g:form controller="pool" action="search" class="form-inline">
-		 
-			
-				<label>
-					${message(code: 'PoolDetails.page.input.poolnumber')} 
-				</label> 
-                        <span class='value ${hasErrors(bean:poolSearch,field:'poolNumber','errors')}'>
-                        <input type="text" id="poolNumber" maxlength="8" size="8" class="form-control" name="poolNumber"
-				aria-label="Enter Pool Number"
-				value="${fieldValue(bean:poolSearch,field:'poolNumber')}">
-						</span> &nbsp; &nbsp;                  
-				<label>
-					${message(code: 'PoolDetails.page.input.securitycusipidentifier')} 
-				</label> 
-                        <span class='value ${hasErrors(bean:poolSearch,field:'cusipIdentifier','errors')}'>
-                        <input type="text" id="cusipIdentifier" maxlength="9" size="9" class="form-control" name="cusipIdentifier"
-				aria-label="Enter CUSIP ID"
-				value="${fieldValue(bean:poolSearch,field:'cusipIdentifier')}">
-                        </span> &nbsp; &nbsp; <span><button class="btn btn-primary" id="searchBtn" type="submit" >
-					<i class="fa fa-search"></i>
-					${message(code: 'PoolDetails.page.search.submit')}
-				</button></span>
-                <g:hiddenField name="poolError" value="${poolErrorField}" />           	
-		 
-	</g:form>
-     
+              <g:form controller="pool" action="search" class="form-inline">
+                <g:render template="searchinput" />     
+                 <g:hiddenField name="pageFunction" value="Collapse" />
+              </g:form>                
 	 
 	<g:if test="${flash.message}">
 		<br>

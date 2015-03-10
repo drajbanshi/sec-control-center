@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller:"pool" , action:"index")
+        "/"(controller:"pool" , action:"collapsesearch")
         "500"(view:'/error')
 	}
 }
