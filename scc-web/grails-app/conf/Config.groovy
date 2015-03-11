@@ -124,7 +124,13 @@ com.freddiemac.onedotfive.fields = [
 	'Loan.LoanIdentifier'
 ]
 
-com.freddiemac.searchpool.result.wireinstructions=["FinancialInstitution.ABARoutingAndTransitIdentifier","FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName","Organization.OrganizationName","FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName","FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier"]
+com.freddiemac.searchpool.result.wireinstructions=[
+	"FinancialInstitution.ABARoutingAndTransitIdentifier",
+	"FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName",
+	"Organization.OrganizationName",
+	"FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName",
+	"FinancialInstitutionAccount.FinancialInstitutionAccountIdentifier"
+]
 com.freddiemac.searchpool.result.poolid = "Pool.PoolIdentifier"
 com.freddiemac.searchpool.result.cusip = "Security.SecurityCUSIPIdentifier"
 com.freddiemac.searchpool.result.securityissuedate = "SecurityIssuance.SecurityIssueDate"

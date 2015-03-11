@@ -1,5 +1,8 @@
 package com.freddiemac.scc
 
+import com.freddiemac.service.event.api.EventNotification;
+import com.freddiemac.service.event.model.Events
+
 import grails.test.spock.IntegrationSpec
 
 class TemplatingServiceIntegrationSpec extends IntegrationSpec {
@@ -50,12 +53,19 @@ class TemplatingServiceIntegrationSpec extends IntegrationSpec {
 		
 		when:
 		String xml = xmlTemplatingService.generateDissolveEent(model)
-		println xml
+		EventNotification en = new EventNotification()
+		Events events = en.createEventFromXML(xml)
 		
 		then:
 		xml != null
 		xml.contains('$') == false
 		def gpath = new XmlSlurper().parseText(xml)
 		gpath.EventMetaData.EventName == "DISSOLVE_EVENT"
+		
+		events != null
+		events.getEventMetaData().getEventName() == "DISSOLVE_EVENT"
+		
+		
+		
 	}
 }

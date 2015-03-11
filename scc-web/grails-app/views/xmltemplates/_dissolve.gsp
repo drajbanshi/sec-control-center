@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Events xmlns="http://www_freddiemac.com/enterpriseeventdatamodel/v1.0">
+<Events xmlns="http://www.freddiemac.com/enterpriseeventdatamodel/v1.0">
 <EventMetaData> 
 	<MessageIdentifier>${messageIdentifier}</MessageIdentifier> 
 	<EventType>BUSINESS</EventType>
