@@ -68,7 +68,7 @@
 			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
 		</div>
 		
-		<g:if test="${!isCollapsed}">
+		<g:if test="${!isDissolved}">
 			<g:form controller="pool" action="dissolve">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
