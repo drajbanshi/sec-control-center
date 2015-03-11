@@ -69,35 +69,45 @@ ${eventTimeStamp} </RequestEffectiveDateTime> <BusinessEventTimestamp> ${eventTi
 				<p:WireTransferTransactionContainer>
 					<p:WireTransferTransaction>
 						<p:WireInstructionExecutionDate>${WireTransferTransaction_WireInstructionExecutionDate}</p:WireInstructionExecutionDate>
+						<p:WireTotalFeesAmount>${WireTransferTransaction_WireTotalFeesAmount}</p:WireTotalFeesAmount>
 					</p:WireTransferTransaction>
 				
 					<p:SecurityWire>
-						<p:InventoryIdentifier></p:InventoryIdentifier>
-						<p:SecurityWireCashAmount></p:SecurityWireCashAmount>
-						<p:SecurityWireCUSIPIdentifier></p:SecurityWireCUSIPIdentifier>
 						<p:SecurityWireFaceValueAmount>${SecurityWire_SecurityWireFaceValueAmount}</p:SecurityWireFaceValueAmount>
-						<p:SecurityWireIdentifier></p:SecurityWireIdentifier>
-						<p:ThirdPartyFRBSubaccountIdentifier></p:ThirdPartyFRBSubaccountIdentifier>
 					</p:SecurityWire>
+					<p:TransferFee>
+		            	<p:TransferFeeAmount>${TransferFee_TransferFeeAmount}</p:TransferFeeAmount>
+		          	</p:TransferFee>
 					<p:WireParties>
 						<p:WirePartyContainer>
 							<p:WireParty>
-								<p:AdviceInformationText>${WireParty_AdviceInformationText}</p:AdviceInformationText>
-								<p:WirePartyInformationText>${WireParty_WirePartyInformationText}</p:WirePartyInformationText>
+								<p:WirePartyRoleType>SENDER</p:WirePartyRoleType>
 							</p:WireParty>
 							<p:FinancialInstitution>
-							    <p:FinancialInstitutionTelegraphicAbbreviationName>${FinancialInstitution_FinancialInstitutionTelegraphicAbbreviationName}</p:FinancialInstitutionTelegraphicAbbreviationName>
-								<p:ABARoutingAndTransitIdentifier>${FinancialInstitution_ABARoutingAndTransitIdentifier}</p:ABARoutingAndTransitIdentifier>
+							    <p:FinancialInstitutionTelegraphicAbbreviationName>${Sender_FinancialInstitution_FinancialInstitutionTelegraphicAbbreviationName}</p:FinancialInstitutionTelegraphicAbbreviationName>
+								<p:ABARoutingAndTransitIdentifier>${Sender_FinancialInstitution_ABARoutingAndTransitIdentifier}</p:ABARoutingAndTransitIdentifier>
 							</p:FinancialInstitution>
 							<p:Organization>
-								<p:OrganizationName>${Organization_OrganizationName}</p:OrganizationName>
+								<p:OrganizationName>${Sender_Organization_OrganizationName}</p:OrganizationName>
+							</p:Organization>
+							<p:FinancialInstitutionAccount>
+								<p:FinancialInstitutionAccountSubaccountName>${Sender_FinancialInstitutionAccount_FinancialInstitutionAccountSubaccountName}</p:FinancialInstitutionAccountSubaccountName>
+							</p:FinancialInstitutionAccount>
+						</p:WirePartyContainer>
+						<p:WirePartyContainer>
+							<p:WireParty>
+								<p:WirePartyRoleType>RECEIVER</p:WirePartyRoleType>
+							</p:WireParty>
+							<p:FinancialInstitution>
+							    <p:FinancialInstitutionTelegraphicAbbreviationName>${Sender_FinancialInstitution_FinancialInstitutionTelegraphicAbbreviationName}</p:FinancialInstitutionTelegraphicAbbreviationName>
+								<p:ABARoutingAndTransitIdentifier>${Sender_FinancialInstitution_ABARoutingAndTransitIdentifier}</p:ABARoutingAndTransitIdentifier>
+							</p:FinancialInstitution>
+							<p:Organization>
+								<p:OrganizationName>${Sender_Organization_OrganizationName}</p:OrganizationName>
 							</p:Organization>
 							<p:FinancialInstitutionAccount>
 								<p:FinancialInstitutionAccountSubaccountName>${FinancialInstitutionAccount_FinancialInstitutionAccountSubaccountName}</p:FinancialInstitutionAccountSubaccountName>
 							</p:FinancialInstitutionAccount>
-							<p:FinancialInstrument>
-							  <p:FinancialInstrumentType>${FinancialInstrument_FinancialInstrumentType}</p:FinancialInstrumentType>
-							</p:FinancialInstrument>
 						</p:WirePartyContainer>
 					</p:WireParties>
 					<p:CashTransferInstruction>

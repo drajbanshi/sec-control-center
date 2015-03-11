@@ -24,48 +24,39 @@ class TemplatingServiceIntegrationSpec extends IntegrationSpec {
 	void "generate dissolve event xml"() {
 		given:
 		def model = [
-			"PoolInstrument_PoolIdentifier": "VSSSS",
-			"Pool_PoolType" : "Cash",
-			'FinancialInstitution_ABARoutingAndTransitIdentifier': "SSSS",
-			'FinancialInstitutionAccount_FinancialInstitutionAccountSubaccountName': "SSSS",
-			'Organization_OrganizationName': "TEST",
-			//'PartyFinancialInstitution_FinancialInstitutionTelegraphicAbbreviationName',
-			'FinancialInstitutionAccount_FinancialInstitutionAccountSubaccountName': 'SSS',
-			'FinancialInstitution_FinancialInstitutionTelegraphicAbbreviationName': "FFFF",
-			'SecurityWire_SecurityWireFaceValueAmount': "DDDD",
-			'CashWire_WireAmount': "FFFf",
-			'Security_SecurityCUSIPIdentifier' : "SSSS",
-			'PartyRole_PartyRoleType':'PPPP', //No PartyRole -> multiple common fields
-			'SecurityIssuer_SecurityIssuerIdentifier': 'SSSs',
-			'WireParty_AdviceInformationText': "SSDSD",
-			'WireParty_WirePartyInformationText': "GSDFS",
-			'MBSDisclosure_MBSUPBAmount': "SSSS",
-			'SecurityWire_SecurityWireFaceValueAmount' :  "SSS",
-			'CashWire_WireAmount':  "SSSS",
-			'SecurityWire_SecurityWireCUSIPIdentifier' : "AAAA",
-			'WireParty_AdviceInformationText' :  "SSSS",
-			'WireParty_WirePartyInformationText' : "AASSD",
-			'WireTransferTransaction_WireInstructionExecutionDate' : "ASDFA",
-			'CashTransferInstruction_CashTransferInstructionIdentifier' : "ASDDD",
-			'FinancialInstrument_FinancialInstrumentType' : "ASDSD",
-			'Loan_LoanIdentifier' :  "SSS"
+			"PoolInstrument.PoolIdentifier" : "asdf",
+			"Pool.PoolType" : "asdf",
+			'Sender.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName': "asdf",
+			'Sender.FinancialInstitution.ABARoutingAndTransitIdentifier' : "asdf",
+			'Sender.Organization.OrganizationName' : "asdf",
+			'Sender.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName' : "asdf",
+			'Receiver.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName' : "asdf",
+			'Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier': "asdf",
+			'Receiver.Organization.OrganizationName': "asdf",
+			'Receiver.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName': "asdf",
+			'SecurityWire.SecurityWireFaceValueAmount': "asdf",
+			'TransferFee.TransferFeeAmount': "asdf",
+			'PartyRole.PartyRoleType': "asdf",
+			'SecurityIssuer.SecurityIssuerIdentifier': "asdf",
+			'WireTransferTransaction.WireTotalFeesAmount': "asdf",
+			'WireTransferTransaction.WireInstructionExecutionDate': "asdf",
+			'CashTransferInstruction.CashTransferInstructionIdentifier': "asdf",
+			'FinancialInstrument.FinancialInstrumentType': "asdf",
+			'Loan.LoanIdentifier': "asdf"
 		]
-		
+
 		when:
 		String xml = xmlTemplatingService.generateDissolveEent(model)
 		EventNotification en = new EventNotification()
 		Events events = en.createEventFromXML(xml)
-		
+
 		then:
 		xml != null
 		xml.contains('$') == false
 		def gpath = new XmlSlurper().parseText(xml)
 		gpath.EventMetaData.EventName == "DISSOLVE_EVENT"
-		
+
 		events != null
 		events.getEventMetaData().getEventName() == "DISSOLVE_EVENT"
-		
-		
-		
 	}
 }
