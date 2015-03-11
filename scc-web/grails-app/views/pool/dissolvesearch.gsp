@@ -65,7 +65,8 @@
                 <div class="row">
 				<div class="col-xs-6">
 					<div id="show-wireSenderData" class="content scaffold-show" role="main">
-						<g:render template="wiresender" model="[items: wireSender]"/>
+						<%-- <g:render template="wiresender" model="[items: wireSender]"/> --%>
+                                                <g:render template="wiresender" model="[wireinstructions: wireinstructions]"/>
 					</div>
 				</div>
                 </div>

@@ -79,6 +79,7 @@
 			<g:hiddenField name="cusipIdentifier" value="${poolSearch.cusipIdentifier}" />
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
             <g:hiddenField name="poolType" value="${poolType}" />
+            <g:hiddenField name="pageFunction" value="Collapse" />
             <div class="button-cont">
 			<button class="btn btn-danger" type="submit"
 				onclick="return confirm('${message(code: 'PoolDetails.page.collapse.confirm', args: [poolid])}');">
