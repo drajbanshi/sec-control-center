@@ -5,7 +5,7 @@
 			</td>
 			<td class="table-data" aria-labelledby="${wireinstructions.abaRoutingNumber}"> 
 				${wireinstructions.abaRoutingNumber}
-                                <g:hiddenField name="Sender.FinancialInstitution.ABARoutingAndTransitIdentifier" value="${wireinstructions.abaRoutingNumber}" />                    
+                                <g:hiddenField name="Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier" value="${wireinstructions.abaRoutingNumber}" />                    
 			</td>
 		</tr>                
 		<tr>
