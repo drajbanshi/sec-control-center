@@ -59,7 +59,7 @@
 		<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
 		<br><br>                       
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
-			<g:render template="wireinstructions" model="[wireinstructions: wireSender]"/>
+			<g:render template="wiresender" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
@@ -67,7 +67,7 @@
 		<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
 		<br><br>
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
-			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
+			<g:render template="wirereceiver" model="[wireinstructions: wireReceiver]"/>
 		</div>
 		
 		<h2>Dissolve Data</h2>
