@@ -372,6 +372,9 @@ footer a {color:gray; text-decoration:none}
 .table-label { 
   width:26em
 }
+.table-data { 
+  font-weight:bold
+}
 
 #pagination, #poolJump {text-align:right; margin:10px}
 

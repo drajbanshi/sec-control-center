@@ -81,9 +81,8 @@ class PoolController {
 			String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
 			def isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
 			def savedWireList = getPreviousWireInstructions()
-			
 			if (searchForDissolve)
-				render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'result-2': generateModel(m.result), isDissolved:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: savedWireList]
+				render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'fieldsDissolve': generateModel(m.result, grailsApplication.config.com.freddiemac.searchpool.result.dissolve.elements), isDissolved:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: savedWireList]
 			else 
 				render view: 'collapsesearch', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
 		}
@@ -157,6 +156,7 @@ class PoolController {
 		} else {
 		   flash.error = message(code: "dissolve.pool.error")
 		}
+		
 		
 		render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: params.poolid, cusip: params.cusip,  poolSearch:new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber:  params.poolNumber), wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
 			

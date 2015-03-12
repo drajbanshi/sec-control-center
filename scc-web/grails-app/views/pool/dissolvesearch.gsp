@@ -48,54 +48,63 @@
 	</g:hasErrors>
 	 
 	<g:if test="${result }">
-	
+	<g:form controller="pool" action="dissolve">	
 		<h2>${message(code: 'PoolDetails.dissolve.pooldetails.title')} <g:if test="${poolid}"> ${poolid}</g:if></h2>
 		<div id="show-MBSData" class="content scaffold-show" role="main">
 			<g:render template="resultfields" model="[items: result]" />
 		</div>
 		 
-        <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>         
-        <button class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</button>
-		<button class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</button>
-		<br><br>                       
+        <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>  
+        <div class="dissolveEdit"> 
+	        <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</a>
+			<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
+			<br><br>        
+		</div>                     
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
-			<g:render template="wireinstructions" model="[wireinstructions: wireSender]"/>
+			<g:render template="wiresender" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
-       	<button class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</button>
-		<button class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</button>
-		<br><br>
-		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
-			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
+       	<div class="dissolveEdit"> 
+	       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</a>
+			<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
+			<br><br>
 		</div>
-                <div>
-                    <g:render template="resultfields" model="[items: result-2]" />
-                </div>
-                
-                <div>
-                    <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
-                </div>                
+		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
+			<g:render template="wirereceiver" model="[wireinstructions: wireReceiver]"/>
+		</div>
+		
+		<h2>Dissolve Data</h2>
+		<g:render template="resultfields" model="[items: fieldsDissolve]" />               
 		
 		<g:if test="${!isDissolved}">
-			<g:form controller="pool" action="dissolve">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
 			<g:hiddenField name="cusipIdentifier" value="${poolSearch.cusipIdentifier}" />
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
                         <g:hiddenField name="pageFunction" value="Dissolve" />
             <g:hiddenField name="poolType" value="${poolType}" />
-            <div class="button-cont">
-			<button class="btn btn-danger" type="submit" >
-				<%-- onclick="return confirm('${message(code: 'PoolDetails.page.dissolve.confirm', args: [poolid])}');"> --%>
-				<i class="fa fa-close"> </i>
-				${message(code: 'PoolDetails.page.dissolve.submit')}
-			</button>
-			</div>
-		</g:form>
+            
+
+<div class="container text-center dissolveEdit">
+   <a class="btn btn-primary dissolveToggle">Preview Dissolve</a>
+</div>
+<div class="container text-center dissolveEdit" style="display:none">
+   <a class="btn btn-default dissolveToggle">Cancel</a> 
+   
+   <button class="btn btn-danger" type="submit" >
+		<%-- onclick="return confirm('${message(code: 'PoolDetails.page.dissolve.confirm', args: [poolid])}');"> --%>
+		<i class="fa fa-close"> </i>
+		${message(code: 'PoolDetails.page.dissolve.submit')}
+	</button>
+   
+   <p class="alert alert-warning">Please confirm your wish to dissolve this pool.</p>
+</div>
+
+
 			
 		</g:if>
-		
+		</g:form>		
 	</g:if>
 </div><!--  close tabBody -->
 </div><!--  close containerFluid -->
@@ -152,108 +161,20 @@
       </div>
       <div class="modal-body">
 		<form class="form">
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"  > Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"  > Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"  > Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
+			 
+           <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
+              	 
 		</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Select</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
       </div>
     </div>
   </div>
 </div>
 
-
-<!---- MODALS ------>
+ 
 
 <div class="modal fade" id="modalEditWireSender" tabindex="-1" role="dialog" aria-labelledby="modalEditWireSender" aria-hidden="true">
   <div class="modal-dialog">
@@ -290,8 +211,8 @@
 		</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
       </div>
     </div>
   </div>
@@ -333,7 +254,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
       </div>
     </div>
   </div>
@@ -350,31 +271,14 @@
       </div>
       <div class="modal-body">
         <form class="form">
-		
-			<div class="radio">
-			  <label>
-				<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-				Institution One
-			 </label>
-			</div>
-			<div class="radio">
-			  <label>
-				<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-				Institution Two
-			 </label>
-			</div>
-			<div class="radio">
-			  <label>
-				<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"  >
-				Institution Three
-			 </label>
-			</div>
-		
+			 
+           <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
+              	 
 		</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Select</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
       </div>
     </div>
   </div>
@@ -389,101 +293,14 @@
       </div>
       <div class="modal-body">
 		<form class="form">
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Four</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Five</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Six</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Seven</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Eight</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Nine</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Ten</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Eleven</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twelve</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Thirteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Fourteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Fifteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Sixteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Seventeen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Eighteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Nineteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty Four</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Five</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Six</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty Seven</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Eight</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Nine</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Thirty</label>
-			</div>
+			 
+           <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
+              	 
 		</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Select</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
       </div>
     </div>
   </div>
@@ -491,6 +308,8 @@
 
 
 <!---- MODALS ------>
+
+<script>$( ".dissolveToggle" ).click(function() {  $( ".dissolveEdit" ).toggle(   );});</script>
 
 
 </body>
