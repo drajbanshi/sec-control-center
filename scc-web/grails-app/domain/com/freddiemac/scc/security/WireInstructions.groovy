@@ -2,17 +2,17 @@ package com.freddiemac.scc.security
 
 class WireInstructions {
     
+    String wireInstructionsName
     String abaRoutingNumber
     String finInstitutionSubAcctName
     String organizationName
     String finInstitutionTelegraphicAbbrName
-    String finInstitutionAccountIdentifier
 
     static constraints = {
-        abaRoutingNumber(blank:true, nullable: false)
-        finInstitutionSubAcctName(blank:true, nullable: false)
-        organizationName(blank:true, nullable: false)
-        finInstitutionTelegraphicAbbrName(blank:true, nullable: false)
-        finInstitutionAccountIdentifier(blank:true, nullable: false)
+        wireInstructionsName(blank:true, nullable: true)
+        abaRoutingNumber(blank:true, nullable: true)
+        finInstitutionSubAcctName(blank:true, nullable: true)
+        organizationName(blank:true, nullable: true)
+        finInstitutionTelegraphicAbbrName(blank:true, nullable: true)
     }
 }
