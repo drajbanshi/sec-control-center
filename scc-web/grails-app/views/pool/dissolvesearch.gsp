@@ -55,15 +55,17 @@
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>         
-        <button class="btn btn-success" data-toggle="modal" data-target="#modalWireSender">Use Previous Wire Sender Information</button>
-			<br><br>                       
+        <button class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</button>
+		<button class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</button>
+		<br><br>                       
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
 			<g:render template="wireinstructions" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
-        <button class="btn btn-success" data-toggle="modal" data-target="#modalWireReceiver">Use Previous Wire Receiver Information</button>
-			<br><br>
+       	<button class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</button>
+		<button class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</button>
+		<br><br>
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
 			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
 		</div>
@@ -237,6 +239,243 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Select</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!---- MODALS ------>
+
+<div class="modal fade" id="modalEditWireSender" tabindex="-1" role="dialog" aria-labelledby="modalEditWireSender" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Wire Sender</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+		
+		<table class="table table-striped table-compressed" style="width:100%">
+		<tbody>
+			<tr> 
+				<td class="tableLabel">ABA Routing And Transit Identifier:</td> 
+				<td class="dataBit"><input type="text" value="7890056435"></td>
+			</tr>
+			<tr>
+				<td class="tableLabel">Financial Institution Subaccount Name:</td> 
+				<td class="dataBit"><input type="text" value="Good N Plenty"></td>
+ 			</tr>
+			<tr>
+				<td class="tableLabel">Organization Name:</td> 
+				<td class="dataBit"><input type="text" value="Freddie Mac"></td>
+			</tr>
+			<tr>
+				<td class="tableLabel">Financial Institution Telegraphic Reverberation Name:</td> 
+				<td class="dataBit"><input type="text" value="FMAC"></td>
+ 			</tr>
+			 
+		</tbody>
+	</table>
+		
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditWireReceiver" tabindex="-1" role="dialog" aria-labelledby="modalEditWireReceiver" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Wire Receiver</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+		
+		<table class="table table-striped table-compressed" style="width:100%">
+		<tbody>
+			<tr> 
+				<td class="tableLabel">ABA Routing And Transit Identifier:</td> 
+				<td class="dataBit"><input type="text" value="7890056435"></td>
+			</tr>
+			<tr>
+				<td class="tableLabel">Financial Institution Subaccount Name:</td> 
+				<td class="dataBit"><input type="text" value="Good N Plenty"></td>
+ 			</tr>
+			<tr>
+				<td class="tableLabel">Organization Name:</td> 
+				<td class="dataBit"><input type="text" value="Freddie Mac"></td>
+			</tr>
+			<tr>
+				<td class="tableLabel">Financial Institution Telegraphic Reverberation Name:</td> 
+				<td class="dataBit"><input type="text" value="FMAC"></td>
+ 			</tr>
+			 
+		</tbody>
+	</table>
+		
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="modalLoadWireSender" tabindex="-1" role="dialog" aria-labelledby="modalLoadWireSender" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Load Previous Wire Receiver</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+		
+			<div class="radio">
+			  <label>
+				<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+				Institution One
+			 </label>
+			</div>
+			<div class="radio">
+			  <label>
+				<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+				Institution Two
+			 </label>
+			</div>
+			<div class="radio">
+			  <label>
+				<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"  >
+				Institution Three
+			 </label>
+			</div>
+		
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Select</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalLoadWireReceiver" tabindex="-1" role="dialog" aria-labelledby="modalLoadWireReceiver" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Load Previous Wire Receiver</h4>
+      </div>
+      <div class="modal-body">
+		<form class="form">
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Institution One</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Four</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Five</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Six</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Seven</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Eight</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Nine</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Ten</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Eleven</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twelve</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Thirteen</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Fourteen</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Fifteen</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Sixteen</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Seventeen</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Eighteen</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Nineteen</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty One</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Two</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Three</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty Four</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Five</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Six</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty Seven</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Eight</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Nine</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Thirty</label>
+			</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary">Select</button>
       </div>
     </div>
