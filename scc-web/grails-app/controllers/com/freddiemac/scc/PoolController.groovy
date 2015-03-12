@@ -150,4 +150,8 @@ class PoolController {
 			flash.message = message(code:"dissolve.pool.success")
 		}
 	}
+        
+    def getPreviousWireInstructions() {
+        return WireInstructions.list()
+    }         
 }
