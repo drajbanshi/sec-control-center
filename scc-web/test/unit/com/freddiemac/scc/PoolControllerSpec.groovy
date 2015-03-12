@@ -38,7 +38,7 @@ class PoolControllerSpec extends Specification {
 		XmlSlurper xmlSlurper = new XmlSlurper()
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd")
 		Calendar c = Calendar.getInstance()
-		c.set(Calendar.DAY_OF_MONTH, 5)
+		c.add(Calendar.DAY_OF_MONTH, 5)
 		String dt = formatter.format(c.getTime())
 		searchService.searchPool("CUSIP2222",_) >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1>2015-01-02</test1><test2/>test3/></mytest>")]
 		searchService.searchPool("","POOL2222") >> ['success': true, 'result':  xmlSlurper.parseText("<mytest><test1>${dt}</test1><test2/>test3/></mytest>")]
@@ -66,7 +66,7 @@ class PoolControllerSpec extends Specification {
 
 		then:
 		model.searchPool == null
-		view == "/pool/index"
+		view == "/pool/collapsesearch"
 	}
 
 	@Unroll
@@ -81,7 +81,7 @@ class PoolControllerSpec extends Specification {
 		then:
 		model.poolSearch != null
 		model.poolSearch.hasErrors() == true
-		view == "/pool/index"
+		view == "/pool/collapsesearch"
 
 		where:
 		cusip | poolid
@@ -100,7 +100,7 @@ class PoolControllerSpec extends Specification {
 		when:
 		controller.search(poolSearch)
 		then:
-		view == "/pool/index"
+		view == "/pool/collapsesearch"
 		model.result != null
 		model.isCollapsed == collapsed
 		model.result.size == 3

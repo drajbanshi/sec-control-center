@@ -24,25 +24,25 @@ class TemplatingServiceIntegrationSpec extends IntegrationSpec {
 	void "generate dissolve event xml"() {
 		given:
 		def model = [
-			"PoolInstrument.PoolIdentifier" : "asdf",
-			"Pool.PoolType" : "asdf",
-			'Sender.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName': "asdf",
-			'Sender.FinancialInstitution.ABARoutingAndTransitIdentifier' : "asdf",
-			'Sender.Organization.OrganizationName' : "asdf",
-			'Sender.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName' : "asdf",
-			'Receiver.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName' : "asdf",
-			'Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier': "asdf",
-			'Receiver.Organization.OrganizationName': "asdf",
-			'Receiver.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName': "asdf",
-			'SecurityWire.SecurityWireFaceValueAmount': "asdf",
-			'TransferFee.TransferFeeAmount': "asdf",
-			'PartyRole.PartyRoleType': "asdf",
-			'SecurityIssuer.SecurityIssuerIdentifier': "asdf",
-			'WireTransferTransaction.WireTotalFeesAmount': "asdf",
-			'WireTransferTransaction.WireInstructionExecutionDate': "asdf",
-			'CashTransferInstruction.CashTransferInstructionIdentifier': "asdf",
-			'FinancialInstrument.FinancialInstrumentType': "asdf",
-			'Loan.LoanIdentifier': "asdf"
+			"PoolInstrument_PoolIdentifier" : "asdf",
+			"Pool_PoolType" : "asdf",
+			'Sender_FinancialInstitution_FinancialInstitutionTelegraphicAbbreviationName': "asdf",
+			'Sender_FinancialInstitution_ABARoutingAndTransitIdentifier' : "asdf",
+			'Sender_Organization_OrganizationName' : "asdf",
+			'Sender_FinancialInstitutionAccount_FinancialInstitutionAccountSubaccountName' : "asdf",
+			'Receiver_FinancialInstitution_FinancialInstitutionTelegraphicAbbreviationName' : "asdf",
+			'Receiver_FinancialInstitution_ABARoutingAndTransitIdentifier': "asdf",
+			'Receiver_Organization_OrganizationName': "asdf",
+			'Receiver_FinancialInstitutionAccount_FinancialInstitutionAccountSubaccountName': "asdf",
+			'SecurityWire_SecurityWireFaceValueAmount': "asdf",
+			'TransferFee_TransferFeeAmount': "asdf",
+			'PartyRole_PartyRoleType': "asdf",
+			'SecurityIssuer_SecurityIssuerIdentifier': "asdf",
+			'WireTransferTransaction_WireTotalFeesAmount': "asdf",
+			'WireTransferTransaction_WireInstructionExecutionDate': "asdf",
+			'CashTransferInstruction_CashTransferInstructionIdentifier': "asdf",
+			'FinancialInstrument_FinancialInstrumentType': "asdf",
+			'Loan_LoanIdentifier': "asdf"
 		]
 
 		when:
