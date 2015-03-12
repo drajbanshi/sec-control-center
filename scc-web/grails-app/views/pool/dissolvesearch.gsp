@@ -58,17 +58,17 @@
         <button class="btn btn-success" data-toggle="modal" data-target="#modalWireSender">Use Previous Wire Sender Information</button>
 			<br><br>                       
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
-			<g:render template="wiresender" model="[items: wireSender]"/>
+			<g:render template="wireinstructions" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
         <button class="btn btn-success" data-toggle="modal" data-target="#modalWireReceiver">Use Previous Wire Receiver Information</button>
 			<br><br>
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
-			<g:render template="wirereceiver" model="[items: wireReceiver]"/>
+			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
 		</div>
 		
-		<g:if test="${!isCollapsed}">
+		<g:if test="${!isDissolved}">
 			<g:form controller="pool" action="dissolve">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
