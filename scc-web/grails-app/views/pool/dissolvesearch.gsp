@@ -55,16 +55,16 @@
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>         
-        <button class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</button>
-		<button class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</button>
+        <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</a>
+		<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
 		<br><br>                       
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
 			<g:render template="wireinstructions" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
-       	<button class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</button>
-		<button class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</button>
+       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</a>
+		<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
 		<br><br>
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
 			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
