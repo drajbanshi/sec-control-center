@@ -58,5 +58,9 @@ class TemplatingServiceIntegrationSpec extends IntegrationSpec {
 
 		events != null
 		events.getEventMetaData().getEventName() == "DISSOLVE_EVENT"
+		
+		model.keySet().each { String key ->
+			xml.contains(key) == false
+		}
 	}
 }
