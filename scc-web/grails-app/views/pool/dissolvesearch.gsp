@@ -54,18 +54,22 @@
 			<g:render template="resultfields" model="[items: result]" />
 		</div>
 		 
-        <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>         
-        <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</a>
-		<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
-		<br><br>                       
+        <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>  
+        <div class="dissolveEdit"> 
+	        <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</a>
+			<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
+			<br><br>        
+		</div>                     
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
 			<g:render template="wiresender" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
-       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</a>
-		<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
-		<br><br>
+       	<div class="dissolveEdit"> 
+	       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</a>
+			<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
+			<br><br>
+		</div>
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
 			<g:render template="wirereceiver" model="[wireinstructions: wireReceiver]"/>
 		</div>
@@ -80,13 +84,23 @@
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
                         <g:hiddenField name="pageFunction" value="Dissolve" />
             <g:hiddenField name="poolType" value="${poolType}" />
-            <div class="button-cont">
-			<button class="btn btn-danger" type="submit" >
-				<%-- onclick="return confirm('${message(code: 'PoolDetails.page.dissolve.confirm', args: [poolid])}');"> --%>
-				<i class="fa fa-close"> </i>
-				${message(code: 'PoolDetails.page.dissolve.submit')}
-			</button>
-			</div>
+            
+
+<div class="container text-center dissolveEdit">
+   <a class="btn btn-primary dissolveToggle">Preview Dissolve</a>
+</div>
+<div class="container text-center dissolveEdit" style="display:none">
+   <a class="btn btn-default dissolveToggle">Cancel</a> 
+   
+   <button class="btn btn-danger" type="submit" >
+		<%-- onclick="return confirm('${message(code: 'PoolDetails.page.dissolve.confirm', args: [poolid])}');"> --%>
+		<i class="fa fa-close"> </i>
+		${message(code: 'PoolDetails.page.dissolve.submit')}
+	</button>
+   
+   <p class="alert alert-warning">Please confirm your wish to dissolve this pool.</p>
+</div>
+
 
 			
 		</g:if>
@@ -160,8 +174,7 @@
   </div>
 </div>
 
-
-<!---- MODALS ------>
+ 
 
 <div class="modal fade" id="modalEditWireSender" tabindex="-1" role="dialog" aria-labelledby="modalEditWireSender" aria-hidden="true">
   <div class="modal-dialog">
@@ -295,6 +308,8 @@
 
 
 <!---- MODALS ------>
+
+<script>$( ".dissolveToggle" ).click(function() {  $( ".dissolveEdit" ).toggle(   );});</script>
 
 
 </body>
