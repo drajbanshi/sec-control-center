@@ -48,7 +48,7 @@
 	</g:hasErrors>
 	 
 	<g:if test="${result }">
-	
+	<g:form controller="pool" action="dissolve">	
 		<h2>${message(code: 'PoolDetails.dissolve.pooldetails.title')} <g:if test="${poolid}"> ${poolid}</g:if></h2>
 		<div id="show-MBSData" class="content scaffold-show" role="main">
 			<g:render template="resultfields" model="[items: result]" />
@@ -74,7 +74,6 @@
 		<g:render template="resultfields" model="[items: result-2]" />               
 		
 		<g:if test="${!isDissolved}">
-			<g:form controller="pool" action="dissolve">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
 			<g:hiddenField name="cusipIdentifier" value="${poolSearch.cusipIdentifier}" />
@@ -88,10 +87,10 @@
 				${message(code: 'PoolDetails.page.dissolve.submit')}
 			</button>
 			</div>
-		</g:form>
+
 			
 		</g:if>
-		
+		</g:form>		
 	</g:if>
 </div><!--  close tabBody -->
 </div><!--  close containerFluid -->
