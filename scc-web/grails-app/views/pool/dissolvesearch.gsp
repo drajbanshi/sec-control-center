@@ -69,13 +69,9 @@
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
 			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
 		</div>
-                <div>
-                    <g:render template="resultfields" model="[items: result-2]" />
-                </div>
-                
-                <div>
-                    <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
-                </div>                
+		
+		<h2>Dissolve Data</h2>
+		<g:render template="resultfields" model="[items: result-2]" />               
 		
 		<g:if test="${!isDissolved}">
 			<g:form controller="pool" action="dissolve">
@@ -152,96 +148,9 @@
       </div>
       <div class="modal-body">
 		<form class="form">
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"  > Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"  > Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"  > Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
+			 
+           <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
+              	 
 		</form>
       </div>
       <div class="modal-footer">
@@ -350,26 +259,9 @@
       </div>
       <div class="modal-body">
         <form class="form">
-		
-			<div class="radio">
-			  <label>
-				<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-				Institution One
-			 </label>
-			</div>
-			<div class="radio">
-			  <label>
-				<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-				Institution Two
-			 </label>
-			</div>
-			<div class="radio">
-			  <label>
-				<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"  >
-				Institution Three
-			 </label>
-			</div>
-		
+			 
+           <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
+              	 
 		</form>
       </div>
       <div class="modal-footer">
@@ -389,96 +281,9 @@
       </div>
       <div class="modal-body">
 		<form class="form">
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Institution One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Four</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Five</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Six</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Seven</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Eight</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Nine</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Ten</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Eleven</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twelve</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Thirteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Fourteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Fifteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Sixteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Seventeen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Eighteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Nineteen</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty One</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Two</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Three</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty Four</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Five</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Six</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Twenty Seven</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Institution Twenty Eight</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Institution Twenty Nine</label>
-			</div>
-			<div class="radio">
-			  <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Institution Thirty</label>
-			</div>
+			 
+           <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
+              	 
 		</form>
       </div>
       <div class="modal-footer">
