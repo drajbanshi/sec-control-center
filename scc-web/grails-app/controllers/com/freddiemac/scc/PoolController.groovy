@@ -128,11 +128,17 @@ class PoolController {
 		return mm
 	}
 
-	def dissolve(PoolSearch poolSearch) {
-		def m = searchService.searchPool(poolSearch.cusipIdentifier, poolSearch.poolNumber)
+	def dissolve() {
+		if(eventLogService.isEventProcessedForCusip(params.cusip)) {
+			flash.error = message(code: 'dissolve.pool.alreadydone')
+			render view : '/pool/dissolvesearch', model : [poolSearch: new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber: params.poolNumber)]
+			return
+		}
+		
+		def m = searchService.searchPool(params.cusip, params.poolid)
 		if(!m.success) {
 			flash.error = message(code: 'dissolve.pool.notfound')
-			render view : '/pool/dissolvesearch', model : [poolSearch: poolSearch]
+			render view : '/pool/dissolvesearch', model : [poolSearch: new PoolSearch(cusipIdentifier: params.cusipIdentifer, params.poolNumber)]
 			return
 		}
 
@@ -146,14 +152,13 @@ class PoolController {
 			}
 		}
 
-		if(dispatchService.dissolveSecurity(poolSearch.poolNumber, poolSearch.cusipIdentifier, map)) {
+		if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
 			flash.message = message(code:"dissolve.pool.success")
-			
 		} else {
 		   flash.error = message(code: "dissolve.pool.error")
 		}
 		
-		render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: poolSearch.poolNumber, cusip: poolSearch.cusipIdentifier,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
+		render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: params.poolid, cusip: params.cusip,  poolSearch:new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber:  params.poolNumber), wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
 			
 	}
         

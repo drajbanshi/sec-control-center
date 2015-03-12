@@ -10,13 +10,14 @@ import com.freddiemac.scc.entities.EventProcessLog
 import com.freddiemac.scc.entities.EventType
 import com.freddiemac.scc.entities.Status
 import com.freddiemac.scc.model.PoolSearch
+import com.freddiemac.scc.security.WireInstructions;
 import com.ibm.icu.text.SimpleDateFormat;
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(PoolController)
-@grails.test.mixin.Mock([EventProcessLog])
+@grails.test.mixin.Mock([EventProcessLog, WireInstructions])
 class PoolControllerSpec extends Specification {
 
 	static doWithConfig(c) {
@@ -24,6 +25,8 @@ class PoolControllerSpec extends Specification {
 		c.com.freddiemac.searchpool.result.path = 'mytest'
 		c.com.freddiemac.searchpool.result.securityissuedate = 'test1'
 		c.com.freddiemac.searchpool.result.poolid = 'test2'
+		
+		c.com.freddiemac.onedotfive.fields = ['a.b','b.c', 'c.d']
 	}
 
 	def "grailsApplication is not null"() {
@@ -50,6 +53,9 @@ class PoolControllerSpec extends Specification {
 		dispatchService.collapsePool("PPPPPPP","CUSIP2222",_) >> false
 		dispatchService.collapsePool("POOL2222","CCCCCC",_) >> true
 		
+		dispatchService.dissolveSecurity("PPPPPPP","CUSIP2222",_) >> false
+		dispatchService.dissolveSecurity("POOL2222","CCCCCC",_) >> true
+		
 		controller.dispatchService = dispatchService
 
 		def eventLogService = Mock(EventLogService)
@@ -57,6 +63,8 @@ class PoolControllerSpec extends Specification {
 		eventLogService.isEventProcessedForCusip("CUSIP2222") >> false
 		eventLogService.logEvent("CUSIP1234", _) >> new EventProcessLog(cusip: "CUSIP1234", eventType: EventType.COLLAPSE,status: Status.INITIALIZED)
 		eventLogService.isEventProcessedForCusip("CUSIP1234") >> true
+		eventLogService.isEventProcessedForCusip(_) >> false
+		
 		controller.eventLogService = eventLogService
 	}
 
@@ -148,5 +156,28 @@ class PoolControllerSpec extends Specification {
 		"CUSIP2222" | "PPPPPPP" | "CASH" ||  'Collapse.controller.collapse.fail'
                 "CUSIP2222" | "" | "GUARANTOR" ||  'Collapse.controller.collapse.fail'
                 "CUSIP2222" | "" | "GIANT" ||  'Collapse.controller.collapse.fail'
+	}
+	
+	@Unroll
+	void "dissolve pool works with validation (cusip=#cusip, poolid=#poolid, err = #err)"(String cusip, String poolid, String err) {
+		given:
+		params.cusip = cusip
+		params.poolid = poolid
+		
+		def map = ["a.b" : "ab",
+					"b.c" : "bc",
+					"c.d" : "cd"]
+		
+		when:
+		controller.dissolve()
+		
+		then:
+		flash.error == err
+		
+		where:
+		cusip | poolid || err
+		"CUSIP1234" | "PPP22" || "dissolve.pool.alreadydone" 
+		"CUSIP2222" | "PPPPPPP" || "dissolve.pool.error" 
+	
 	}
 }
