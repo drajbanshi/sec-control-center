@@ -144,10 +144,12 @@ class PoolController {
 				map.put(it, PropertyRetriever.getProp(it, m.result))
 			}
 		}
-
-		if(dispatchService.dissolveSecurity(poolSearch.poolNumber, poolSearch.cusipIdentifier, map)) {
-			flash.message = message(code:"dissolve.pool.success")
-		}
+		if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
+			flash.message = message(code:"dissolve.pool.success", args: params.poolid)
+		} else {
+                    flash.error = message(code:"dissolve.pool.fail", args: params.poolid)
+                }
+                redirect action: "search", params:params
 	}
         
     def getPreviousWireInstructions() {
