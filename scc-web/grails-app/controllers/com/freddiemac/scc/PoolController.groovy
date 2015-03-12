@@ -139,14 +139,20 @@ class PoolController {
 		def map = [:]
 		dissolveKeys.each {
 			if(params.containsKey(it)) {
-				map.put(it, params.get(it))
+				map.put(it.replaceAll('.', "_"), params.get(it))
 			} else {
-				map.put(it, PropertyRetriever.getProp(it, m.result))
+				map.put(it.replaceAll('.', "_"), PropertyRetriever.getProp(it, m.result))
 			}
 		}
 
 		if(dispatchService.dissolveSecurity(poolSearch.poolNumber, poolSearch.cusipIdentifier, map)) {
 			flash.message = message(code:"dissolve.pool.success")
+			
+		} else {
+		   flash.error = message(code: "dissolve.pool.error")
 		}
+		
+		render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: poolSearch.poolNumber, cusip: poolSearch.cusipIdentifier,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
+			
 	}
 }
