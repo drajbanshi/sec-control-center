@@ -127,11 +127,17 @@ class PoolController {
 		return mm
 	}
 
-	def dissolve(PoolSearch poolSearch) {
-		def m = searchService.searchPool(poolSearch.cusipIdentifier, poolSearch.poolNumber)
+	def dissolve() {
+		if(eventLogService.isEventProcessedForCusip(params.cusip)) {
+			flash.error = message(code: 'dissolve.pool.alreadydone')
+			render view : '/pool/dissolvesearch', model : [poolSearch: new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber: params.poolNumber)]
+			return
+		}
+		
+		def m = searchService.searchPool(params.cusip, params.poolid)
 		if(!m.success) {
 			flash.error = message(code: 'dissolve.pool.notfound')
-			render view : '/pool/dissolvesearch', model : [poolSearch: poolSearch]
+			render view : '/pool/dissolvesearch', model : [poolSearch: new PoolSearch(cusipIdentifier: params.cusipIdentifer, params.poolNumber)]
 			return
 		}
 
@@ -139,17 +145,21 @@ class PoolController {
 		def map = [:]
 		dissolveKeys.each {
 			if(params.containsKey(it)) {
-				map.put(it, params.get(it))
+				map.put(it.replaceAll('.', "_"), params.get(it))
 			} else {
-				map.put(it, PropertyRetriever.getProp(it, m.result))
+				map.put(it.replaceAll('.', "_"), PropertyRetriever.getProp(it, m.result))
 			}
 		}
+
 		if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
-			flash.message = message(code:"dissolve.pool.success", args: params.poolid)
+			flash.message = message(code:"dissolve.pool.success")
 		} else {
-                    flash.error = message(code:"dissolve.pool.fail", args: params.poolid)
-                }
-                redirect action: "search", params:params
+		   flash.error = message(code: "dissolve.pool.error")
+		}
+		
+		
+		render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: params.poolid, cusip: params.cusip,  poolSearch:new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber:  params.poolNumber), wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
+			
 	}
         
     def getPreviousWireInstructions() {
