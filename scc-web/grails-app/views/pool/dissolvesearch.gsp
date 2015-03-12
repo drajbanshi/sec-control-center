@@ -75,7 +75,7 @@
 		</div>
 		
 		<h2>Dissolve Data</h2>
-		<g:render template="resultfields" model="[items: result-2]" />               
+		<g:render template="resultfields" model="[items: fieldsDissolve]" />               
 		
 		<g:if test="${!isDissolved}">
 			<g:hiddenField name="poolid" value="${poolid}" />
