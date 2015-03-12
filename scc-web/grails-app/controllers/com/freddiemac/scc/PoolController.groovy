@@ -12,6 +12,7 @@ class PoolController {
 	def dispatchService
 	def grailsApplication
 	def eventLogService
+        def wireInstructionsService
 
 
 	def index() {
@@ -79,10 +80,10 @@ class PoolController {
 			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
 			String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
 			def isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
-			
+			def savedWireList = getPreviousWireInstructions()
 			
 			if (searchForDissolve)
-				render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
+				render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'result-2': generateModel(m.result), isDissolved:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: savedWireList]
 			else 
 				render view: 'collapsesearch', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
 		}
@@ -155,4 +156,8 @@ class PoolController {
 		render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: poolSearch.poolNumber, cusip: poolSearch.cusipIdentifier,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
 			
 	}
+        
+    def getPreviousWireInstructions() {
+        return WireInstructions.list()
+    }         
 }

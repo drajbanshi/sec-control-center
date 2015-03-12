@@ -69,6 +69,13 @@
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
 			<g:render template="wireinstructions" model="[wireinstructions: wireReceiver]"/>
 		</div>
+                <div>
+                    <g:render template="resultfields" model="[items: result-2]" />
+                </div>
+                
+                <div>
+                    <g:render template="loadsavedwire" model="[savedWireList: savedWireList]" />
+                </div>                
 		
 		<g:if test="${!isDissolved}">
 			<g:form controller="pool" action="dissolve">
