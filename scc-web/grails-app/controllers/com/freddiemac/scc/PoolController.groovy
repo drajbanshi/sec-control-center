@@ -158,7 +158,6 @@ class PoolController {
                 isWireReceiverExists = true
             }
         }         
-
         if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
             flash.message = message(code:"dissolve.pool.success", args: [params.poolid])
             if (!isWireSenderExists)
@@ -168,7 +167,6 @@ class PoolController {
         } else {
             flash.error = message(code: "dissolve.pool.fail", args: [params.poolid])
         }	
-        //render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: params.poolid, cusip: params.cusip,  poolSearch:new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber:  params.poolNumber), wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
         render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'fieldsDissolve': generateModel(m.result, grailsApplication.config.com.freddiemac.searchpool.result.dissolve.elements), isDissolved:eventLogService.isEventProcessedForCusip(params.cusip), poolid: params.poolid, cusip: params.cusip,  poolSearch:new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber:  params.poolNumber), wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: WireInstructions.list()]
 			
     }                 

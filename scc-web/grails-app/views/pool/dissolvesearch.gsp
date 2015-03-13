@@ -56,17 +56,17 @@
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>  
         <div class="dissolveEdit"> 
-            <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender" >Edit</a>
+            <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender" onclick="editWireSender('${wireSender.abaRoutingNumber}', '${wireSender.finInstitutionSubAcctName}', '${wireSender.organizationName}', '${wireSender.finInstitutionTelegraphicAbbrName}')">Edit</a>
 			<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
 			<br><br>        
-		</div>                     
+		</div>
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
 			<g:render template="wiresender" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
        	<div class="dissolveEdit"> 
-	       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver">Edit</a>
+	       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver" onclick="editWireReceiver('${wireReceiver.abaRoutingNumber}', '${wireReceiver.finInstitutionSubAcctName}', '${wireReceiver.organizationName}', '${wireReceiver.finInstitutionTelegraphicAbbrName}')">Edit</a>
 			<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
 			<br><br>
 		</div>
@@ -190,19 +190,19 @@
 		<tbody>
 			<tr> 
 				<td class="tableLabel">ABA Routing And Transit Identifier:</td> 
-				<td class="dataBit"><input type="text" value=""></td>
+				<td class="dataBit"><input id="edSenAba" type="text" value=""></td>
 			</tr>
 			<tr>
 				<td class="tableLabel">Financial Institution Subaccount Name:</td> 
-				<td class="dataBit"><input type="text" value="Good N Plenty"></td>
+				<td class="dataBit"><input id="edSenFinSubAcct" type="text" value=""></td>
  			</tr>
 			<tr>
 				<td class="tableLabel">Organization Name:</td> 
-				<td class="dataBit"><input type="text" value="Freddie Mac"></td>
+				<td class="dataBit"><input id="edSenOrgName" type="text" value=""></td>
 			</tr>
 			<tr>
 				<td class="tableLabel">Financial Institution Telegraphic Abbreviation Name:</td> 
-				<td class="dataBit"><input type="text" value="FMAC"></td>
+				<td class="dataBit"><input id="edSenFinTelAbbr" type="text" value=""></td>
  			</tr>
 			 
 		</tbody>
@@ -212,7 +212,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateWireSender()">Save</button>
       </div>
     </div>
   </div>
@@ -232,19 +232,19 @@
 		<tbody>
 			<tr> 
 				<td class="tableLabel">ABA Routing And Transit Identifier:</td> 
-				<td class="dataBit"><input type="text" value="7890056435"></td>
+				<td class="dataBit"><input id="edRecAba" type="text" value=""></td>
 			</tr>
 			<tr>
 				<td class="tableLabel">Financial Institution Subaccount Name:</td> 
-				<td class="dataBit"><input type="text" value="Good N Plenty"></td>
+				<td class="dataBit"><input id="edRecFinSubAcct" type="text" value=""></td>
  			</tr>
 			<tr>
 				<td class="tableLabel">Organization Name:</td> 
-				<td class="dataBit"><input type="text" value="Freddie Mac"></td>
+				<td class="dataBit"><input id="edRecOrgName" type="text" value=""></td>
 			</tr>
 			<tr>
 				<td class="tableLabel">Financial Institution Telegraphic Abbreviation Name:</td> 
-				<td class="dataBit"><input type="text" value="FMAC"></td>
+				<td class="dataBit"><input id="edRecFinTelAbbr" type="text" value=""></td>
  			</tr>
 			 
 		</tbody>
@@ -254,7 +254,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateWireReceiver()">Save</button>
       </div>
     </div>
   </div>
@@ -309,7 +309,56 @@
 
 <!---- MODALS ------>
 
-<script>$( ".dissolveToggle" ).click(function() {  $( ".dissolveEdit" ).toggle(   );});</script>
+<script>$( ".dissolveToggle" ).click(function() {  $( ".dissolveEdit" ).toggle(   );});
+
+      function editWireSender(routingNo, finSubAcctName, orgName, finTelAbbrName) {
+        $( "#edSenAba").val(routingNo);
+        $( "#edSenFinSubAcct").val(finSubAcctName);
+        $( "#edSenOrgName").val(orgName);
+        $( "#edSenFinTelAbbr").val(finTelAbbrName);      
+      }
+      
+      function updateWireSender() {
+        document.getElementById('Sender.FinancialInstitution.ABARoutingAndTransitIdentifier').value=document.getElementById('edSenAba').value;
+      $("#updSenAba").html(document.getElementById('edSenAba').value);
+        document.getElementById('Sender.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName').value=document.getElementById('edSenFinSubAcct').value;      
+      $("#updSenFinSubAcct").html(document.getElementById('edSenFinSubAcct').value);
+        document.getElementById('Sender.Organization.OrganizationName').value=document.getElementById('edSenOrgName').value;      
+      $("#updSenOrgName").html(document.getElementById('edSenOrgName').value);
+        document.getElementById('Sender.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName').value=document.getElementById('edSenFinTelAbbr').value;      
+      $("#updSenFinTelAbbr").html(document.getElementById('edSenFinTelAbbr').value);
+      }      
+      
+      function updateWireReceiver() {
+        document.getElementById('Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier').value=document.getElementById('edRecAba').value;
+      $("#updRecAba").html(document.getElementById('edRecAba').value);
+        document.getElementById('Receiver.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName').value=document.getElementById('edRecFinSubAcct').value;      
+      $("#updRecFinSubAcct").html(document.getElementById('edRecFinSubAcct').value);
+        document.getElementById('Receiver.Organization.OrganizationName').value=document.getElementById('edRecOrgName').value;      
+      $("#updRecOrgName").html(document.getElementById('edRecOrgName').value);
+        document.getElementById('Receiver.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName').value=document.getElementById('edRecFinTelAbbr').value;      
+      $("#updRecFinTelAbbr").html(document.getElementById('edRecFinTelAbbr').value);
+      }            
+      
+      function editWireReceiver(routingNo, finSubAcctName, orgName, finTelAbbrName) {
+        $( "#edRecAba").val(routingNo);
+        $( "#edRecFinSubAcct").val(finSubAcctName);
+        $( "#edRecOrgName").val(orgName);
+        $( "#edRecFinTelAbbr").val(finTelAbbrName);
+      }
+
+      function updateWireReceiver() {
+        document.getElementById('Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier').value=document.getElementById('edRecAba').value;
+      $("#updRecAba").html(document.getElementById('edRecAba').value);
+        document.getElementById('Receiver.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName').value=document.getElementById('edRecFinSubAcct').value;      
+      $("#updRecFinSubAcct").html(document.getElementById('edRecFinSubAcct').value);
+        document.getElementById('Receiver.Organization.OrganizationName').value=document.getElementById('edRecOrgName').value;      
+      $("#updRecOrgName").html(document.getElementById('edRecOrgName').value);
+        document.getElementById('Receiver.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName').value=document.getElementById('edRecFinTelAbbr').value;      
+      $("#updRecFinTelAbbr").html(document.getElementById('edRecFinTelAbbr').value);
+      }      
+      
+      </script>
 
 
 </body>
