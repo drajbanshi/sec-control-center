@@ -79,11 +79,16 @@ class PoolController {
 			String cusip = poolSearch.cusipIdentifier ?:PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.cusip, m.result)
 			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
 			String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
-			def isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
-			if (searchForDissolve)
-				render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'fieldsDissolve': generateModel(m.result, grailsApplication.config.com.freddiemac.searchpool.result.dissolve.elements), isDissolved:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: WireInstructions.list()]
-			else
+			def isCollapsed 
+                        def isDissolved
+			if (searchForDissolve) {
+                                isDissolved = (!(DateUtils.isPastDate(secIssueDt))) || eventLogService.isEventProcessedForCusip(cusip)
+				render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'fieldsDissolve': generateModel(m.result, grailsApplication.config.com.freddiemac.searchpool.result.dissolve.elements), isDissolved:isDissolved, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: WireInstructions.list()]
+                            }
+			else {
+                                isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
 				render view: 'collapsesearch', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
+                            }
 		}
 
 		log.info("Time taken for search() : " + (System.currentTimeMillis() - start)+ " ms")
