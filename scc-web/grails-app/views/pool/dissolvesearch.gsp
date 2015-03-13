@@ -56,7 +56,7 @@
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>  
         <div class="dissolveEdit"> 
-	        <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender">Edit</a>
+            <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender" >Edit</a>
 			<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
 			<br><br>        
 		</div>                     
@@ -190,7 +190,7 @@
 		<tbody>
 			<tr> 
 				<td class="tableLabel">ABA Routing And Transit Identifier:</td> 
-				<td class="dataBit"><input type="text" value="7890056435"></td>
+				<td class="dataBit"><input type="text" value=""></td>
 			</tr>
 			<tr>
 				<td class="tableLabel">Financial Institution Subaccount Name:</td> 
@@ -201,7 +201,7 @@
 				<td class="dataBit"><input type="text" value="Freddie Mac"></td>
 			</tr>
 			<tr>
-				<td class="tableLabel">Financial Institution Telegraphic Reverberation Name:</td> 
+				<td class="tableLabel">Financial Institution Telegraphic Abbreviation Name:</td> 
 				<td class="dataBit"><input type="text" value="FMAC"></td>
  			</tr>
 			 
@@ -243,7 +243,7 @@
 				<td class="dataBit"><input type="text" value="Freddie Mac"></td>
 			</tr>
 			<tr>
-				<td class="tableLabel">Financial Institution Telegraphic Reverberation Name:</td> 
+				<td class="tableLabel">Financial Institution Telegraphic Abbreviation Name:</td> 
 				<td class="dataBit"><input type="text" value="FMAC"></td>
  			</tr>
 			 
