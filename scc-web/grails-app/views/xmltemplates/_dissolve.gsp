@@ -45,11 +45,11 @@ ${eventTimeStamp} </RequestEffectiveDateTime> <BusinessEventTimestamp> ${eventTi
 			
 			<p:CollateralInstruments>
 				<p:CollateralInstrumentContainer>
-					<p:PoolInstrument>
+					<p:Pool>
 						<p:PoolIdentifier>
-							${PoolInstrument_PoolIdentefier}
+							${Pool_PoolIdentifier}
 						</p:PoolIdentifier>
-					</p:PoolInstrument>
+					</p:Pool>
 					<p:CollateralLoanContainer>
 						<p:Loan>
 							<p:LoanIdentifier>${Loan_LoanIdentifier}</p:LoanIdentifier>

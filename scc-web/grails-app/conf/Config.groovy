@@ -98,7 +98,8 @@ com.freddiemac.searchpool.result.elements=["Pool.PoolIdentifier","Security.Secur
 com.freddiemac.searchpool.result.dissolve.elements=["PartyRole.PartyRoleType", "SecurityIssuer.SecurityIssuerIdentifier", "SecurityWire.SecurityWireFaceValueAmount", "WireTransferTransaction.WireTotalFeesAmount", "WireTransferTransaction.WireInstructionExecutionDate", "CashTransferInstruction.CashTransferInstructionIdentifier", "Loan.LoanIdentifier", "FinancialInstrument.FinancialInstrumentType"]
 com.freddiemac.searchpool.result.xfields=["LoanRelationship.LoanRoleType","MBS.MBSAmortizationType","MBSDisclosure.MBSBalloonTermCount","MBS.InterestOnlyTermCount","MBS.MBSExecutionMethodType","Security.FederalReserveSecurityClassCode","Security.FederalReserveSecurityDescription","SecurityIssuance.SecurityIssueFaceAmount","Security.SecurityFirstPaymentDate","Security.MinimumTradeDenominationAmount","Security.AssetBackedSecurityType","GuarantyFeeGrid.ProgramIdentifier","LoanPaymentRate.LoanInvestorPassThroughRate","SecurityActivity.SecurityRecordDate","MBSDisclosure.MBSInterestPaymentFactorRate","CollateralGroup.SecuritizationTrustIdentifier","Security.SecurityPayingAgentIdentifier","SecurityActivity.SecurityTaxRecordDate","BulkLoanPurchaseDeal.SecurityIssuerIdentifier","ContractCounterparty.PartyRoleType","FinancialInstrument.FinancialInstrumentType"]
 com.freddiemac.onedotfive.fields = [
-	"PoolInstrument.PoolIdentifier",
+	"Security.SecurityCUSIPIdentifier",
+	"Pool.PoolIdentifier",
 	"Pool.PoolType",
 	'Sender.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName',
 	'Sender.FinancialInstitution.ABARoutingAndTransitIdentifier',

@@ -143,14 +143,17 @@ class PoolController {
 
 		def dissolveKeys = grailsApplication.config.com.freddiemac.onedotfive.fields
 		def map = [:]
-		dissolveKeys.each {
-			if(params.containsKey(it)) {
-				map.put(it.replaceAll('.', "_"), params.get(it))
-			} else {
-				map.put(it.replaceAll('.', "_"), PropertyRetriever.getProp(it, m.result))
+	
+		dissolveKeys.each { String key ->
+			String modifiedKey = key.replace(".", "_")
+			String val  = params.get(key)
+			if(!val) {
+			  log.info("couldnt get value from params for " + key)
+			   val = PropertyRetriever.getProp(key, m.result)
 			}
+			map.put(modifiedKey, val)
 		}
-
+		
 		if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
 			flash.message = message(code:"dissolve.pool.success")
 		} else {
