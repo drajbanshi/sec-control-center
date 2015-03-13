@@ -153,7 +153,7 @@ class PoolController {
 		}
 		def isWireSenderExists = false
 		def isWireReceiverExists = false
-		WireInstructions.list().each{
+		WireInstructions.count().each{
 			if (it.wireInstructionsName.equalsIgnoreCase(params.Sender.Organization.OrganizationName)){
 				isWireSenderExists = true
 			} else if (it.wireInstructionsName.equalsIgnoreCase(params.Receiver.Organization.OrganizationName)){
