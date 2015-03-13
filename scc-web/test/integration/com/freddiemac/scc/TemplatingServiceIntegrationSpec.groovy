@@ -22,7 +22,9 @@ class TemplatingServiceIntegrationSpec extends IntegrationSpec {
 	}
 
 	void "generate dissolve event xml"() {
+		
 		given:
+		
 		def model = [
 			"PoolInstrument_PoolIdentifier" : "asdf",
 			"Pool_PoolType" : "asdf",
