@@ -275,7 +275,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="loadWireSender()">Select</button>
       </div>
     </div>
   </div>
@@ -297,7 +297,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="loadWireReceiver()">Select</button>
       </div>
     </div>
   </div>
@@ -325,7 +325,19 @@
         document.getElementById('Sender.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName').value=document.getElementById('edSenFinTelAbbr').value;      
       $("#updSenFinTelAbbr").html(document.getElementById('edSenFinTelAbbr').value);
       }      
-      
+
+function loadWireSender() {
+      var wirevalues_array = ($('input[name="wireName"]:checked').val()).split("|");
+        document.getElementById('Sender.FinancialInstitution.ABARoutingAndTransitIdentifier').value=wirevalues_array[0];
+      $("#updSenAba").html(wirevalues_array[0]);
+        document.getElementById('Sender.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName').value=wirevalues_array[1];      
+      $("#updSenFinSubAcct").html(wirevalues_array[1]);
+        document.getElementById('Sender.Organization.OrganizationName').value=wirevalues_array[2];      
+      $("#updSenOrgName").html(wirevalues_array[2]);
+        document.getElementById('Sender.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName').value=wirevalues_array[3];      
+      $("#updSenFinTelAbbr").html(wirevalues_array[3]);
+      }      
+
       function updateWireReceiver() {
         document.getElementById('Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier').value=document.getElementById('edRecAba').value;
       $("#updRecAba").html(document.getElementById('edRecAba').value);
@@ -353,6 +365,18 @@
       $("#updRecOrgName").html(document.getElementById('edRecOrgName').value);
         document.getElementById('Receiver.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName').value=document.getElementById('edRecFinTelAbbr').value;      
       $("#updRecFinTelAbbr").html(document.getElementById('edRecFinTelAbbr').value);
+      }      
+
+      function loadWireReceiver() {
+      var wirevalues_array = ($('input[name="wireName"]:checked').val()).split("|");
+        document.getElementById('Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier').value=wirevalues_array[0];
+      $("#updRecAba").html(wirevalues_array[0]);
+        document.getElementById('Receiver.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName').value=wirevalues_array[1];      
+      $("#updRecFinSubAcct").html(wirevalues_array[1]);
+        document.getElementById('Receiver.Organization.OrganizationName').value=wirevalues_array[2];      
+      $("#updRecOrgName").html(wirevalues_array[2]);
+        document.getElementById('Receiver.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName').value=wirevalues_array[3];      
+      $("#updRecFinTelAbbr").html(wirevalues_array[3]);
       }      
       
       </script>

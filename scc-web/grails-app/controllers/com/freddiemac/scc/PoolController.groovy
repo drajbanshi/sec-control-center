@@ -153,13 +153,14 @@ class PoolController {
 		}
 		def isWireSenderExists = false
 		def isWireReceiverExists = false
-		WireInstructions.count().each{
+		WireInstructions.list().each{
 			if (it.wireInstructionsName.equalsIgnoreCase(params.Sender.Organization.OrganizationName)){
 				isWireSenderExists = true
 			} else if (it.wireInstructionsName.equalsIgnoreCase(params.Receiver.Organization.OrganizationName)){
 				isWireReceiverExists = true
 			}
 		}
+
 		if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
 			flash.message = message(code:"dissolve.pool.success", args: [params.poolid])
 			if (!isWireSenderExists)
