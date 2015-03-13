@@ -413,6 +413,11 @@ div.alert-danger ul {list-style: none; padding: 0}
 	
 }
 .ui-state-error {
-	background-color:#BB1100;
-	color:white;
+	background-color:#ffe0e0;
+	border-color:red;
+}
+.clientsideError {
+	display:none;
+	color:red;
+}
 }
