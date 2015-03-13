@@ -89,15 +89,15 @@
    <a class="btn btn-primary dissolveToggle">Preview Dissolve</a>
 </div>
 <div class="container text-center dissolveEdit" style="display:none">
-   <a class="btn btn-default dissolveToggle">Cancel</a> 
+	<a class="btn btn-default dissolveToggle">Cancel</a> 
    
-   <button class="btn btn-danger" type="submit" >
+	<button class="btn btn-danger" type="submit" >
 		<%-- onclick="return confirm('${message(code: 'PoolDetails.page.dissolve.confirm', args: [poolid])}');"> --%>
 		<i class="fa fa-close"> </i>
 		${message(code: 'PoolDetails.page.dissolve.submit')}
 	</button>
    
-   <p class="alert alert-warning">Please confirm your wish to dissolve this pool.</p>
+   <div class="alert alert-warning">Please confirm you want to dissolve this pool.</div>
 </div>
 
 
