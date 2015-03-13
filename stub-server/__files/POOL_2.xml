@@ -18,7 +18,10 @@
                                         <WireTransferTransaction>
                                             <WireTotalFeesAmount>9875.67</WireTotalFeesAmount>
                                             <WireInstructionExecutionDate>2016-07-30</WireInstructionExecutionDate>
-                                        </WireTransferTransaction>                                    
+                                        </WireTransferTransaction>
+                                        <TransferFee>
+                                            <TransferFeeAmount>3400</TransferFeeAmount>
+                                        </TransferFee>                                                                            
 					<Pool>
 						<LegacyPoolIdentifier>LegacyPoolIdentifier</LegacyPoolIdentifier>
 						<LegacyPoolIdentifierType>LegacyPoolIdentifierType</LegacyPoolIdentifierType>
