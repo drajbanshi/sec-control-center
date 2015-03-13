@@ -9,6 +9,16 @@
 				<SearchResultContainer xmlns="http://www.freddiemac.com/cdm"
 					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 					xsi:schemaLocation="http://www.freddiemac.com/cdm searchresult.xsd ">
+                                        <PartyRole>
+                                            <PartyRoleType>CC</PartyRoleType>    
+                                        </PartyRole>
+                                        <SecurityIssuer>
+                                            <SecurityIssuerIdentifier>SI Institution Three</SecurityIssuerIdentifier>
+                                        </SecurityIssuer>
+                                        <WireTransferTransaction>
+                                            <WireTotalFeesAmount>3448.43</WireTotalFeesAmount>
+                                            <WireInstructionExecutionDate>2015-10-17</WireInstructionExecutionDate>
+                                        </WireTransferTransaction>                                    
 					<Pool>
 						<LegacyPoolIdentifier>LegacyPoolIdentifier</LegacyPoolIdentifier>
 						<LegacyPoolIdentifierType>LegacyPoolIdentifierType</LegacyPoolIdentifierType>
@@ -78,7 +88,7 @@
 						<LoanGAAPAmortizationMethodType>LoanGAAPAmortizationMethodType
 						</LoanGAAPAmortizationMethodType>
 						<LoanGuarantorType>LoanGuarantorType</LoanGuarantorType>
-						<LoanIdentifier>LoanIdentifier</LoanIdentifier>
+						<LoanIdentifier>L112222</LoanIdentifier>
 						<LoanInterestOnlyEndDate>2001-01-01</LoanInterestOnlyEndDate>
 						<LoanInterestOnlyTermMonthsCount>0
 						</LoanInterestOnlyTermMonthsCount>
@@ -924,7 +934,7 @@
 						</CashTransferFrequencyType>
 						<CashTransferInstructionEffectiveDate>2001-01-01
 						</CashTransferInstructionEffectiveDate>
-						<CashTransferInstructionIdentifier>CashTransferInstructionIdentifier
+						<CashTransferInstructionIdentifier>CTIF III
 						</CashTransferInstructionIdentifier>
 						<CashTransferInstructionStatusType>CashTransferInstructionStatusType
 						</CashTransferInstructionStatusType>

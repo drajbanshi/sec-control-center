@@ -11,10 +11,6 @@ class WireInstructionsService {
         wireInstructionsInstance.finInstitutionTelegraphicAbbrName = finInstitutionTelegraphicAbbrName
         wireInstructionsInstance.save()
         return wireInstructionsInstance
-    }
-    
-    def getPreviousWireInstructions() {
-        respond WireInstructions.list()
     }    
 
     def getWireInstructions(String id) {

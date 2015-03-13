@@ -9,6 +9,16 @@
 				<SearchResultContainer xmlns="http://www.freddiemac.com/cdm"
 					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 					xsi:schemaLocation="http://www.freddiemac.com/cdm searchresult.xsd ">
+                                        <PartyRole>
+                                            <PartyRoleType>BB</PartyRoleType>    
+                                        </PartyRole>
+                                        <SecurityIssuer>
+                                            <SecurityIssuerIdentifier>SI Institution Two</SecurityIssuerIdentifier>
+                                        </SecurityIssuer>
+                                        <WireTransferTransaction>
+                                            <WireTotalFeesAmount>9875.67</WireTotalFeesAmount>
+                                            <WireInstructionExecutionDate>2016-07-30</WireInstructionExecutionDate>
+                                        </WireTransferTransaction>                                    
 					<Pool>
 						<LegacyPoolIdentifier>LegacyPoolIdentifier</LegacyPoolIdentifier>
 						<LegacyPoolIdentifierType>LegacyPoolIdentifierType</LegacyPoolIdentifierType>
@@ -78,7 +88,7 @@
 						<LoanGAAPAmortizationMethodType>LoanGAAPAmortizationMethodType
 						</LoanGAAPAmortizationMethodType>
 						<LoanGuarantorType>LoanGuarantorType</LoanGuarantorType>
-						<LoanIdentifier>LoanIdentifier</LoanIdentifier>
+						<LoanIdentifier>L9855e4</LoanIdentifier>
 						<LoanInterestOnlyEndDate>2001-01-01</LoanInterestOnlyEndDate>
 						<LoanInterestOnlyTermMonthsCount>0
 						</LoanInterestOnlyTermMonthsCount>
@@ -924,7 +934,7 @@
 						</CashTransferFrequencyType>
 						<CashTransferInstructionEffectiveDate>2001-01-01
 						</CashTransferInstructionEffectiveDate>
-						<CashTransferInstructionIdentifier>CashTransferInstructionIdentifier
+						<CashTransferInstructionIdentifier>CTIF II
 						</CashTransferInstructionIdentifier>
 						<CashTransferInstructionStatusType>CashTransferInstructionStatusType
 						</CashTransferInstructionStatusType>

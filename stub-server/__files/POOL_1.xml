@@ -9,6 +9,17 @@
 				<SearchResultContainer xmlns="http://www.freddiemac.com/cdm"
 					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 					xsi:schemaLocation="http://www.freddiemac.com/cdm searchresult.xsd ">
+                                        <PartyRole>
+                                            <PartyRoleType>AA</PartyRoleType>    
+                                        </PartyRole>
+                                        <SecurityIssuer>
+                                            <SecurityIssuerIdentifier>SI Institution</SecurityIssuerIdentifier>
+                                        </SecurityIssuer>
+                                        <WireTransferTransaction>
+                                            <WireTotalFeesAmount>123.45</WireTotalFeesAmount>
+                                            <WireInstructionExecutionDate>2015-04-30</WireInstructionExecutionDate>
+                                        </WireTransferTransaction>
+                                        
 					<Pool>
 						<LegacyPoolIdentifier>LegacyPoolIdentifier</LegacyPoolIdentifier>
 						<LegacyPoolIdentifierType>LegacyPoolIdentifierType</LegacyPoolIdentifierType>
@@ -78,7 +89,7 @@
 						<LoanGAAPAmortizationMethodType>LoanGAAPAmortizationMethodType
 						</LoanGAAPAmortizationMethodType>
 						<LoanGuarantorType>LoanGuarantorType</LoanGuarantorType>
-						<LoanIdentifier>LoanIdentifier</LoanIdentifier>
+						<LoanIdentifier>L03333</LoanIdentifier>
 						<LoanInterestOnlyEndDate>2001-01-01</LoanInterestOnlyEndDate>
 						<LoanInterestOnlyTermMonthsCount>0
 						</LoanInterestOnlyTermMonthsCount>
@@ -924,7 +935,7 @@
 						</CashTransferFrequencyType>
 						<CashTransferInstructionEffectiveDate>2001-01-01
 						</CashTransferInstructionEffectiveDate>
-						<CashTransferInstructionIdentifier>CashTransferInstructionIdentifier
+						<CashTransferInstructionIdentifier>CTIF
 						</CashTransferInstructionIdentifier>
 						<CashTransferInstructionStatusType>CashTransferInstructionStatusType
 						</CashTransferInstructionStatusType>
@@ -1000,7 +1011,7 @@
 						<ServicingReleaseStatusType>ServicingReleaseStatusType
 						</ServicingReleaseStatusType>
 						<UPBVarianceToleranceAmount>0.0</UPBVarianceToleranceAmount>
-					</LoanServicingTerms>
+					</LoanServicingTerms>                                        
 				</SearchResultContainer>
 
 			</ResponseEnvelope>
