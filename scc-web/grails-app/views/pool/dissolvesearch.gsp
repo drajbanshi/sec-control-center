@@ -54,6 +54,11 @@
 			<g:render template="resultfields" model="[items: result]" />
 		</div>
 		 
+		
+		<h2>Dissolve Data</h2>
+		<g:render template="resultfields" model="[items: fieldsDissolve]" /> 
+		
+		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>  
         <div class="dissolveEdit"> 
             <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender" onclick="editWireSender('${wireSender.abaRoutingNumber}', '${wireSender.finInstitutionSubAcctName}', '${wireSender.organizationName}', '${wireSender.finInstitutionTelegraphicAbbrName}')">Edit</a>
@@ -74,15 +79,14 @@
 			<g:render template="wirereceiver" model="[wireinstructions: wireReceiver]"/>
 		</div>
 		
-		<h2>Dissolve Data</h2>
-		<g:render template="resultfields" model="[items: fieldsDissolve]" />               
+		              
 		
 		<g:if test="${!isDissolved}">
 			<g:hiddenField name="poolid" value="${poolid}" />
 			<g:hiddenField name="cusip" value="${cusip}" />
 			<g:hiddenField name="cusipIdentifier" value="${poolSearch.cusipIdentifier}" />
 			<g:hiddenField name="poolNumber" value="${poolSearch.poolNumber}" />
-                        <g:hiddenField name="pageFunction" value="Dissolve" />
+            <g:hiddenField name="pageFunction" value="Dissolve" />
             <g:hiddenField name="poolType" value="${poolType}" />
             
 

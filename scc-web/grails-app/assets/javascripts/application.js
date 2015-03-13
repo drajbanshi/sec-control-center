@@ -7,8 +7,12 @@
 //
 //= require jquery
 //= require bootstrap.min
-//= require bootstrap-toggle.min
+//= require jquery.h5validate
 //= require_self
+
+$(document).ready(function () {
+    $('form').h5Validate();
+});
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {
