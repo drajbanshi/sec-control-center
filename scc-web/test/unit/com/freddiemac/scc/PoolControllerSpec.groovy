@@ -177,7 +177,7 @@ class PoolControllerSpec extends Specification {
 		where:
 		cusip | poolid || err
 		"CUSIP1234" | "PPP22" || "dissolve.pool.alreadydone" 
-		"CUSIP2222" | "PPPPPPP" || "dissolve.pool.error" 
+		"CUSIP2222" | "PPPPPPP" || "dissolve.pool.fail" 
 	
 	}
 }

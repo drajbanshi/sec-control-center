@@ -12,7 +12,7 @@ class PoolController {
 	def dispatchService
 	def grailsApplication
 	def eventLogService
-        def wireInstructionsService
+	def wireInstructionsService
 
 
 	def index() {
@@ -64,7 +64,7 @@ class PoolController {
 			if (m.errorMessage.equals(message(code: 'Collapse.controller.search.error3'))) {
 				flash.error =  message(code: 'Collapse.controller.search.error3')
 				render view: searchForDissolve ? "/pool/dissolvesearch" : "/pool/collapsesearch" , model: [poolSearch: poolSearch, poolid: params.poolNumber, cusip: params.cusipIdentifier, poolErrorField:poolErrorField]
-			
+
 				return
 			}
 
@@ -80,13 +80,12 @@ class PoolController {
 			String secIssueDt = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.securityissuedate, m.result)
 			String poolType = PropertyRetriever.getProp(grailsApplication.config.com.freddiemac.searchpool.result.pooltype, m.result)
 			def isCollapsed = DateUtils.isPastDate(secIssueDt) || eventLogService.isEventProcessedForCusip(cusip)
-			def savedWireList = getPreviousWireInstructions()
 			if (searchForDissolve)
-				render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'fieldsDissolve': generateModel(m.result, grailsApplication.config.com.freddiemac.searchpool.result.dissolve.elements), isDissolved:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: savedWireList]
-			else 
+				render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'fieldsDissolve': generateModel(m.result, grailsApplication.config.com.freddiemac.searchpool.result.dissolve.elements), isDissolved:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: WireInstructions.list()]
+			else
 				render view: 'collapsesearch', model: ['result': generateModel(m.result), isCollapsed:isCollapsed, poolid: poolid, cusip: cusip,  poolSearch:poolSearch, poolType: poolType, poolErrorField: poolErrorField,  xfields: grailsApplication.config.com.freddiemac.searchpool.result.xfields]
 		}
-		
+
 		log.info("Time taken for search() : " + (System.currentTimeMillis() - start)+ " ms")
 	}
 
@@ -129,43 +128,47 @@ class PoolController {
 
 	def dissolve() {
 		if(eventLogService.isEventProcessedForCusip(params.cusip)) {
-			flash.error = message(code: 'dissolve.pool.alreadydone')
+			flash.error = message(code: 'dissolve.pool.alreadydone', args: [params.poolid])
 			render view : '/pool/dissolvesearch', model : [poolSearch: new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber: params.poolNumber)]
 			return
 		}
-		
+
 		def m = searchService.searchPool(params.cusip, params.poolid)
 		if(!m.success) {
-			flash.error = message(code: 'dissolve.pool.notfound')
+			flash.error = message(code: 'dissolve.pool.notfound', args: [params.poolid])
 			render view : '/pool/dissolvesearch', model : [poolSearch: new PoolSearch(cusipIdentifier: params.cusipIdentifer, params.poolNumber)]
 			return
 		}
 
 		def dissolveKeys = grailsApplication.config.com.freddiemac.onedotfive.fields
 		def map = [:]
-	
 		dissolveKeys.each { String key ->
 			String modifiedKey = key.replace(".", "_")
 			String val  = params.get(key)
 			if(!val) {
-			  log.info("couldnt get value from params for " + key)
-			   val = PropertyRetriever.getProp(key, m.result)
+				log.info("couldnt get value from params for " + key)
+				val = PropertyRetriever.getProp(key, m.result)
 			}
 			map.put(modifiedKey, val)
 		}
-		
-		if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
-			flash.message = message(code:"dissolve.pool.success")
-		} else {
-		   flash.error = message(code: "dissolve.pool.error")
+		def isWireSenderExists = false
+		def isWireReceiverExists = false
+		WireInstructions.list().each{
+			if (it.wireInstructionsName.equalsIgnoreCase(params.Sender.Organization.OrganizationName)){
+				isWireSenderExists = true
+			} else if (it.wireInstructionsName.equalsIgnoreCase(params.Receiver.Organization.OrganizationName)){
+				isWireReceiverExists = true
+			}
 		}
-		
-		
-		render view: 'dissolvesearch', model: ['result': generateModel(m.result), isDissolved:true, poolid: params.poolid, cusip: params.cusip,  poolSearch:new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber:  params.poolNumber), wireSender: WireInstructions.get(1), wireReceiver: WireInstructions.get(2)]
-			
+		if(dispatchService.dissolveSecurity(params.poolid, params.cusip, map)) {
+			flash.message = message(code:"dissolve.pool.success", args: [params.poolid])
+			if (!isWireSenderExists)
+				wireInstructionsService.saveWireInstructions(params.Sender.Organization.OrganizationName,params.Sender.FinancialInstitution.ABARoutingAndTransitIdentifier, params.Sender.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName, params.Sender.Organization.OrganizationName, params.Sender.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName)
+			if (!isWireReceiverExists)
+				wireInstructionsService.saveWireInstructions(params.Receiver.Organization.OrganizationName,params.Receiver.FinancialInstitution.ABARoutingAndTransitIdentifier, params.Receiver.FinancialInstitutionAccount.FinancialInstitutionAccountSubaccountName, params.Receiver.Organization.OrganizationName, params.Receiver.FinancialInstitution.FinancialInstitutionTelegraphicAbbreviationName)
+		} else {
+			flash.error = message(code: "dissolve.pool.fail", args: [params.poolid])
+		}
+		render view: 'dissolvesearch', model: ['result': generateModel(m.result), 'fieldsDissolve': generateModel(m.result, grailsApplication.config.com.freddiemac.searchpool.result.dissolve.elements), isDissolved:eventLogService.isEventProcessedForCusip(params.cusip), poolid: params.poolid, cusip: params.cusip,  poolSearch:new PoolSearch(cusipIdentifier: params.cusipIdentifer, poolNumber:  params.poolNumber), wireSender: WireInstructions.findByWireInstructionsName("Freddie Mac"), wireReceiver: WireInstructions.findByWireInstructionsName("Last National Bank and Trust"), savedWireList: WireInstructions.list()]
 	}
-        
-    def getPreviousWireInstructions() {
-        return WireInstructions.list()
-    }         
 }
