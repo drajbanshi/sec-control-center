@@ -1,13 +1,14 @@
 class UrlMappings {
 
 	static mappings = {
+		"/"(controller:"pool" , action:"collapsesearch")
+		"/index.gsp"(controller:"pool" , action:"collapsesearch")
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
             }
         }
-
-        "/"(controller:"pool" , action:"collapsesearch")
+       
         "500"(view:'/error')
 	}
 }
