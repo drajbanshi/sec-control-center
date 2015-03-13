@@ -418,6 +418,5 @@ div.alert-danger ul {list-style: none; padding: 0}
 }
 .clientsideError {
 	display:none;
-	color:red;
 }
-}
+.alert {margin:5px 0}

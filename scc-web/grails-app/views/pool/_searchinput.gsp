@@ -21,6 +21,10 @@
 					${message(code: 'PoolDetails.page.search.submit')}
 				</button></span>
                 <g:hiddenField name="poolError" value="${poolErrorField}" />
-                <span id="clientCUSIPError" class="clientsideError"> CUSIP Number is not valid.</span>
-                <span id="clientPoolError" class="clientsideError"> Pool Number is not valid.</span>
+                <div id="clientCUSIPError" class="alert alert-danger clientsideError" role="status">
+					CUSIP Number is not valid.
+				</div>
+                <div id="clientPoolError" class="alert alert-danger clientsideError" role="status">
+					Pool Number is not valid
+				</div>
                 

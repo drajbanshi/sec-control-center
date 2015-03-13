@@ -20,21 +20,17 @@
                  <g:hiddenField name="pageFunction" value="Dissolve" />
            </g:form>                
      
-	 
-	<g:if test="${flash.message}">
-		<br>
+	<g:if test="${flash.message}">	 
 		<div class="alert alert-success" role="status">
 			${flash.message}
 		</div>
 	</g:if>
-	<g:if test="${flash.error}">
-		<br>
+	<g:if test="${flash.error}"> 
 		<div class="alert alert-danger" role="status">
 			${flash.error}
 		</div>
 	</g:if>
 	<g:hasErrors bean="${poolSearch}">
-		<br>
 		<div class="alert alert-danger" role="status">
 			<g:renderErrors bean="${poolSearch}"  />
 		</div>
