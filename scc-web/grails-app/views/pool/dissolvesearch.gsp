@@ -60,21 +60,27 @@
 		
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.sender.title')}</h2>  
-        <div class="dissolveEdit"> 
-            <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender" onclick="editWireSender('${wireSender.abaRoutingNumber}', '${wireSender.finInstitutionSubAcctName}', '${wireSender.organizationName}', '${wireSender.finInstitutionTelegraphicAbbrName}')">Edit</a>
-			<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
-			<br><br>        
-		</div>
+        
+        <g:if test="${!isDissolved}">
+	        <div class="dissolveEdit"> 
+	            <a class="btn btn-primary" data-toggle="modal"  data-target="#modalEditWireSender" onclick="editWireSender('${wireSender.abaRoutingNumber}', '${wireSender.finInstitutionSubAcctName}', '${wireSender.organizationName}', '${wireSender.finInstitutionTelegraphicAbbrName}')">Edit</a>
+				<a class="btn btn-success" data-toggle="modal"  data-target="#modalLoadWireSender">Load</a>
+				<br><br>        
+			</div>
+		</g:if>
+		
 		<div id="show-wireSenderData" class="content scaffold-show" role="main">
 			<g:render template="wiresender" model="[wireinstructions: wireSender]"/>
 		</div>
 		 
         <h2>${message(code: 'PoolDetails.dissolve.wire.receiver.title')}</h2>
-       	<div class="dissolveEdit"> 
-	       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver" onclick="editWireReceiver('${wireReceiver.abaRoutingNumber}', '${wireReceiver.finInstitutionSubAcctName}', '${wireReceiver.organizationName}', '${wireReceiver.finInstitutionTelegraphicAbbrName}')">Edit</a>
-			<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
-			<br><br>
-		</div>
+       	<g:if test="${!isDissolved}">
+	       	<div class="dissolveEdit"> 
+		       	<a class="btn btn-primary" data-toggle="modal" data-target="#modalEditWireReceiver" onclick="editWireReceiver('${wireReceiver.abaRoutingNumber}', '${wireReceiver.finInstitutionSubAcctName}', '${wireReceiver.organizationName}', '${wireReceiver.finInstitutionTelegraphicAbbrName}')">Edit</a>
+				<a class="btn btn-success" data-toggle="modal" data-target="#modalLoadWireReceiver">Load</a>
+				<br><br>
+			</div>
+		</g:if>
 		<div id="show-wireReceiverData" class="content scaffold-show" role="main">
 			<g:render template="wirereceiver" model="[wireinstructions: wireReceiver]"/>
 		</div>
