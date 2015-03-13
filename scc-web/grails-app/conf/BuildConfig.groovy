@@ -1,4 +1,4 @@
-grails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
+grails.servlet.version = "2.5" // Change depending on target container compliance (2.5 or 3.0)
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
@@ -62,7 +62,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.29'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
-        compile 'com.github.groovy-wslite:groovy-wslite:2.0.0-SNAPSHOT'
+        compile 'com.github.groovy-wslite:groovy-wslite:1.1.0'
 		compile 'com.freddiemac.service:event-notification-utility:1.1.0'
 		compile 'com.microsoft.sqlserver.jdbc:sqljdbc:4.0'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
