@@ -11,22 +11,18 @@
 	<EventCount>1</EventCount> 
 </EventMetaData>
 <EventPayload>
-<EventContainer> <EventIdentifier> ${eventIdentifier}
-</EventIdentifier> <BusinessContext> <EntityIdentifier>str1234</EntityIdentifier>
+<EventContainer> <EventIdentifier>${eventIdentifier}</EventIdentifier> 
+<BusinessContext> <EntityIdentifier>str1234</EntityIdentifier>
 <EntityType>SECURITY</EntityType> <ProductType>str1234</ProductType> <RequestActionType>NEW</RequestActionType>
-<RelatedEventIdentifier> ${eventIdentifier} </RelatedEventIdentifier> <PayloadByReference>true</PayloadByReference>
+<RelatedEventIdentifier>${eventIdentifier}</RelatedEventIdentifier> <PayloadByReference>true</PayloadByReference>
 <PayloadReferenceType>FILE</PayloadReferenceType> <RequestEffectiveDateTime>
 ${eventTimeStamp} </RequestEffectiveDateTime> <BusinessEventTimestamp> ${eventTimeStamp}
-</BusinessEventTimestamp> <PoolType> ${Pool_PoolType} </PoolType> </BusinessContext> <BusinessData> <p:CspSecIssuanceReqContentSet
-	xmlns:p="http://www.freddiemac.com/cdm"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.freddiemac.com/cdm">
+</BusinessEventTimestamp> <PoolType> ${Pool_PoolType} </PoolType> </BusinessContext> <BusinessData> 
+<p:CspSecIssuanceReqContentSet xmlns:p="http://www.freddiemac.com/cdm">
 	<p:SecIssuanceReqContainer>
 		<p:SecurityContainer>
 			<p:Security>
-				<p:SecurityCUSIPIdentifier>
-					${Security_SecurityCUSIPIdentifier}
-				</p:SecurityCUSIPIdentifier>
+				<p:SecurityCUSIPIdentifier>${Security_SecurityCUSIPIdentifier}</p:SecurityCUSIPIdentifier>
 			</p:Security>
 		</p:SecurityContainer>
 		<p:MBSContainer>
@@ -46,9 +42,7 @@ ${eventTimeStamp} </RequestEffectiveDateTime> <BusinessEventTimestamp> ${eventTi
 			<p:CollateralInstruments>
 				<p:CollateralInstrumentContainer>
 					<p:Pool>
-						<p:PoolIdentifier>
-							${Pool_PoolIdentifier}
-						</p:PoolIdentifier>
+						<p:PoolIdentifier>${Pool_PoolIdentifier}</p:PoolIdentifier>
 					</p:Pool>
 					<p:CollateralLoanContainer>
 						<p:Loan>
