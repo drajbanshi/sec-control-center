@@ -17,7 +17,7 @@
     <g:layoutHead/>
 	</head>
 	<body>
-     
+    
  	<header>
 		<div id="user" class="container-fluid">
 			<div class="row">
@@ -33,7 +33,19 @@
 	</header>
 
     <div class="container-fluid mainbody">
-        <g:layoutBody/>
+       
+		  <ul class="nav nav-tabs">
+			 <li role="presentation"><a href="#">Dashboard</a></li>
+			 <li role="presentation" class="${params.action=='collapsesearch' || "Collapse".equalsIgnoreCase(params.pageFunction) ? 'active' : '' }">
+			  <g:link controller="pool" action="collapsesearch">Pool Detail</g:link>
+			 <li role="presentation" class="${params.action=='dissolvesearch' || "Dissolve".equalsIgnoreCase(params.pageFunction) ? 'active' : '' }">
+			  <g:link controller="pool" action="dissolvesearch">Pool Dissolve</g:link>
+			</li>
+		  </ul>
+	     
+	    <div class="tabBody">
+	    	<g:layoutBody/>
+	    </div>
     </div>
 
 

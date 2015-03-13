@@ -14,14 +14,7 @@
 	    <g:render template="select_fields_dialog" />
     </g:if>
 
-<div class="container-fluid">
-  <ul class="nav nav-tabs">
-	 <li role="presentation"><a href="#">Dashboard</a></li>
-	 <li role="presentation" class="active"><a href="/scc/pool/collapsesearch">Pool Detail</a></li>
-	 <li role="presentation"><a href="/scc/pool/dissolvesearch">Pool Dissolve</a></li>
-  </ul>
-     
-    <div class="tabBody">
+
               <g:form controller="pool" action="search" class="form-inline">
                 <g:render template="searchinput" />     
                  <g:hiddenField name="pageFunction" value="Collapse" />
@@ -92,8 +85,7 @@
 		</g:if>
 		
 	</g:if>
-</div><!--  close tabBody -->
- </div><!--  close containerFluid -->
+
 <g:javascript>
   function extraFieldsAdded() {
       $("#extraFieldsModal").modal("hide");
